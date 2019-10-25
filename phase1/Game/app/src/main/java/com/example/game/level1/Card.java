@@ -1,38 +1,15 @@
 package com.example.game.level1;
 
 public class Card {
-    public enum Suit {
-        SPADES,
-        HEARTS,
-        CLUBS,
-        DIAMONDS
-    }
-
-    public enum Rank {
-        ACE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE,
-        SIX,
-        SEVEN,
-        EIGHT,
-        NINE,
-        TEN,
-        JACK,
-        QUEEN,
-        KING
-    }
-    
-    /**
-     * The suit of this playing card
-     */
-    private Suit suit;
-
     /**
      * The rank of this playing card
      */
     private Rank rank;
+
+    /**
+     * The suit of this playing card
+     */
+    private Suit suit;
 
     public Suit getSuit() {
         return suit;
@@ -42,8 +19,13 @@ public class Card {
         return rank;
     }
 
-
-    public Card(Suit suit, Rank rank) {
+    /**
+     * Create a new card with the given rank and suit
+     *
+     * @param rank - the rank of the card
+     * @param suit - the suit of the card
+     */
+    public Card(Rank rank, Suit suit) {
         this.suit = suit;
         this.rank = rank;
     }
