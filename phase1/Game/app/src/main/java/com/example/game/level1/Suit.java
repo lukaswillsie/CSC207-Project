@@ -11,11 +11,11 @@ public enum Suit {
             case SPADES:
                 return "\u2660";
             case HEARTS:
-                return "\u2661";
+                return "\u2665";
             case CLUBS:
                 return "\u2663";
             case DIAMONDS:
-                return "\u2662";
+                return "\u2666";
             default:
                 return "";
         }
