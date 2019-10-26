@@ -20,6 +20,8 @@ public class BlackjackLevelManager implements LevelManager {
 
     @Override
     public void setup() {
+        deck.shuffle();
+
         user.deal(deck.deal(2));
         dealer.deal(deck.deal(2));
     }

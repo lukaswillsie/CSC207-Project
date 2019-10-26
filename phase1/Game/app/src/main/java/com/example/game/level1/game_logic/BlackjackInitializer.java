@@ -15,16 +15,12 @@ public class BlackjackInitializer implements LevelInitializer {
         Deck deck = new Deck();
 
         InterfaceManager interfaceManager = new BlackjackInterfaceManager(user, dealer, userHand, dealerHand);
-        LevelManager gameManager = new BlackjackLevelManager(user, dealer, deck, interfaceManager);
+        gameManager = new BlackjackLevelManager(user, dealer, deck, interfaceManager);
     }
 
     public LevelManager setup() {
         gameManager.setup();
 
         return gameManager;
-    }
-
-    public void play() {
-        gameManager.play();
     }
 }

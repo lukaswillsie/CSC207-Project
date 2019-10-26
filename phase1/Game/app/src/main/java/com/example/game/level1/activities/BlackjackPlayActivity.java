@@ -11,13 +11,25 @@ import com.example.game.level1.display.PlayerHandView;
 import com.example.game.level1.display.PlayerInterpreter;
 import com.example.game.level1.domain.Deck;
 import com.example.game.level1.domain.Player;
+import com.example.game.level1.game_logic.BlackjackInitializer;
+import com.example.game.level1.game_logic.BlackjackLevelManager;
+import com.example.game.level1.game_logic.LevelInitializer;
+import com.example.game.level1.game_logic.LevelManager;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
+    private static int PLAYER_HAND_ID = R.id.playerHand;
+    private static int DEALER_HAND_ID = R.id.dealerHand;
+    public static LevelManager levelManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
+
+        LevelInitializer initializer = new BlackjackInitializer((TextView) findViewById(PLAYER_HAND_ID), (TextView) findViewById(DEALER_HAND_ID));
+        levelManager = initializer.setup();
+        levelManager.play();
     }
 
     public void test(View view) {
