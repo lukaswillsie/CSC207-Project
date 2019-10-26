@@ -24,6 +24,6 @@ public class LevelInitializerBuilder {
 
         ButtonManager buttonManager = new ButtonManager(buttons);
 
-        return new BlackjackInitializer(userHand, dealerHand, buttonManager);
+        return new BlackjackInitializer(userHand, dealerHand, buttonManager, activity);
     }
 }
