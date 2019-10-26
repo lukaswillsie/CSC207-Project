@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 
-public class BlackjackStartActivity extends AppCompatActivity {
+public class BlackJackStartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

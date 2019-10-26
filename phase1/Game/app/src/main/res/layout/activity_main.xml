@@ -17,7 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         tools:text="Button" />
 
     <Button
@@ -34,7 +33,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
         app:layout_constraintVertical_bias="1.0" />
-=======
-        tools:text="Blackjack" />
->>>>>>> 6a79296386dd2df5f93812461ca643329ea45bdc
+
 </androidx.constraintlayout.widget.ConstraintLayout>

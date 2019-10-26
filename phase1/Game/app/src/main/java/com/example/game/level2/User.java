@@ -23,7 +23,9 @@ public class User {
      */
     User(String username) {
         this.username = username;
-        games = new ArrayList<Game>();
+        games = new ArrayList<>();
         bestScore = 0;
     }
+
+
 }

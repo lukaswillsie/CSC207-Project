@@ -6,12 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-<<<<<<< HEAD
-import com.example.game.level1.BlackJackStartActivity;
 import com.example.game.level2.GameStartActivity;
-=======
-import com.example.game.level1.activities.BlackjackStartActivity;
->>>>>>> 6a79296386dd2df5f93812461ca643329ea45bdc
+import com.example.game.level1.activities.BlackJackStartActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonClick(View view){
-        Intent intent = new Intent(this, BlackjackStartActivity.class);
+        Intent intent = new Intent(this, BlackJackStartActivity.class);
         startActivity(intent);
     }
     public void chooseTheNum(View view){

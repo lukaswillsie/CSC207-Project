@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".level1.activities.BlackjackPlayActivity"></activity>
-        <activity android:name=".level1.activities.BlackjackStartActivity" />
+        <activity android:name=".level1.activities.BlackJackStartActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

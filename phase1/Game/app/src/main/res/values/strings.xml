@@ -6,9 +6,6 @@
     <string name="player_hand_label">Your hand:</string>
     <string name="stand_button">Stand</string>
     <string name="hit_button">Hit</string>
-<<<<<<< HEAD
     <string name="GuessNumText">Guess The Number</string>
-=======
     <string name="end_game_button_text">Next</string>
->>>>>>> 6a79296386dd2df5f93812461ca643329ea45bdc
 </resources>
