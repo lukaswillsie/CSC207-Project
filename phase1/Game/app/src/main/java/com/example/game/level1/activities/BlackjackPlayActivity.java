@@ -18,6 +18,7 @@ import com.example.game.level1.services.LevelInitializerBuilder;
 public class BlackjackPlayActivity extends AppCompatActivity {
     public static final int PLAYER_HAND_ID = R.id.playerHand;
     public static final int DEALER_HAND_ID = R.id.dealerHand;
+    public static final int END_GAME_BUTTON_ID = R.id.end_game_button;
     public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.end_game_button};
     public static LevelManager levelManager;
 
