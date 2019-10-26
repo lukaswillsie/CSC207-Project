@@ -20,7 +20,7 @@ public class BlackjackInterfaceManager implements InterfaceManager {
     public void update() {
         userInterpreter.updatePlayerHand();
 
-        if (BlackjackLevelManager.playerTurn) {
+        if (BlackjackLevelManager.gameState == BlackjackLevelManager.GameState.PLAYER_TURN) {
             dealerInterpreter.updatePlayerHandHideFirstCard();
         } else {
             dealerInterpreter.updatePlayerHand();

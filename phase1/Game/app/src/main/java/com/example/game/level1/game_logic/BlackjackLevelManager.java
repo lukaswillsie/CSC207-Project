@@ -8,9 +8,15 @@ import com.example.game.level1.domain.Deck;
 import com.example.game.level1.domain.Player;
 
 public class BlackjackLevelManager implements LevelManager {
+    enum GameState {
+        PLAYER_WIN,
+        PLAYER_LOSE,
+        PLAYER_BUST,
+        PLAYER_TURN
+    }
     private static final int HIT_BUTTON_ID = R.id.hitButton;
     private static final int STAND_BUTTON_ID = R.id.standButton;
-    public static boolean playerTurn = false;
+    public static GameState gameState = GameState.PLAYER_TURN;
 
     private Player user;
     private Player dealer;
@@ -36,16 +42,15 @@ public class BlackjackLevelManager implements LevelManager {
 
     @Override
     public void play() {
-        playerTurn = true;
+        gameState = GameState.PLAYER_TURN;
         interfaceManager.update();
     }
 
     @Override
     public void userButtonClick(View view) {
         if (view.getId() == HIT_BUTTON_ID) {
-            if (playerTurn) {
+            if (gameState == GameState.PLAYER_TURN) {
                 user.deal(deck.deal());
-                interfaceManager.update();
                 if(user.getHand().computeBlackJackValue() > 21){
                     endGame();
                 }
@@ -53,13 +58,13 @@ public class BlackjackLevelManager implements LevelManager {
         } else if (view.getId() == STAND_BUTTON_ID) {
             buttonManager.disableButton(HIT_BUTTON_ID);
             buttonManager.disableButton(STAND_BUTTON_ID);
-            playerTurn = false;
-            interfaceManager.update();
             endGame();
         }
     }
 
     private void endGame(){
+        if(user.getHand().computeBlackJackValue() > 21){
 
+        }
     }
 }
