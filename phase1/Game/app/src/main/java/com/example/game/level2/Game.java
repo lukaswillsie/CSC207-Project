@@ -1,5 +1,7 @@
 package com.example.game.level2;
 
+import java.lang.Math;
+
 public class Game {
     /**
      * Name of the person, playing the game.
@@ -33,7 +35,7 @@ public class Game {
     }
 
     public String checkGuess(int guess) {
-        this.updateStats();
+        this.updateStats(guess);
 
         if (guess < this.number) {
             return "Your guess is LOW.";
@@ -47,9 +49,13 @@ public class Game {
         }
     }
 
-    public void updateStats() {
-        numOfGuess++;
+    private void updateStats(int guess) {
+        this.numOfGuess++;
+        this.points += Math.abs(this.number - guess);
 
     }
-
+    private String gameFinished(){
+        return "CONGRATS.";
+        //this.stopTheGame();
+    }
 }
