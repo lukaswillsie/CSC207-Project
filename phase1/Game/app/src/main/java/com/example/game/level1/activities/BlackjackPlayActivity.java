@@ -2,6 +2,7 @@ package com.example.game.level1.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +16,15 @@ import com.example.game.level1.game_logic.BlackjackInitializer;
 import com.example.game.level1.game_logic.BlackjackLevelManager;
 import com.example.game.level1.game_logic.LevelInitializer;
 import com.example.game.level1.game_logic.LevelManager;
+import com.example.game.level1.services.LevelInitializerBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
-    private static int PLAYER_HAND_ID = R.id.playerHand;
-    private static int DEALER_HAND_ID = R.id.dealerHand;
+    public static final int PLAYER_HAND_ID = R.id.playerHand;
+    public static final int DEALER_HAND_ID = R.id.dealerHand;
+    public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.end_game_button};
     public static LevelManager levelManager;
 
 
@@ -27,7 +33,9 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
 
-        LevelInitializer initializer = new BlackjackInitializer((TextView) findViewById(PLAYER_HAND_ID), (TextView) findViewById(DEALER_HAND_ID));
+        LevelInitializerBuilder builder = new LevelInitializerBuilder();
+        LevelInitializer initializer = builder.buildLevelInitializer(this);
+
         levelManager = initializer.setup();
         levelManager.play();
     }
