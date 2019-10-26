@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.domain;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,6 +26,21 @@ public class Deck {
      */
     public Card deal() {
         return deck.remove(0);
+    }
+
+    /**
+     * Deal multiple Cards from this deck at once
+     *
+     * @param numCards - how many Cards to deal
+     * @return The array of cards dealt from this deck
+     */
+    public Card[] deal(int numCards) {
+        Card[] cards = new Card[numCards];
+        for (int i = 0; i < numCards; i++) {
+            cards[i] = this.deal();
+        }
+
+        return cards;
     }
 
     /**
