@@ -27,6 +27,14 @@ public class Hand {
     }
 
     /**
+     * Add the given card to this hand
+     * @param card - the card to be added to this hand
+     */
+    void addCard(Card card){
+        this.hand.add(card);
+    }
+
+    /**
      * Create a hand with the given cards in it
      *
      * @param hand - The initial cards in the hand
