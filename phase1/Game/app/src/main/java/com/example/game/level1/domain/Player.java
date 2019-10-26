@@ -39,4 +39,14 @@ public class Player {
     public void deal(Card card) {
         this.hand.addCard(card);
     }
+
+    /**
+     * Deal multiple cards to this player at a time
+     * @param cards - the array of cards to add to this player's hand
+     */
+    public void deal(Card[] cards){
+        for(Card card : cards){
+            deal(card);
+        }
+    }
 }

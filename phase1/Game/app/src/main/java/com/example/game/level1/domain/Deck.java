@@ -29,6 +29,20 @@ public class Deck {
     }
 
     /**
+     * Deal multiple Cards from this deck at once
+     * @param numCards - how many Cards to deal
+     * @return The array of cards dealt from this deck
+     */
+    public Card[] deal(int numCards){
+        Card[] cards = new Card[numCards];
+        for(int i = 0; i < numCards; i++){
+            cards[i] = this.deal();
+        }
+
+        return cards;
+    }
+
+    /**
      * Shuffle this deck, turning it into a permutation of itself
      */
     public void shuffle() {
