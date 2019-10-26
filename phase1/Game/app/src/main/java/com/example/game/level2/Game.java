@@ -32,4 +32,24 @@ public class Game {
         this.number = (int)(Math.random() * 50 + 1); //!!!!! CHANGE NEEDED.
     }
 
+    public String checkGuess(int guess) {
+        this.updateStats();
+
+        if (guess < this.number) {
+            return "Your guess is LOW.";
+        }
+        else if (guess > this.number) {
+            return "Your guess is HIGH.";
+        }
+        else {
+            // goes to the page where it says congrats, go to main menu
+            return "CONGRATS.";
+        }
+    }
+
+    public void updateStats() {
+        numOfGuess++;
+
+    }
+
 }
