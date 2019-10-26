@@ -16,7 +16,7 @@ public class BlackJackStartActivity extends AppCompatActivity {
         setContentView(R.layout.black_jack_start);
     }
 
-    public void startGame(View view){
+    public void startGame(View view) {
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
         startActivity(intent);
     }

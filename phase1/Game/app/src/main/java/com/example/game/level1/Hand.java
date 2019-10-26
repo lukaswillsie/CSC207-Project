@@ -2,6 +2,8 @@ package com.example.game.level1;
 
 import java.util.ArrayList;
 
+import static com.example.game.level1.Rank.ACE;
+
 public class Hand {
     /**
      * An array of cards representing this hand
@@ -31,5 +33,36 @@ public class Hand {
      */
     public Hand(ArrayList<Card> hand) {
         this.hand = hand;
+    }
+
+    public int computeBlackJackValue(){
+        ArrayList<Card> aces = new ArrayList<>();
+        int value = 0;
+        Rank rank;
+        for(Card card : hand){
+            rank = card.getRank();
+            if(rank == ACE){
+                aces.add(card);
+            }
+            else{
+                if(2 <= rank.getValue() && rank.getValue() <= 10){
+                    value += rank.getValue();
+                }
+                else {
+                    value += 10;
+                }
+            }
+        }
+
+        for(Card ace : aces){
+            if(value + 11 <= 21){
+                value += 11;
+            }
+            else{
+                value += 1;
+            }
+        }
+
+        return value;
     }
 }
