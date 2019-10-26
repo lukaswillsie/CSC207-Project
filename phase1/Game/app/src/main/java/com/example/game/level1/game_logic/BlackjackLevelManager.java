@@ -44,10 +44,14 @@ public class BlackjackLevelManager implements LevelManager {
     public void userButtonClick(View view) {
         if (view.getId() == HIT_BUTTON_ID) {
             if (playerTurn) {
-
+                user.deal(deck.deal());
+                interfaceManager.update();
             }
         } else if (view.getId() == STAND_BUTTON_ID) {
-
+            buttonManager.disableButton(HIT_BUTTON_ID);
+            buttonManager.disableButton(STAND_BUTTON_ID);
+            playerTurn = false;
+            interfaceManager.update();
         }
     }
 }

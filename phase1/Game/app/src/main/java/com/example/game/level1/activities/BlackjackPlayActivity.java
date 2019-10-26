@@ -55,4 +55,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         interp1.updatePlayerHandHideFirstCard();
         interp2.updatePlayerHand();
     }
+
+    public void buttonClick(View view){
+        levelManager.userButtonClick(view);
+    }
 }

@@ -10,8 +10,8 @@
         android:id="@+id/dealerHandLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="184dp"
         android:text="@string/dealer_hand_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="buttonClick"
             android:text="@string/hit_button" />
 
         <Button
@@ -67,24 +68,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_weight="1"
+            android:onClick="buttonClick"
             android:text="@string/stand_button" />
 
     </LinearLayout>
-
-    <ScrollView
-        android:id="@+id/logView"
-        android:layout_width="254dp"
-        android:layout_height="145dp"
-        android:layout_marginTop="45dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
     <Button
         android:id="@+id/end_game_button"
