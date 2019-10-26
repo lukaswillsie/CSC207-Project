@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelInitializerBuilder {
-    public LevelInitializer buildLevelInitializer(Activity activity) {
+    public LevelInitializer buildLevelInitializer(BlackjackPlayActivity activity) {
         TextView userHand = activity.findViewById(BlackjackPlayActivity.PLAYER_HAND_ID);
         TextView dealerHand = activity.findViewById(BlackjackPlayActivity.DEALER_HAND_ID);
 
@@ -24,6 +24,6 @@ public class LevelInitializerBuilder {
 
         ButtonManager buttonManager = new ButtonManager(buttons);
 
-        return new BlackjackInitializer(userHand, dealerHand, buttonManager);
+        return new BlackjackInitializer(userHand, dealerHand, buttonManager, activity);
     }
 }

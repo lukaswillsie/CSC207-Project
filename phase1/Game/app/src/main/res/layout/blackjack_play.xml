@@ -46,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/playerHandLabel" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="219dp"
         android:layout_height="48dp"
         android:layout_marginTop="92dp"
@@ -79,10 +80,20 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="64dp"
-        android:onClick="test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="@string/end_game_button_text"
         tools:visibility="1" />
+
+    <TextView
+        android:id="@+id/endGameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

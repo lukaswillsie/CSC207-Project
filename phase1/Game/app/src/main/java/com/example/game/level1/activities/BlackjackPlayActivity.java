@@ -2,6 +2,7 @@ package com.example.game.level1.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.example.game.level1.services.LevelInitializerBuilder;
 public class BlackjackPlayActivity extends AppCompatActivity {
     public static final int PLAYER_HAND_ID = R.id.playerHand;
     public static final int DEALER_HAND_ID = R.id.dealerHand;
+    public static final int END_GAME_TEXT_ID = R.id.endGameText;
     public static final int END_GAME_BUTTON_ID = R.id.end_game_button;
     public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.end_game_button};
     public static LevelManager levelManager;
@@ -35,29 +37,16 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         levelManager.play();
     }
 
-    public void test(View view) {
-        Deck deck = new Deck();
-        deck.shuffle();
-
-        Player player1 = new Player();
-        Player player2 = new Player();
-
-        for (int i = 0; i < 5; i++) {
-            player1.deal(deck.deal());
-        }
-
-        for (int i = 0; i < 5; i++) {
-            player2.deal(deck.deal());
-        }
-
-        PlayerInterpreter interp1 = new PlayerInterpreter(player1, new PlayerHandView((TextView) findViewById(R.id.dealerHand)));
-        PlayerInterpreter interp2 = new PlayerInterpreter(player2, new PlayerHandView((TextView) findViewById(R.id.playerHand)));
-
-        interp1.updatePlayerHandHideFirstCard();
-        interp2.updatePlayerHand();
-    }
-
     public void buttonClick(View view){
         levelManager.userButtonClick(view);
+    }
+
+    public void gameOver(String endGameText){
+        TextView endGameTextView = ((TextView)findViewById(END_GAME_TEXT_ID));
+        endGameTextView.setText(endGameText);
+        endGameTextView.setVisibility(View.VISIBLE);
+
+        Button endGameButton = ((Button) findViewById(END_GAME_BUTTON_ID));
+        endGameButton.setVisibility(View.VISIBLE);
     }
 }
