@@ -15,7 +15,7 @@ public class ButtonManager {
     public void disableButton(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
-                button.setClickable(false);
+                button.setEnabled(false);
             }
         }
     }
@@ -23,7 +23,7 @@ public class ButtonManager {
     public void enableButton(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
-                button.setClickable(true);
+                button.setEnabled(true);
             }
         }
     }
