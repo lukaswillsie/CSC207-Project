@@ -29,4 +29,8 @@ public class Card {
         this.suit = suit;
         this.rank = rank;
     }
+
+    public String toString(){
+        return this.rank.toString() + this.suit.toString();
+    }
 }
