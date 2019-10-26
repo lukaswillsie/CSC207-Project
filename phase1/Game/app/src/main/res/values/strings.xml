@@ -8,5 +8,9 @@
     <string name="hit_button">Hit</string>
     <string name="GuessNumText">Guess The Number</string>
     <string name="end_game_button_text">Next</string>
+<<<<<<< HEAD
     <string name="start">start</string>
+=======
+    <string name="play_again_button">Play again</string>
+>>>>>>> e1f549d7c1817397266bc6357138c4a27bf07d25
 </resources>
