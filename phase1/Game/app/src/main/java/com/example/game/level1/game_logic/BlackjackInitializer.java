@@ -3,6 +3,7 @@ package com.example.game.level1.game_logic;
 import android.app.Activity;
 import android.widget.TextView;
 
+import com.example.game.level1.activities.BlackjackPlayActivity;
 import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.domain.Dealer;
 import com.example.game.level1.domain.Deck;
@@ -11,7 +12,7 @@ import com.example.game.level1.domain.Player;
 public class BlackjackInitializer implements LevelInitializer {
     private LevelManager gameManager;
 
-    public BlackjackInitializer(TextView userHand, TextView dealerHand, ButtonManager buttonManager, Activity activity) {
+    public BlackjackInitializer(TextView userHand, TextView dealerHand, ButtonManager buttonManager, BlackjackPlayActivity activity) {
         Player user = new Player();
         Dealer dealer = new Dealer();
         Deck deck = new Deck();

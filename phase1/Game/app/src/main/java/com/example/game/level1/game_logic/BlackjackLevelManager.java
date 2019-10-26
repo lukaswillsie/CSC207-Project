@@ -8,15 +8,9 @@ import com.example.game.level1.domain.Deck;
 import com.example.game.level1.domain.Player;
 
 public class BlackjackLevelManager extends LevelManager {
-    enum GameState {
-        PLAYER_WIN,
-        PLAYER_LOSE,
-        PLAYER_BUST,
-        PLAYER_TURN
-    }
     private static final int HIT_BUTTON_ID = R.id.hitButton;
     private static final int STAND_BUTTON_ID = R.id.standButton;
-    public static GameState gameState = GameState.PLAYER_TURN;
+    public static boolean playerTurn = false;
 
     private Player user;
     private Player dealer;
@@ -42,29 +36,53 @@ public class BlackjackLevelManager extends LevelManager {
 
     @Override
     public void play() {
-        gameState = GameState.PLAYER_TURN;
+        playerTurn = true;
         interfaceManager.update();
     }
 
     @Override
     public void userButtonClick(View view) {
         if (view.getId() == HIT_BUTTON_ID) {
-            if (gameState == GameState.PLAYER_TURN) {
+            if (playerTurn) {
                 user.deal(deck.deal());
                 if(user.getHand().computeBlackJackValue() > 21){
+                    playerTurn = false;
                     endGame();
+                    return;
                 }
+                interfaceManager.update();
             }
         } else if (view.getId() == STAND_BUTTON_ID) {
             buttonManager.disableButton(HIT_BUTTON_ID);
             buttonManager.disableButton(STAND_BUTTON_ID);
+            playerTurn = false;
             endGame();
         }
     }
 
     private void endGame(){
-        if(user.getHand().computeBlackJackValue() > 21){
+        int userHand = user.getHand().computeBlackJackValue();
+        int dealerHand = dealer.getHand().computeBlackJackValue();
+        interfaceManager.update();
 
+        if(userHand > 21){
+            activity.gameOver("You busted!");
+        }
+        else{
+            if(dealerHand > 21){
+                activity.gameOver("You won! The dealer busted!");
+            }
+            else{
+                if(dealerHand == userHand){
+                    activity.gameOver("You tied! Your hand was a " + userHand + " and the dealer's was a " + dealerHand);
+                }
+                else if(dealerHand < userHand){
+                    activity.gameOver("You won! Your hand was a " + userHand + " and the dealer's was a " + dealerHand);
+                }
+                else{
+                    activity.gameOver("You lost! Your hand was a " + userHand + " and the dealer's was a " + dealerHand);
+                }
+            }
         }
     }
 }

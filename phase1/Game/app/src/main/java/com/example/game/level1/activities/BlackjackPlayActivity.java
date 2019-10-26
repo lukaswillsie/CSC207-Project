@@ -2,6 +2,7 @@ package com.example.game.level1.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +41,12 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         levelManager.userButtonClick(view);
     }
 
-    public static void gameOver(String endGameText){
+    public void gameOver(String endGameText){
+        TextView endGameTextView = ((TextView)findViewById(END_GAME_TEXT_ID));
+        endGameTextView.setText(endGameText);
+        endGameTextView.setVisibility(View.VISIBLE);
 
+        Button endGameButton = ((Button) findViewById(END_GAME_BUTTON_ID));
+        endGameButton.setVisibility(View.VISIBLE);
     }
 }
