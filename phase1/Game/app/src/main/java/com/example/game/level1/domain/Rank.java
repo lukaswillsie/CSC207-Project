@@ -48,11 +48,11 @@ public enum Rank {
             case TEN:
                 return "10";
             case JACK:
-                return "11";
+                return "J";
             case QUEEN:
-                return "12";
+                return "Q";
             case KING:
-                return "13";
+                return "K";
             default:
                 return "";
         }
