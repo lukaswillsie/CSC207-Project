@@ -1,11 +1,17 @@
 package com.example.game.level1.game_logic;
 
+import android.app.Activity;
 import android.view.View;
 
-public interface LevelManager {
-    void setup();
+public abstract class LevelManager {
+    Activity activity;
+    public abstract void setup();
 
-    void play();
+    public abstract void play();
 
-    void userButtonClick(View view);
+    public abstract void userButtonClick(View view);
+
+    public void setActivity(Activity activity){
+        this.activity = activity;
+    }
 }

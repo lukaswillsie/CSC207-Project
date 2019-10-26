@@ -7,7 +7,7 @@ import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.domain.Deck;
 import com.example.game.level1.domain.Player;
 
-public class BlackjackLevelManager implements LevelManager {
+public class BlackjackLevelManager extends LevelManager {
     enum GameState {
         PLAYER_WIN,
         PLAYER_LOSE,
