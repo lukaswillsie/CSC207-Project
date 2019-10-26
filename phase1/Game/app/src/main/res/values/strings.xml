@@ -6,4 +6,5 @@
     <string name="player_hand_label">Your hand:</string>
     <string name="stand_button">Stand</string>
     <string name="hit_button">Hit</string>
+    <string name="GuessNumText">Guess The Number</string>
 </resources>
