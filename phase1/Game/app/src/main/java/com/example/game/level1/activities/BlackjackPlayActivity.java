@@ -1,16 +1,16 @@
 package com.example.game.level1.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.game.R;
-import com.example.game.level1.domain.Deck;
-import com.example.game.level1.domain.Player;
 import com.example.game.level1.display.PlayerHandView;
 import com.example.game.level1.display.PlayerInterpreter;
+import com.example.game.level1.domain.Deck;
+import com.example.game.level1.domain.Player;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
 

@@ -1,6 +1,5 @@
 package com.example.game.level1.display;
 
-import com.example.game.level1.display.PlayerHandView;
 import com.example.game.level1.domain.Card;
 import com.example.game.level1.domain.Hand;
 import com.example.game.level1.domain.Player;
