@@ -4,13 +4,13 @@ public class PlayerInterpreter {
     /**
      * The player whose hand this PlayerInterpreter is relaying to the interface
      */
-    private Player player;
+    protected Player player;
 
     /**
      * The PlayerHandView that this PlayerInterpreter is using to
      * update the interface
      */
-    private PlayerHandView view;
+    protected PlayerHandView view;
 
     /**
      * Create a new PlayerInterpreter with the given instance variables
@@ -30,12 +30,42 @@ public class PlayerInterpreter {
      * the interface accordingly
      */
     public void updatePlayerHand(){
+        view.updateView(this.playerHandStringRep());
+    }
+
+    public void updatePlayerHandHideFirstCard() {
+        this.view.updateView(this.playerHandHideFirstCardStringRep());
+    }
+
+    private String playerHandHideFirstCardStringRep(){
+        boolean first= true;
+        Hand hand = this.player.getHand();
+        StringBuilder handString = new StringBuilder();
+        for(Card card : hand){
+            if(first){
+                handString.append("\u2588");
+                handString.append("  ");
+
+                first = false;
+            }
+            else {
+                handString.append(card.toString());
+                handString.append("  ");
+            }
+
+        }
+
+        return handString.toString();
+    }
+
+    protected String playerHandStringRep() {
         Hand hand = player.getHand();
         StringBuilder handString = new StringBuilder();
         for(Card card : hand){
             handString.append(card.toString());
+            handString.append("  ");
         }
 
-        view.updateView(handString.toString());
+        return handString.toString();
     }
 }
