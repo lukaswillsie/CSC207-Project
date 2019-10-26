@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.domain;
 
 public class Player {
     /**
@@ -8,6 +8,7 @@ public class Player {
 
     /**
      * Get this player's hand
+     *
      * @return this player's hand
      */
     public Hand getHand() {
@@ -17,23 +18,25 @@ public class Player {
     /**
      * Create a new player with no hand
      */
-    public Player(){
+    public Player() {
         hand = new Hand();
     }
 
     /**
      * Create a new player with the given starting hand
+     *
      * @param hand - the player's starting hand
      */
-    public Player(Hand hand){
+    public Player(Hand hand) {
         this.hand = hand;
     }
 
     /**
      * Add the given card to this player's hand
+     *
      * @param card - the card to add to this player's hand
      */
-    void deal(Card card){
+    public void deal(Card card) {
         this.hand.addCard(card);
     }
 }

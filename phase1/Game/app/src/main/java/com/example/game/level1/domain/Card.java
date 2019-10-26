@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.domain;
 
 public class Card {
     /**
@@ -30,7 +30,7 @@ public class Card {
         this.rank = rank;
     }
 
-    public String toString(){
+    public String toString() {
         return this.rank.toString() + this.suit.toString();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.domain;
 
 public enum Suit {
     SPADES,
@@ -6,8 +6,8 @@ public enum Suit {
     CLUBS,
     DIAMONDS;
 
-    public String toString(){
-        switch(this){
+    public String toString() {
+        switch (this) {
             case SPADES:
                 return "\u2660";
             case HEARTS:

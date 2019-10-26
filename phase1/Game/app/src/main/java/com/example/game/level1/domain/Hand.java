@@ -1,9 +1,9 @@
-package com.example.game.level1;
+package com.example.game.level1.domain;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static com.example.game.level1.Rank.ACE;
+import static com.example.game.level1.domain.Rank.ACE;
 
 public class Hand implements Iterable<Card> {
     /**
@@ -38,36 +38,34 @@ public class Hand implements Iterable<Card> {
 
     /**
      * Add the given card to this hand
+     *
      * @param card - the card to be added to this hand
      */
-    void addCard(Card card){
+    void addCard(Card card) {
         this.hand.add(card);
     }
 
-    public int computeBlackJackValue(){
+    public int computeBlackJackValue() {
         ArrayList<Card> aces = new ArrayList<>();
         int value = 0;
         Rank rank;
-        for(Card card : hand){
+        for (Card card : hand) {
             rank = card.getRank();
-            if(rank == ACE){
+            if (rank == ACE) {
                 aces.add(card);
-            }
-            else{
-                if(2 <= rank.getValue() && rank.getValue() <= 10){
+            } else {
+                if (2 <= rank.getValue() && rank.getValue() <= 10) {
                     value += rank.getValue();
-                }
-                else {
+                } else {
                     value += 10;
                 }
             }
         }
 
-        for(Card ace : aces){
-            if(value + 11 <= 21){
+        for (Card ace : aces) {
+            if (value + 11 <= 21) {
                 value += 11;
-            }
-            else{
+            } else {
                 value += 1;
             }
         }
@@ -75,21 +73,22 @@ public class Hand implements Iterable<Card> {
         return value;
     }
 
-    public Iterator<Card> iterator(){
+    public Iterator<Card> iterator() {
         return new HandIterator();
     }
 
     private class HandIterator implements Iterator<Card> {
         private int index;
 
-        public  HandIterator(){
+        public HandIterator() {
             index = 0;
         }
-        public boolean hasNext(){
+
+        public boolean hasNext() {
             return index < hand.size();
         }
 
-        public Card next(){
+        public Card next() {
             return hand.get(index++);
         }
     }

@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.domain;
 
 public enum Rank {
     ACE(1),
@@ -16,16 +16,17 @@ public enum Rank {
     KING(13);
 
     private int value;
-    Rank(int value){
+
+    Rank(int value) {
         this.value = value;
     }
 
-    public int getValue(){
+    public int getValue() {
         return value;
     }
 
-    public String toString(){
-        switch(this){
+    public String toString() {
+        switch (this) {
             case ACE:
                 return "A";
             case TWO:

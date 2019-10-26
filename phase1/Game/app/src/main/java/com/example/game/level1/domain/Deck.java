@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.domain;
 
 import java.util.ArrayList;
 import java.util.Random;

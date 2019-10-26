@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.game.level1.BlackJackStartActivity;
+import com.example.game.level1.activities.BlackJackStartActivity;
 
 public class MainActivity extends AppCompatActivity {
 

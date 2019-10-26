@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.R;
-
-import org.w3c.dom.Text;
+import com.example.game.level1.domain.Deck;
+import com.example.game.level1.domain.Player;
+import com.example.game.level1.display.PlayerHandView;
+import com.example.game.level1.display.PlayerInterpreter;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
 
@@ -18,18 +20,18 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         setContentView(R.layout.blackjack_play);
     }
 
-    public void test(View view){
+    public void test(View view) {
         Deck deck = new Deck();
         deck.shuffle();
 
         Player player1 = new Player();
         Player player2 = new Player();
 
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             player1.deal(deck.deal());
         }
 
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             player2.deal(deck.deal());
         }
 

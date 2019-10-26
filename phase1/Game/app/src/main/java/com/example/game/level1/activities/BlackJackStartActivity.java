@@ -1,4 +1,4 @@
-package com.example.game.level1;
+package com.example.game.level1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
