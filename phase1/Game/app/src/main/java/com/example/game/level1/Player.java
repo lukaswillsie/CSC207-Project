@@ -14,10 +14,17 @@ public class Player {
         return hand;
     }
 
+    /**
+     * Create a new player with no hand
+     */
     public Player(){
         hand = new Hand();
     }
 
+    /**
+     * Create a new player with the given starting hand
+     * @param hand - the player's starting hand
+     */
     public Player(Hand hand){
         this.hand = hand;
     }
