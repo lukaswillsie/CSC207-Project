@@ -2,7 +2,6 @@ package com.example.game.level1.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,14 +11,9 @@ import com.example.game.level1.display.PlayerHandView;
 import com.example.game.level1.display.PlayerInterpreter;
 import com.example.game.level1.domain.Deck;
 import com.example.game.level1.domain.Player;
-import com.example.game.level1.game_logic.BlackjackInitializer;
-import com.example.game.level1.game_logic.BlackjackLevelManager;
 import com.example.game.level1.game_logic.LevelInitializer;
 import com.example.game.level1.game_logic.LevelManager;
 import com.example.game.level1.services.LevelInitializerBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
     public static final int PLAYER_HAND_ID = R.id.playerHand;

@@ -1,6 +1,5 @@
 package com.example.game.level1.game_logic;
 
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.level1.display.ButtonManager;

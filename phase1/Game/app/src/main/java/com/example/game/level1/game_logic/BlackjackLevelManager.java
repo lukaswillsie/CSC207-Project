@@ -42,12 +42,11 @@ public class BlackjackLevelManager implements LevelManager {
 
     @Override
     public void userButtonClick(View view) {
-        if(view.getId() == HIT_BUTTON_ID){
-            if(playerTurn){
+        if (view.getId() == HIT_BUTTON_ID) {
+            if (playerTurn) {
 
             }
-        }
-        else if (view.getId() == STAND_BUTTON_ID){
+        } else if (view.getId() == STAND_BUTTON_ID) {
 
         }
     }
