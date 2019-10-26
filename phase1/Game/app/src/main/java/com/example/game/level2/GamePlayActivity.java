@@ -6,17 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.R;
-
-public class GameStartActivity extends AppCompatActivity {
-
+class GamePlayActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_start_activity);
+        setContentView(R.layout.game_play_activity);
     }
 
-    public void startTheGame(View view){
-        Intent intent = new Intent(this, GamePlayActivity.class);
-        startActivity(intent);
-    }
+
 }
