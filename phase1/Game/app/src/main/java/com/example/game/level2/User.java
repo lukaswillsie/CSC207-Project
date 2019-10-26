@@ -1,4 +1,5 @@
 package com.example.game.level2;
+import java.util.ArrayList;
 
 public class User {
     /**
