@@ -49,6 +49,8 @@ public class BlackjackLevelManager extends LevelManager {
                 user.deal(deck.deal());
                 if(user.getHand().computeBlackJackValue() > 21){
                     interfaceManager.update();
+                    buttonManager.disableButton(HIT_BUTTON_ID);
+                    buttonManager.disableButton(STAND_BUTTON_ID);
                     endGame();
                     return;
                 }
