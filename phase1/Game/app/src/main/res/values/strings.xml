@@ -13,4 +13,10 @@
     <string name="blackjack_play">Blackjack</string>
     <string name="bet_button">Bet</string>
     <string name="okay_button">Ok</string>
+    <string name="guess_one_to_fifty">Guess the number from one to fifty.</string>
+    <string name="enter_guess_here">Enter your guess here</string>
+    <string name="number_of_guesses">Number of guesses:</string>
+    <string name="guess_the_number_points">Points:</string>
+    <string name="num_of_guesses_value" />
+    <string name="submit_button">Submit</string>
 </resources>
