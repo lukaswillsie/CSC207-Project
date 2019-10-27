@@ -24,12 +24,12 @@ public class Game {
      */
     int number;
     /**
-     * Create a new Game for User.
-     */
-    /**
      * stores the user of this game.
      */
     User user;
+    /**
+     * Create a new Game for User.
+     */
     public Game(User user){
         this.username = user.username;
         this.user = user;

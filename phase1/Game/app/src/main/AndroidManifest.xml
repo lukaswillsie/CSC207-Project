@@ -23,6 +23,7 @@
         <activity android:name=".level1.activities.BlackjackStartActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".level2.GameStartActivity" />
+        <activity android:name=".level2.GameStartActivity1" />
     </application>
 
 </manifest>
