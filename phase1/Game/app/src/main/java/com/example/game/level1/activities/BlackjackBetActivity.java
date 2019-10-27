@@ -1,15 +1,12 @@
 package com.example.game.level1.activities;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import com.example.game.R;
 
 public class BlackjackBetActivity extends AppCompatActivity {
@@ -40,15 +37,5 @@ public class BlackjackBetActivity extends AppCompatActivity {
             }
         }
 
-    }
-
-    private class IllegalBetDialogFragment extends DialogFragment {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("You can't bet more than your score").setPositiveButton(R.string.okay_button, null);
-            return builder.create();
-        }
     }
 }

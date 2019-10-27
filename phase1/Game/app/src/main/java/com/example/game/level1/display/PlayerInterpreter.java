@@ -8,7 +8,7 @@ public class PlayerInterpreter {
     /**
      * The player whose hand this PlayerInterpreter is relaying to the interface
      */
-    protected Player player;
+    private Player player;
 
     /**
      * The PlayerHandView that this PlayerInterpreter is using to
@@ -62,7 +62,7 @@ public class PlayerInterpreter {
         return handString.toString();
     }
 
-    protected String playerHandStringRep() {
+    private String playerHandStringRep() {
         Hand hand = player.getHand();
         StringBuilder handString = new StringBuilder();
         for (Card card : hand) {

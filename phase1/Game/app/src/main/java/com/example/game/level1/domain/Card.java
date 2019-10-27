@@ -15,7 +15,7 @@ public class Card {
         return suit;
     }
 
-    public Rank getRank() {
+    Rank getRank() {
         return rank;
     }
 
@@ -25,7 +25,7 @@ public class Card {
      * @param rank - the rank of the card
      * @param suit - the suit of the card
      */
-    public Card(Rank rank, Suit suit) {
+    Card(Rank rank, Suit suit) {
         this.suit = suit;
         this.rank = rank;
     }

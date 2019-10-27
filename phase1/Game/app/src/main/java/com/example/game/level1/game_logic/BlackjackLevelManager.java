@@ -11,7 +11,7 @@ public class BlackjackLevelManager extends LevelManager {
     /**
      * Boolean representing whether it is the player's turn in the game
      */
-    public static boolean playerTurn = false;
+    static boolean playerTurn = false;
 
     /**
      * A PlayerManager object representing the user of the app

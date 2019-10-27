@@ -1,7 +1,5 @@
 package com.example.game.level1.domain;
 
-import java.util.ArrayList;
-
 import static com.example.game.level1.domain.Rank.ACE;
 
 public class BlackjackPlayerManager {
@@ -23,13 +21,13 @@ public class BlackjackPlayerManager {
 
     public int computeBlackJackValue() {
         Hand hand = player.getHand();
-        ArrayList<Card> aces = new ArrayList<>();
+        int numAces = 0;
         int value = 0;
         Rank rank;
         for (Card card : hand) {
             rank = card.getRank();
             if (rank == ACE) {
-                aces.add(card);
+                numAces++;
             } else {
                 if (2 <= rank.getValue() && rank.getValue() <= 10) {
                     value += rank.getValue();
@@ -39,7 +37,7 @@ public class BlackjackPlayerManager {
             }
         }
 
-        for (Card ace : aces) {
+        for (int i = 0; i < numAces; i++) {
             if (value + 11 <= 21) {
                 value += 11;
             } else {

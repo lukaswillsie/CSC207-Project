@@ -22,7 +22,7 @@ public class PlayerHandView {
      *
      * @param newString - String to replace the TextView's current text with
      */
-    public void updateView(String newString) {
+    void updateView(String newString) {
         this.view.setText(newString);
     }
 }

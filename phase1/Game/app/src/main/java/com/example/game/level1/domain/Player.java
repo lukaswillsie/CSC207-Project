@@ -21,13 +21,4 @@ public class Player {
     public Player() {
         hand = new Hand();
     }
-
-    /**
-     * Create a new player with the given starting hand
-     *
-     * @param hand - the player's starting hand
-     */
-    public Player(Hand hand) {
-        this.hand = hand;
-    }
 }

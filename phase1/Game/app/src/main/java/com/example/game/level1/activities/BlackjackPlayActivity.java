@@ -26,11 +26,6 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     public static final int PLAY_AGAIN_BUTTON_ID = R.id.playAgainButton;
 
     /**
-     * A list of the IDs of all the buttons on the UI
-     */
-    public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.endGameButton, R.id.playAgainButton};
-
-    /**
      * The LevelManager that will play the game taking place in this activity
      */
     public static LevelManager levelManager;
