@@ -45,34 +45,6 @@ public class Hand implements Iterable<Card> {
         this.hand.add(card);
     }
 
-    public int computeBlackJackValue() {
-        ArrayList<Card> aces = new ArrayList<>();
-        int value = 0;
-        Rank rank;
-        for (Card card : hand) {
-            rank = card.getRank();
-            if (rank == ACE) {
-                aces.add(card);
-            } else {
-                if (2 <= rank.getValue() && rank.getValue() <= 10) {
-                    value += rank.getValue();
-                } else {
-                    value += 10;
-                }
-            }
-        }
-
-        for (Card ace : aces) {
-            if (value + 11 <= 21) {
-                value += 11;
-            } else {
-                value += 1;
-            }
-        }
-
-        return value;
-    }
-
     public Iterator<Card> iterator() {
         return new HandIterator();
     }

@@ -4,9 +4,8 @@ import android.view.View;
 
 import com.example.game.level1.activities.BlackjackPlayActivity;
 import com.example.game.level1.display.ButtonManager;
-import com.example.game.level1.domain.Dealer;
+import com.example.game.level1.domain.BlackjackPlayerManager;
 import com.example.game.level1.domain.Deck;
-import com.example.game.level1.domain.Player;
 
 public class BlackjackLevelManager extends LevelManager {
     /**
@@ -15,14 +14,14 @@ public class BlackjackLevelManager extends LevelManager {
     public static boolean playerTurn = false;
 
     /**
-     * A Player object representing the user of the app
+     * A PlayerManager object representing the user of the app
      */
-    private Player user;
+    private BlackjackPlayerManager user;
 
     /**
-     * A Dealer object representing the dealer in the game
+     * A PlayerManager object representing the dealer in the game
      */
-    private Dealer dealer;
+    private BlackjackPlayerManager dealer;
 
     /**
      * The deck being played with in this game
@@ -41,7 +40,7 @@ public class BlackjackLevelManager extends LevelManager {
      * @param deck - the deck to be played with
      * @param interfaceManager - the InterfaceManager to be used by this object
      */
-    public BlackjackLevelManager(Player user, Dealer dealer, Deck deck, InterfaceManager interfaceManager) {
+    public BlackjackLevelManager(BlackjackPlayerManager user, BlackjackPlayerManager dealer, Deck deck, InterfaceManager interfaceManager) {
         this.user = user;
         this.dealer = dealer;
         this.deck = deck;
@@ -77,7 +76,7 @@ public class BlackjackLevelManager extends LevelManager {
         if (view.getId() == BlackjackPlayActivity.HIT_BUTTON_ID) {
             if (playerTurn) {
                 user.deal(deck.deal());
-                if(user.getHand().computeBlackJackValue() > 21){
+                if(user.computeBlackJackValue() > 21){
                     interfaceManager.update();
                     ButtonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
                     ButtonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
@@ -100,13 +99,13 @@ public class BlackjackLevelManager extends LevelManager {
     private void endGame(){
         playerTurn = false;
         interfaceManager.update();
-        while (dealer.getMove().equals(Dealer.HIT_KEY)) {
+        while (dealerHit()) {
             dealer.deal(deck.deal());
         }
         interfaceManager.update();
 
-        int userHand = user.getHand().computeBlackJackValue();
-        int dealerHand = dealer.getHand().computeBlackJackValue();
+        int userHand = user.computeBlackJackValue();
+        int dealerHand = dealer.computeBlackJackValue();
 
         if(userHand > 21){
             activity.gameOver("You busted!", false);
@@ -127,5 +126,9 @@ public class BlackjackLevelManager extends LevelManager {
                 }
             }
         }
+    }
+
+    private boolean dealerHit(){
+        return dealer.computeBlackJackValue() <= 16;
     }
 }
