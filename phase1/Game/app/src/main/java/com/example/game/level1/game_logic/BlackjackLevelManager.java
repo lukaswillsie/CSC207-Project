@@ -9,14 +9,44 @@ import com.example.game.level1.domain.Deck;
 import com.example.game.level1.domain.Player;
 
 public class BlackjackLevelManager extends LevelManager {
+    /**
+     * Boolean representing whether it is the player's turn in the game
+     */
     public static boolean playerTurn = false;
 
+    /**
+     * A Player object representing the user of the app
+     */
     private Player user;
+
+    /**
+     * A Dealer object representing the dealer in the game
+     */
     private Dealer dealer;
+
+    /**
+     * The deck being played with in this game
+     */
     private Deck deck;
+
+    /**
+     * The InterfaceManager managing the interface
+     */
     private InterfaceManager interfaceManager;
+
+    /**
+     * The tool this object will use to interact with UI buttons
+     */
     private ButtonManager buttonManager;
 
+    /**
+     * Create a new BlackjackLevelManager
+     * @param user - the user of the app
+     * @param dealer - the dealer in the game
+     * @param deck - the deck to be played with
+     * @param interfaceManager - the InterfaceManager to be used by this object
+     * @param buttonManager - the ButtonManager to be used by this object
+     */
     public BlackjackLevelManager(Player user, Dealer dealer, Deck deck, InterfaceManager interfaceManager, ButtonManager buttonManager) {
         this.user = user;
         this.dealer = dealer;
@@ -25,6 +55,9 @@ public class BlackjackLevelManager extends LevelManager {
         this.buttonManager = buttonManager;
     }
 
+    /**
+     * Setup the game that this BlackjackLevelManager is going to be managing
+     */
     @Override
     public void setup() {
         deck.shuffle();
@@ -33,12 +66,19 @@ public class BlackjackLevelManager extends LevelManager {
         dealer.deal(deck.deal(2));
     }
 
+    /**
+     * Tell the BlackjackLevelManager that the game is going to be played
+     */
     @Override
     public void play() {
         playerTurn = true;
         interfaceManager.update();
     }
 
+    /**
+     * Handle a button click by the user
+     * @param view - the button that was clicked
+     */
     @Override
     public void userButtonClick(View view) {
         if (view.getId() == BlackjackPlayActivity.HIT_BUTTON_ID) {
@@ -60,6 +100,10 @@ public class BlackjackLevelManager extends LevelManager {
         }
     }
 
+    /**
+     * End the game. Calculate who won, update the interface, and tell this BlackjackLevelManager's
+     * activity that the game is over
+     */
     private void endGame(){
         interfaceManager.update();
         playerTurn = false;
