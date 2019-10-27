@@ -10,9 +10,10 @@
         android:id="@+id/dealerHandLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="180dp"
         android:text="@string/dealer_hand_label"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:text="@string/player_hand_label"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/dealerHandLabel"
         app:layout_constraintTop_toBottomOf="@+id/dealerHandLabel" />
 
@@ -29,19 +31,19 @@
         android:id="@+id/dealerHand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/playerHandLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="@+id/dealerHandLabel"
-        app:layout_constraintTop_toBottomOf="@+id/dealerHandLabel"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintTop_toBottomOf="@+id/dealerHandLabel" />
 
     <TextView
         android:id="@+id/playerHand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/dealerHand"
         app:layout_constraintTop_toBottomOf="@+id/playerHandLabel" />
 
@@ -119,5 +121,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Score: 300"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
