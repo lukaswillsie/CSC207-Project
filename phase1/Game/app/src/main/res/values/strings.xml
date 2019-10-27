@@ -19,4 +19,6 @@
     <string name="guess_the_number_points">Points:</string>
     <string name="num_of_guesses_value" />
     <string name="submit_button">Submit</string>
+    <string name="new_user_button">Create an account</string>
+    <string name="old_user_button">Already have an account?</string>
 </resources>
