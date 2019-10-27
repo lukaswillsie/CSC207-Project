@@ -116,7 +116,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * text
      * @param endGameText - the text to display as a result of the game ending
      */
-    public void gameOver(String endGameText){
+    public void gameOver(String endGameText, boolean playerWin){
         TextView endGameTextView = ((TextView)findViewById(END_GAME_TEXT_ID));
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
@@ -124,5 +124,15 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         buttonManager.makeVisible(END_GAME_BUTTON_ID);
 
         buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
+
+        if(playerWin){
+            score += 100;
+        }
+        else{
+            score -= 50;
+        }
+
+        String scoreText = "Score: " + score;
+        ((TextView)findViewById(R.id.playScore)).setText(scoreText);
     }
 }
