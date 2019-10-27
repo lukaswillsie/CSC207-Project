@@ -82,10 +82,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
 
-        Button endGameButton = ((Button) findViewById(END_GAME_BUTTON_ID));
-        endGameButton.setVisibility(View.VISIBLE);
+        buttonManager.makeVisible(END_GAME_BUTTON_ID);
 
-        Button playAgainButton = ((Button)findViewById(PLAY_AGAIN_BUTTON_ID));
-        playAgainButton.setVisibility(View.VISIBLE);
+        buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
     }
 }

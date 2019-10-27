@@ -1,17 +1,14 @@
 package com.example.game.level1.game_logic;
 
-import android.util.Log;
 import android.view.View;
 
-import com.example.game.R;
+import com.example.game.level1.activities.BlackjackPlayActivity;
 import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.domain.Dealer;
 import com.example.game.level1.domain.Deck;
 import com.example.game.level1.domain.Player;
 
 public class BlackjackLevelManager extends LevelManager {
-    private static final int HIT_BUTTON_ID = R.id.hitButton;
-    private static final int STAND_BUTTON_ID = R.id.standButton;
     public static boolean playerTurn = false;
 
     private Player user;
@@ -44,21 +41,21 @@ public class BlackjackLevelManager extends LevelManager {
 
     @Override
     public void userButtonClick(View view) {
-        if (view.getId() == HIT_BUTTON_ID) {
+        if (view.getId() == BlackjackPlayActivity.HIT_BUTTON_ID) {
             if (playerTurn) {
                 user.deal(deck.deal());
                 if(user.getHand().computeBlackJackValue() > 21){
                     interfaceManager.update();
-                    buttonManager.disableButton(HIT_BUTTON_ID);
-                    buttonManager.disableButton(STAND_BUTTON_ID);
+                    buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
+                    buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
                     endGame();
                     return;
                 }
                 interfaceManager.update();
             }
-        } else if (view.getId() == STAND_BUTTON_ID) {
-            buttonManager.disableButton(HIT_BUTTON_ID);
-            buttonManager.disableButton(STAND_BUTTON_ID);
+        } else if (view.getId() == BlackjackPlayActivity.STAND_BUTTON_ID) {
+            buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
+            buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
             endGame();
         }
     }
