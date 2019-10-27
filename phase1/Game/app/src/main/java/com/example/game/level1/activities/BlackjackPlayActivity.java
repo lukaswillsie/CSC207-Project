@@ -10,10 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 import com.example.game.level1.display.ButtonManager;
-import com.example.game.level1.display.PlayerHandView;
-import com.example.game.level1.display.PlayerInterpreter;
-import com.example.game.level1.domain.Deck;
-import com.example.game.level1.domain.Player;
 import com.example.game.level1.game_logic.LevelInitializer;
 import com.example.game.level1.game_logic.LevelManager;
 import com.example.game.level1.services.LevelInitializerBuilder;
@@ -22,15 +18,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
+    /**
+     * Constants that record the IDs of the various UI elements
+     * To be used throughout this level as objects interact with UI elements
+     */
     public static final int PLAYER_HAND_ID = R.id.playerHand;
     public static final int DEALER_HAND_ID = R.id.dealerHand;
     public static final int END_GAME_TEXT_ID = R.id.endGameText;
     public static final int HIT_BUTTON_ID = R.id.hitButton;
     public static final int STAND_BUTTON_ID = R.id.standButton;
-    public static final int END_GAME_BUTTON_ID = R.id.end_game_button;
+    public static final int END_GAME_BUTTON_ID = R.id.endGameButton;
     public static final int PLAY_AGAIN_BUTTON_ID = R.id.playAgainButton;
-    public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.end_game_button, R.id.playAgainButton};
+
+    /**
+     * A list of the IDs of all the buttons on the UI
+     */
+    public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.endGameButton, R.id.playAgainButton};
+
+    /**
+     * The LevelManager that will play the game taking place in this activity
+     */
     public static LevelManager levelManager;
+
+    /**
+     * The ButtonManager this Activity will be using to interact with buttons in the UI
+     */
     private ButtonManager buttonManager;
 
 
@@ -53,10 +65,19 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         buttonManager = new ButtonManager(buttons);
     }
 
+    /**
+     * Pass on to the levelManager that a button has been clicked
+     * @param view - the button that was clicked
+     */
     public void buttonClick(View view){
         levelManager.userButtonClick(view);
     }
 
+    /**
+     * Refresh the game. Erase the end game text, "play again" button, and "next" button,
+     * and initialize a new LevelManager and therefore a new game
+     * @param view - the button that was clicked
+     */
     public void playAgain(View view){
         LevelInitializerBuilder builder = new LevelInitializerBuilder();
         LevelInitializer initializer = builder.buildLevelInitializer(this);
@@ -72,11 +93,20 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         levelManager.play();
     }
 
+    /**
+     * Move to the EndGame screen
+     * @param view - the button that was clicked
+     */
     public void endGame(View view){
         Intent intent = new Intent(this, EndGameActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Make the "play again" button and the "next" button visible, and display the given end of game
+     * text
+     * @param endGameText - the text to display as a result of the game ending
+     */
     public void gameOver(String endGameText){
         TextView endGameTextView = ((TextView)findViewById(END_GAME_TEXT_ID));
         endGameTextView.setText(endGameText);
