@@ -40,11 +40,6 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     public static LevelManager levelManager;
 
     /**
-     * The ButtonManager this Activity will be using to interact with buttons in the UI
-     */
-    private ButtonManager buttonManager;
-
-    /**
      * The player's score
      */
     private int score;
@@ -54,18 +49,13 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
 
+        ButtonManager.setup(this);
+
         LevelManagerBuilder builder = new LevelManagerBuilder();
         levelManager = builder.buildLevelManager(this);
 
         levelManager.setup();
         levelManager.play();
-
-        List<Button> buttons = new ArrayList<Button>();
-        for(int id : buttonIds){
-            buttons.add((Button)findViewById(id));
-        }
-
-        buttonManager = new ButtonManager(buttons);
 
         score = getIntent().getIntExtra(BlackJackStartActivity.tag + ".score", 0);
 
@@ -90,10 +80,10 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         LevelManagerBuilder builder = new LevelManagerBuilder();
         levelManager = builder.buildLevelManager(this);
 
-        buttonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
-        buttonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
-        buttonManager.enableButton(HIT_BUTTON_ID);
-        buttonManager.enableButton(STAND_BUTTON_ID);
+        ButtonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
+        ButtonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
+        ButtonManager.enableButton(HIT_BUTTON_ID);
+        ButtonManager.enableButton(STAND_BUTTON_ID);
 
         findViewById(END_GAME_TEXT_ID).setVisibility(View.INVISIBLE);
 
@@ -120,9 +110,9 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
 
-        buttonManager.makeVisible(END_GAME_BUTTON_ID);
+        ButtonManager.makeVisible(END_GAME_BUTTON_ID);
 
-        buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
+        ButtonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
 
         if(playerWin){
             score += 100;

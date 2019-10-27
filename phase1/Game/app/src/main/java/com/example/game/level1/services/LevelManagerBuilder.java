@@ -21,20 +21,13 @@ public class LevelManagerBuilder {
         TextView userHand = activity.findViewById(BlackjackPlayActivity.PLAYER_HAND_ID);
         TextView dealerHand = activity.findViewById(BlackjackPlayActivity.DEALER_HAND_ID);
 
-        List<Button> buttons = new ArrayList<Button>();
-        for (int id : BlackjackPlayActivity.buttonIds) {
-            buttons.add((Button) activity.findViewById(id));
-        }
-
         Player user = new Player();
         Dealer dealer = new Dealer();
         Deck deck = new Deck();
 
         InterfaceManager interfaceManager = new BlackjackInterfaceManager(user, dealer, userHand, dealerHand);
 
-        ButtonManager buttonManager = new ButtonManager(buttons);
-
-        LevelManager manager = new BlackjackLevelManager(user, dealer, deck, interfaceManager, buttonManager);
+        LevelManager manager = new BlackjackLevelManager(user, dealer, deck, interfaceManager);
         manager.setActivity(activity);
 
         return manager;

@@ -35,24 +35,17 @@ public class BlackjackLevelManager extends LevelManager {
     private InterfaceManager interfaceManager;
 
     /**
-     * The tool this object will use to interact with UI buttons
-     */
-    private ButtonManager buttonManager;
-
-    /**
      * Create a new BlackjackLevelManager
      * @param user - the user of the app
      * @param dealer - the dealer in the game
      * @param deck - the deck to be played with
      * @param interfaceManager - the InterfaceManager to be used by this object
-     * @param buttonManager - the ButtonManager to be used by this object
      */
-    public BlackjackLevelManager(Player user, Dealer dealer, Deck deck, InterfaceManager interfaceManager, ButtonManager buttonManager) {
+    public BlackjackLevelManager(Player user, Dealer dealer, Deck deck, InterfaceManager interfaceManager) {
         this.user = user;
         this.dealer = dealer;
         this.deck = deck;
         this.interfaceManager = interfaceManager;
-        this.buttonManager = buttonManager;
     }
 
     /**
@@ -86,16 +79,16 @@ public class BlackjackLevelManager extends LevelManager {
                 user.deal(deck.deal());
                 if(user.getHand().computeBlackJackValue() > 21){
                     interfaceManager.update();
-                    buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
-                    buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
+                    ButtonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
+                    ButtonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
                     endGame();
                     return;
                 }
                 interfaceManager.update();
             }
         } else if (view.getId() == BlackjackPlayActivity.STAND_BUTTON_ID) {
-            buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
-            buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
+            ButtonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
+            ButtonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
             endGame();
         }
     }
