@@ -17,7 +17,7 @@ public class BlackJackStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.black_jack_start);
-        ((TextView)findViewById(R.id.blackjackBlurb)).setMovementMethod(LinkMovementMethod.getInstance());
+        ((TextView) findViewById(R.id.blackjackBlurb)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     public void startGame(View view) {

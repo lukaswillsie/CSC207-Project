@@ -20,18 +20,18 @@ public class ButtonManager {
 
     /**
      * Get all the buttons from the given ViewGroup and add them to buttons
-     *
+     * <p>
      * This code setup courtesy of Gopal Gopi on StackOverflow
+     *
      * @param viewGroup - the ViewGroup to get all the buttons from
      */
-    private static void populateButtons(ViewGroup viewGroup){
-        for(int i = 0, n = viewGroup.getChildCount(); i < n; i++){
+    private static void populateButtons(ViewGroup viewGroup) {
+        for (int i = 0, n = viewGroup.getChildCount(); i < n; i++) {
             View view = viewGroup.getChildAt(i);
-            if(view instanceof ViewGroup){
+            if (view instanceof ViewGroup) {
                 populateButtons((ViewGroup) view);
-            }
-            else if(view instanceof Button){
-                buttons.add((Button)view);
+            } else if (view instanceof Button) {
+                buttons.add((Button) view);
             }
         }
     }

@@ -3,8 +3,6 @@ package com.example.game.level1.domain;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static com.example.game.level1.domain.Rank.ACE;
-
 public class Hand implements Iterable<Card> {
     /**
      * An array of cards representing this hand

@@ -3,7 +3,6 @@ package com.example.game.level1.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +11,6 @@ import com.example.game.R;
 import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.game_logic.LevelManager;
 import com.example.game.level1.services.LevelManagerBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
     /**
@@ -60,23 +56,25 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         score = getIntent().getIntExtra(BlackJackStartActivity.tag + ".score", 0);
 
         String scoreText = "Score: " + score;
-        ((TextView)findViewById(R.id.playScore)).setText(scoreText);
+        ((TextView) findViewById(R.id.playScore)).setText(scoreText);
     }
 
     /**
      * Pass on to the levelManager that a button has been clicked
+     *
      * @param view - the button that was clicked
      */
-    public void buttonClick(View view){
+    public void buttonClick(View view) {
         levelManager.userButtonClick(view);
     }
 
     /**
      * Refresh the game. Erase the end game text, "play again" button, and "next" button,
      * and initialize a new LevelManager and therefore a new game
+     *
      * @param view - the button that was clicked
      */
-    public void playAgain(View view){
+    public void playAgain(View view) {
         LevelManagerBuilder builder = new LevelManagerBuilder();
         levelManager = builder.buildLevelManager(this);
 
@@ -93,9 +91,10 @@ public class BlackjackPlayActivity extends AppCompatActivity {
 
     /**
      * Move to the EndGame screen
+     *
      * @param view - the button that was clicked
      */
-    public void endGame(View view){
+    public void endGame(View view) {
         Intent intent = new Intent(this, EndGameActivity.class);
         startActivity(intent);
     }
@@ -103,10 +102,11 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     /**
      * Make the "play again" button and the "next" button visible, and display the given end of game
      * text
+     *
      * @param endGameText - the text to display as a result of the game ending
      */
-    public void gameOver(String endGameText, boolean playerWin){
-        TextView endGameTextView = ((TextView)findViewById(END_GAME_TEXT_ID));
+    public void gameOver(String endGameText, boolean playerWin) {
+        TextView endGameTextView = findViewById(END_GAME_TEXT_ID);
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
 
@@ -114,14 +114,13 @@ public class BlackjackPlayActivity extends AppCompatActivity {
 
         ButtonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
 
-        if(playerWin){
+        if (playerWin) {
             score += 100;
-        }
-        else{
+        } else {
             score -= 50;
         }
 
         String scoreText = "Score: " + score;
-        ((TextView)findViewById(R.id.playScore)).setText(scoreText);
+        ((TextView) findViewById(R.id.playScore)).setText(scoreText);
     }
 }

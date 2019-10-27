@@ -7,16 +7,16 @@ import static com.example.game.level1.domain.Rank.ACE;
 public class BlackjackPlayerManager {
     private Player player;
 
-    public BlackjackPlayerManager(Player player){
+    public BlackjackPlayerManager(Player player) {
         this.player = player;
     }
 
-    public void deal(Card card){
+    public void deal(Card card) {
         player.getHand().addCard(card);
     }
 
-    public void deal(Card[] cards){
-        for(Card card : cards){
+    public void deal(Card[] cards) {
+        for (Card card : cards) {
             deal(card);
         }
     }
