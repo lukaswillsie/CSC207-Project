@@ -1,7 +1,11 @@
 package com.example.game.level1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,14 +29,30 @@ public class BlackjackBetActivity extends AppCompatActivity {
     }
 
     public void bet(View view){
-        int bet = Integer.parseInt(((TextView)findViewById(R.id.betText)).getText().toString());
-        if(bet <= score){
-            Intent intent = new Intent(this, BlackjackPlayActivity.class);
-            intent.putExtra(tag + ".bet", bet);
-            startActivity(intent);
+        String userBet = ((TextView)findViewById(R.id.betText)).getText().toString();
+        if(!userBet.equals(""))
+        {
+            int bet = Integer.parseInt((userBet));
+            if(bet <= score){
+                Intent intent = new Intent(this, BlackjackPlayActivity.class);
+                intent.putExtra(tag + ".bet", bet);
+                startActivity(intent);
+            }
+            else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("You can't bet more than your score").setPositiveButton(R.string.okay_button, null).create().show();
+            }
         }
-        else{
 
+    }
+
+    private class IllegalBetDialogFragment extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("You can't bet more than your score").setPositiveButton(R.string.okay_button, null);
+            return builder.create();
         }
     }
 }
