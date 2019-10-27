@@ -5,15 +5,12 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.R;
-
-import org.w3c.dom.Text;
 
 public class BlackjackBetActivity extends AppCompatActivity {
     public static String tag = "com.example.game.level1.activities.BlackjackBetActivity";
@@ -25,7 +22,7 @@ public class BlackjackBetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_blackjack_bet);
         score = getIntent().getIntExtra(BlackJackStartActivity.tag + ".score", 0);
         String scoreText = "Your Score: " + score;
-        ((TextView)findViewById(R.id.scoreDisplay)).setText(scoreText);
+        ((TextView)findViewById(R.id.betScore)).setText(scoreText);
     }
 
     public void bet(View view){
@@ -36,6 +33,7 @@ public class BlackjackBetActivity extends AppCompatActivity {
             if(bet <= score){
                 Intent intent = new Intent(this, BlackjackPlayActivity.class);
                 intent.putExtra(tag + ".bet", bet);
+                intent.putExtra(tag + ".score", score - bet);
                 startActivity(intent);
             }
             else{

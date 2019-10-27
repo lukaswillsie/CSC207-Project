@@ -45,6 +45,10 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     private ButtonManager buttonManager;
 
+    /**
+     * The player's score
+     */
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,11 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         }
 
         buttonManager = new ButtonManager(buttons);
+
+        score = getIntent().getIntExtra(BlackJackStartActivity.tag + ".score", 0);
+
+        String scoreText = "Score: " + score;
+        ((TextView)findViewById(R.id.playScore)).setText(scoreText);
     }
 
     /**
