@@ -1,5 +1,6 @@
 package com.example.game.level1.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     public static final int DEALER_HAND_ID = R.id.dealerHand;
     public static final int END_GAME_TEXT_ID = R.id.endGameText;
     public static final int END_GAME_BUTTON_ID = R.id.end_game_button;
-    public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.end_game_button};
+    public static final int PLAY_AGAIN_BUTTON_ID = R.id.playAgainButton;
+    public static final int[] buttonIds = {R.id.hitButton, R.id.standButton, R.id.end_game_button, R.id.playAgainButton};
     public static LevelManager levelManager;
 
 
@@ -41,6 +43,16 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         levelManager.userButtonClick(view);
     }
 
+    public void playAgain(View view){
+        finish();
+        startActivity(getIntent());
+    }
+
+    public void endGame(View view){
+        Intent intent = new Intent(this, EndGameActivity.class);
+        startActivity(intent);
+    }
+
     public void gameOver(String endGameText){
         TextView endGameTextView = ((TextView)findViewById(END_GAME_TEXT_ID));
         endGameTextView.setText(endGameText);
@@ -48,5 +60,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
 
         Button endGameButton = ((Button) findViewById(END_GAME_BUTTON_ID));
         endGameButton.setVisibility(View.VISIBLE);
+
+        Button playAgainButton = ((Button)findViewById(PLAY_AGAIN_BUTTON_ID));
+        playAgainButton.setVisibility(View.VISIBLE);
     }
 }
