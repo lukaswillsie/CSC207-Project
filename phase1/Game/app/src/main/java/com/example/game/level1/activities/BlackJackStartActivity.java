@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.R;
 
 public class BlackJackStartActivity extends AppCompatActivity {
+    public static String tag = "com.example.game.level1.activities";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,8 @@ public class BlackJackStartActivity extends AppCompatActivity {
     }
 
     public void startGame(View view) {
-        Intent intent = new Intent(this, BlackjackPlayActivity.class);
+        Intent intent = new Intent(this, BlackjackBetActivity.class);
+        intent.putExtra(tag + ".score", 500);
         startActivity(intent);
     }
 }

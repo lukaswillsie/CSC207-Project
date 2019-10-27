@@ -11,4 +11,5 @@
     <string name="start">start</string>
     <string name="play_again_button">Play again</string>
     <string name="blackjack_play">Blackjack</string>
+    <string name="bet_button">Bet</string>
 </resources>
