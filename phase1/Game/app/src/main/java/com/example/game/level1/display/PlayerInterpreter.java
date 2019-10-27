@@ -49,7 +49,7 @@ public class PlayerInterpreter {
         for (Card card : hand) {
             if (first) {
                 handString.append("\u2588");
-                handString.append("  ");
+                handString.append("   ");
 
                 first = false;
             } else {

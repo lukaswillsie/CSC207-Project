@@ -105,13 +105,12 @@ public class BlackjackLevelManager extends LevelManager {
      * activity that the game is over
      */
     private void endGame(){
-        interfaceManager.update();
         playerTurn = false;
         interfaceManager.update();
         while (dealer.getMove().equals(Dealer.HIT_KEY)) {
             dealer.deal(deck.deal());
-            interfaceManager.update();
         }
+        interfaceManager.update();
 
         int userHand = user.getHand().computeBlackJackValue();
         int dealerHand = dealer.getHand().computeBlackJackValue();

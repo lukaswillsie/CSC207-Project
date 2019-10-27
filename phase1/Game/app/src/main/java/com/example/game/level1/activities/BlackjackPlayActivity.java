@@ -10,9 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 import com.example.game.level1.display.ButtonManager;
-import com.example.game.level1.game_logic.LevelInitializer;
 import com.example.game.level1.game_logic.LevelManager;
-import com.example.game.level1.services.LevelInitializerBuilder;
+import com.example.game.level1.services.LevelManagerBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,10 +54,10 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
 
-        LevelInitializerBuilder builder = new LevelInitializerBuilder();
-        LevelInitializer initializer = builder.buildLevelInitializer(this);
+        LevelManagerBuilder builder = new LevelManagerBuilder();
+        levelManager = builder.buildLevelManager(this);
 
-        levelManager = initializer.setup();
+        levelManager.setup();
         levelManager.play();
 
         List<Button> buttons = new ArrayList<Button>();
@@ -88,8 +87,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param view - the button that was clicked
      */
     public void playAgain(View view){
-        LevelInitializerBuilder builder = new LevelInitializerBuilder();
-        LevelInitializer initializer = builder.buildLevelInitializer(this);
+        LevelManagerBuilder builder = new LevelManagerBuilder();
+        levelManager = builder.buildLevelManager(this);
 
         buttonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
         buttonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
@@ -98,7 +97,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
 
         findViewById(END_GAME_TEXT_ID).setVisibility(View.INVISIBLE);
 
-        levelManager = initializer.setup();
+        levelManager.setup();
         levelManager.play();
     }
 
