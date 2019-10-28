@@ -34,7 +34,8 @@
         <activity android:name=".level2.GameHighActivity" />
 =======
         <activity android:name=".level2.GameFinishActivity" />
->>>>>>> 3f2bb12bf1dc12c6bafbb6070b9afe1a78643efa
+        <activity android:name=".level2.GameLowActivity" />
+        >>>>>>> 3f2bb12bf1dc12c6bafbb6070b9afe1a78643efa
     </application>
 
 </manifest>
