@@ -3,6 +3,10 @@ package com.example.game;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.game.GameConstants.NAME_KEY;
+import static com.example.game.GameConstants.TAG;
+import static com.example.game.GameConstants.USERNAME_KEY;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,8 +31,8 @@ public class OldAccountActivity extends AppCompatActivity {
         boolean validCredentials = userAccountManager.userExists(inputName, inputUsername);
         if(validCredentials){
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra(MainActivity.tag + ".username", inputUsername);
-            intent.putExtra(MainActivity.tag + ".name", inputName);
+            intent.putExtra(TAG + USERNAME_KEY, inputUsername);
+            intent.putExtra(TAG + NAME_KEY, inputName);
             startActivity(intent);
         }
         else{

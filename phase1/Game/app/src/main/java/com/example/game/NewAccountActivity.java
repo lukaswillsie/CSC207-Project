@@ -3,6 +3,10 @@ package com.example.game;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.game.GameConstants.NAME_KEY;
+import static com.example.game.GameConstants.TAG;
+import static com.example.game.GameConstants.USERNAME_KEY;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,8 +39,8 @@ public class NewAccountActivity extends AppCompatActivity {
         userManager.createNewUser(username, name);
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(MainActivity.tag + ".username", username);
-        intent.putExtra(MainActivity.tag + ".name", name);
+        intent.putExtra(TAG + USERNAME_KEY, username);
+        intent.putExtra(TAG + NAME_KEY, name);
 
         startActivity(intent);
     }
