@@ -7,7 +7,7 @@
     tools:context=".SettingsActivity">
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/numRoundsSeekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="172dp"
         android:layout_height="40dp"
@@ -15,8 +15,8 @@
         android:max="10"
         android:min="1"
         android:progress="1"
-        app:layout_constraintStart_toStartOf="@+id/seekBar"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintStart_toStartOf="@+id/numHandsSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/numHandsSeekBar" />
 
     <Switch
         android:id="@+id/darkModeSwitch"
@@ -43,9 +43,9 @@
         android:layout_height="37dp"
         android:layout_marginEnd="8dp"
         android:text="@string/setting_3_label"
-        app:layout_constraintBottom_toBottomOf="@+id/seekBar2"
-        app:layout_constraintEnd_toStartOf="@+id/seekBar2"
-        app:layout_constraintTop_toTopOf="@+id/seekBar2" />
+        app:layout_constraintBottom_toBottomOf="@+id/numRoundsSeekBar"
+        app:layout_constraintEnd_toStartOf="@+id/numRoundsSeekBar"
+        app:layout_constraintTop_toTopOf="@+id/numRoundsSeekBar" />
 
     <TextView
         android:id="@+id/setting2Label"
@@ -53,9 +53,9 @@
         android:layout_height="37dp"
         android:layout_marginEnd="8dp"
         android:text="@string/setting_2_label"
-        app:layout_constraintBottom_toBottomOf="@+id/seekBar"
-        app:layout_constraintEnd_toStartOf="@+id/seekBar"
-        app:layout_constraintTop_toTopOf="@+id/seekBar" />
+        app:layout_constraintBottom_toBottomOf="@+id/numHandsSeekBar"
+        app:layout_constraintEnd_toStartOf="@+id/numHandsSeekBar"
+        app:layout_constraintTop_toTopOf="@+id/numHandsSeekBar" />
 
     <TextView
         android:id="@+id/textView12"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/numHandsSeekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="172dp"
         android:layout_height="40dp"
@@ -85,16 +85,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/num_hands_minimum"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar"
-        app:layout_constraintStart_toStartOf="@+id/seekBar" />
+        app:layout_constraintBottom_toTopOf="@+id/numHandsSeekBar"
+        app:layout_constraintEnd_toEndOf="@+id/numHandsSeekBar"
+        app:layout_constraintStart_toStartOf="@+id/numHandsSeekBar" />
 
     <TextView
         android:id="@+id/numRoundsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/num_rounds_minimum"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar2"
+        app:layout_constraintBottom_toTopOf="@+id/numRoundsSeekBar"
         app:layout_constraintStart_toStartOf="@+id/numHandsLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
