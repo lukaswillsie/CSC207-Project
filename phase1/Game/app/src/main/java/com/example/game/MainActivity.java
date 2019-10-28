@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         File userDir = getDir("users", 0);
         File[] users = userDir.listFiles();
 
+        Log.i(tag, "" + users.length);
         for(File user : users){
             if(user.isDirectory()) {
                 for(File file : user.listFiles()){
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
                     catch (Exception e){}
                 }
 
+            }
+            else{
+                Log.i(tag, user.toString());
             }
         }
     }

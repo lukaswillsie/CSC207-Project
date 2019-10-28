@@ -28,14 +28,14 @@ public class NewAccountActivity extends AppCompatActivity {
     }
 
     public void register (View view){
-        String username = getUserName();
+        String username = getUsername();
         String name = getName();
 
         File[] users = usersDir.listFiles();
         for(File userDir : users){
             if(userDir.getName().equals(username)){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("That account already exists!").setPositiveButton("Ok", null).create().show();
+                builder.setMessage("That username already exists!").setPositiveButton("Ok", null).create().show();
                 return;
             }
         }
@@ -50,10 +50,10 @@ public class NewAccountActivity extends AppCompatActivity {
     }
 
     private String getName(){
-        return ((TextView)findViewById(R.id.newAccountUsernameTextField)).getText().toString();
+        return ((TextView)findViewById(R.id.newAccountNameTextField)).getText().toString();
     }
 
-    private String getUserName(){
+    private String getUsername(){
         return ((TextView)findViewById(R.id.newAccountUsernameTextField)).getText().toString();
     }
 
