@@ -30,7 +30,6 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".level2.GameStartActivity" />
         <activity android:name=".level2.GameStartActivity1" />
-<<<<<<< HEAD
         <activity android:name=".level2.GameHighActivity" />
 =======
         <activity android:name=".level2.GameFinishActivity" />
