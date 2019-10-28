@@ -12,9 +12,9 @@ public class Game {
      */
     int numOfGuess;
     /**
-     * time spent to guess the number.
+     * Specify if game is finished
      */
-    String time;
+    boolean finished;
     /**
      * Total number of point that user receives for the game.
      */
@@ -26,36 +26,50 @@ public class Game {
     /**
      * Create a new Game for User.
      */
+    /**
+     * stores the user of this game.
+     */
+    User user;
     public Game(User user){
         this.username = user.username;
+        this.user = user;
         this.numOfGuess = 0;
-        this.time = "";
+        this.finished = false;
         this.points = 0;
         this.number = (int)(Math.random() * 50 + 1); //!!!!! CHANGE NEEDED.
     }
 
-    public String checkGuess(int guess) {
-        this.updateStats(guess);
-
-        if (guess < this.number) {
-            return "Your guess is LOW.";
-        }
-        else if (guess > this.number) {
-            return "Your guess is HIGH.";
-        }
-        else {
-            // goes to the page where it says congrats, go to main menu
-            return "CONGRATS.";
-        }
+    /**
+     * Finish the game.
+     */
+    public void finishTheGame() {
+            this.finished = false;
+            this.user.games.add(this);
+            this.numOfGuess++;
     }
 
+    /**
+     * Check if the guess is the exact number the the seek.
+     */
+    public boolean checkTheRightGuess(int guess){
+        return this.number == guess;
+    }
+
+    /**
+    Precondition for check the guess is the guess is not equal to the actual number.
+     Return true iff the guess if less than the number we are seeking.
+     */
+    public boolean checkGuess(int guess) {
+        this.updateStats(guess);
+        return this.number < guess;
+    }
+
+    /**
+     * Update statistics for the game: points and number of guesses.
+     */
     private void updateStats(int guess) {
         this.numOfGuess++;
         this.points += Math.abs(this.number - guess);
+    }
 
-    }
-    private String gameFinished(){
-        return "CONGRATS.";
-        //this.stopTheGame();
-    }
 }
