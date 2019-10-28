@@ -23,7 +23,7 @@
     <string name="old_user_button">Already have an account?</string>
     <string name="title_activity_new_account">Create an account</string>
     <string name="prompt_username">Username</string>
-    <string name="prompt_name">Name</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>

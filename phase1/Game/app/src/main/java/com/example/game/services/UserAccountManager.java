@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static com.example.game.GameConstants.NAME_FILE_NAME;
+import static com.example.game.GameConstants.PASSWORD_FILE_NAME;
 import static com.example.game.GameConstants.SETTINGS_FILE_NAME;
 import static com.example.game.GameConstants.STATS_FILE_NAME;
 import static com.example.game.GameConstants.USERS_DIR_NAME;
@@ -61,45 +61,45 @@ public class UserAccountManager {
     }
 
     /**
-     * Records that a new user with the given username and name has
+     * Records that a new user with the given username and password has
      * been created by creating a folder for them and filling their
      * files with the default values
      *
      * Precondition: the given username is not already associated with an account;
      *               userNamExists(username) has been called and returned false
      * @param username - the username of the account to be created
-     * @param name - the name of the account to be created
+     * @param password - the password of the account to be created
      */
-    public void createNewUser(String username, String name){
+    public void createNewUser(String username, String password){
         File newUserDir = new File(usersDir, username);
         newUserDir.mkdir();
 
         File settings = new File(newUserDir, SETTINGS_FILE_NAME);
         File stats = new File(newUserDir, STATS_FILE_NAME);
-        File nameFile = new File(newUserDir, NAME_FILE_NAME);
+        File passwordFile = new File(newUserDir, PASSWORD_FILE_NAME);
 
-        fillDefaultValues(settings, stats, nameFile, name);
+        fillDefaultValues(settings, stats, passwordFile, password);
     }
 
     /**
      * Populate the given files with the default values for a new user
      * @param settingsFile - the file to fill with the default settings
      * @param statsFile - the file to fill with the default stats
-     * @param nameFile - the file to put the user's name in
-     * @param name - the name of the new user
+     * @param passwordFile - the file to put the user's password in
+     * @param password - the password of the new user
      */
-    private void fillDefaultValues(File settingsFile, File statsFile, File nameFile, String name){
+    private void fillDefaultValues(File settingsFile, File statsFile, File passwordFile, String password){
         try{
             FileOutputStream settingStream = new FileOutputStream(settingsFile);
             FileOutputStream statsStream = new FileOutputStream(statsFile);
-            FileOutputStream nameStream = new FileOutputStream(nameFile);
+            FileOutputStream passwordStream = new FileOutputStream(passwordFile);
             for(String setting : settings){
                 settingStream.write((setting + "\n").getBytes());
             }
             for(String stat: stats){
                 statsStream.write((stat + "\n").getBytes());
             }
-            nameStream.write(name.getBytes());
+            passwordStream.write(password.getBytes());
         }
         catch(IOException e) {
             Log.e(tag, "Failed to create default files for user");
@@ -109,39 +109,39 @@ public class UserAccountManager {
     /**
      * Check if the given username and name are, together, associated with an account
      * @param username - the username to be checked
-     * @param name - the name to be checked
+     * @param password - the name to be checked
      * @return true if there is an account under the given username with the given name
      *         false otherwise
      */
-    public boolean userExists(String username, String name){
-        return usernameExists(username) && nameIsValid(username, name);
+    public boolean userExists(String username, String password){
+        return usernameExists(username) && passwordIsValid(username, password);
     }
 
     /**
-     * Check if the account associated with the given username has name as given by the other
+     * Check if the account associated with the given username has password as given by the other
      * parameter
      *
      * Precondition: there is an account associated with the given username. usernameExists(username)
      * has been called and returned true
      * @param username - the username to check
-     * @param name - the name to check
-     * @return true if the name associated with the given username is the same as the parameter name
+     * @param password - the password to check
+     * @return true if the password associated with the given username is the same as the parameter password
      *         false otherwise
      */
-    private boolean nameIsValid(String username, String name){
+    private boolean passwordIsValid(String username, String password){
         File userFolder = new File(usersDir, username);
-        File nameFile = new File(userFolder, NAME_FILE_NAME);
+        File passwordFile = new File(userFolder, PASSWORD_FILE_NAME);
 
         boolean validName = false;
         try{
-            Scanner scanner = new Scanner(nameFile);
-            String nameFromFile = scanner.nextLine();
-            if(name.equals(nameFromFile)){
+            Scanner scanner = new Scanner(passwordFile);
+            String passwordFromFile = scanner.nextLine();
+            if(password.equals(passwordFromFile)){
                 validName = true;
             }
         }
         catch (IOException e){
-            Log.e(tag, "Failed to read user's name file");
+            Log.e(tag, "Failed to read user's password file");
         }
 
         return validName;
