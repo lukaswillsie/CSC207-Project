@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.example.game.R;
 
 public class GameStartActivity1 extends AppCompatActivity{
+    GameManager gameManager = GameStartActivity.gameManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
