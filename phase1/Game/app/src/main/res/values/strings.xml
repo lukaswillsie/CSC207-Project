@@ -31,4 +31,10 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login_prompt">Login</string>
+    <string name="setting_1_label">Dark Mode:</string>
+    <string name="setting_2_label">Number of Blackjack hands to play:</string>
+    <string name="setting_3_label">Number of HighLow rounds to play:</string>
+    <string name="num_hands_minimum">1</string>
+    <string name="num_rounds_minimum">1</string>
+    <string name="settings">Settings</string>
 </resources>
