@@ -95,6 +95,7 @@
         android:layout_height="wrap_content"
         android:text="@string/num_rounds_minimum"
         app:layout_constraintBottom_toTopOf="@+id/numRoundsSeekBar"
-        app:layout_constraintStart_toStartOf="@+id/numHandsLabel" />
+        app:layout_constraintEnd_toEndOf="@+id/numRoundsSeekBar"
+        app:layout_constraintStart_toStartOf="@+id/numRoundsSeekBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
