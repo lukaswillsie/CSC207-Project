@@ -37,4 +37,5 @@
     <string name="num_hands_minimum">1</string>
     <string name="num_rounds_minimum">1</string>
     <string name="settings">Settings</string>
+    <string name="hint">Enter your guess here</string>
 </resources>
