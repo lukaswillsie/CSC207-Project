@@ -1,6 +1,7 @@
 package com.example.game.level2;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -21,6 +22,21 @@ public class GameStartActivity1 extends AppCompatActivity{
 
     public void submitGuess() {
         int guess = getGuess();
+        Game currentGame = gameManager.game;
+        if (currentGame.checkTheRightGuess(guess)){
+            Intent intent = new Intent(this, GameFinishActivity.class);
+            startActivity(intent);
+        }
+        else{
+            if (currentGame.checkGuess(guess)){
+                Intent intent = new Intent(this, GameHighActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Intent intent = new Intent(this, GameLowActivity.class);
+                startActivity(intent);
+            }
+        }
         // execute what happens when a guess is submitted.
     }
 
