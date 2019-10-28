@@ -28,7 +28,7 @@ public class OldAccountActivity extends AppCompatActivity {
 
         UserAccountManager userAccountManager = new UserAccountManager(this);
 
-        boolean validCredentials = userAccountManager.userExists(inputPassword, inputUsername);
+        boolean validCredentials = userAccountManager.userExists(inputUsername, inputPassword);
         if(validCredentials){
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(TAG + USERNAME_KEY, inputUsername);

@@ -57,6 +57,7 @@ public class UserAccountManager {
             }
         }
 
+        Log.i(tag,"Username does not exist");
         return false;
     }
 
@@ -132,18 +133,19 @@ public class UserAccountManager {
         File userFolder = new File(usersDir, username);
         File passwordFile = new File(userFolder, PASSWORD_FILE_NAME);
 
-        boolean validName = false;
+        boolean validPassword = false;
         try{
             Scanner scanner = new Scanner(passwordFile);
             String passwordFromFile = scanner.nextLine();
             if(password.equals(passwordFromFile)){
-                validName = true;
+                validPassword = true;
+                Log.i(tag, "Password is valid!");
             }
         }
         catch (IOException e){
             Log.e(tag, "Failed to read user's password file");
         }
 
-        return validName;
+        return validPassword;
     }
 }
