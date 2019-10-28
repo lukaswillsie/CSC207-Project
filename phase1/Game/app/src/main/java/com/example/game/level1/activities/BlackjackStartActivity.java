@@ -3,7 +3,6 @@ package com.example.game.level1.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,8 +18,6 @@ public class BlackjackStartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.black_jack_start);
         ((TextView) findViewById(R.id.blackjackBlurb)).setMovementMethod(LinkMovementMethod.getInstance());
-
-        Log.i("Directory", getDir("users", 0).toString());
     }
 
     public void startGame(View view) {
