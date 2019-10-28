@@ -7,7 +7,7 @@
     tools:context=".NewAccountActivity">
 
     <EditText
-        android:id="@+id/usernameTextField"
+        android:id="@+id/newAccountUsernameTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="97dp"
@@ -19,15 +19,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nameTextField"
+        android:id="@+id/newAccountNameTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/prompt_name"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/usernameTextField"
-        app:layout_constraintTop_toBottomOf="@+id/usernameTextField" />
+        app:layout_constraintStart_toStartOf="@+id/newAccountUsernameTextField"
+        app:layout_constraintTop_toBottomOf="@+id/newAccountUsernameTextField" />
 
     <Button
         android:id="@+id/registerButton"
@@ -37,5 +37,5 @@
         android:text="@string/action_sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextField" />
+        app:layout_constraintTop_toBottomOf="@+id/newAccountNameTextField" />
 </androidx.constraintlayout.widget.ConstraintLayout>

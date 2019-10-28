@@ -48,7 +48,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         levelManager.setup();
         levelManager.play();
 
-        score = getIntent().getIntExtra(BlackJackStartActivity.tag + ".score", 0);
+        score = getIntent().getIntExtra(BlackjackStartActivity.tag + ".score", 0);
 
         String scoreText = "Score: " + score;
         ((TextView) findViewById(R.id.playScore)).setText(scoreText);

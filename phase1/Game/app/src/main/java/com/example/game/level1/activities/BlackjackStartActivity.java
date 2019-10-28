@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 
-public class BlackJackStartActivity extends AppCompatActivity {
+public class BlackjackStartActivity extends AppCompatActivity {
     public static String tag = "com.example.game.level1.activities";
 
     @Override
@@ -20,7 +20,7 @@ public class BlackJackStartActivity extends AppCompatActivity {
         setContentView(R.layout.black_jack_start);
         ((TextView) findViewById(R.id.blackjackBlurb)).setMovementMethod(LinkMovementMethod.getInstance());
 
-        Log.i("Directory", this.getFilesDir().toString());
+        Log.i("Directory", getDir("users", 0).toString());
     }
 
     public void startGame(View view) {

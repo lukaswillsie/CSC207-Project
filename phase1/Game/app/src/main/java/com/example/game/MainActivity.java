@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.level2.GameStartActivity;
-import com.example.game.level1.activities.BlackJackStartActivity;
+import com.example.game.level1.activities.BlackjackStartActivity;
 
 public class MainActivity extends AppCompatActivity {
+    public static String tag = "com.example.game";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonClick(View view){
-        Intent intent = new Intent(this, BlackJackStartActivity.class);
+        Intent intent = new Intent(this, BlackjackStartActivity.class);
         startActivity(intent);
     }
     public void chooseTheNum(View view){

@@ -17,7 +17,7 @@ public class BlackjackBetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blackjack_bet);
-        score = getIntent().getIntExtra(BlackJackStartActivity.tag + ".score", 0);
+        score = getIntent().getIntExtra(BlackjackStartActivity.tag + ".score", 0);
         String scoreText = "Your Score: " + score;
         ((TextView) findViewById(R.id.betScore)).setText(scoreText);
     }
