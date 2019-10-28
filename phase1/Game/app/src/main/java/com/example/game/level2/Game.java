@@ -30,9 +30,7 @@ public class Game {
     /**
      * Create a new Game for User.
      */
-    public Game(User user){
-        this.username = user.username;
-        this.user = user;
+    public Game(){
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
@@ -44,7 +42,6 @@ public class Game {
      */
     public void finishTheGame() {
             this.finished = false;
-            this.user.games.add(this);
             this.numOfGuess++;
     }
 
