@@ -3,13 +3,13 @@ import java.util.ArrayList;
 
 public class GameManager {
     /**
-     * list of all games that have been played
+     * The current game this game manager holds.
      */
-    ArrayList<Game> gameList;
+     Game game;
     /**
      * Leader board keeps track of top three players.
      */
-    int[] leaderBoard = new  int[3];
+    int[] leaderBoard = new int[3];
     /**
      * Rules for the game.
      */
@@ -19,8 +19,15 @@ public class GameManager {
      * Create a gameManager
      */
     public GameManager(){
-       this.gameList = new ArrayList<>();
+       this.game = new Game();
        this.rules = "";
+    }
+
+    // call this class whenever a new GTN game is about to be played
+    public void startNewGame() {
+        game = new Game();
+
+
     }
 
 }

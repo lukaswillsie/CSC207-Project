@@ -8,6 +8,7 @@ import android.view.View;
 import com.example.game.R;
 
 public class GameStartActivity extends AppCompatActivity {
+    public static GameManager gameManager = new GameManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,7 @@ public class GameStartActivity extends AppCompatActivity {
     }
 
     public void startTheGame(View view){
+        gameManager.startNewGame();
         Intent intent = new Intent(this, GameStartActivity1.class);
         startActivity(intent);
     }

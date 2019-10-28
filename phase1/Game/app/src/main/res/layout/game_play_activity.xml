@@ -19,10 +19,11 @@
         tools:layout_editor_absoluteY="253dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/submitGuess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:editable="true"
         android:ems="10"
         android:hint="@string/enter_guess_here"
         android:inputType="textPersonName"
@@ -65,6 +66,7 @@
         android:id="@+id/submitGuessButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="submitGuess"
         android:text="@string/submit_button"
         tools:layout_editor_absoluteX="157dp"
         tools:layout_editor_absoluteY="366dp" />
