@@ -9,16 +9,46 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class UserAccountManager {
+    /**
+     * This class's tag for logging events
+     */
     private static String tag = "com.example.game.services.UserAccountManager";
+
+    /**
+     * The strings that should be written into the settings file on creation of a new user
+     */
     private static String[] settings = {"DarkMode=0", "BlackjackHands=5", "HighLowRounds=5"};
+
+    /**
+     * The strings that should be written into the stats file on creation of a new user
+     */
     private static String[] stats = {"FewestGuesses=0", "LongestStreak=0"};
+
+    /**
+     * The name of the directory on the device containing the files for the app
+     */
     private static final String USERS_DIR_NAME = "users";
+
+    /**
+     * File object representing the "users" directory containing all the user accounts and
+     * their data
+     */
     private File usersDir;
 
+    /**
+     * Create a new UserAccountManager from the given context
+     * @param context - the context in which this AccountManager is being created
+     */
     public UserAccountManager(Context context){
         usersDir = context.getDir(USERS_DIR_NAME, 0);
     }
 
+    /**
+     * Check if the given username is associated with an account
+     * @param username - the username to be checked
+     * @return true if the the username is already associated with an account
+     *         false otherwise
+     */
     public boolean usernameExists(String username){
         File[] users = usersDir.listFiles();
         for(File userDir : users){
@@ -51,6 +81,13 @@ public class UserAccountManager {
         fillDefaultValues(settings, stats, nameFile, name);
     }
 
+    /**
+     * Populate the given files with the default values for a new user
+     * @param settingsFile - the file to fill with the default settings
+     * @param statsFile - the file to fill with the default stats
+     * @param nameFile - the file to put the user's name in
+     * @param name - the name of the new user
+     */
     private void fillDefaultValues(File settingsFile, File statsFile, File nameFile, String name){
         try{
             FileOutputStream settingStream = new FileOutputStream(settingsFile);
@@ -69,10 +106,28 @@ public class UserAccountManager {
         }
     }
 
+    /**
+     * Check if the given username and name are, together, associated with an account
+     * @param username - the username to be checked
+     * @param name - the name to be checked
+     * @return true if there is an account under the given username with the given name
+     *         false otherwise
+     */
     public boolean userExists(String username, String name){
         return usernameExists(username) && nameIsValid(username, name);
     }
 
+    /**
+     * Check if the account associated with the given username has name as given by the other
+     * parameter
+     *
+     * Precondition: there is an account associated with the given username. usernameExists(username)
+     * has been called and returned true
+     * @param username - the username to check
+     * @param name - the name to check
+     * @return true if the name associated with the given username is the same as the parameter name
+     *         false otherwise
+     */
     private boolean nameIsValid(String username, String name){
         File userFolder = new File(usersDir, username);
         File nameFile = new File(userFolder, "name");
