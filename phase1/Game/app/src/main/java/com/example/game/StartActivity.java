@@ -23,4 +23,9 @@ public class StartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, OldAccountActivity.class);
         startActivity(intent);
     }
+
+    public void Test(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

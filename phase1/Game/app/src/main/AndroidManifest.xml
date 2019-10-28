@@ -9,28 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OldAccountActivity"></activity>
-        <activity android:name=".NewAccountActivity" />
-        <activity
-            android:name=".ui.login.NewAccountActivity"
-            android:label="@string/title_activity_new_account"
-            android:parentActivityName=".StartActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.game.StartActivity" />
+        <activity android:name=".OldAccountActivity" android:parentActivityName=".StartActivity"></activity>
+        <activity android:name=".NewAccountActivity" android:parentActivityName=".StartActivity"/>
+        <activity android:name=".StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".StartActivity" />
         <activity android:name=".level1.activities.BlackjackBetActivity" />
         <activity android:name=".level1.activities.EndGameActivity" />
         <activity android:name=".level1.activities.BlackjackPlayActivity" />
         <activity android:name=".level1.activities.BlackjackStartActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".level2.GameStartActivity" />
     </application>
 
