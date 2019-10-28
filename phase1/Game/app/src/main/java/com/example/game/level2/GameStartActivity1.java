@@ -13,8 +13,13 @@ public class GameStartActivity1 extends AppCompatActivity{
         setContentView(R.layout.game_start_activity1);
     }
 
-    public int getGuess() {
+    private int getGuess() {
         return Integer.valueOf(((TextView)findViewById(R.id.guessInput)).getText().toString());
+    }
+
+    public void submitGuess() {
+        int guess = getGuess();
+        // execute what happens when a guess is submitted.
     }
 
 }
