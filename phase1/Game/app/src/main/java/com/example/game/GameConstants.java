@@ -17,4 +17,15 @@ public final class GameConstants {
      * as an extra
      */
     public static final String NAME_KEY = ".name";
+
+    /**
+     * The name of the directory on the device containing the files for the app
+     */
+    public static final String USERS_DIR_NAME = "users";
+
+    public static final String SETTINGS_FILE_NAME = "settings";
+
+    public static final String STATS_FILE_NAME = "stats";
+
+    public static final String NAME_FILE_NAME = "name";
 }

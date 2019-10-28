@@ -15,6 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         SeekBar numHandsBar = findViewById(R.id.numHandsSeekBar);
         SeekBar numRoundsBar = findViewById(R.id.numRoundsSeekBar);
+
         numHandsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {

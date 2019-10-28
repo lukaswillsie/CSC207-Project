@@ -8,6 +8,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static com.example.game.GameConstants.NAME_FILE_NAME;
+import static com.example.game.GameConstants.SETTINGS_FILE_NAME;
+import static com.example.game.GameConstants.STATS_FILE_NAME;
+import static com.example.game.GameConstants.USERS_DIR_NAME;
+
 public class UserAccountManager {
     /**
      * This class's tag for logging events
@@ -23,11 +28,6 @@ public class UserAccountManager {
      * The strings that should be written into the stats file on creation of a new user
      */
     private static String[] stats = {"FewestGuesses=0", "LongestStreak=0"};
-
-    /**
-     * The name of the directory on the device containing the files for the app
-     */
-    private static final String USERS_DIR_NAME = "users";
 
     /**
      * File object representing the "users" directory containing all the user accounts and
@@ -74,9 +74,9 @@ public class UserAccountManager {
         File newUserDir = new File(usersDir, username);
         newUserDir.mkdir();
 
-        File settings = new File(newUserDir, "settings");
-        File stats = new File(newUserDir, "stats");
-        File nameFile = new File(newUserDir, "name");
+        File settings = new File(newUserDir, SETTINGS_FILE_NAME);
+        File stats = new File(newUserDir, STATS_FILE_NAME);
+        File nameFile = new File(newUserDir, NAME_FILE_NAME);
 
         fillDefaultValues(settings, stats, nameFile, name);
     }
@@ -130,7 +130,7 @@ public class UserAccountManager {
      */
     private boolean nameIsValid(String username, String name){
         File userFolder = new File(usersDir, username);
-        File nameFile = new File(userFolder, "name");
+        File nameFile = new File(userFolder, NAME_FILE_NAME);
 
         boolean validName = false;
         try{
