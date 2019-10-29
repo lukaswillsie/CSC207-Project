@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.game.R;
 
 public class GameFinishActivity extends AppCompatActivity{
     GameManager gameManager = GameStartActivity.gameManager;
+    Game currentGame = gameManager.game;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

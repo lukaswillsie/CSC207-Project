@@ -71,12 +71,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/num_of_guesses_value"
-        app:layout_constraintBottom_toTopOf="@+id/pointsId"
+        app:layout_constraintBottom_toTopOf="@+id/pointsFinishId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/pointsId"
+        android:id="@+id/pointsFinishId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
