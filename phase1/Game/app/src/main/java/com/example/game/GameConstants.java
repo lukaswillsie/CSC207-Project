@@ -16,5 +16,16 @@ public final class GameConstants {
      * The key to append to the TAG when putting the player's name into an intent
      * as an extra
      */
-    public static final String NAME_KEY = ".name";
+    public static final String PASSWORD_KEY = ".password";
+
+    /**
+     * The name of the directory on the device containing the files for the app
+     */
+    public static final String USERS_DIR_NAME = "users";
+
+    public static final String SETTINGS_FILE_NAME = "settings";
+
+    public static final String STATS_FILE_NAME = "stats";
+
+    public static final String PASSWORD_FILE_NAME = "password";
 }

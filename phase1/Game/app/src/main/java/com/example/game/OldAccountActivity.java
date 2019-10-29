@@ -3,7 +3,7 @@ package com.example.game;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.game.GameConstants.NAME_KEY;
+import static com.example.game.GameConstants.PASSWORD_KEY;
 import static com.example.game.GameConstants.TAG;
 import static com.example.game.GameConstants.USERNAME_KEY;
 
@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.services.AccountManager;
 import com.example.game.services.UserAccountManager;
 
 public class OldAccountActivity extends AppCompatActivity {
@@ -23,26 +24,26 @@ public class OldAccountActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-        String inputName = getName();
+        String inputPassword = getPassword();
         String inputUsername = getUsername();
 
-        UserAccountManager userAccountManager = new UserAccountManager(this);
+        AccountManager userAccountManager = new UserAccountManager(this);
 
-        boolean validCredentials = userAccountManager.userExists(inputName, inputUsername);
+        boolean validCredentials = userAccountManager.validCredentials(inputUsername, inputPassword);
         if(validCredentials){
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(TAG + USERNAME_KEY, inputUsername);
-            intent.putExtra(TAG + NAME_KEY, inputName);
+            intent.putExtra(TAG + PASSWORD_KEY, inputPassword);
             startActivity(intent);
         }
         else{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("That account does not exist!").setPositiveButton("Ok", null).create().show();
+            builder.setMessage("Your login information is incorrect").setPositiveButton("Ok", null).create().show();
         }
     }
 
-    private String getName(){
-        return ((TextView)findViewById(R.id.oldAccountNameTextField)).getText().toString();
+    private String getPassword(){
+        return ((TextView)findViewById(R.id.oldAccountPasswordTextField)).getText().toString();
     }
 
     private String getUsername(){
