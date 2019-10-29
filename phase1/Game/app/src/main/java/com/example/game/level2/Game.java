@@ -10,19 +10,20 @@ public class Game {
     /**
      * Number of guesses, that this user has used.
      */
-    int numOfGuess;
+    private int numOfGuess;
     /**
      * Specify if game is finished
      */
-    boolean finished;
+    private boolean finished;
     /**
      * Total number of point that user receives for the game.
      */
-    int points;
+    private int points;
+
     /**
      * Number to guess.
      */
-    int number;
+    private int number;
     /**
      * stores the user of this game.
      */
@@ -30,7 +31,7 @@ public class Game {
     /**
      * Create a new Game for User.
      */
-    public Game(){
+    Game(){
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
@@ -48,7 +49,7 @@ public class Game {
     /**
      * Check if the guess is the exact number the the seek.
      */
-    public boolean checkTheRightGuess(int guess){
+    boolean checkTheRightGuess(int guess){
         return this.number == guess;
     }
 
@@ -56,7 +57,7 @@ public class Game {
     Precondition for check the guess is the guess is not equal to the actual number.
      Return true iff the guess if less than the number we are seeking.
      */
-    public boolean checkGuess(int guess) {
+    boolean checkGuess(int guess) {
         this.updateStats(guess);
         return this.number < guess;
     }
@@ -68,5 +69,18 @@ public class Game {
         this.numOfGuess++;
         this.points += Math.abs(this.number - guess) * this.numOfGuess;
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public int getPoints(){
+        return this.points;
+    }
+
+    public int getNumOfGuess(){
+        return this.numOfGuess;
+    }
+
 
 }

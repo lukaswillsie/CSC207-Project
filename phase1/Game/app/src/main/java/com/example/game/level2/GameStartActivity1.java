@@ -36,8 +36,8 @@ public class GameStartActivity1 extends AppCompatActivity{
             else{
                 ((TextView)findViewById(R.id.textView)).setText("Your guess is to low, try again");
             }
-            ((TextView)findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.points));
-            ((TextView)findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.numOfGuess));
+            ((TextView)findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
+            ((TextView)findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
         }
         // execute what happens when a guess is submitted.
     }
