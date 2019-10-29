@@ -40,4 +40,7 @@
     <string name="hint">Enter your guess here</string>
     <string name="high_text">Your guess is too high. Try again.</string>
     <string name="low_text">Your guess is too low. Try again.</string>
+    <string name="resumePrevGame">Resume Previous Game</string>
+    <string name="startNewGame">Start New Game</string>
+    <string name="saveAndExit">Save and Exit Game</string>
 </resources>

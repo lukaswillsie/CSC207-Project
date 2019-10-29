@@ -14,10 +14,22 @@
         android:layout_marginEnd="43dp"
         android:layout_marginBottom="471dp"
         android:onClick="startTheGame"
-        android:text="@string/start"
+        android:text="@string/startNewGame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/resumeGame"
+        android:layout_width="328dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:onClick="resumeGame"
+        android:text="@string/resumePrevGame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

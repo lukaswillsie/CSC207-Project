@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.MainActivity;
 import com.example.game.R;
 
 public class GameStartActivity1 extends AppCompatActivity{
@@ -40,6 +41,11 @@ public class GameStartActivity1 extends AppCompatActivity{
             ((TextView)findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
         }
         // execute what happens when a guess is submitted.
+    }
+
+    public void saveExit(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
