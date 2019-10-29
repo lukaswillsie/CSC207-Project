@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.R;
@@ -20,7 +21,7 @@ public class GameStartActivity1 extends AppCompatActivity{
         return Integer.valueOf(((TextView)findViewById(R.id.guessInput)).getText().toString());
     }
 
-    public void submitGuess() {
+    public void submitGuess(View view) {
         int guess = getGuess();
         Game currentGame = gameManager.game;
         if (currentGame.checkTheRightGuess(guess)){
@@ -29,12 +30,13 @@ public class GameStartActivity1 extends AppCompatActivity{
         }
         else{
             if (currentGame.checkGuess(guess)){
-                Intent intent = new Intent(this, GameHighActivity.class);
-                startActivity(intent);
+                //((TextView)findViewById(R.id.textView)).setVisibility(View.INVISIBLE);
+                ((TextView)findViewById(R.id.textView)).setText("Your guess is to high, try again");
             }
             else{
-                Intent intent = new Intent(this, GameLowActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(this, GameLowActivity.class);
+                //startActivity(intent);
+                ((TextView)findViewById(R.id.textView)).setText("Your guess is to low, try again");
             }
         }
         // execute what happens when a guess is submitted.
