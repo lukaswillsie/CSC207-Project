@@ -10,10 +10,12 @@ import com.example.game.R;
 
 public class GameFinishActivity extends AppCompatActivity{
     GameManager gameManager = GameStartActivity.gameManager;
-    Game currentGame = gameManager.game;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_finish_activity);
+        Game currentGame = gameManager.game;
+        ((TextView)findViewById(R.id.points16)).setText(String.valueOf(currentGame.numOfGuess));
+        ((TextView)findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.numOfGuess));
     }
 }

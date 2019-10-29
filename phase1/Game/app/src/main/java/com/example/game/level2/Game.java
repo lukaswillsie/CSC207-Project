@@ -34,7 +34,7 @@ public class Game {
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
-        this.number = (int)(Math.random() * 50 + 1); //!!!!! CHANGE NEEDED.
+        this.number = (int)(Math.random() * 10 + 1); //!!!!! CHANGE NEEDED.
     }
 
     /**
