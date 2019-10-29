@@ -8,6 +8,7 @@ import android.view.View;
 import com.example.game.R;
 
 public class GameFinishActivity extends AppCompatActivity{
+    GameManager gameManager = GameStartActivity.gameManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

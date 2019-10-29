@@ -66,7 +66,7 @@ public class Game {
      */
     private void updateStats(int guess) {
         this.numOfGuess++;
-        this.points += Math.abs(this.number - guess);
+        this.points += Math.abs(this.number - guess) * this.numOfGuess;
     }
 
 }
