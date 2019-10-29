@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.MainActivity;
 import com.example.game.R;
 
 public class GameFinishActivity extends AppCompatActivity{
@@ -18,4 +19,15 @@ public class GameFinishActivity extends AppCompatActivity{
         ((TextView)findViewById(R.id.points16)).setText(String.valueOf(currentGame.numOfGuess));
         ((TextView)findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.numOfGuess));
     }
+
+    public void mainMenuClick(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void playAgainClick(View view) {
+        Intent intent = new Intent(this, GameStartActivity.class);
+        startActivity(intent);
+    }
+
 }
