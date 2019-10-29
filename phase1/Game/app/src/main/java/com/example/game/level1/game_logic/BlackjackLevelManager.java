@@ -128,8 +128,9 @@ public class BlackjackLevelManager extends LevelManager {
 
     /**
      * Compute whether or not the dealer should take another card
+     *
      * @return true if the dealer's hand total is less than or equal to 16
-     *         false otherwise
+     * false otherwise
      */
     private boolean dealerHit() {
         return dealer.computeBlackJackValue() <= 16;
