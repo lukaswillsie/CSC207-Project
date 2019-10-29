@@ -12,13 +12,16 @@ import static com.example.game.GameConstants.PASSWORD_KEY;
 import static com.example.game.GameConstants.TAG;
 import static com.example.game.GameConstants.USERNAME_KEY;
 
+import com.example.game.data.Setting;
 import com.example.game.level2.GameStartActivity;
 import com.example.game.level1.activities.BlackjackStartActivity;
+import com.example.game.services.UserSettingsManager;
 
 import java.io.File;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
+    private static String tag = "com.example.game.MainActivity";
     private String password;
     private String username;
 
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             if(user.isDirectory()){
                 File[] files = user.listFiles();
                 for(File file : files){
-                    Log.i("XXXXXXXXX", file.getName());
+                    Log.i("XXXXXXXXX", file.getAbsolutePath());
                     try{
                         Scanner scanner = new Scanner(file);
                         Log.i("XXXXXXXX", scanner.nextLine());
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
+        UserSettingsManager settingsManager = new UserSettingsManager(this, username);
+        Log.i(tag, "" + settingsManager.getSetting(Setting.NUM_HANDS));
+
     }
 
     public void playBlackjack(View view){

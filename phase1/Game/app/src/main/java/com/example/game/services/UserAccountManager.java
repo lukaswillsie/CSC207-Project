@@ -3,9 +3,12 @@ package com.example.game.services;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.game.data.Setting;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Scanner;
 
 import static com.example.game.GameConstants.PASSWORD_FILE_NAME;
@@ -18,11 +21,6 @@ public class UserAccountManager {
      * This class's tag for logging events
      */
     private static String tag = "com.example.game.services.UserAccountManager";
-
-    /**
-     * The strings that should be written into the settings file on creation of a new user
-     */
-    private static String[] settings = {"DarkMode=0", "BlackjackHands=5", "HighLowRounds=5"};
 
     /**
      * The strings that should be written into the stats file on creation of a new user
@@ -82,6 +80,7 @@ public class UserAccountManager {
         fillDefaultValues(settings, stats, passwordFile, password);
     }
 
+    // TODO: update this method to work instead with Setting enum
     /**
      * Populate the given files with the default values for a new user
      * @param settingsFile - the file to fill with the default settings
@@ -90,12 +89,16 @@ public class UserAccountManager {
      * @param password - the password of the new user
      */
     private void fillDefaultValues(File settingsFile, File statsFile, File passwordFile, String password){
+        OutputStream settingStream = null;
+        OutputStream statsStream = null;
+        OutputStream passwordStream = null;
         try{
-            FileOutputStream settingStream = new FileOutputStream(settingsFile);
-            FileOutputStream statsStream = new FileOutputStream(statsFile);
-            FileOutputStream passwordStream = new FileOutputStream(passwordFile);
-            for(String setting : settings){
-                settingStream.write((setting + "\n").getBytes());
+            settingStream = new FileOutputStream(settingsFile);
+            statsStream = new FileOutputStream(statsFile);
+            passwordStream = new FileOutputStream(passwordFile);
+
+            for(Setting setting : Setting.values()){
+                settingStream.write((setting.getKey() + "=" + setting.getDefaultValue() + "\n").getBytes());
             }
             for(String stat: stats){
                 statsStream.write((stat + "\n").getBytes());
@@ -104,6 +107,19 @@ public class UserAccountManager {
         }
         catch(IOException e) {
             Log.e(tag, "Failed to create default files for user");
+        }
+        finally {
+            try{
+                settingStream.close();
+                statsStream.close();
+                passwordStream.close();
+            }
+            catch (NullPointerException e) {
+                Log.e(tag, "Failed to close FileOutputStream because null");
+            }
+            catch (IOException e) {
+                Log.e(tag, "Failed to close FileOutputStream");
+            }
         }
     }
 

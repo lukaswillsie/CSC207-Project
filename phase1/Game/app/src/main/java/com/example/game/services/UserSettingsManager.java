@@ -6,7 +6,10 @@ import android.util.Log;
 import com.example.game.data.Setting;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.example.game.GameConstants.SETTINGS_FILE_NAME;
@@ -42,7 +45,7 @@ public class UserSettingsManager {
     private File userSettingsFile(Context context, String username) {
         // Navigate to rootDirectoryOfApp/USERS_DIR_NAME/username/SETTINGS_FILE_NAME, opening
         // the user's settings file
-        return new File(new File(new File(context.getFilesDir(), USERS_DIR_NAME), username), SETTINGS_FILE_NAME);
+        return new File(new File(context.getDir(USERS_DIR_NAME, 0), username), SETTINGS_FILE_NAME);
     }
 
     /**
@@ -56,6 +59,7 @@ public class UserSettingsManager {
             String line;
             while(scanner.hasNext()){
                 line = scanner.nextLine();
+                Log.i(tag, "getSettingKey(line)="+getSettingKey(line));
                 if(getSettingKey(line).equals(setting.getKey())){
                     return getSettingValue(line);
                 }
@@ -63,10 +67,39 @@ public class UserSettingsManager {
         }
         catch (IOException e){
             Log.e(tag, "Could not access users setting file");
+            e.printStackTrace();
         }
 
         // Return -1 if there was an error or the setting could not be found
         return -1;
+    }
+
+    public void updateSetting(Setting setting, int newValue){
+        ArrayList<String> lines = new ArrayList<>();
+        try{
+            Scanner scanner = new Scanner(settingsFile);
+            while(scanner.hasNext()){
+                lines.add(scanner.nextLine());
+            }
+
+            for(int i = 0; i < lines.size(); i++){
+                String line = lines.get(i);
+                if(getSettingKey(line).equals(setting.getKey())){
+                    lines.set(i, setting.getKey() + "=" + newValue + "\n");
+                }
+            }
+
+            OutputStream outputStream = new FileOutputStream(settingsFile, false);
+            for(String line : lines) {
+                outputStream.write(line.getBytes());
+            }
+
+            outputStream.close();
+        }
+        catch (IOException e) {
+            Log.e(tag, "Failed to open settingsFile for editing with scanner");
+        }
+
     }
 
     /**
@@ -88,7 +121,7 @@ public class UserSettingsManager {
             }
         }
 
-        return line.substring(0, equalsIndex+1);
+        return line.substring(0, equalsIndex);
     }
 
     /**
