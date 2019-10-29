@@ -32,7 +32,7 @@ public class UserSettingsManager implements SettingsManager {
      * @param username - the user's username
      */
     public UserSettingsManager(Context context, String username) {
-        // Open the users settings file and store
+        // Open the user's settings file and store it in settingsFile
         settingsFile = userSettingsFile(context, username);
     }
 
@@ -45,7 +45,10 @@ public class UserSettingsManager implements SettingsManager {
     private File userSettingsFile(Context context, String username) {
         // Navigate to rootDirectoryOfApp/USERS_DIR_NAME/username/SETTINGS_FILE_NAME, opening
         // the user's settings file
-        return new File(new File(context.getDir(USERS_DIR_NAME, 0), username), SETTINGS_FILE_NAME);
+        File rootDir = context.getDir(USERS_DIR_NAME, 0);
+        Log.i(tag, ""+ rootDir.getName());
+        File usersDir = new File(rootDir, username);
+        return new File(usersDir, SETTINGS_FILE_NAME);
     }
 
     /**
@@ -59,11 +62,11 @@ public class UserSettingsManager implements SettingsManager {
             String line;
             while(scanner.hasNext()){
                 line = scanner.nextLine();
-                Log.i(tag, "getSettingKey(line)="+getSettingKey(line));
                 if(getSettingKey(line).equals(setting.getKey())){
                     return getSettingValue(line);
                 }
             }
+            scanner.close();
         }
         catch (IOException e){
             Log.e(tag, "Could not access users setting file");
@@ -84,8 +87,13 @@ public class UserSettingsManager implements SettingsManager {
         ArrayList<String> lines = new ArrayList<>();
         try{
             Scanner scanner = new Scanner(settingsFile);
+            String curr;
             while(scanner.hasNext()){
-                lines.add(scanner.nextLine());
+                curr = scanner.nextLine();
+                if(!curr.equals("")){
+                    lines.add(curr);
+                }
+
             }
 
             for(int i = 0; i < lines.size(); i++){
@@ -94,10 +102,11 @@ public class UserSettingsManager implements SettingsManager {
                     lines.set(i, setting.getKey() + "=" + newValue + "\n");
                 }
             }
+            scanner.close();
 
             OutputStream outputStream = new FileOutputStream(settingsFile, false);
             for(String line : lines) {
-                outputStream.write(line.getBytes());
+                outputStream.write((line + "\n").getBytes());
             }
 
             outputStream.close();
@@ -119,6 +128,7 @@ public class UserSettingsManager implements SettingsManager {
      * characters preceding the equals otherwise (this is  the format of a line from the settings file)
      */
     private String getSettingKey(String line){
+        Log.i(tag,"Line: \"" + line + "\"");
         int equalsIndex=-1;
         for(int i = 0; i < line.length(); i++){
             if(line.charAt(i) == '='){
@@ -126,8 +136,12 @@ public class UserSettingsManager implements SettingsManager {
                 break;
             }
         }
+        if(equalsIndex >= 0){
+            return line.substring(0, equalsIndex);
+        }
 
-        return line.substring(0, equalsIndex);
+        return "";
+
     }
 
     /**
@@ -149,7 +163,7 @@ public class UserSettingsManager implements SettingsManager {
             }
         }
         try {
-            return Integer.parseInt(line.substring(equalsIndex, line.length()));
+            return Integer.parseInt(line.substring(equalsIndex));
         }
         catch(NumberFormatException e) {
             Log.e(tag, "Could not parse setting value from line");

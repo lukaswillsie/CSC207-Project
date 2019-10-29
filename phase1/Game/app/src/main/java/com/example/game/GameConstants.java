@@ -7,18 +7,6 @@ public final class GameConstants {
     public static final String TAG = "com.example.game";
 
     /**
-     * The key to append to the TAG when putting the player's username into an intent
-     * as an extra
-     */
-    public static final String USERNAME_KEY = ".username";
-
-    /**
-     * The key to append to the TAG when putting the player's name into an intent
-     * as an extra
-     */
-    public static final String PASSWORD_KEY = ".password";
-
-    /**
      * The name of the directory on the device containing the files for the app
      */
     public static final String USERS_DIR_NAME = "users";

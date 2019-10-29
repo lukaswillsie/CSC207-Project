@@ -3,16 +3,13 @@ package com.example.game;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.game.GameConstants.PASSWORD_KEY;
-import static com.example.game.GameConstants.TAG;
-import static com.example.game.GameConstants.USERNAME_KEY;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.services.AccountManager;
+import com.example.game.services.GameData;
 import com.example.game.services.UserAccountManager;
 
 public class OldAccountActivity extends AppCompatActivity {
@@ -32,8 +29,7 @@ public class OldAccountActivity extends AppCompatActivity {
         boolean validCredentials = userAccountManager.validCredentials(inputUsername, inputPassword);
         if(validCredentials){
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra(TAG + USERNAME_KEY, inputUsername);
-            intent.putExtra(TAG + PASSWORD_KEY, inputPassword);
+            GameData.setUsername(inputUsername);
             startActivity(intent);
         }
         else{

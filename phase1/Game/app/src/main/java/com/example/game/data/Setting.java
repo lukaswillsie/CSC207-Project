@@ -20,16 +20,29 @@ public enum Setting {
      */
     private int defaultValue;
 
-    Setting(String key, int defaultValue){
+    /**
+     * Create a new Setting with the given key and defaultValue
+     * @param key - the key for storing the setting in a file
+     * @param defaultValue - the default value of the setting
+     */
+    Setting(String key, int defaultValue) {
         this.key = key;
         this.defaultValue = defaultValue;
     }
 
+    /**
+     * Get this Setting's key
+     * @return the key of this Setting
+     */
     public String getKey() {
         return key;
     }
 
-    public int getDefaultValue(){
+    /**
+     * Get this Setting's default value
+     * @return the default value of this Setting
+     */
+    public int getDefaultValue() {
         return defaultValue;
     }
 }

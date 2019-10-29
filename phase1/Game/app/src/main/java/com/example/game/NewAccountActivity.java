@@ -3,16 +3,13 @@ package com.example.game;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.game.GameConstants.PASSWORD_KEY;
-import static com.example.game.GameConstants.TAG;
-import static com.example.game.GameConstants.USERNAME_KEY;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.services.AccountManager;
+import com.example.game.services.GameData;
 import com.example.game.services.UserAccountManager;
 
 public class NewAccountActivity extends AppCompatActivity {
@@ -40,8 +37,7 @@ public class NewAccountActivity extends AppCompatActivity {
         userManager.createNewUser(username, password);
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(TAG + USERNAME_KEY, username);
-        intent.putExtra(TAG + PASSWORD_KEY, password);
+        GameData.setUsername(username);
 
         startActivity(intent);
     }
