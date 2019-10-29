@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.services.AccountManager;
 import com.example.game.services.UserAccountManager;
 
 public class OldAccountActivity extends AppCompatActivity {
@@ -26,9 +27,9 @@ public class OldAccountActivity extends AppCompatActivity {
         String inputPassword = getPassword();
         String inputUsername = getUsername();
 
-        UserAccountManager userAccountManager = new UserAccountManager(this);
+        AccountManager userAccountManager = new UserAccountManager(this);
 
-        boolean validCredentials = userAccountManager.userExists(inputUsername, inputPassword);
+        boolean validCredentials = userAccountManager.validCredentials(inputUsername, inputPassword);
         if(validCredentials){
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(TAG + USERNAME_KEY, inputUsername);

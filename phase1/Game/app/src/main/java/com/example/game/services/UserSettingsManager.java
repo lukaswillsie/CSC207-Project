@@ -15,7 +15,7 @@ import java.util.Scanner;
 import static com.example.game.GameConstants.SETTINGS_FILE_NAME;
 import static com.example.game.GameConstants.USERS_DIR_NAME;
 
-public class UserSettingsManager {
+public class UserSettingsManager implements SettingsManager {
     /**
      * This class's tag for logging things
      */
@@ -74,6 +74,12 @@ public class UserSettingsManager {
         return -1;
     }
 
+    /**
+     * Takes a setting and a new value for that setting and updates the user's settings file accordingly
+     *
+     * @param setting - the setting whose value is to be updated
+     * @param newValue - the new value for the given setting
+     */
     public void updateSetting(Setting setting, int newValue){
         ArrayList<String> lines = new ArrayList<>();
         try{

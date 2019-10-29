@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.services.AccountManager;
 import com.example.game.services.UserAccountManager;
 
 public class NewAccountActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class NewAccountActivity extends AppCompatActivity {
         String username = getUsername();
         String password = getPassword();
 
-        UserAccountManager userManager = new UserAccountManager(this);
+        AccountManager userManager = new UserAccountManager(this);
 
         if(userManager.usernameExists(username)){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

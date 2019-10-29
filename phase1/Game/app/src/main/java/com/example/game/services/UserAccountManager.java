@@ -16,7 +16,7 @@ import static com.example.game.GameConstants.SETTINGS_FILE_NAME;
 import static com.example.game.GameConstants.STATS_FILE_NAME;
 import static com.example.game.GameConstants.USERS_DIR_NAME;
 
-public class UserAccountManager {
+public class UserAccountManager implements AccountManager {
     /**
      * This class's tag for logging events
      */
@@ -125,12 +125,13 @@ public class UserAccountManager {
 
     /**
      * Check if the given username and name are, together, associated with an account
+     * i.e. check if the given username and password are a valid login for an account
      * @param username - the username to be checked
      * @param password - the name to be checked
      * @return true if there is an account under the given username with the given name
      *         false otherwise
      */
-    public boolean userExists(String username, String password){
+    public boolean validCredentials(String username, String password){
         return usernameExists(username) && passwordIsValid(username, password);
     }
 
