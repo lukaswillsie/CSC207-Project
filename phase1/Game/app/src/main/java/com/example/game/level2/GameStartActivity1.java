@@ -34,8 +34,6 @@ public class GameStartActivity1 extends AppCompatActivity{
                 ((TextView)findViewById(R.id.textView)).setText("Your guess is to high, try again");
             }
             else{
-                //Intent intent = new Intent(this, GameLowActivity.class);
-                //startActivity(intent);
                 ((TextView)findViewById(R.id.textView)).setText("Your guess is to low, try again");
             }
             ((TextView)findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.points));
