@@ -71,7 +71,7 @@ public class UserAccountManager implements AccountManager {
      */
     public void createNewUser(String username, String password){
         File newUserDir = new File(usersDir, username);
-        newUserDir.mkdir();
+        boolean mkdir = newUserDir.mkdirs();
 
         File settings = new File(newUserDir, SETTINGS_FILE_NAME);
         File stats = new File(newUserDir, STATS_FILE_NAME);
@@ -80,7 +80,6 @@ public class UserAccountManager implements AccountManager {
         fillDefaultValues(settings, stats, passwordFile, password);
     }
 
-    // TODO: update this method to work instead with Setting enum
     /**
      * Populate the given files with the default values for a new user
      * @param settingsFile - the file to fill with the default settings
