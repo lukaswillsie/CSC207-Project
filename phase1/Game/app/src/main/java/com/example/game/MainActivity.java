@@ -52,9 +52,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        //DarkMode Setting
         SettingsManager manager = new SettingsManagerBuilder().build(this,username);
         int temp = manager.getSetting(Setting.DARK_MODE);
-        if (temp == -1){
+        if (temp == 1){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         }
