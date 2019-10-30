@@ -12,7 +12,12 @@ import com.example.game.level1.game_logic.InterfaceManager;
 import com.example.game.level1.game_logic.LevelManager;
 
 public class LevelManagerBuilder {
-    public LevelManager buildLevelManager(BlackjackPlayActivity activity) {
+    /**
+     * Build a new LevelManager for the given activity
+     * @param activity -  the activity that wants the BlackjackManager
+     * @return a LevelManager object
+     */
+    public LevelManager build(BlackjackPlayActivity activity) {
         TextView userHand = activity.findViewById(BlackjackPlayActivity.PLAYER_HAND_ID);
         TextView dealerHand = activity.findViewById(BlackjackPlayActivity.DEALER_HAND_ID);
 

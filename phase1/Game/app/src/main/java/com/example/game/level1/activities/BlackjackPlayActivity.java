@@ -14,7 +14,6 @@ import com.example.game.level1.game_logic.LevelManager;
 import com.example.game.level1.services.LevelManagerBuilder;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManagerBuilder;
-import com.example.game.services.UserSettingsManager;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
     /**
@@ -39,8 +38,14 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     private int score;
 
+    /**
+     * The number of hands this player chose to play in their settings
+     */
     private int numHands;
 
+    /**
+     * The number of hands this player has played so far
+     */
     private int numHandsPlayed = 0;
 
     @Override
@@ -51,7 +56,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         ButtonManager.setup(this);
 
         LevelManagerBuilder builder = new LevelManagerBuilder();
-        levelManager = builder.buildLevelManager(this);
+        levelManager = builder.build(this);
 
         levelManager.setup();
         levelManager.play();
@@ -81,7 +86,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     public void playAgain(View view) {
         LevelManagerBuilder builder = new LevelManagerBuilder();
-        levelManager = builder.buildLevelManager(this);
+        levelManager = builder.build(this);
 
         ButtonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
         ButtonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
