@@ -43,4 +43,5 @@
     <string name="resumePrevGame">Resume Previous Game</string>
     <string name="startNewGame">Start New Game</string>
     <string name="saveAndExit">Save and Exit Game</string>
+    <string name="pauseAndExit">Pause and exit</string>
 </resources>

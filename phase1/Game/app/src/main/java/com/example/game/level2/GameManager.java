@@ -26,8 +26,6 @@ public class GameManager {
     // call this class whenever a new GTN game is about to be played
     public void startNewGame() {
         game = new Game();
-
-
     }
 
 }

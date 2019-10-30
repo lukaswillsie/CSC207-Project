@@ -82,5 +82,9 @@ public class Game {
         return this.numOfGuess;
     }
 
+    public boolean isFinished() {return this.finished;}
 
+    public void setIsFinished() {
+        this.finished = true;
+    }
 }

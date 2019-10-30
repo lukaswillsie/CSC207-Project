@@ -11,11 +11,15 @@ import com.example.game.R;
 
 public class GameStartActivity1 extends AppCompatActivity{
     GameManager gameManager = GameStartActivity.gameManager;
+    static int guess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Game currentGame = gameManager.game;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity1);
+        ((TextView)findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
+        ((TextView)findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
     }
 
     private int getGuess() {
@@ -23,8 +27,10 @@ public class GameStartActivity1 extends AppCompatActivity{
     }
 
     public void submitGuess(View view) {
-        int guess = getGuess();
+        guess = getGuess();
         Game currentGame = gameManager.game;
+        ((TextView)findViewById(R.id.guessInput)).setText("");
+
         if (currentGame.checkTheRightGuess(guess)){
             Intent intent = new Intent(this, GameFinishActivity.class);
             startActivity(intent);
@@ -43,9 +49,11 @@ public class GameStartActivity1 extends AppCompatActivity{
         // execute what happens when a guess is submitted.
     }
 
-    public void saveExit(View view) {
+    public void pauseExit(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+
 
 }

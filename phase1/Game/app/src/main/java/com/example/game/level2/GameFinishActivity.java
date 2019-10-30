@@ -16,6 +16,7 @@ public class GameFinishActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_finish_activity);
         Game currentGame = gameManager.game;
+        currentGame.setIsFinished();
         ((TextView)findViewById(R.id.points16)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView)findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.getNumOfGuess()));
     }
