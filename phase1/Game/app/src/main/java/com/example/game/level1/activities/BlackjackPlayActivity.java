@@ -8,9 +8,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
+import com.example.game.data.Setting;
 import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.game_logic.LevelManager;
 import com.example.game.level1.services.LevelManagerBuilder;
+import com.example.game.services.GameData;
+import com.example.game.services.UserSettingsManager;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
     /**
@@ -35,6 +38,10 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     private int score;
 
+    private int numHands;
+
+    private int numHandsPlayed = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,9 @@ public class BlackjackPlayActivity extends AppCompatActivity {
 
         String scoreText = "Score: " + score;
         ((TextView) findViewById(R.id.playScore)).setText(scoreText);
+
+        // TODO: Consider introducing a method for creating SettingsManager objects so that nobody has to use new to create them
+        numHands = new UserSettingsManager(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
     }
 
     /**
@@ -101,13 +111,16 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param endGameText - the text to display as a result of the game ending
      */
     public void gameOver(String endGameText, boolean playerWin) {
+        numHandsPlayed++;
+        if(numHandsPlayed == numHands){
+            ButtonManager.makeVisible(END_GAME_BUTTON_ID);
+        }
+        else {
+            ButtonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
+        }
         TextView endGameTextView = findViewById(END_GAME_TEXT_ID);
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
-
-        ButtonManager.makeVisible(END_GAME_BUTTON_ID);
-
-        ButtonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
 
         if (playerWin) {
             score += 100;
