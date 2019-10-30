@@ -72,6 +72,13 @@ public class SettingsActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
         darkMode = findViewById(R.id.darkModeSwitch);
+        if(settingsManager.getSetting(Setting.DARK_MODE) == 0){
+            darkMode.setChecked(false);
+        }
+        else {
+            darkMode.setChecked(true);
+        }
+
         darkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
