@@ -11,10 +11,18 @@ public class Card {
      */
     private Suit suit;
 
+    /**
+     * Get the suit of this card
+     * @return - the suit of this card
+     */
     public Suit getSuit() {
         return suit;
     }
 
+    /**
+     * Get the rank of this card
+     * @return - the rank of this card
+     */
     Rank getRank() {
         return rank;
     }
@@ -30,6 +38,10 @@ public class Card {
         this.rank = rank;
     }
 
+    /**
+     * Get the string representation of this card
+     * @return the string representation of this card
+     */
     public String toString() {
         return this.rank.toString() + this.suit.toString();
     }
