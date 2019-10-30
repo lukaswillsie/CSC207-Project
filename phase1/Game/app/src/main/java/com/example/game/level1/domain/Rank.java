@@ -15,16 +15,32 @@ public enum Rank {
     QUEEN(12),
     KING(13);
 
+    // TODO: consider getting rid of this field
+    /**
+     * The value of this rank in a typical card game
+     */
     private int value;
 
+    /**
+     * Create a new Rank value
+     * @param value - the value of the rank in a typical card game
+     */
     Rank(int value) {
         this.value = value;
     }
 
+    /**
+     * Get the value of this Rank
+     * @return the value of this Rank
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     * Get a string represnetation of this Rank
+     * @return a string representation of this rank
+     */
     public String toString() {
         switch (this) {
             case ACE:
