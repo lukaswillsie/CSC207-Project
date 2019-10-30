@@ -2,6 +2,7 @@ package com.example.game.data;
 
 public enum Setting {
     NUM_HANDS("NumHands", 5),
+    DARK_MODE("DarkMode", 0),
     NUM_ROUNDS("NumRounds", 5);
 
     /**

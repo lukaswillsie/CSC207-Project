@@ -1,6 +1,7 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.data.Setting;
 import com.example.game.level2.GameStartActivity;
 import com.example.game.level1.activities.BlackjackStartActivity;
 import com.example.game.services.GameData;
+import com.example.game.services.SettingsManager;
+import com.example.game.services.SettingsManagerBuilder;
 
 import java.io.File;
 import java.util.Scanner;
@@ -47,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+        }
+        SettingsManager manager = new SettingsManagerBuilder().build(this,username);
+        int temp = manager.getSetting(Setting.DARK_MODE);
+        if (temp == -1){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        }
+        else{
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 

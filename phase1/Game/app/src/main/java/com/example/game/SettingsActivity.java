@@ -1,9 +1,13 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.game.data.Setting;
@@ -16,6 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
     private String username;
     private SeekBar numHandsBar;
     private SeekBar numRoundsBar;
+    private Switch darkMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,28 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
+        darkMode = findViewById(R.id.darkModeSwitch);
+        darkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (!b){
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                }
+//                else{
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//                }
+//            }
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (b){
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+            else{
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        }
+        });
+
     }
 
     @Override
@@ -73,5 +100,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onStop();
         settingsManager.updateSetting(Setting.NUM_HANDS, numHandsBar.getProgress());
         settingsManager.updateSetting(Setting.NUM_ROUNDS, numRoundsBar.getProgress());
+        settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1: 0);
     }
 }
