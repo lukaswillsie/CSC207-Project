@@ -15,7 +15,7 @@ public class GameFinishActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_finish_activity);
-        Game currentGame = gameManager.game;
+        Game currentGame = gameManager.GetAGame();
         currentGame.setIsFinished();
         ((TextView)findViewById(R.id.points16)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView)findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.getNumOfGuess()));
@@ -27,7 +27,8 @@ public class GameFinishActivity extends AppCompatActivity{
     }
 
     public void playAgainClick(View view) {
-        Intent intent = new Intent(this, GameStartActivity.class);
+        Intent intent = new Intent(this, GameStartActivity1.class);
+        gameManager.startNewGame();
         startActivity(intent);
     }
 

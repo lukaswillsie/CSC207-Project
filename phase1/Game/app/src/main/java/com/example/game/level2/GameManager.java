@@ -5,7 +5,7 @@ public class GameManager {
     /**
      * The current game this game manager holds.
      */
-     Game game;
+     private Game game;
     /**
      * Leader board keeps track of top three players.
      */
@@ -26,6 +26,10 @@ public class GameManager {
     // call this class whenever a new GTN game is about to be played
     public void startNewGame() {
         game = new Game();
+    }
+
+    public Game GetAGame(){
+        return this.game;
     }
 
 }
