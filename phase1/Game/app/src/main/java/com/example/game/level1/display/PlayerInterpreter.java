@@ -38,16 +38,28 @@ public class PlayerInterpreter {
         view.updateView(this.playerHandStringRep());
     }
 
+    /**
+     * Update the interface to display the string representation of the player's hand with the first
+     * card hidden
+     */
     public void updatePlayerHandHideFirstCard() {
         this.view.updateView(this.playerHandHideFirstCardStringRep());
     }
 
+    /**
+     * Create and return the string representation of the player's hand, hiding the first card
+     *
+     * Is necessary because until the player has taken their cards, the dealer's first card
+     * is supposed to be unknown to the player
+     * @return - a string representation of the player's hand, with the first card of their hand hidden
+     */
     private String playerHandHideFirstCardStringRep() {
         boolean first = true;
         Hand hand = this.player.getHand();
         StringBuilder handString = new StringBuilder();
         for (Card card : hand) {
             if (first) {
+                // Unicode for a black rectangle that kind of resembles a card back
                 handString.append("\u2588");
                 handString.append("   ");
 
@@ -62,6 +74,12 @@ public class PlayerInterpreter {
         return handString.toString();
     }
 
+    // TODO: Consider moving the String representation of each Card out of the Card class and into this one
+    // TODO: Separation of concerns - Card shouldn't care how its information is relayed to the interface
+    /**
+     * Create and return the string representation of the player's hand
+     * @return - a string representation of the player's hand
+     */
     private String playerHandStringRep() {
         Hand hand = player.getHand();
         StringBuilder handString = new StringBuilder();
