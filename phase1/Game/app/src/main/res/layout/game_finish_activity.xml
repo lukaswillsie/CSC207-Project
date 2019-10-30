@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="140dp"
         android:layout_marginEnd="16dp"
-        android:text="Congratulations, You guessed the right number!"
+        android:text="@string/congrats"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

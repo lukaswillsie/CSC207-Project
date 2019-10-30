@@ -18,10 +18,10 @@ public class GameStartActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.resumeGame);
         Game game = gameManager.game;
         if (game.isFinished() || game.getPoints() == 0) {
-            btn.setClickable(false);
+            btn.setVisibility(View.INVISIBLE);
         }
         else {
-            btn.setClickable(true);
+            btn.setVisibility(View.VISIBLE);;
         }
         // create a SettingsManager
         // pass in this

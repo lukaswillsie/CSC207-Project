@@ -38,10 +38,10 @@ public class GameStartActivity1 extends AppCompatActivity{
         else{
             if (currentGame.checkGuess(guess)){
                 //((TextView)findViewById(R.id.textView)).setVisibility(View.INVISIBLE);
-                ((TextView)findViewById(R.id.textView)).setText("Your guess is to high, try again");
+                ((TextView)findViewById(R.id.textView)).setText("Your guess is too high, try again.");
             }
             else{
-                ((TextView)findViewById(R.id.textView)).setText("Your guess is to low, try again");
+                ((TextView)findViewById(R.id.textView)).setText("Your guess is too low, try again.");
             }
             ((TextView)findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
             ((TextView)findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
