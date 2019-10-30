@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else{
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 
