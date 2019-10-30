@@ -28,7 +28,7 @@ public class GameManager {
         game = new Game();
     }
 
-    public Game GetAGame(){
+    public Game getCurrentGame(){
         return this.game;
     }
 

@@ -16,7 +16,7 @@ public class GameStartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity);
         Button btn = findViewById(R.id.resumeGame);
-        Game game = gameManager.GetAGame();
+        Game game = gameManager.getCurrentGame();
         if (game.isFinished() || game.getPoints() == 0) {
             btn.setVisibility(View.INVISIBLE);
         }

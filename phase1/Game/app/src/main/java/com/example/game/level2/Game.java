@@ -41,9 +41,9 @@ public class Game {
     /**
      * Finish the game.
      */
-    public void finishTheGame() {
+    public void finishTheGame(int guess) {
             this.finished = false;
-            this.numOfGuess++;
+            this.updateStats(guess);
     }
 
     /**
