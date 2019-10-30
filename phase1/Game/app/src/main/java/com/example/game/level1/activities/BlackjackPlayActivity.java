@@ -13,6 +13,7 @@ import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.game_logic.LevelManager;
 import com.example.game.level1.services.LevelManagerBuilder;
 import com.example.game.services.GameData;
+import com.example.game.services.SettingsManagerBuilder;
 import com.example.game.services.UserSettingsManager;
 
 public class BlackjackPlayActivity extends AppCompatActivity {
@@ -60,8 +61,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         String scoreText = "Score: " + score;
         ((TextView) findViewById(R.id.playScore)).setText(scoreText);
 
-        // TODO: Consider introducing a method for creating SettingsManager objects so that nobody has to use new to create them
-        numHands = new UserSettingsManager(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
+        numHands = new SettingsManagerBuilder().build(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
     }
 
     /**

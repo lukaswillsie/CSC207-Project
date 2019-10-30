@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.game.data.Setting;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
-import com.example.game.services.UserSettingsManager;
+import com.example.game.services.SettingsManagerBuilder;
 
 public class SettingsActivity extends AppCompatActivity {
     private SettingsManager settingsManager;
@@ -23,7 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         username = GameData.USERNAME;
-        settingsManager = new UserSettingsManager(this, username);
+        settingsManager = new SettingsManagerBuilder().build(this, username);
 
         numHandsBar = findViewById(R.id.numHandsSeekBar);
         // Read user's setting for number of hands and set it as progress on the seek bar
