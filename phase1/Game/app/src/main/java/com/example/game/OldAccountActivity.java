@@ -8,34 +8,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.game.services.AccountManager;
 import com.example.game.services.GameData;
 import com.example.game.services.UserAccountManager;
 
-public class OldAccountActivity extends AppCompatActivity {
+public class OldAccountActivity extends AppCompatActivity implements OldUserPage {
     private static String tag = "com.example.game.OldAccountActivity";
+    private OldAccountActivityPresenter presenter;
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_old_account);
+
+        presenter = new OldAccountActivityPresenter(new UserAccountManager(this), this);
     }
 
     public void login(View view){
-        String inputPassword = getPassword();
-        String inputUsername = getUsername();
-
-        AccountManager userAccountManager = new UserAccountManager(this);
-
-        boolean validCredentials = userAccountManager.validCredentials(inputUsername, inputPassword);
-        if(validCredentials){
-            Intent intent = new Intent(this, MainActivity.class);
-            GameData.setUsername(inputUsername);
-            startActivity(intent);
-        }
-        else{
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Your login information is incorrect").setPositiveButton("Ok", null).create().show();
-        }
+        username = getUsername();
+        presenter.loginNewUser(username, getPassword());
     }
 
     private String getPassword(){
@@ -44,5 +35,18 @@ public class OldAccountActivity extends AppCompatActivity {
 
     private String getUsername(){
         return ((TextView)findViewById(R.id.oldAccountUsernameTextField)).getText().toString();
+    }
+
+    @Override
+    public void login() {
+        Intent intent = new Intent(this, MainActivity.class);
+        GameData.setUsername(username);
+        startActivity(intent);
+    }
+
+    @Override
+    public void loginError(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message).setPositiveButton("Ok", null).create().show();
     }
 }
