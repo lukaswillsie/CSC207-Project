@@ -1,10 +1,10 @@
 package com.example.game.level3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Chronometer;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 
@@ -18,7 +18,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls);
 
-        chronometer = (Chronometer) findViewById(R.id.timer);
+        chronometer = findViewById(R.id.timer);
         chronometer.start();
     }
 }
