@@ -56,4 +56,5 @@
     <string name="win_rate_label">Win Rate:</string>
     <string name="longest_streak_label">Longest Streak:</string>
     <string name="main_menu">Main Menu</string>
+    <string name="guess_button">Guess</string>
 </resources>
