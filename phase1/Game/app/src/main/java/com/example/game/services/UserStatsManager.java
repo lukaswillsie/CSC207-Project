@@ -12,6 +12,7 @@ public class UserStatsManager implements StatsManager {
      */
     @Override
     public int getStat(Statistic statistic) {
+
         return statistic.getValue();
     }
 
