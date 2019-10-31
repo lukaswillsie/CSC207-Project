@@ -18,17 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/oldAccountPasswordTextField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="@string/prompt_password"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/oldAccountUsernameTextField"
-        app:layout_constraintTop_toBottomOf="@+id/oldAccountUsernameTextField" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -38,5 +27,17 @@
         android:text="@string/login_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/oldAccountPasswordTextField" />
+        app:layout_constraintTop_toBottomOf="@+id/newAccountPasswordTextField" />
+
+    <EditText
+        android:id="@+id/newAccountPasswordTextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/oldAccountUsernameTextField"
+        app:layout_constraintTop_toBottomOf="@+id/oldAccountUsernameTextField" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
