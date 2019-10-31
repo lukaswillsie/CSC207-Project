@@ -94,12 +94,26 @@ public class Guess {
                 correctCounter += Math.min(guessElements.get(key), answerElements.get(key));
             }
         }
-<<<<<<< HEAD
 
         return correctCounter;
 
-=======
->>>>>>> eca6089e1483c864faf34ec827ee7a263cd98103
+    }
+
+    /**
+     * A method that returns the number of bulls (the number of elements that were correctly guessed
+     * but in the wrong spot).
+     *
+     * @return The number of correct elements, but in the wrong spot.
+     */
+    private int getBulls() {
+
+        /**  The number of cows is the total number of correct guessed regardless of their spots
+         *  minus the number of correct guesses in the right spots.
+         */
+
+
+        return getCorrectElements() - getCows();
+
     }
 
 }
