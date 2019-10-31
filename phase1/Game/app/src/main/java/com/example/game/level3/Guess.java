@@ -31,4 +31,21 @@ public class Guess {
         this.guessSize = guessArraySize;
     }
 
+    /**
+     * A method that returns the number of cows (the number of elements that were correctly guessed
+     * and in the right position).
+     */
+    public int getCows() {
+
+        int numberCows = 0;
+
+        for (int i = 0; i < this.guessSize; i++) {
+            if (this.guessArray[i] == this.answerArray[i]) {
+                numberCows += 1;
+            }
+        }
+
+        return numberCows;
+    }
+
 }
