@@ -13,6 +13,7 @@ public class Card {
 
     /**
      * Get the suit of this card
+     *
      * @return - the suit of this card
      */
     public Suit getSuit() {
@@ -21,6 +22,7 @@ public class Card {
 
     /**
      * Get the rank of this card
+     *
      * @return - the rank of this card
      */
     Rank getRank() {
@@ -40,6 +42,7 @@ public class Card {
 
     /**
      * Get the string representation of this card
+     *
      * @return the string representation of this card
      */
     public String toString() {

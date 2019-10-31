@@ -17,8 +17,9 @@ public class ButtonManager {
     /**
      * Setup the ButtonManager for use. Must be called each time a new activity
      * wants to use ButtonManager
-     *
+     * <p>
      * Gets all the buttons from the given activity and keeps them in a List
+     *
      * @param activity - the activity that wants the ButtonManager
      */
     public ButtonManager(Activity activity) {
@@ -49,8 +50,9 @@ public class ButtonManager {
     /**
      * Disable the button with the given id - that is, make it unclickable
      * The button's visibility will remain unchanged
-     *
+     * <p>
      * Does nothing if no button has the given id
+     *
      * @param id - the id of the button to disable
      */
     public void disableButton(int id) {
@@ -65,6 +67,7 @@ public class ButtonManager {
     /**
      * Enable the button with the given id - that is, make it clickable
      * The button's visibility will remain unchanged
+     *
      * @param id - the id of the button to enable
      */
     public void enableButton(int id) {

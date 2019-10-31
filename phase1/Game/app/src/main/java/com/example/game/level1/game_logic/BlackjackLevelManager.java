@@ -36,6 +36,7 @@ public class BlackjackLevelManager {
     private BlackjackPlayPage callingActivity;
 
     // TODO: Figure out how to shorten this constructor, maybe using setters instead of constructor
+
     /**
      * Create a new BlackjackLevelManager
      *
@@ -73,7 +74,7 @@ public class BlackjackLevelManager {
     /**
      * Tells this object that the player requested a hit
      */
-    public void playerHit(){
+    public void playerHit() {
         if (playerTurn) {
             user.deal(deck.deal());
             if (user.computeBlackJackValue() > 21) {
@@ -88,7 +89,7 @@ public class BlackjackLevelManager {
     /**
      * Tells this object that the player stood
      */
-    public void playerStand(){
+    public void playerStand() {
         endGame();
     }
 

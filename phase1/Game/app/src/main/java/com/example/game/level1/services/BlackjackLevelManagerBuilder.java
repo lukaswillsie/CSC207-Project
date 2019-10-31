@@ -13,6 +13,7 @@ import com.example.game.level1.game_logic.InterfaceManager;
 public class BlackjackLevelManagerBuilder {
     /**
      * Build a new LevelManager for the given activity
+     *
      * @param activity -  the activity that wants the BlackjackManager
      * @return a BlackjackLevelManager object
      */

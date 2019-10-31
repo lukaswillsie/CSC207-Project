@@ -18,8 +18,8 @@ import com.example.game.services.SettingsManagerBuilder;
 import java.text.DecimalFormat;
 
 import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
-import static com.example.game.data.GameConstants.WIN_RATE_KEY;
 import static com.example.game.data.GameConstants.TAG;
+import static com.example.game.data.GameConstants.WIN_RATE_KEY;
 
 public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage {
     /**
@@ -89,7 +89,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         numHands = new SettingsManagerBuilder().build(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
 
-        ((TextView)findViewById(R.id.blackjackNote)).setText(note);
+        ((TextView) findViewById(R.id.blackjackNote)).setText(note);
     }
 
     /**
@@ -98,10 +98,9 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      * @param view - the button that was clicked
      */
     public void buttonClick(View view) {
-        if(view.getId() == HIT_BUTTON_ID) {
+        if (view.getId() == HIT_BUTTON_ID) {
             levelManager.playerHit();
-        }
-        else if (view.getId() == STAND_BUTTON_ID){
+        } else if (view.getId() == STAND_BUTTON_ID) {
             levelManager.playerStand();
         }
     }
@@ -134,7 +133,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      */
     public void endGame(View view) {
         Intent intent = new Intent(this, EndGameActivity.class);
-        intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * ((float)(wins) / (float)numHandsPlayed)) + "%");
+        intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * ((float) (wins) / (float) numHandsPlayed)) + "%");
         intent.putExtra(TAG + LONGEST_STREAK_KEY, longestStreak);
         startActivity(intent);
     }
@@ -149,10 +148,9 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
         buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
         numHandsPlayed++;
-        if(numHandsPlayed == numHands){
+        if (numHandsPlayed == numHands) {
             buttonManager.makeVisible(END_GAME_BUTTON_ID);
-        }
-        else {
+        } else {
             buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
         }
         TextView endGameTextView = findViewById(END_GAME_TEXT_ID);
@@ -161,7 +159,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         if (playerWin) {
             currentStreak += 1;
-            if(currentStreak > longestStreak){
+            if (currentStreak > longestStreak) {
                 longestStreak = currentStreak;
             }
             wins++;

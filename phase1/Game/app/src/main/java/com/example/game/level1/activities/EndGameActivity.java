@@ -19,26 +19,27 @@ public class EndGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_end_game);
 
         TextView longestStreakDisplay = findViewById(R.id.longestStreakDisplay);
-        String longestStreak = ""+getIntent().getIntExtra(GameConstants.TAG + GameConstants.LONGEST_STREAK_KEY, 0);
+        String longestStreak = "" + getIntent().getIntExtra(GameConstants.TAG + GameConstants.LONGEST_STREAK_KEY, 0);
         longestStreakDisplay.setText(longestStreak);
-        ((TextView)findViewById(R.id.winRateDisplay)).setText(getIntent().getStringExtra(GameConstants.TAG + GameConstants.WIN_RATE_KEY));
+        ((TextView) findViewById(R.id.winRateDisplay)).setText(getIntent().getStringExtra(GameConstants.TAG + GameConstants.WIN_RATE_KEY));
     }
 
     /**
      * Starts BlackjackPlayActivity to play another round of Blackjack
+     *
      * @param view - the View that called this method
      */
-    public void playAnotherRound(View view)
-    {
+    public void playAnotherRound(View view) {
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
         startActivity(intent);
     }
 
     /**
      * Starts MainActivity; goes back to main menu
+     *
      * @param view - the View that called this method
      */
-    public void mainMenu(View view){
+    public void mainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

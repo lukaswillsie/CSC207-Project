@@ -31,7 +31,7 @@ public class UserSettingsManager implements SettingsManager {
      * @param context - the calling context
      * @param username - the user's username
      */
-    public UserSettingsManager(Context context, String username) {
+    UserSettingsManager(Context context, String username) {
         // Open the user's settings file and store it in settingsFile
         settingsFile = userSettingsFile(context, username);
     }

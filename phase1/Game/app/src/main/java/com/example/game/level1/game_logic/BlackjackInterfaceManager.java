@@ -20,9 +20,10 @@ public class BlackjackInterfaceManager implements InterfaceManager {
 
     /**
      * Creates a new BlackjackInterfaceManager with the given information
-     * @param user - a Player object representing the user of the game
-     * @param dealer - a Player object representing the dealer in the game
-     * @param userHand - the TextView being used to display the user's hand on the screen
+     *
+     * @param user       - a Player object representing the user of the game
+     * @param dealer     - a Player object representing the dealer in the game
+     * @param userHand   - the TextView being used to display the user's hand on the screen
      * @param dealerHand - the TextView being used to display the dealer's hand on the screen
      */
     public BlackjackInterfaceManager(Player user, Player dealer, TextView userHand, TextView dealerHand) {
