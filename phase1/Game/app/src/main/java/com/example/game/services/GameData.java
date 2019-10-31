@@ -9,9 +9,10 @@ public class GameData {
     /**
      * Change what value is being stored in USERNAME; to be called when a
      * user logs in/creates a new account
+     *
      * @param username - the new username
      */
-    public static void setUsername(String username){
+    public static void setUsername(String username) {
         USERNAME = username;
     }
 }
