@@ -9,17 +9,12 @@ public class GameManager {
      * Leader board keeps track of top three players.
      */
     int[] leaderBoard = new int[3];
-    /**
-     * Rules for the game.
-     */
-    String rules;
 
     /**
      * Create a gameManager
      */
     public GameManager() {
         this.game = new Game();
-        this.rules = "";
     }
 
     // call this class whenever a new GTN game is about to be played

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +12,7 @@ import com.example.game.R;
 
 public class GameStartActivity extends AppCompatActivity {
     public static GameManager gameManager = new GameManager();
+    boolean rulesAppear = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,19 @@ public class GameStartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameStartActivity1.class);
         startActivity(intent);
     }
+
+    public void rules(View view) {
+        TextView rulesText = findViewById(R.id.rulesText);
+        if (!rulesAppear) {
+            rulesText.setVisibility(View.VISIBLE);
+            rulesAppear = true;
+        }
+        else {
+            rulesText.setVisibility(View.INVISIBLE);
+            rulesAppear = false;
+        }
+    }
+
 
 
 }
