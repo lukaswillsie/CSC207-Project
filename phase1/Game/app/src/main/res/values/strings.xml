@@ -46,5 +46,5 @@
     <string name="pauseAndExit">Pause and exit</string>
     <string name="congrats">Congratulations! You guessed the correct number.</string>
     <string name="stats">Stats</string>
-    <string name="game">Game</string>
+    <string name="game">Games</string>
 </resources>
