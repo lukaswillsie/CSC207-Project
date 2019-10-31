@@ -29,6 +29,11 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     public static final int PLAY_AGAIN_BUTTON_ID = R.id.playAgainButton;
 
     /**
+     * The note to be displayed at the top of the screen
+     */
+    private static final String note = "Note: A \u2588 represents a card the dealer has that you can't see";
+
+    /**
      * The LevelManager that will play the game taking place in this activity
      */
     public static LevelManager levelManager;
@@ -67,6 +72,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.playScore)).setText(scoreText);
 
         numHands = new SettingsManagerBuilder().build(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
+        
+        ((TextView)findViewById(R.id.blackjackNote)).setText(note);
     }
 
     /**

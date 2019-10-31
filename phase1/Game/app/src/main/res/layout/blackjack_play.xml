@@ -131,4 +131,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/blackjackNote"
+        android:layout_width="297dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="72dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/dealerHandLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
