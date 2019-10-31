@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         username = GameData.USERNAME;
-        String welcomeText = "Welcome, " + username + "!";
+        String name = username.substring(0, 1).toUpperCase() + username.substring(1).toLowerCase();
+        String welcomeText = "Welcome, " + name + "!";
         ((TextView)findViewById(R.id.welcomeText)).setText(welcomeText);
 
         File usersDir = getDir("users", 0);
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void playBlackjack(View view){
         Intent intent = new Intent(this, BlackjackStartActivity.class);
+        startActivity(intent);
+    }
+    public void playCowsAndBulls(View view){
+        Intent intent = new Intent(this, CowsBullsActivity.class);
         startActivity(intent);
     }
     public void chooseTheNum(View view){

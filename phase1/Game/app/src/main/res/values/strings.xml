@@ -47,4 +47,7 @@
     <string name="congrats">Congratulations! You guessed the correct number.</string>
     <string name="stats">Stats</string>
     <string name="game">Games</string>
+    <string name="cnb">Cows and Bulls</string>
+    <string name="select">Please select a game:</string>
+    <string name="time">0:00</string>
 </resources>
