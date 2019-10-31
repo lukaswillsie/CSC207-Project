@@ -1,6 +1,8 @@
 package com.example.game.level3;
 
 import java.util.HashMap;
+import java.util.*;
+
 
 /**
  * A class that deals with a guess that a player makes.
@@ -81,18 +83,23 @@ public class Guess {
      * of times this element appears in the answer is returned.
      */
     private int getCorrectElements() {
-        HashMap<String, Integer> guessElements = new HashMap<>();
-        HashMap<String, Integer> answerElements = new HashMap<>();
+        HashMap<String, Integer> guessElements = createMap(this.guessArray);
+        HashMap<String, Integer> answerElements = createMap(this.answerArray);
 
-        for (int i = 0; i < this.guessSize; i++) {
-            String guessElement = this.guessArray[i];
-            String answerElement = this.answerArray[i];
-            if (!guessElements.containsKey(guessElement)) {
-                guessElements.put(guessElement, 1);
-            } else {
-                guessElements.put(guessElement, guessElements.get(guessElement) + 1);
+        int correctCounter = 0;
+        for (Map.Entry mapElement : answerElements.entrySet()) {
+            String key = (String) mapElement.getKey();
+
+            if (guessElements.containsKey(key)) {
+                correctCounter += Math.min(guessElements.get(key), answerElements.get(key));
             }
         }
+<<<<<<< HEAD
+
+        return correctCounter;
+
+=======
+>>>>>>> eca6089e1483c864faf34ec827ee7a263cd98103
     }
 
 }
