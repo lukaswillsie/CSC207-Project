@@ -24,5 +24,14 @@ public class TurnData {
         this.numberCows = guess.getCows();
     }
 
+    /**
+     * A method that returns the data for this turn.
+     *
+     * @return This TurnData object.
+     */
+    public TurnData getTurnData() {
+        return this;
+    }
+
 
 }
