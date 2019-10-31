@@ -81,11 +81,6 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         levelManager.setup();
         levelManager.play();
 
-        score = getIntent().getIntExtra(BlackjackStartActivity.tag + ".score", 0);
-
-        String scoreText = "Score: " + score;
-        ((TextView) findViewById(R.id.playScore)).setText(scoreText);
-
         numHands = new SettingsManagerBuilder().build(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
 
         ((TextView)findViewById(R.id.blackjackNote)).setText(note);
@@ -156,14 +151,9 @@ public class BlackjackPlayActivity extends AppCompatActivity {
             if(currentStreak > longestStreak){
                 longestStreak = currentStreak;
             }
-            score += 100;
             wins++;
         } else {
             currentStreak = 0;
-            score -= 50;
         }
-
-        String scoreText = "Score: " + score;
-        ((TextView) findViewById(R.id.playScore)).setText(scoreText);
     }
 }

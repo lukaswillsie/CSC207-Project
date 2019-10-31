@@ -22,7 +22,6 @@ public class BlackjackStartActivity extends AppCompatActivity {
 
     public void startGame(View view) {
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
-        intent.putExtra(tag + ".score", 500);
         startActivity(intent);
     }
 }
