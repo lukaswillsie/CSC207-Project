@@ -19,27 +19,23 @@ public class Guess {
     String[] answerArray;
 
     /**
+     * Create a new Guess object. A precondition is that guessArray and answerArray must
+     * have the same size.
+     *
      * @param guessArray  An array of the guess made by the player.
-     * @param answerArray An array of the answer that the player is trying to guess.
-     * @throws SizeException An exception for when the guess and answer are of different sizes.
+     * @param answerArray¬ An array of the answer that the player is trying to guess.
      */
-    public Guess(String[] guessArray, String[] answerArray) throws SizeException {
-        int guessArraySize = guessArray.length;
-        int answerArraySize = answerArray.length;
-
-        if (guessArraySize != answerArraySize) {
-            throw new SizeException();
-        }
+    public Guess(String[] guessArray, String[] answerArray) {
         this.guessArray = guessArray;
         this.answerArray = answerArray;
-        this.guessSize = guessArraySize;
+        this.guessSize = guessArray.length;
     }
 
     /**
      * A method that returns the number of cows (the number of elements that were correctly guessed
      * and in the right position).
      */
-    private int getCows() {
+    int getCows() {
 
         int numberCows = 0;
 
@@ -105,13 +101,10 @@ public class Guess {
      *
      * @return The number of correct elements, but in the wrong spot.
      */
-    private int getBulls() {
+    int getBulls() {
 
-        /**  The number of cows is the total number of correct guessed regardless of their spots
-         *  minus the number of correct guesses in the right spots.
-         */
-
-
+        //  The number of cows is the total number of correct guessed regardless of their spots
+        //  minus the number of correct guesses in the right spots.
         return getCorrectElements() - getCows();
 
     }
