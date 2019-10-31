@@ -15,6 +15,12 @@ import com.example.game.level1.services.LevelManagerBuilder;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManagerBuilder;
 
+import java.text.DecimalFormat;
+
+import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
+import static com.example.game.data.GameConstants.WIN_RATE_KEY;
+import static com.example.game.data.GameConstants.TAG;
+
 public class BlackjackPlayActivity extends AppCompatActivity {
     /**
      * Constants that record the IDs of the various UI elements
@@ -44,6 +50,11 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     private int score;
 
     /**
+     * The number of wins the player has
+     */
+    private int wins = 0;
+
+    /**
      * The number of hands this player chose to play in their settings
      */
     private int numHands;
@@ -52,6 +63,10 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * The number of hands this player has played so far
      */
     private int numHandsPlayed = 0;
+
+    private int longestStreak = 0;
+
+    private int currentStreak = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +87,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.playScore)).setText(scoreText);
 
         numHands = new SettingsManagerBuilder().build(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
-        
+
         ((TextView)findViewById(R.id.blackjackNote)).setText(note);
     }
 
@@ -113,6 +128,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     public void endGame(View view) {
         Intent intent = new Intent(this, EndGameActivity.class);
+        intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * ((float)(wins) / (float)numHandsPlayed)) + "%");
+        intent.putExtra(TAG + LONGEST_STREAK_KEY, longestStreak);
         startActivity(intent);
     }
 
@@ -135,8 +152,14 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         endGameTextView.setVisibility(View.VISIBLE);
 
         if (playerWin) {
+            currentStreak += 1;
+            if(currentStreak > longestStreak){
+                longestStreak = currentStreak;
+            }
             score += 100;
+            wins++;
         } else {
+            currentStreak = 0;
             score -= 50;
         }
 

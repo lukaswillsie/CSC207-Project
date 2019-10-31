@@ -53,4 +53,7 @@
     <string name="fewGuess">Fewest Guesses in Guess the Number:</string>
     <string name="longestStreak">Longest Streak in Black Jack:</string>
     <string name="quickTime">Quickest Time in Cows and Bulls:</string>
+    <string name="win_rate_label">Win Rate:</string>
+    <string name="longest_streak_label">Longest Streak:</string>
+    <string name="main_menu">Main Menu</string>
 </resources>
