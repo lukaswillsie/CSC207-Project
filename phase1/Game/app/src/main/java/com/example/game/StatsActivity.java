@@ -37,10 +37,5 @@ public class StatsActivity extends AppCompatActivity {
 
         longestStreak = findViewById(R.id.longestStreak);
         longestStreak.setText(String.valueOf(statsManager.getStat(Statistic.LONGEST_STREAK)));
-
-
     }
-
-
-
 }

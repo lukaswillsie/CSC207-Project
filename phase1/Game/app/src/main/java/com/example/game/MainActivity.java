@@ -79,8 +79,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToSettings(View view){
+    public void setting(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void stats(View view) {
+        Intent intent = new Intent(this, StatsActivity.class);
         startActivity(intent);
     }
 }
