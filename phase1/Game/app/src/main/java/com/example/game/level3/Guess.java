@@ -23,7 +23,7 @@ public class Guess {
      * have the same size.
      *
      * @param guessArray  An array of the guess made by the player.
-     * @param answerArray An array of the answer that the player is trying to guess.
+     * @param answerArray¬ An array of the answer that the player is trying to guess.
      */
     public Guess(String[] guessArray, String[] answerArray) {
         this.guessArray = guessArray;
