@@ -2,9 +2,6 @@ package com.example.game.level3;
 
 import java.util.ArrayList;
 
-import org.apache.commons.text.CharacterPredicates;
-import org.apache.commons.text.RandomStringGenerator;
-
 /**
  * A GameManager class that handles all of the game logic.
  */
