@@ -27,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".level1.activities.BlackjackBetActivity" />
         <activity android:name=".level1.activities.EndGameActivity" />
         <activity android:name=".level1.activities.BlackjackPlayActivity" />
         <activity android:name=".level1.activities.BlackjackStartActivity" />

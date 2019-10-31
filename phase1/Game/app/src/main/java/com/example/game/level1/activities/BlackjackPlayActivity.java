@@ -64,8 +64,14 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     private int numHandsPlayed = 0;
 
+    /**
+     * The maximum number of hands this user has won in a row this round
+     */
     private int longestStreak = 0;
 
+    /**
+     * The current number of hands the user has won in a row
+     */
     private int currentStreak = 0;
 
     @Override

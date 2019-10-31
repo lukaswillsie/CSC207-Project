@@ -24,13 +24,20 @@ public class EndGameActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.winRateDisplay)).setText(getIntent().getStringExtra(GameConstants.TAG + GameConstants.WIN_RATE_KEY));
     }
 
-
+    /**
+     * Starts BlackjackPlayActivity to play another round of Blackjack
+     * @param view - the View that called this method
+     */
     public void playAnotherRound(View view)
     {
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Starts MainActivity; goes back to main menu
+     * @param view - the View that called this method
+     */
     public void mainMenu(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

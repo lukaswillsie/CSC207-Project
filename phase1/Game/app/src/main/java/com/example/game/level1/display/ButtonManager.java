@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ButtonManager {
+    /**
+     * The collection of buttons being managed at any given time
+     */
     private static List<Button> buttons;
 
     /**
@@ -28,7 +31,7 @@ public class ButtonManager {
     /**
      * Get all the buttons from the given ViewGroup and add them to buttons
      * <p>
-     * This code setup courtesy of Gopal Gopi on StackOverflow
+     * This code from Gopal Gopi on StackOverflow
      *
      * @param viewGroup - the ViewGroup to get all the buttons from
      */
