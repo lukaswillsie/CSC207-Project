@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.game.data.Setting;
 import com.example.game.level2.GameStartActivity;
 import com.example.game.level1.activities.BlackjackStartActivity;
+import com.example.game.level3.CowsBullsActivity;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;

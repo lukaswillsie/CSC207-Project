@@ -99,5 +99,7 @@ public class SettingsActivity extends AppCompatActivity {
         settingsManager.updateSetting(Setting.NUM_HANDS, numHandsBar.getProgress());
         settingsManager.updateSetting(Setting.NUM_ROUNDS, numRoundsBar.getProgress());
         settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1: 0);
+
+
     }
 }
