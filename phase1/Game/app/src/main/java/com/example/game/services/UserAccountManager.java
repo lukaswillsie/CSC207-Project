@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.game.data.Setting;
+import com.example.game.data.Statistic;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -99,8 +100,8 @@ public class UserAccountManager implements AccountManager {
             for(Setting setting : Setting.values()){
                 settingStream.write((setting.getKey() + "=" + setting.getDefaultValue() + "\n").getBytes());
             }
-            for(String stat: stats){
-                statsStream.write((stat + "\n").getBytes());
+            for(Statistic stat: Statistic.values()){
+                statsStream.write((stat.getKey() + "=" + stat.getValue() + "\n").getBytes());
             }
             passwordStream.write(password.getBytes());
         }
