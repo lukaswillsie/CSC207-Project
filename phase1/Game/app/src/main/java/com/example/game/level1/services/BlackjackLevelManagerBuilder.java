@@ -14,7 +14,7 @@ public class BlackjackLevelManagerBuilder {
     /**
      * Build a new LevelManager for the given activity
      * @param activity -  the activity that wants the BlackjackManager
-     * @return a LevelManager object
+     * @return a BlackjackLevelManager object
      */
     public BlackjackLevelManager build(BlackjackPlayActivity activity) {
         TextView userHand = activity.findViewById(BlackjackPlayActivity.PLAYER_HAND_ID);
