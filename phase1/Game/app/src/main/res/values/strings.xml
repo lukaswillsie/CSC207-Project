@@ -50,4 +50,7 @@
     <string name="cnb">Cows and Bulls</string>
     <string name="select">Please select a game:</string>
     <string name="time">0:00</string>
+    <string name="fewGuess">Fewest Guesses in Guess the Number:</string>
+    <string name="longestStreak">Longest Streak in Black Jack:</string>
+    <string name="quickTime">Quickest Time in Cows and Bulls:</string>
 </resources>
