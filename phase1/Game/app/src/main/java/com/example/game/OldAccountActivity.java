@@ -30,7 +30,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
     }
 
     private String getPassword(){
-        return ((TextView)findViewById(R.id.oldAccountPasswordTextField)).getText().toString();
+        return ((TextView)findViewById(R.id.newAccountPasswordTextField)).getText().toString();
     }
 
     private String getUsername(){
@@ -39,7 +39,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
 
     @Override
     public void login() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainPageActivity.class);
         GameData.setUsername(username);
         startActivity(intent);
     }

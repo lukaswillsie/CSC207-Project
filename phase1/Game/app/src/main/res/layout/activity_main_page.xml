@@ -4,40 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewAccountActivity">
+    tools:context=".MainPage">
 
-    <EditText
-        android:id="@+id/newAccountUsernameTextField"
+    <Button
+        android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="97dp"
-        android:ems="10"
-        android:hint="@string/prompt_username"
-        android:inputType="textPersonName"
+        android:layout_marginTop="192dp"
+        android:onClick="setting"
+        android:text="@string/settings"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:onClick="register"
-        android:text="@string/action_sign_in"
+        android:layout_marginTop="40dp"
+        android:onClick="games"
+        android:text="@string/game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountPasswordTextField" />
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
-    <EditText
-        android:id="@+id/newAccountPasswordTextField"
+    <Button
+        android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="@string/prompt_password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/newAccountUsernameTextField"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountUsernameTextField" />
-
+        android:layout_marginTop="40dp"
+        android:text="@string/stats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

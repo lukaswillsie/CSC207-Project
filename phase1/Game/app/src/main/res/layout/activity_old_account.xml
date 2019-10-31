@@ -27,10 +27,10 @@
         android:text="@string/login_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/oldAccountPasswordTextField" />
+        app:layout_constraintTop_toBottomOf="@+id/newAccountPasswordTextField" />
 
     <EditText
-        android:id="@+id/oldAccountPasswordTextField"
+        android:id="@+id/newAccountPasswordTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

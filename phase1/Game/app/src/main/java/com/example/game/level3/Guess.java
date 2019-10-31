@@ -93,7 +93,6 @@ public class Guess {
                 guessElements.put(guessElement, guessElements.get(guessElement) + 1);
             }
         }
-
     }
 
 }
