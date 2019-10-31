@@ -45,9 +45,9 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     public static LevelManager levelManager;
 
     /**
-     * The player's score
+     * The class managing the buttons in this Activity
      */
-    private int score;
+    private ButtonManager buttonManager;
 
     /**
      * The number of wins the player has
@@ -79,7 +79,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
 
-        ButtonManager.setup(this);
+        buttonManager = new ButtonManager(this);
 
         LevelManagerBuilder builder = new LevelManagerBuilder();
         levelManager = builder.build(this);
@@ -111,10 +111,10 @@ public class BlackjackPlayActivity extends AppCompatActivity {
         LevelManagerBuilder builder = new LevelManagerBuilder();
         levelManager = builder.build(this);
 
-        ButtonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
-        ButtonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
-        ButtonManager.enableButton(HIT_BUTTON_ID);
-        ButtonManager.enableButton(STAND_BUTTON_ID);
+        buttonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
+        buttonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
+        buttonManager.enableButton(HIT_BUTTON_ID);
+        buttonManager.enableButton(STAND_BUTTON_ID);
 
         findViewById(END_GAME_TEXT_ID).setVisibility(View.INVISIBLE);
 
@@ -141,12 +141,14 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param endGameText - the text to display as a result of the game ending
      */
     public void gameOver(String endGameText, boolean playerWin) {
+        buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
+        buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
         numHandsPlayed++;
         if(numHandsPlayed == numHands){
-            ButtonManager.makeVisible(END_GAME_BUTTON_ID);
+            buttonManager.makeVisible(END_GAME_BUTTON_ID);
         }
         else {
-            ButtonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
+            buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
         }
         TextView endGameTextView = findViewById(END_GAME_TEXT_ID);
         endGameTextView.setText(endGameText);

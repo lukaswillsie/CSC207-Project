@@ -12,7 +12,7 @@ public class ButtonManager {
     /**
      * The collection of buttons being managed at any given time
      */
-    private static List<Button> buttons;
+    private List<Button> buttons;
 
     /**
      * Setup the ButtonManager for use. Must be called each time a new activity
@@ -21,7 +21,7 @@ public class ButtonManager {
      * Gets all the buttons from the given activity and keeps them in a List
      * @param activity - the activity that wants the ButtonManager
      */
-    public static void setup(Activity activity) {
+    public ButtonManager(Activity activity) {
         buttons = new ArrayList<>();
 
         ViewGroup viewGroup = (ViewGroup) activity.getWindow().getDecorView();
@@ -35,7 +35,7 @@ public class ButtonManager {
      *
      * @param viewGroup - the ViewGroup to get all the buttons from
      */
-    private static void populateButtons(ViewGroup viewGroup) {
+    private void populateButtons(ViewGroup viewGroup) {
         for (int i = 0, n = viewGroup.getChildCount(); i < n; i++) {
             View view = viewGroup.getChildAt(i);
             if (view instanceof ViewGroup) {
@@ -53,7 +53,7 @@ public class ButtonManager {
      * Does nothing if no button has the given id
      * @param id - the id of the button to disable
      */
-    public static void disableButton(int id) {
+    public void disableButton(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setEnabled(false);
@@ -67,7 +67,7 @@ public class ButtonManager {
      * The button's visibility will remain unchanged
      * @param id - the id of the button to enable
      */
-    public static void enableButton(int id) {
+    public void enableButton(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setEnabled(true);
@@ -81,7 +81,7 @@ public class ButtonManager {
      *
      * @param id - the id of the button to make invisible
      */
-    public static void makeButtonInvisible(int id) {
+    public void makeButtonInvisible(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setVisibility(View.INVISIBLE);
@@ -95,7 +95,7 @@ public class ButtonManager {
      *
      * @param id - the id of the button to make visible
      */
-    public static void makeVisible(int id) {
+    public void makeVisible(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setVisibility(View.VISIBLE);

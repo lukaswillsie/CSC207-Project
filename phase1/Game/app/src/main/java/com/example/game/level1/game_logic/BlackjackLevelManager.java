@@ -34,6 +34,10 @@ public class BlackjackLevelManager extends LevelManager {
     private InterfaceManager interfaceManager;
 
     /**
+     * The ButtonManager
+     */
+
+    /**
      * Create a new BlackjackLevelManager
      *
      * @param user             - the user of the app
@@ -80,16 +84,12 @@ public class BlackjackLevelManager extends LevelManager {
                 user.deal(deck.deal());
                 if (user.computeBlackJackValue() > 21) {
                     interfaceManager.update();
-                    ButtonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
-                    ButtonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
                     endGame();
                     return;
                 }
                 interfaceManager.update();
             }
         } else if (view.getId() == BlackjackPlayActivity.STAND_BUTTON_ID) {
-            ButtonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
-            ButtonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
             endGame();
         }
     }
