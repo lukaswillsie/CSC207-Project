@@ -94,12 +94,8 @@ public class Guess {
                 correctCounter += Math.min(guessElements.get(key), answerElements.get(key));
             }
         }
-<<<<<<< HEAD
-
         return correctCounter;
 
-=======
->>>>>>> eca6089e1483c864faf34ec827ee7a263cd98103
     }
 
 }
