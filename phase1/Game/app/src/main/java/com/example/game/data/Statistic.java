@@ -1,8 +1,9 @@
 package com.example.game.data;
 
-public enum Statistic {
+public enum Statistic{
     FEWEST_GUESSES("FewestGuesses",0),
-    LONGEST_STREAK("LongestStreak",0);
+    LONGEST_STREAK("LongestStreak",0),
+    QUICKEST_TIME("QuickestTime", 0);
 
     /**
      * The key that will be used to store this statistic in the stats file
@@ -19,16 +20,16 @@ public enum Statistic {
     /**
      * The initial value of this statistic
      */
-    private int initialValue;
+    private int Value;
 
     /**
      * Create a new Statistic with the given key and initial value
      * @param key - the key of this Statistic
-     * @param initialValue - the initial value of this Statistic
+     * @param Value - the value of this Statistic
      */
-    Statistic(String key, int initialValue){
+    Statistic(String key, int Value){
         this.key = key;
-        this.initialValue = initialValue;
+        this.Value = Value;
     }
 
     /**
@@ -43,7 +44,7 @@ public enum Statistic {
      * Get the initial value of this Statistic
      * @return - the initial value of this statistic
      */
-    public int getInitialValue(){
-        return initialValue;
+    public int getValue(){
+        return Value;
     }
 }

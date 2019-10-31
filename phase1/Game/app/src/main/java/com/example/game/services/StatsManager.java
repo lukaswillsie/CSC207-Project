@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.services;
 
 import com.example.game.data.Statistic;
 
