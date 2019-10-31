@@ -1,10 +1,6 @@
 package com.example.game.level1.game_logic;
 
-import android.view.View;
-
-import com.example.game.level1.activities.BlackjackPlayActivity;
 import com.example.game.level1.activities.BlackjackPlayPage;
-import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.domain.BlackjackPlayerManager;
 import com.example.game.level1.domain.Deck;
 
@@ -73,6 +69,9 @@ public class BlackjackLevelManager {
         interfaceManager.update();
     }
 
+    /**
+     * Tells this object that the player requested a hit
+     */
     public void playerHit(){
         if (playerTurn) {
             user.deal(deck.deal());
@@ -85,6 +84,9 @@ public class BlackjackLevelManager {
         }
     }
 
+    /**
+     * Tells this object that the player stood
+     */
     public void playerStand(){
         endGame();
     }
