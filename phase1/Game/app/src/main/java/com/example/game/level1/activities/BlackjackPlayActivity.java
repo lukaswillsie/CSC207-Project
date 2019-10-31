@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.level1.display.ButtonManager;
-import com.example.game.level1.game_logic.LevelManager;
-import com.example.game.level1.services.LevelManagerBuilder;
+import com.example.game.level1.game_logic.BlackjackLevelManager;
+import com.example.game.level1.services.BlackjackLevelManagerBuilder;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManagerBuilder;
 
@@ -21,7 +21,7 @@ import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
 import static com.example.game.data.GameConstants.WIN_RATE_KEY;
 import static com.example.game.data.GameConstants.TAG;
 
-public class BlackjackPlayActivity extends AppCompatActivity {
+public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage {
     /**
      * Constants that record the IDs of the various UI elements
      * To be used throughout this level as objects interact with UI elements
@@ -42,7 +42,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     /**
      * The LevelManager that will play the game taking place in this activity
      */
-    public static LevelManager levelManager;
+    public static BlackjackLevelManager levelManager;
 
     /**
      * The class managing the buttons in this Activity
@@ -81,7 +81,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
 
         buttonManager = new ButtonManager(this);
 
-        LevelManagerBuilder builder = new LevelManagerBuilder();
+        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
         levelManager = builder.build(this);
 
         levelManager.setup();
@@ -98,7 +98,12 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param view - the button that was clicked
      */
     public void buttonClick(View view) {
-        levelManager.userButtonClick(view);
+        if(view.getId() == HIT_BUTTON_ID) {
+            levelManager.playerHit();
+        }
+        else if (view.getId() == STAND_BUTTON_ID){
+            levelManager.playerStand();
+        }
     }
 
     /**
@@ -108,7 +113,7 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param view - the button that was clicked
      */
     public void playAgain(View view) {
-        LevelManagerBuilder builder = new LevelManagerBuilder();
+        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
         levelManager = builder.build(this);
 
         buttonManager.makeButtonInvisible(END_GAME_BUTTON_ID);

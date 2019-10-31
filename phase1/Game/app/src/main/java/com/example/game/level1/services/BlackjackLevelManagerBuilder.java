@@ -9,15 +9,14 @@ import com.example.game.level1.domain.Player;
 import com.example.game.level1.game_logic.BlackjackInterfaceManager;
 import com.example.game.level1.game_logic.BlackjackLevelManager;
 import com.example.game.level1.game_logic.InterfaceManager;
-import com.example.game.level1.game_logic.LevelManager;
 
-public class LevelManagerBuilder {
+public class BlackjackLevelManagerBuilder {
     /**
      * Build a new LevelManager for the given activity
      * @param activity -  the activity that wants the BlackjackManager
      * @return a LevelManager object
      */
-    public LevelManager build(BlackjackPlayActivity activity) {
+    public BlackjackLevelManager build(BlackjackPlayActivity activity) {
         TextView userHand = activity.findViewById(BlackjackPlayActivity.PLAYER_HAND_ID);
         TextView dealerHand = activity.findViewById(BlackjackPlayActivity.DEALER_HAND_ID);
 
@@ -30,9 +29,6 @@ public class LevelManagerBuilder {
 
         InterfaceManager interfaceManager = new BlackjackInterfaceManager(user, dealer, userHand, dealerHand);
 
-        LevelManager manager = new BlackjackLevelManager(userManager, dealerManager, deck, interfaceManager);
-        manager.setActivity(activity);
-
-        return manager;
+        return new BlackjackLevelManager(userManager, dealerManager, deck, interfaceManager, activity);
     }
 }
