@@ -38,7 +38,7 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
 
     @Override
     public void login() {
-        Intent intent = new Intent(this, MainPageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         GameData.setUsername(username);
 
         startActivity(intent);
