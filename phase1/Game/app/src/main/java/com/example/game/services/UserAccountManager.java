@@ -12,10 +12,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Scanner;
 
-import static com.example.game.GameConstants.PASSWORD_FILE_NAME;
-import static com.example.game.GameConstants.SETTINGS_FILE_NAME;
-import static com.example.game.GameConstants.STATS_FILE_NAME;
-import static com.example.game.GameConstants.USERS_DIR_NAME;
+import static com.example.game.data.GameConstants.PASSWORD_FILE_NAME;
+import static com.example.game.data.GameConstants.SETTINGS_FILE_NAME;
+import static com.example.game.data.GameConstants.STATS_FILE_NAME;
+import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 
 public class UserAccountManager implements AccountManager {
     /**

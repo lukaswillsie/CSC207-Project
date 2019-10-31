@@ -12,8 +12,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.example.game.GameConstants.SETTINGS_FILE_NAME;
-import static com.example.game.GameConstants.USERS_DIR_NAME;
+import static com.example.game.data.GameConstants.SETTINGS_FILE_NAME;
+import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 
 public class UserSettingsManager implements SettingsManager {
     /**
