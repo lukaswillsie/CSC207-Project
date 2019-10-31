@@ -1,10 +1,11 @@
 package com.example.game.level2;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 
@@ -19,15 +20,14 @@ public class GameStartActivity extends AppCompatActivity {
         Game game = gameManager.getCurrentGame();
         if (game.isFinished() || game.getPoints() == 0) {
             btn.setVisibility(View.INVISIBLE);
-        }
-        else {
-            btn.setVisibility(View.VISIBLE);;
+        } else {
+            btn.setVisibility(View.VISIBLE);
         }
         // create a SettingsManager
         // pass in this
     }
 
-    public void startTheGame(View view){
+    public void startTheGame(View view) {
         gameManager.startNewGame();
         Intent intent = new Intent(this, GameStartActivity1.class);
         startActivity(intent);
