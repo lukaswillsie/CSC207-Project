@@ -27,6 +27,9 @@ import com.example.game.services.StatsManagerBuilder;
 import java.time.Duration;
 import java.util.ArrayList;
 
+/**
+ * The activity that appears right before the user is about to start a game of Cows and Bulls.
+ */
 public class CowsBullsActivity extends AppCompatActivity {
     private TextView timer;
     private EditText guess;
@@ -39,7 +42,6 @@ public class CowsBullsActivity extends AppCompatActivity {
     private StatsManager statsManager;
     long startTime;
     String username = GameData.USERNAME;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

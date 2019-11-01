@@ -15,6 +15,9 @@ import com.example.game.services.GameData;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
 
+/**
+ * This activity appears when the user successfully completes a round of Cows and Bulls.
+ */
 public class CowsBullsFinishActivity extends AppCompatActivity {
 
     TextView time;
@@ -32,10 +35,10 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
         time.setText(((Integer) statsManager.getStat(Statistic.TIME_TAKEN)).toString() + " seconds");
 
         numGuesses = findViewById(R.id.numGuesses);
-        numGuesses.setText(((Integer)statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString());
+        numGuesses.setText(((Integer) statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString());
     }
 
-    public void menu(View view){
+    public void menu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
