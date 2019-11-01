@@ -75,12 +75,12 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
-        if (currentGuess.length() == 4 && !currentGuess.equals("null")) {
+        if (currentGuess.length() == 5 || !currentGuess.equals("null")) {
             guess.setText("");
             String[] guessArray = currentGuess.split("");
             this.gameManager.setGuess(guessArray);
 
-            if (getBulls() == 4) {
+            if (getBulls() == 5) {
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
                 StatsManager statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
