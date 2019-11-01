@@ -3,7 +3,6 @@ package com.example.game.level2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,11 +49,11 @@ public class GameFinishActivity extends AppCompatActivity {
     }
 
     /**
-     * When the playAgain button is clicked, the user is taken to the GameStartActivity1 activity
+     * When the playAgain button is clicked, the user is taken to the GuessTheNumberPlayActivity activity
      * which will allow them to play GuessTheNumber again.
      */
     public void playAgainClick(View view) {
-        Intent intent = new Intent(this, GameStartActivity1.class);
+        Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
         gameManager.startNewGame();
         startActivity(intent);
     }
@@ -64,7 +63,7 @@ public class GameFinishActivity extends AppCompatActivity {
      * GuessTheNumber.
      */
     public void nextRound(View view) {
-        Intent intent = new Intent(this, GameStartActivity1.class);
+        Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
         gameManager.startNewGame();
         startActivity(intent);
     }

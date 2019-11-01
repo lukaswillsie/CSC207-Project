@@ -10,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
-public class GameStartActivity1 extends AppCompatActivity {
+/**
+ * This page displayed when user is actually playing a game.
+ */
+public class GuessTheNumberPlayActivity extends AppCompatActivity {
     GameManager gameManager = GameStartActivity.gameManager;
     static int guess;
 
@@ -22,13 +25,15 @@ public class GameStartActivity1 extends AppCompatActivity {
     }
 
     /**
-     * Assuming that a user inserted a number.
-     * @return
+     * Assuming that a user inserted a number; this method gets the input.
      */
     private int getGuess() {
         return Integer.valueOf(((TextView) findViewById(R.id.guessInput)).getText().toString());
     }
 
+    /**
+     *Based on the user's guess, we display respective page/text and update some statistics.
+     */
     public void submitGuess(View view) {
         try {
             guess = getGuess();
@@ -55,20 +60,38 @@ public class GameStartActivity1 extends AppCompatActivity {
         }
     }
 
+    /**
+     * Allows user to pause the game, save it and exit to the MainActivity.
+     */
     public void pauseExit(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Display the text if the user's guess is too high.
+     */
     public void highGuess(){
         ((TextView) findViewById(R.id.textView)).setText("Your guess is too high, try again.");
     }
+
+    /**
+     * Display the text if the user's guess is too low.
+     */
     public void lowGuess(){
         ((TextView) findViewById(R.id.textView)).setText("Your guess is too low, try again.");
     }
+
+    /**
+     * Displays the text if the user's input is null or a number bigger than 10^9.
+     */
     public void BadNumber(){
         ((TextView) findViewById(R.id.textView)).setText("You either did not enter the number or your number is too big, please try again");
     }
+
+    /**
+     * Updates the display of the #points and #guesses.
+     */
     public void updateScore(){
         Game currentGame = gameManager.getCurrentGame();
         ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));

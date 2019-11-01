@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.services.GameData;
@@ -32,13 +31,13 @@ public class GameStartActivity extends AppCompatActivity {
         this.SetNumRounds();
         }
     /**
-     * When a user clicks the start button, the GameStartActivity1 activity appears and the user
+     * When a user clicks the start button, the GuessTheNumberPlayActivity activity appears and the user
      * proceeds to start a new game of GuessTheNumber
      */
     public void startTheGame(View view) {
         gameManager.resetCurrentRounds();
         gameManager.startNewGame();
-        Intent intent = new Intent(this, GameStartActivity1.class);
+        Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
         startActivity(intent);
     }
 
@@ -47,7 +46,7 @@ public class GameStartActivity extends AppCompatActivity {
      * the game that the user has previously paused on.
      */
     public void resumeGame(View view) {
-        Intent intent = new Intent(this, GameStartActivity1.class);
+        Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
         startActivity(intent);
     }
 
