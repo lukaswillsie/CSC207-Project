@@ -30,6 +30,7 @@ public class GameManager {
             int rand = (int) (Math.random() * alphabet.length);
 
             this.answerArray[i] = alphabet[rand];
+            System.out.println(answerArray[i]);
 
         }
     }
