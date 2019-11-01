@@ -6,8 +6,16 @@ public final class GameConstants {
      */
     public static final String TAG = "com.example.game";
 
+    /**
+     * The key to be used when passing the value of longestStreak between activities as an extra
+     * in an intent
+     */
     public static final String LONGEST_STREAK_KEY = "longestStreak";
 
+    /**
+     * The key to be used when passing the value of winRate between activities as an extra
+     * in an intent
+     */
     public static final String WIN_RATE_KEY = "winRate";
 
     /**
@@ -15,9 +23,18 @@ public final class GameConstants {
      */
     public static final String USERS_DIR_NAME = "users";
 
+    /**
+     * The name of the users settings file
+     */
     public static final String SETTINGS_FILE_NAME = "settings";
 
+    /**
+     * The name of the users statistics file
+     */
     public static final String STATS_FILE_NAME = "stats";
 
+    /**
+     * The name of the users password file
+     */
     public static final String PASSWORD_FILE_NAME = "password";
 }
