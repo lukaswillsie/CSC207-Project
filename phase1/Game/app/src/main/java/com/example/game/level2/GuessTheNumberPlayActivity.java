@@ -20,7 +20,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_start_activity1);
+        setContentView(R.layout.gtnum__play_activity);
         this.updateScore();
     }
 
