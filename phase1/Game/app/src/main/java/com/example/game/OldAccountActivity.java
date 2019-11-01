@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.services.GameData;
 import com.example.game.services.UserAccountManager;
 
+/**
+ * The page displayed when a user is logging in to an existing account
+ */
 public class OldAccountActivity extends AppCompatActivity implements OldUserPage {
-    private static String tag = "com.example.game.OldAccountActivity";
     private OldAccountActivityPresenter presenter;
     private String username;
 
@@ -26,7 +28,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
 
     public void login(View view) {
         username = getUsername();
-        presenter.loginNewUser(username, getPassword());
+        presenter.loginOldUser(username, getPassword());
     }
 
     private String getPassword() {

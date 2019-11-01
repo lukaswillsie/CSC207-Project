@@ -14,6 +14,9 @@ import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 
+/**
+ * The page displayed when a user is viewing or changing their settings
+ */
 public class SettingsActivity extends AppCompatActivity {
     private SettingsManager settingsManager;
     private SeekBar numHandsBar;

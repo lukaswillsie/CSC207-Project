@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.services.GameData;
 import com.example.game.services.UserAccountManager;
 
+/**
+ * The page displayed when a user is creating a new account
+ */
 public class NewAccountActivity extends AppCompatActivity implements NewUserPage {
-    private static String tag = "com.example.game.NewAccountActivity";
     private String username;
     private NewAccountActivityPresenter presenter;
 
