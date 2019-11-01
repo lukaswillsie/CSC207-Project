@@ -1,7 +1,7 @@
 package com.example.game.level2;
 
 /**
- * Represents one game instance, or rather, a "round" of GuessTheNumber
+ * Represents one game instance, or rather, a "round" of GuessTheNumber.
  */
 public class Game {
     /**
@@ -9,7 +9,7 @@ public class Game {
      */
     private int numOfGuess;
     /**
-     * Specify if game is finished
+     * Specify if game is finished.
      */
     private boolean finished;
     /**
@@ -23,13 +23,12 @@ public class Game {
     private int number;
 
     /**
-<<<<<<< HEAD
-     * Create a new Game for a user.
-=======
-     * Create a new Game.
->>>>>>> fa3d7174472b9a696f7848325ad582f450ba8a62
+     * range where the number we seek might be.
      */
     private int range = 5;
+    /**
+     * Create a new Game for a user.
+     */
     Game() {
         this.numOfGuess = 0;
         this.finished = false;
@@ -40,7 +39,7 @@ public class Game {
     /**
      * Finish the game.
      */
-    public void finishTheGame(int guess) {
+    void finishTheGame(int guess) {
         this.finished = true;
         this.updateStats(guess);
     }
@@ -53,8 +52,8 @@ public class Game {
     }
 
     /**
-     * Precondition for check the guess is the guess is not equal to the actual number.
-     * Return true iff the guess if less than the number we are seeking.
+     * Precondition for checkGuess is the guess is not equal to the actual number.
+     * Return true iff the guess is less than the number we are seeking.
      */
     boolean checkGuess(int guess) {
         this.updateStats(guess);
@@ -79,28 +78,28 @@ public class Game {
     /**
      * Returns the points that this game currently has.
      */
-    public int getPoints() {
+    int getPoints() {
         return this.points;
     }
 
     /**
      * Returns the number of guesses the user has already taken so far in this game.
      */
-    public int getNumOfGuess() {
+    int getNumOfGuess() {
         return this.numOfGuess;
     }
 
     /**
      * Returns true if this game is finished and false otherwise.
      */
-    public boolean isFinished() {
+    boolean isFinished() {
         return this.finished;
     }
 
     /**
      * Call this method when the game is finished.
      */
-    public void setIsFinished() {
+    void setIsFinished() {
         this.finished = true;
     }
 }
