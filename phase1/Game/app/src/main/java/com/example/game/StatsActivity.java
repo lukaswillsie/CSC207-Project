@@ -33,7 +33,8 @@ public class StatsActivity extends AppCompatActivity {
         fewestGuesses.setText(String.valueOf(statsManager.getStat(Statistic.FEWEST_GUESSES)));
 
         quickestTime = findViewById(R.id.quickestTime);
-        quickestTime.setText(String.valueOf(statsManager.getStat(Statistic.QUICKEST_TIME)));
+        String quickTime = String.valueOf(statsManager.getStat(Statistic.QUICKEST_TIME)) + "s";
+        quickestTime.setText(quickTime);
 
         longestStreak = findViewById(R.id.longestStreak);
         longestStreak.setText(String.valueOf(statsManager.getStat(Statistic.LONGEST_STREAK)));

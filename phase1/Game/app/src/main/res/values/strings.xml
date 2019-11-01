@@ -66,7 +66,7 @@
     <string name="cbsetting">Numeric/Alphabet Values for Cows and Bulls</string>
     <string name="timetaken">Time Taken:</string>
     <string name="numguesses">Turns Taken:</string>
-    <string name="congratulations">Woot Woot! You have guessed the right number!</string>
+    <string name="congratulations">☺ Woot Woot! You have guessed the right number!</string>
     <string name="statsbreakdown">Here is a summary of your hard work:</string>
     <string name="toMainMenu">go to main menu</string>
 

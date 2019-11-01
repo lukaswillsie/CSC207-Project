@@ -28,7 +28,6 @@ public class CowsBullsActivity extends AppCompatActivity {
     private TextView timer;
     private EditText guess;
     static String currentGuess;
-    private String smiley = ("☺");
     private Chronometer chronometer;
     private long elapsedTime;
     private LinearLayout linLayout;
@@ -77,37 +76,46 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public void checkGuess(View view) {
         currentGuess = guessInput();
-        System.out.println(currentGuess);
-        guess.setText("");
-        String[] guessArray = currentGuess.split("");
-        this.gameManager.setGuess(guessArray);
 
-        if (getBulls() == 4){
-            long stopTime = System.currentTimeMillis();
-            chronometer.stop();
-            statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
-            elapsedTime = stopTime - startTime;
-            int hours = (int) (elapsedTime/3600000);
-            int minutes = (int) (elapsedTime - hours * 3600000)/60000;
-            int seconds = (int) (elapsedTime - hours * 3600000 - minutes * 60000)/ 1000;
-            statsManager.setStat(Statistic.TIME_TAKEN, seconds);
-            int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);
-            if(seconds < minTime || minTime == 0){
-                statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
+        if (currentGuess.length() == 4 && !currentGuess.equals("null")) {
+            guess.setText("");
+            String[] guessArray = currentGuess.split("");
+            this.gameManager.setGuess(guessArray);
+
+            if (getBulls() == 4) {
+                long stopTime = System.currentTimeMillis();
+                chronometer.stop();
+                statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+                elapsedTime = stopTime - startTime;
+                int seconds = turnToSeconds(elapsedTime);
+                statsManager.setStat(Statistic.TIME_TAKEN, seconds);
+                int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);
+                if (seconds < minTime || minTime == 0) {
+                    statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
+                }
+                statsManager.setStat(Statistic.NUMBER_OF_GUESSES, getStatistics().size());
+                Intent intent = new Intent(this, CowsBullsFinishActivity.class);
+                startActivity(intent);
             }
-            statsManager.setStat(Statistic.NUMBER_OF_GUESSES, this.gameManager.getStatistics().size());
-            Intent intent = new Intent(this, CowsBullsFinishActivity.class);
-            startActivity(intent);
 
+
+            TextView currGuess = new TextView(CowsBullsActivity.this);
+            String textToDisplay = currentGuess + "     Bulls: " + getBulls() + " Cows: " + getCows();
+            currGuess.setText(textToDisplay);
+            currGuess.setGravity(Gravity.CENTER);
+            linLayout.addView(currGuess);
         }
+        guess.setText("");
+    }
 
-        TextView currGuess = new TextView(CowsBullsActivity.this);
-        String textToDisplay = currentGuess + "     Bulls: " + getBulls() + " Cows: " + getCows();
-        currGuess.setText(textToDisplay);
-        currGuess.setGravity(Gravity.CENTER);
-        linLayout.addView(currGuess);
-
-
+    /**
+     * Returns elapsedTime in seconds in and int
+     * @param elapsedTime - the time elapsed in milliSeconds
+     */
+    private int turnToSeconds(long elapsedTime){
+        int hours = (int) (elapsedTime/3600000);
+        int minutes = (int) (elapsedTime - hours * 3600000)/60000;
+        return (int) (elapsedTime - hours * 3600000 - minutes * 60000)/ 1000;
     }
 
     /**
@@ -137,14 +145,5 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public ArrayList<TurnData> getStatistics() {
         return this.gameManager.getStatistics();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    private long getTime(){
-        return SystemClock.elapsedRealtime();
     }
 }
