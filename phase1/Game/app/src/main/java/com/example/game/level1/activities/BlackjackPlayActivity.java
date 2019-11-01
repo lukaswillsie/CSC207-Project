@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 import com.example.game.data.Setting;
+import com.example.game.data.Statistic;
 import com.example.game.level1.display.ButtonManager;
 import com.example.game.level1.game_logic.BlackjackLevelManager;
 import com.example.game.level1.services.BlackjackLevelManagerBuilder;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManagerBuilder;
+import com.example.game.services.StatsManager;
+import com.example.game.services.StatsManagerBuilder;
 
 import java.text.DecimalFormat;
 
@@ -165,6 +168,14 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             wins++;
         } else {
             currentStreak = 0;
+        }
+
+        StatsManager statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+
+        int savedLongestStreak = statsManager.getStat(Statistic.LONGEST_STREAK);
+
+        if(longestStreak > savedLongestStreak){
+            statsManager.setStat(Statistic.LONGEST_STREAK, longestStreak);
         }
     }
 }
