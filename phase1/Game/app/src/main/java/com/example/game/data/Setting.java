@@ -3,7 +3,8 @@ package com.example.game.data;
 public enum Setting {
     DARK_MODE("DarkMode", 0),
     NUM_HANDS("NumHands", 5),
-    NUM_ROUNDS("NumRounds", 5);
+    NUM_ROUNDS("NumRounds", 5),
+    ALPHABET("Alphabet", 0);
 
     /**
      * The key that will be used to store this setting in the settings file
