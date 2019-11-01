@@ -15,6 +15,9 @@ import com.example.game.services.GameData;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
 
+/**
+ * This activity appears when the user successfully finishes each round of GuessTheNumber.
+ */
 public class GameFinishActivity extends AppCompatActivity {
     GameManager gameManager = GameStartActivity.gameManager;
 
@@ -38,17 +41,28 @@ public class GameFinishActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * When the main menu button is clicked, the user is taken to the MainActivity activity.
+     */
     public void mainMenuClick(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * When the playAgain button is clicked, the user is taken to the GameStartActivity1 activity
+     * which will allow them to play GuessTheNumber again.
+     */
     public void playAgainClick(View view) {
         Intent intent = new Intent(this, GameStartActivity1.class);
         gameManager.startNewGame();
         startActivity(intent);
     }
 
+    /**
+     * When nextRound button is clicked, the user proceeds to go onto the next round of
+     * GuessTheNumber.
+     */
     public void nextRound(View view) {
         Intent intent = new Intent(this, GameStartActivity1.class);
         gameManager.startNewGame();
