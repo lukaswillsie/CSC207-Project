@@ -15,6 +15,10 @@ import java.util.Scanner;
 import static com.example.game.data.GameConstants.STATS_FILE_NAME;
 import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 
+/**
+ * An implementation of StatsManager that accesses the users stats file stored on the device
+ * for querying and updating stats
+ */
 public class UserStatsManager implements StatsManager {
 
     /**
@@ -33,7 +37,7 @@ public class UserStatsManager implements StatsManager {
      * @param context  - the calling context
      * @param username - the user's username
      */
-    public UserStatsManager(Context context, String username) {
+    UserStatsManager(Context context, String username) {
         // Open the user's settings file and store it in settingsFile
         statsFile = statsFile(context, username);
     }

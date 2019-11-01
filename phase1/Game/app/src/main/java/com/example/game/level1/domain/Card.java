@@ -1,5 +1,7 @@
 package com.example.game.level1.domain;
 
+import androidx.annotation.NonNull;
+
 /**
  * Represents a card in a deck of cards
  */
@@ -13,15 +15,6 @@ public class Card {
      * The suit of this playing card
      */
     private Suit suit;
-
-    /**
-     * Get the suit of this card
-     *
-     * @return - the suit of this card
-     */
-    public Suit getSuit() {
-        return suit;
-    }
 
     /**
      * Get the rank of this card
@@ -48,6 +41,7 @@ public class Card {
      *
      * @return the string representation of this card
      */
+    @NonNull
     public String toString() {
         return this.rank.toString() + this.suit.toString();
     }
