@@ -43,5 +43,14 @@ public class GameManager {
         this.guess = new Guess(guessArray, this.answerArray);
     }
 
+    /**
+     * A method that returns the number of cows and bulls for the current guess.
+     *
+     * @return An integer array where the first element is the number of cows and the second element
+     * is the number of bulls.
+     */
+    public int[] getResults() {
+        return new int[]{guess.getCows(), guess.getBulls()};
+    }
 
 }
