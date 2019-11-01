@@ -26,9 +26,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     private LinearLayout linLayout;
     private GameManager gameManager;
     private int answerSize;
-    private String[] alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-
-    ;
+    private String[] alphabet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,8 @@ public class CowsBullsActivity extends AppCompatActivity {
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
-        this.gameManager = new GameManager(this.answerSize, this.alphabet);
+        this.alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        this.gameManager = new GameManager(4, this.alphabet);
 
     }
 

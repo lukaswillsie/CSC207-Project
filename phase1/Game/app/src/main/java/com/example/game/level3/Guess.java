@@ -59,7 +59,6 @@ public class Guess {
         int arraySize = array.length;
         HashMap<String, Integer> arrayElements = new HashMap<>();
 
-
         for (int i = 0; i < arraySize; i++) {
             String element = array[i];
             if (!arrayElements.containsKey(element)) {
