@@ -26,15 +26,11 @@ import java.util.ArrayList;
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
 public class CowsBullsActivity extends AppCompatActivity {
-    private TextView timer;
     private EditText guess;
     static String currentGuess;
     private Chronometer chronometer;
-    private long elapsedTime;
     private LinearLayout linLayout;
     private GameManager gameManager;
-    private int answerSize;
-    private StatsManager statsManager;
     long startTime;
     String username = GameData.USERNAME;
 
@@ -82,8 +78,8 @@ public class CowsBullsActivity extends AppCompatActivity {
             if (getBulls() == 4) {
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
-                statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
-                elapsedTime = stopTime - startTime;
+                StatsManager statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+                long elapsedTime = stopTime - startTime;
                 int seconds = turnToSeconds(elapsedTime);
                 statsManager.setStat(Statistic.TIME_TAKEN, seconds);
                 int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);
