@@ -16,7 +16,8 @@ import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 
 /**
- * The activity that appears right before the user is about to start a game of GuessTheNumber.
+ * The activity that appears right before the user is about to start a game of GuessTheNumber. This
+ * activity is needed to resume the old game/read the rules/start a new game.
  */
 public class GameStartActivity extends AppCompatActivity {
     public static GameManager gameManager = new GameManager();
@@ -27,17 +28,8 @@ public class GameStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity);
-        Button btn = findViewById(R.id.resumeGame);
-        Game game = gameManager.getCurrentGame();
-        if ((game.isFinished() || game.getPoints() == 0) && gameManager.getCurrentRound() != 1) {
-            btn.setVisibility(View.INVISIBLE);
-        }
-        else{
-                btn.setVisibility(View.VISIBLE);
-        }
-            SettingsManager manager = new SettingsManagerBuilder().build(this, username);
-            gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
-
+        this.checkResume();
+        this.SetNumRounds();
         }
     /**
      * When a user clicks the start button, the GameStartActivity1 activity appears and the user
@@ -74,5 +66,28 @@ public class GameStartActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Check if the appearance of resume button is needed. Resume button appears iff the is a game
+     * which is not finished or a user has already played at least one round but hasn't finished
+     * all the rounds.
+     */
+    private void checkResume(){
+        Button btn = findViewById(R.id.resumeGame);
+        Game game = gameManager.getCurrentGame();
+        if ((game.isFinished() || game.getPoints() == 0) && gameManager.getCurrentRound() != 1) {
+            btn.setVisibility(View.INVISIBLE);
+        }
+        else{
+            btn.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Set the number of rounds user wants to play based on customized settings.
+     */
+    private void SetNumRounds(){
+        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
+        gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
+    }
 
 }

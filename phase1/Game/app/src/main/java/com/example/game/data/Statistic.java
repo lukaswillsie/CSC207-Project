@@ -5,7 +5,7 @@ package com.example.game.data;
  * statistic
  */
 public enum Statistic {
-    FEWEST_GUESSES("FewestGuesses", 0),
+    FEWEST_GUESSES("FewestGuesses", 9999),
     LONGEST_STREAK("LongestStreak", 0),
     QUICKEST_TIME("QuickestTime", 0),
     NUMBER_OF_GUESSES("NumberOfGuesses", 0),
