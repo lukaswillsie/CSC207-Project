@@ -8,6 +8,9 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class that manages buttons for an activity
+ */
 public class ButtonManager {
     /**
      * The collection of buttons being managed at any given time

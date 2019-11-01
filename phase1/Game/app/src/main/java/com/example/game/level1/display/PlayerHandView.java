@@ -2,6 +2,10 @@ package com.example.game.level1.display;
 
 import android.widget.TextView;
 
+/**
+ * Essentially a wrapper class for TextView that acts as a go-between for PlayerInterpreter
+ * and the TextViews on the interface
+ */
 public class PlayerHandView {
     /**
      * The TextView this object will be updating
