@@ -34,4 +34,15 @@ public class TurnData {
     }
 
 
+    /**
+     * A method that returns the number of cows and bulls for the current guess.
+     *
+     * @return An integer array where the first element is the number of cows and the second element
+     * is the number of bulls.
+     */
+    public int[] getResults() {
+        return new int[]{this.numberCows, this.numberBulls};
+    }
+
+
 }

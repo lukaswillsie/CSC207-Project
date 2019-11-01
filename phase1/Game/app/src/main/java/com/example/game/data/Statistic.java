@@ -1,5 +1,9 @@
 package com.example.game.data;
 
+/**
+ * An enum defining what statistics are tracked by the program and related information about each
+ * statistic
+ */
 public enum Statistic {
     FEWEST_GUESSES("FewestGuesses", 0),
     LONGEST_STREAK("LongestStreak", 0),

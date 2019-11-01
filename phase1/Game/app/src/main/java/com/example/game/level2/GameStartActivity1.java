@@ -34,6 +34,7 @@ public class GameStartActivity1 extends AppCompatActivity {
 
         if (currentGame.checkTheRightGuess(guess)) {
             currentGame.finishTheGame(guess);
+            gameManager.checkRounds();
             Intent intent = new Intent(this, GameFinishActivity.class);
             startActivity(intent);
         } else {
@@ -46,7 +47,6 @@ public class GameStartActivity1 extends AppCompatActivity {
             ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
             ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
         }
-        // execute what happens when a guess is submitted.
     }
 
     public void pauseExit(View view) {

@@ -16,7 +16,6 @@ import com.example.game.services.SettingsManagerBuilder;
 
 public class SettingsActivity extends AppCompatActivity {
     private SettingsManager settingsManager;
-    private String username;
     private SeekBar numHandsBar;
     private SeekBar numRoundsBar;
     private Switch darkMode;
@@ -26,8 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        username = GameData.USERNAME;
-        settingsManager = new SettingsManagerBuilder().build(this, username);
+        settingsManager = new SettingsManagerBuilder().build(this, GameData.USERNAME);
 
         numHandsBar = findViewById(R.id.numHandsSeekBar);
         // Read user's setting for number of hands and set it as progress on the seek bar
@@ -100,7 +98,5 @@ public class SettingsActivity extends AppCompatActivity {
         settingsManager.updateSetting(Setting.NUM_HANDS, numHandsBar.getProgress());
         settingsManager.updateSetting(Setting.NUM_ROUNDS, numRoundsBar.getProgress());
         settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1 : 0);
-
-
     }
 }

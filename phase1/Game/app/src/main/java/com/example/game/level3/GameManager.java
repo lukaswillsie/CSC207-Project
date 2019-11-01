@@ -12,16 +12,16 @@ public class GameManager {
     // An array of the answer that the player is trying to guess.
     String[] answerArray;
 
-    // An Guess object to store the current guess.
-    Guess guess;
+    // A TurnData object to store the information for the current turn.
+    TurnData turnData;
 
     /**
      * A constructor for the GameManager class.
      *
      * @param answerSize The size of the guess / answer.
+     * @param alphabet   The possible strings that can appear in the answer / guess.
      */
-    GameManager(int answerSize) {
-        String[] alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    GameManager(int answerSize, String[] alphabet) {
         // Generate a random string given the alphabet with size answerSize.
         for (int i = 0; i < answerSize; i++) {
 
@@ -40,7 +40,8 @@ public class GameManager {
      */
     public void setGuess(String[] guessArray) {
         // Double check that aliasing is okay. Otherwise make copy.
-        this.guess = new Guess(guessArray, this.answerArray);
+        this.turnData = new TurnData(guessArray, this.answerArray);
+        this.data.add(this.turnData);
     }
 
     /**
@@ -50,7 +51,16 @@ public class GameManager {
      * is the number of bulls.
      */
     public int[] getResults() {
-        return new int[]{guess.getCows(), guess.getBulls()};
+        return turnData.getResults();
+    }
+
+    /**
+     * A method that returns all of the data / statistics collected so far in level 3.
+     *
+     * @return An array of TurnData objects which store the data for each turn.
+     */
+    public ArrayList<TurnData> getStatistics() {
+        return this.data;
     }
 
 }
