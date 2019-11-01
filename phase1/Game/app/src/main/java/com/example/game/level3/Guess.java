@@ -33,15 +33,15 @@ class Guess {
      */
     int getBulls() {
 
-        int numberCows = 0;
+        int numberBulls = 0;
 
         for (int i = 0; i < answerArray.length; i++) {
             if (this.guessArray[i].equals(this.answerArray[i])) {
-                numberCows += 1;
+                numberBulls += 1;
             }
         }
 
-        return numberCows;
+        return numberBulls;
     }
 
     /**
