@@ -12,6 +12,9 @@ public class GameManager {
     // An array of the answer that the player is trying to guess.
     String[] answerArray;
 
+    // An Guess object to store the current guess.
+    Guess guess;
+
     /**
      * A constructor for the GameManager class.
      *
@@ -29,4 +32,16 @@ public class GameManager {
 
         }
     }
+
+    /**
+     * A method that sets the current guess.
+     *
+     * @param guessArray The new guess.
+     */
+    public void setGuess(String[] guessArray) {
+        // Double check that aliasing is okay. Otherwise make copy.
+        this.guess = new Guess(guessArray, this.answerArray);
+    }
+
+
 }
