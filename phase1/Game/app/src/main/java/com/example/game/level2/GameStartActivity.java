@@ -37,6 +37,7 @@ public class GameStartActivity extends AppCompatActivity {
     }
 
     public void startTheGame(View view) {
+        gameManager.resetCurrentRounds();
         gameManager.startNewGame();
         Intent intent = new Intent(this, GameStartActivity1.class);
         startActivity(intent);
