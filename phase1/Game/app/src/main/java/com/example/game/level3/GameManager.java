@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class GameManager {
     // An array of the data for each turn.
-    ArrayList<TurnData> data;
+    ArrayList<TurnData> data = new ArrayList<>();
 
     // An array of the answer that the player is trying to guess.
     String[] answerArray;
@@ -22,11 +22,12 @@ public class GameManager {
      * @param alphabet   The possible strings that can appear in the answer / guess.
      */
     GameManager(int answerSize, String[] alphabet) {
+        this.answerArray = new String[answerSize];
         // Generate a random string given the alphabet with size answerSize.
         for (int i = 0; i < answerSize; i++) {
 
             // Generate a random integer from 0 to answerSize - 1 with equal probabilities.
-            int rand = (int) (Math.random());
+            int rand = (int) (Math.random() * alphabet.length);
 
             this.answerArray[i] = alphabet[rand];
 

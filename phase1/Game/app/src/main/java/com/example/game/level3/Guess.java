@@ -39,7 +39,7 @@ public class Guess {
 
         int numberCows = 0;
 
-        for (int i = 0; i < this.guessSize; i++) {
+        for (int i = 0; i < answerArray.length; i++) {
             if (this.guessArray[i] == this.answerArray[i]) {
                 numberCows += 1;
             }
@@ -58,7 +58,6 @@ public class Guess {
     private HashMap<String, Integer> createMap(String[] array) {
         int arraySize = array.length;
         HashMap<String, Integer> arrayElements = new HashMap<>();
-
 
         for (int i = 0; i < arraySize; i++) {
             String element = array[i];

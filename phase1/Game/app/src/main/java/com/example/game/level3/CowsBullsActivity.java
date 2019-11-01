@@ -2,6 +2,7 @@ package com.example.game.level3;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -28,7 +29,6 @@ public class CowsBullsActivity extends AppCompatActivity {
     private int answerSize;
     private String[] alphabet;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,8 @@ public class CowsBullsActivity extends AppCompatActivity {
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
-        this.gameManager = new GameManager(this.answerSize, this.alphabet);
+        this.alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        this.gameManager = new GameManager(4, this.alphabet);
 
     }
 
@@ -63,11 +64,14 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public void checkGuess(View view) {
         currentGuess = guessInput();
+        System.out.println(currentGuess);
         guess.setText("");
         String[] guessArray = currentGuess.split("");
         this.gameManager.setGuess(guessArray);
         TextView currGuess = new TextView(CowsBullsActivity.this);
-        currGuess.setText(currentGuess);
+        String textToDisplay = currentGuess + "     Bulls: " + getBulls() + " Cows: " + getCows();
+        currGuess.setText(textToDisplay);
+        currGuess.setGravity(Gravity.CENTER);
         linLayout.addView(currGuess);
     }
 
