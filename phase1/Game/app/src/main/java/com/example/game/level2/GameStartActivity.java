@@ -8,10 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.MainActivity;
 import com.example.game.R;
+import com.example.game.data.Setting;
+import com.example.game.services.GameData;
+import com.example.game.services.SettingsManager;
+import com.example.game.services.SettingsManagerBuilder;
 
 public class GameStartActivity extends AppCompatActivity {
     public static GameManager gameManager = new GameManager();
+    String username = GameData.USERNAME;
     boolean rulesAppear = false;
 
     @Override
@@ -25,8 +31,9 @@ public class GameStartActivity extends AppCompatActivity {
         } else {
             btn.setVisibility(View.VISIBLE);
         }
-        // create a SettingsManager
-        // pass in this
+        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
+        gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
+
     }
 
     public void startTheGame(View view) {
