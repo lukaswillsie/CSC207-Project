@@ -8,7 +8,9 @@ import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.data.Statistic;
@@ -17,6 +19,7 @@ import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
+
 import java.util.ArrayList;
 
 /**
@@ -108,9 +111,7 @@ public class CowsBullsActivity extends AppCompatActivity {
      * @param elapsedTime - the time elapsed in milliSeconds
      */
     private int turnToSeconds(long elapsedTime) {
-        int hours = (int) (elapsedTime / 3600000);
-        int minutes = (int) (elapsedTime - hours * 3600000) / 60000;
-        return (int) (elapsedTime - hours * 3600000 - minutes * 60000) / 1000;
+        return (int) (elapsedTime / 1000);
     }
 
     /**
