@@ -30,16 +30,15 @@ public class GameStartActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.resumeGame);
         Game game = gameManager.getCurrentGame();
         if ((game.isFinished() || game.getPoints() == 0) && gameManager.getCurrentRound() != 1) {
-            if (!gameManager.getKeepPlaying() || game.getPoints() == 0) {
-                btn.setVisibility(View.INVISIBLE);
-            } else {
+            btn.setVisibility(View.INVISIBLE);
+        }
+        else{
                 btn.setVisibility(View.VISIBLE);
-            }
+        }
             SettingsManager manager = new SettingsManagerBuilder().build(this, username);
             gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
 
         }
-    }
     /**
      * When a user clicks the start button, the GameStartActivity1 activity appears and the user
      * proceeds to start a new game of GuessTheNumber
