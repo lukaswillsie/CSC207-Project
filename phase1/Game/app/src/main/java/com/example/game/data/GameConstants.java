@@ -1,5 +1,8 @@
 package com.example.game.data;
 
+/**
+ * A final class for centralizing the definition of important game constants
+ */
 public final class GameConstants {
     /**
      * The tag to be placed at the beginning of each key when putting extras in intents
