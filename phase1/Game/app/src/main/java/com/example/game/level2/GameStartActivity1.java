@@ -23,35 +23,58 @@ public class GameStartActivity1 extends AppCompatActivity {
         ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
     }
 
+    /**
+     * Assuming that a user inserted a number.
+     * @return
+     */
     private int getGuess() {
         return Integer.valueOf(((TextView) findViewById(R.id.guessInput)).getText().toString());
     }
 
     public void submitGuess(View view) {
-        guess = getGuess();
-        Game currentGame = gameManager.getCurrentGame();
-        ((TextView) findViewById(R.id.guessInput)).setText("");
+        try {
+            guess = getGuess();
+            Game currentGame = gameManager.getCurrentGame();
+            ((TextView) findViewById(R.id.guessInput)).setText("");
 
-        if (currentGame.checkTheRightGuess(guess)) {
-            currentGame.finishTheGame(guess);
-            gameManager.checkRounds();
-            Intent intent = new Intent(this, GameFinishActivity.class);
-            startActivity(intent);
-        } else {
-            if (currentGame.checkGuess(guess)) {
-                //((TextView)findViewById(R.id.textView)).setVisibility(View.INVISIBLE);
-                ((TextView) findViewById(R.id.textView)).setText("Your guess is too high, try again.");
+            if (currentGame.checkTheRightGuess(guess)) {
+                currentGame.finishTheGame(guess);
+                gameManager.checkRounds();
+                Intent intent = new Intent(this, GameFinishActivity.class);
+                startActivity(intent);
             } else {
-                ((TextView) findViewById(R.id.textView)).setText("Your guess is too low, try again.");
+                if (currentGame.checkGuess(guess)) {
+                    //((TextView)findViewById(R.id.textView)).setVisibility(View.INVISIBLE);
+                    this.highGuess();
+                } else {
+                    this.lowGuess();
+                }
+                this.updateScore();
             }
-            ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
-            ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
+        }
+        catch(Exception e){
+                this.BadNumber();
         }
     }
 
     public void pauseExit(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void highGuess(){
+        ((TextView) findViewById(R.id.textView)).setText("Your guess is too high, try again.");
+    }
+    public void lowGuess(){
+        ((TextView) findViewById(R.id.textView)).setText("Your guess is too low, try again.");
+    }
+    public void BadNumber(){
+        ((TextView) findViewById(R.id.textView)).setText("You either did not enter the number or your number is too big, please try again");
+    }
+    public void updateScore(){
+        Game currentGame = gameManager.getCurrentGame();
+        ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
+        ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
     }
 
 

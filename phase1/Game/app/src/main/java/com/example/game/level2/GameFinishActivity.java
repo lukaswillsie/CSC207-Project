@@ -26,13 +26,9 @@ public class GameFinishActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.totalRoundsText)).setText(String.valueOf(gameManager.getRoundsToPlay()));
 
         if (gameManager.getKeepPlaying()) {
-            findViewById(R.id.mainMenuButton).setVisibility(View.INVISIBLE);
-            findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
-            findViewById(R.id.nextRoundButton).setVisibility(View.VISIBLE);
+            this.inverseVisibility();
         } else {
-            findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
-            findViewById(R.id.playAgainButton).setVisibility(View.VISIBLE);
-            findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
+            this.reverseVisibility();
             gameManager.resetCurrentRounds();
         }
     }
@@ -54,4 +50,15 @@ public class GameFinishActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public  void inverseVisibility(){
+        findViewById(R.id.mainMenuButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.nextRoundButton).setVisibility(View.VISIBLE);
+    }
+
+    public void reverseVisibility(){
+        findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.playAgainButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
+    }
 }
