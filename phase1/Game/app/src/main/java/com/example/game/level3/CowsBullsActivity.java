@@ -26,8 +26,9 @@ public class CowsBullsActivity extends AppCompatActivity {
     private LinearLayout linLayout;
     private GameManager gameManager;
     private int answerSize;
-    private String[] alphabet;
+    private String[] alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
