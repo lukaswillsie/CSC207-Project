@@ -22,14 +22,13 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
     private static String tag = "com.example.game.MainActivity";
-    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = GameData.USERNAME;
+        String username = GameData.USERNAME;
         String name = username.substring(0, 1).toUpperCase() + username.substring(1).toLowerCase();
         String welcomeText = "Welcome, " + name + "!";
         ((TextView) findViewById(R.id.welcomeText)).setText(welcomeText);
