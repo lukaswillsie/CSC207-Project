@@ -1,5 +1,8 @@
 package com.example.game.level1.domain;
 
+/**
+ * Represents a Player in a card game
+ */
 public class Player {
     /**
      * This player's hand

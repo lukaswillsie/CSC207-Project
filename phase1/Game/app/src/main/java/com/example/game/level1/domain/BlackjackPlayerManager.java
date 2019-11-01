@@ -2,6 +2,10 @@ package com.example.game.level1.domain;
 
 import static com.example.game.level1.domain.Rank.ACE;
 
+/**
+ * Acts as a wrapper class for a Player object, allowing the player to be interacted with through
+ * this object
+ */
 public class BlackjackPlayerManager {
     /**
      * The player that this BlackjackPlayerManager object will be managing

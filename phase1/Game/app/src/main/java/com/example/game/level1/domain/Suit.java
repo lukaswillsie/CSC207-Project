@@ -1,5 +1,8 @@
 package com.example.game.level1.domain;
 
+/**
+ * An enum defining all the possible Suits that a Card can have
+ */
 public enum Suit {
     SPADES,
     HEARTS,
