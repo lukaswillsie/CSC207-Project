@@ -84,7 +84,7 @@ public class UserAccountManager implements AccountManager {
      */
     public void createNewUser(String username, String password) {
         File newUserDir = new File(usersDir, username);
-        boolean mkdir = newUserDir.mkdirs();
+        newUserDir.mkdir();
 
         File settings = new File(newUserDir, SETTINGS_FILE_NAME);
         File stats = new File(newUserDir, STATS_FILE_NAME);
@@ -121,11 +121,15 @@ public class UserAccountManager implements AccountManager {
             Log.e(tag, "Failed to create default files for user");
         } finally {
             try {
-                settingStream.close();
-                statsStream.close();
-                passwordStream.close();
-            } catch (NullPointerException e) {
-                Log.e(tag, "Failed to close FileOutputStream because null");
+                if(settingStream != null){
+                    settingStream.close();
+                }
+                if(statsStream != null){
+                    statsStream.close();
+                }
+                if(passwordStream != null) {
+                    passwordStream.close();
+                }
             } catch (IOException e) {
                 Log.e(tag, "Failed to close FileOutputStream");
             }
