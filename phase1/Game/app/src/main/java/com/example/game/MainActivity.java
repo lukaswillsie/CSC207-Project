@@ -1,17 +1,17 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.example.game.data.Setting;
-import com.example.game.level2.GameStartActivity;
 import com.example.game.level1.activities.BlackjackStartActivity;
+import com.example.game.level2.GameStartActivity;
 import com.example.game.level3.CowsBullsActivity;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
@@ -32,49 +32,49 @@ public class MainActivity extends AppCompatActivity {
         username = GameData.USERNAME;
         String name = username.substring(0, 1).toUpperCase() + username.substring(1).toLowerCase();
         String welcomeText = "Welcome, " + name + "!";
-        ((TextView)findViewById(R.id.welcomeText)).setText(welcomeText);
+        ((TextView) findViewById(R.id.welcomeText)).setText(welcomeText);
 
         File usersDir = getDir("users", 0);
         File[] users = usersDir.listFiles();
-        for(File user : users){
+        for (File user : users) {
             Log.i("XXXXXXXX", user.getName());
-            if(user.isDirectory()){
+            if (user.isDirectory()) {
                 File[] files = user.listFiles();
-                for(File file : files){
+                for (File file : files) {
                     Log.i("XXXXXXXXX", file.getAbsolutePath());
-                    try{
+                    try {
                         Scanner scanner = new Scanner(file);
-                        while (scanner.hasNext()){
+                        while (scanner.hasNext()) {
                             Log.i("XXXXXXXX", scanner.nextLine());
                         }
-                    }
-                    catch(Exception e){
+                    } catch (Exception e) {
 
                     }
                 }
             }
         }
         //DarkMode Setting
-        SettingsManager manager = new SettingsManagerBuilder().build(this,username);
+        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
         int temp = manager.getSetting(Setting.DARK_MODE);
-        if (temp == 1){
+        if (temp == 1) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
-        }
-        else{
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 
-    public void playBlackjack(View view){
+    public void playBlackjack(View view) {
         Intent intent = new Intent(this, BlackjackStartActivity.class);
         startActivity(intent);
     }
-    public void playCowsAndBulls(View view){
+
+    public void playCowsAndBulls(View view) {
         Intent intent = new Intent(this, CowsBullsActivity.class);
         startActivity(intent);
     }
-    public void chooseTheNum(View view){
+
+    public void chooseTheNum(View view) {
         Intent intent = new Intent(this, GameStartActivity.class);
         startActivity(intent);
     }

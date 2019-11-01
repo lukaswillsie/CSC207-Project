@@ -1,17 +1,14 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.text.format.Time;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.data.Statistic;
 import com.example.game.services.GameData;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
-
-import java.text.NumberFormat;
 
 public class StatsActivity extends AppCompatActivity {
     private StatsManager statsManager;
