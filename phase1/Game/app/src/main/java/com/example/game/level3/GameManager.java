@@ -19,9 +19,18 @@ public class GameManager {
      * A constructor for the GameManager class.
      *
      * @param answerSize The size of the guess / answer.
-     * @param alphabet   The possible strings that can appear in the answer / guess.
+     * @param alphabetSelector   The possible strings that can appear in the answer / guess.
      */
-    GameManager(int answerSize, String[] alphabet) {
+    GameManager(int answerSize, int alphabetSelector) {
+        String[] alphabet;
+        if (alphabetSelector == 0){
+            alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        }
+        else{
+            alphabet = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+            "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        }
+
         this.answerArray = new String[answerSize];
         // Generate a random string given the alphabet with size answerSize.
         for (int i = 0; i < answerSize; i++) {
