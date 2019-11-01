@@ -72,6 +72,16 @@ public class CowsBullsActivity extends AppCompatActivity {
         linLayout.addView(currGuess);
     }
 
+    /**
+     * A method that returns the number of cows (the number of guesses in the wrong order, but correct
+     * value) of the last guess.
+     *
+     * @return The number of cows.
+     */
+    public int getCows() {
+        return this.gameManager.getResults()[0];
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
