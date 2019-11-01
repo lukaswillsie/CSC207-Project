@@ -12,8 +12,8 @@ public class GameManager {
     // An array of the answer that the player is trying to guess.
     String[] answerArray;
 
-    // An Guess object to store the current guess.
-    Guess guess;
+    // A TurnData object to store the information for the current turn.
+    TurnData turnData;
 
     /**
      * A constructor for the GameManager class.
@@ -40,7 +40,8 @@ public class GameManager {
      */
     public void setGuess(String[] guessArray) {
         // Double check that aliasing is okay. Otherwise make copy.
-        this.guess = new Guess(guessArray, this.answerArray);
+        this.turnData = new TurnData(guessArray, this.answerArray);
+        this.data.add(this.turnData);
     }
 
     /**
@@ -50,7 +51,7 @@ public class GameManager {
      * is the number of bulls.
      */
     public int[] getResults() {
-        return new int[]{guess.getCows(), guess.getBulls()};
+        return turnData.getResults();
     }
 
 }
