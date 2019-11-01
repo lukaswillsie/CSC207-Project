@@ -93,6 +93,13 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        if (settingsManager.getSetting(Setting.ALPHABET) == 0) {
+            ((Switch) findViewById(R.id.alphabetSwitch)).setChecked(false);
+        } else {
+            ((Switch) findViewById(R.id.alphabetSwitch)).setChecked(true);
+
+        }
+
     }
 
     @Override
