@@ -28,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.welcomeText)).setText(welcomeText);
 
         //DarkMode Setting
-        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
-        int temp = manager.getSetting(Setting.DARK_MODE);
-        if (temp == 1) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
+//        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
+//        int temp = manager.getSetting(Setting.DARK_MODE);
+//        if (temp == 1) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        }
     }
 
     public void playBlackjack(View view) {

@@ -1,6 +1,8 @@
 package com.example.game;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -88,12 +90,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         darkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean toSwitch) {
+                if (toSwitch) {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
+
             }
         });
 
@@ -104,6 +109,10 @@ public class SettingsActivity extends AppCompatActivity {
             alphabetSwitch.setChecked(true);
 
         }
+    }
+    public void toMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -68,5 +68,6 @@
     <string name="numguesses">Turns Taken:</string>
     <string name="congratulations">Woot Woot! You have guessed the right number!</string>
     <string name="statsbreakdown">Here is a summary of your hard work:</string>
+    <string name="toMainMenu">go to main menu</string>
 
 </resources>
