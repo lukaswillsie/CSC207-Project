@@ -90,7 +90,11 @@ public class CowsBullsActivity extends AppCompatActivity {
             int hours = (int) (elapsedTime/3600000);
             int minutes = (int) (elapsedTime - hours * 3600000)/60000;
             int seconds = (int) (elapsedTime - hours * 3600000 - minutes * 60000)/ 1000;
-            statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
+            statsManager.setStat(Statistic.TIME_TAKEN, seconds);
+            int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);
+            if(seconds < minTime || minTime == 0){
+                statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
+            }
             statsManager.setStat(Statistic.NUMBER_OF_GUESSES, this.gameManager.getStatistics().size());
             Intent intent = new Intent(this, CowsBullsFinishActivity.class);
             startActivity(intent);

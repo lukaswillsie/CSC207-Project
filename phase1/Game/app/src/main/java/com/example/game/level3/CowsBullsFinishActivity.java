@@ -25,7 +25,7 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cows_bulls_finish);
 
         time = findViewById(R.id.time);
-        time.setText(((Integer) statsManager.getStat(Statistic.QUICKEST_TIME)).toString() + " seconds");
+        time.setText(((Integer) statsManager.getStat(Statistic.TIME_TAKEN)).toString() + " seconds");
 
         numGuesses = findViewById(R.id.numGuesses);
         numGuesses.setText(((Integer)statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString());
