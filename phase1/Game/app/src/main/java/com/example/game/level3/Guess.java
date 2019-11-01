@@ -32,15 +32,15 @@ public class Guess {
     }
 
     /**
-     * A method that returns the number of cows (the number of elements that were correctly guessed
-     * and in the right position).
+     * A method that returns the number of bulls (the number of elements that were correctly guessed
+     * and in the correct position).
      */
-    int getCows() {
+    int getBulls() {
 
         int numberCows = 0;
 
         for (int i = 0; i < answerArray.length; i++) {
-            if (this.guessArray[i] == this.answerArray[i]) {
+            if (this.guessArray[i].equals(this.answerArray[i])) {
                 numberCows += 1;
             }
         }
@@ -95,16 +95,16 @@ public class Guess {
     }
 
     /**
-     * A method that returns the number of bulls (the number of elements that were correctly guessed
+     * A method that returns the number of cows (the number of elements that were correctly guessed
      * but in the wrong spot).
      *
      * @return The number of correct elements, but in the wrong spot.
      */
-    int getBulls() {
+    int getCows() {
 
-        //  The number of cows is the total number of correct guessed regardless of their spots
+        //  The number of bulls is the total number of correct guessed regardless of their spot
         //  minus the number of correct guesses in the right spots.
-        return getCorrectElements() - getCows();
+        return getCorrectElements() - getBulls();
 
     }
 
