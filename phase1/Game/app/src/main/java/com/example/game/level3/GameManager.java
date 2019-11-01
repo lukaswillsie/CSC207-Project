@@ -19,9 +19,9 @@ public class GameManager {
      * A constructor for the GameManager class.
      *
      * @param answerSize The size of the guess / answer.
+     * @param alphabet   The possible strings that can appear in the answer / guess.
      */
-    GameManager(int answerSize) {
-        String[] alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    GameManager(int answerSize, String[] alphabet) {
         // Generate a random string given the alphabet with size answerSize.
         for (int i = 0; i < answerSize; i++) {
 
@@ -62,6 +62,5 @@ public class GameManager {
     public ArrayList<TurnData> getStatistics() {
         return this.data;
     }
-
 
 }
