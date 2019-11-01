@@ -4,6 +4,9 @@ import com.example.game.level1.activities.BlackjackPlayPage;
 import com.example.game.level1.domain.BlackjackPlayerManager;
 import com.example.game.level1.domain.Deck;
 
+/**
+ * Manages a game of Blackjack with a user and a dealer
+ */
 public class BlackjackLevelManager {
     /**
      * Boolean representing whether it is the player's turn in the game

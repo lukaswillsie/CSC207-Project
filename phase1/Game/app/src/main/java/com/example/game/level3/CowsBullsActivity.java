@@ -17,7 +17,7 @@ import com.example.game.R;
 public class CowsBullsActivity extends AppCompatActivity {
     private TextView timer;
     private EditText guess;
-    static int currentGuess;
+    static String currentGuess;
     private String smiley = ("☺");
     private Chronometer chronometer;
     private long elapsedTime;
@@ -43,13 +43,13 @@ public class CowsBullsActivity extends AppCompatActivity {
      * @return - the guess input of user as a String if guess length matches GUESS_SIZE, otherwise
      * return -1
      */
-    private int guessInput() {
+    private String guessInput() {
         try {
             if (guess.getText().toString().length() > 0)
-                return Integer.valueOf(((TextView) findViewById(R.id.guessNumber)).getText().toString());
-            return -1;
+                return guess.getText().toString();
+            return "null";
         } catch (Exception e){
-            return -1;
+            return "null";
         }
     }
 
@@ -59,12 +59,11 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public void checkGuess (View view){
         currentGuess = guessInput();
-        Integer intGuess = (Integer) currentGuess;
 
         guess.setText("");
 
         TextView currGuess = new TextView(CowsBullsActivity.this);
-        currGuess.setText(intGuess.toString());
+        currGuess.setText(currentGuess);
         linLayout.addView(currGuess);
 
 
@@ -72,8 +71,9 @@ public class CowsBullsActivity extends AppCompatActivity {
 
 
 
-    }
 
+
+    }
 
     @Override
     protected void onStop(){

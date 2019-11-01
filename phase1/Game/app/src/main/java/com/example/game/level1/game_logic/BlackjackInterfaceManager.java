@@ -6,7 +6,9 @@ import com.example.game.level1.display.PlayerHandView;
 import com.example.game.level1.display.PlayerInterpreter;
 import com.example.game.level1.domain.Player;
 
-
+/**
+ * InterfaceManager for a game of Blackjack
+ */
 public class BlackjackInterfaceManager implements InterfaceManager {
     /**
      * The object acting as interpreter for the user of the app

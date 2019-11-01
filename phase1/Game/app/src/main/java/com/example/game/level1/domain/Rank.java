@@ -1,5 +1,8 @@
 package com.example.game.level1.domain;
 
+/**
+ * An enum defining all the possible Ranks that a Card can have and some satellite information
+ */
 public enum Rank {
     ACE(1),
     TWO(2),
@@ -40,7 +43,7 @@ public enum Rank {
     }
 
     /**
-     * Get a string represnetation of this Rank
+     * Get a string representation of this Rank
      *
      * @return a string representation of this rank
      */

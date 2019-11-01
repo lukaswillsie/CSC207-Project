@@ -10,6 +10,9 @@ import com.example.game.level1.game_logic.BlackjackInterfaceManager;
 import com.example.game.level1.game_logic.BlackjackLevelManager;
 import com.example.game.level1.game_logic.InterfaceManager;
 
+/**
+ * A class that exists solely to build complex BlackjackLevelManagers
+ */
 public class BlackjackLevelManagerBuilder {
     /**
      * Build a new LevelManager for the given activity
