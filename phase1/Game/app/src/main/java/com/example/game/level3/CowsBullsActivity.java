@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.game.R;
+import com.example.game.data.Setting;
 import com.example.game.data.Statistic;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
@@ -35,7 +36,6 @@ public class CowsBullsActivity extends AppCompatActivity {
     private LinearLayout linLayout;
     private GameManager gameManager;
     private int answerSize;
-    private String[] alphabet;
     private StatsManager statsManager;
     long startTime;
     String username = GameData.USERNAME;
@@ -50,9 +50,8 @@ public class CowsBullsActivity extends AppCompatActivity {
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
-        this.alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        this.gameManager = new GameManager(4, this.alphabet);
         SettingsManager settingsManager = new SettingsManagerBuilder().build(this, username);
+        this.gameManager = new GameManager(4, settingsManager.getSetting(Setting.ALPHABET));
 
     }
 
