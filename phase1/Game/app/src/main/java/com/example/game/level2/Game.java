@@ -2,10 +2,6 @@ package com.example.game.level2;
 
 public class Game {
     /**
-     * Name of the person, playing the game.
-     */
-    String username;
-    /**
      * Number of guesses, that this user has used.
      */
     private int numOfGuess;
@@ -22,19 +18,16 @@ public class Game {
      * Number to guess.
      */
     private int number;
-    /**
-     * stores the user of this game.
-     */
-    User user;
 
     /**
-     * Create a new Game for User.
+     * Create a new Game for a user.
      */
+    private int range = 5;
     Game() {
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
-        this.number = (int) (Math.random() * 10 + 1); //!!!!! CHANGE NEEDED.
+        this.number = (int) (Math.random() * range + 1); //!!!!! CHANGE NEEDED.
     }
 
     /**

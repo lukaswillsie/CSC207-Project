@@ -16,11 +16,9 @@ public class GameStartActivity1 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Game currentGame = gameManager.getCurrentGame();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity1);
-        ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
-        ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
+        this.updateScore();
     }
 
     /**
