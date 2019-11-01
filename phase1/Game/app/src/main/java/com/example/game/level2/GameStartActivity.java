@@ -15,6 +15,9 @@ import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 
+/**
+ * The activity that appears right before the user is about to start a game of GuessTheNumber.
+ */
 public class GameStartActivity extends AppCompatActivity {
     public static GameManager gameManager = new GameManager();
     String username = GameData.USERNAME;
@@ -26,7 +29,7 @@ public class GameStartActivity extends AppCompatActivity {
         setContentView(R.layout.game_start_activity);
         Button btn = findViewById(R.id.resumeGame);
         Game game = gameManager.getCurrentGame();
-        if (game.isFinished() || game.getPoints() == 0) {
+        if (!gameManager.getKeepPlaying() || game.getPoints() == 0) {
             btn.setVisibility(View.INVISIBLE);
         } else {
             btn.setVisibility(View.VISIBLE);
@@ -36,6 +39,10 @@ public class GameStartActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * When a user clicks the start button, the GameStartActivity1 activity appears and the user
+     * proceeds to start a new game of GuessTheNumber
+     */
     public void startTheGame(View view) {
         gameManager.resetCurrentRounds();
         gameManager.startNewGame();
@@ -43,24 +50,29 @@ public class GameStartActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * When a user clicks on the resume button, the GameActivity1 activity appears with the stats of
+     * the game that the user has previously paused on.
+     */
     public void resumeGame(View view) {
-        // execute what happens when you resume a previous game
         Intent intent = new Intent(this, GameStartActivity1.class);
         startActivity(intent);
     }
 
+    /**
+     * The user can click the rules button to view the rules of GuessTheNumber, or click it again to
+     * hide the rules of the game.
+     */
     public void rules(View view) {
         TextView rulesText = findViewById(R.id.rulesText);
         if (!rulesAppear) {
             rulesText.setVisibility(View.VISIBLE);
             rulesAppear = true;
-        }
-        else {
+        } else {
             rulesText.setVisibility(View.INVISIBLE);
             rulesAppear = false;
         }
     }
-
 
 
 }

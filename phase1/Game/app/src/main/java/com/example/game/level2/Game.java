@@ -1,5 +1,8 @@
 package com.example.game.level2;
 
+/**
+ * Represents one game instance, or rather, a "round" of GuessTheNumber
+ */
 public class Game {
     /**
      * Name of the person, playing the game.
@@ -22,13 +25,9 @@ public class Game {
      * Number to guess.
      */
     private int number;
-    /**
-     * stores the user of this game.
-     */
-    User user;
 
     /**
-     * Create a new Game for User.
+     * Create a new Game.
      */
     Game() {
         this.numOfGuess = 0;
@@ -41,7 +40,7 @@ public class Game {
      * Finish the game.
      */
     public void finishTheGame(int guess) {
-        this.finished = false;
+        this.finished = true;
         this.updateStats(guess);
     }
 
@@ -69,22 +68,37 @@ public class Game {
         this.points += Math.abs(this.number - guess) * this.numOfGuess;
     }
 
+    /**
+     * Returns the number the user is to guess.
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * Returns the points that this game currently has.
+     */
     public int getPoints() {
         return this.points;
     }
 
+    /**
+     * Returns the number of guesses the user has already taken so far in this game.
+     */
     public int getNumOfGuess() {
         return this.numOfGuess;
     }
 
+    /**
+     * Returns true if this game is finished and false otherwise.
+     */
     public boolean isFinished() {
         return this.finished;
     }
 
+    /**
+     * Call this method when the game is finished.
+     */
     public void setIsFinished() {
         this.finished = true;
     }
