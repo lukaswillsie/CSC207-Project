@@ -14,16 +14,19 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.game.R;
 
+import java.util.ArrayList;
+
 public class CowsBullsActivity extends AppCompatActivity {
     private TextView timer;
     private EditText guess;
-    static int currentGuess;
+    static String currentGuess;
     private String smiley = ("☺");
     private Chronometer chronometer;
     private long elapsedTime;
     private LinearLayout linLayout;
-
-
+    private GameManager gameManager;
+    private int answerSize;
+    private String[] alphabet;
 
 
     @Override
@@ -39,44 +42,69 @@ public class CowsBullsActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * @return - the guess input of user as a String if guess length matches GUESS_SIZE, otherwise
      * return -1
      */
-    private int guessInput() {
+    private String guessInput() {
         try {
             if (guess.getText().toString().length() > 0)
-                return Integer.valueOf(((TextView) findViewById(R.id.guessNumber)).getText().toString());
-            return -1;
-        } catch (Exception e){
-            return -1;
+                return guess.getText().toString();
+            return "null";
+        } catch (Exception e) {
+            return "null";
         }
     }
 
     /**
      * This method performs the tasks after user had made a guess through the interface.
+     *
      * @param view - view of the Activity
      */
-    public void checkGuess (View view){
+    public void checkGuess(View view) {
         currentGuess = guessInput();
-        Integer intGuess = (Integer) currentGuess;
 
         guess.setText("");
 
+        String[] guessArray = currentGuess.split("");
+
+        this.gameManager = new GameManager(this.answerSize, this.alphabet);
+
         TextView currGuess = new TextView(CowsBullsActivity.this);
-        currGuess.setText(intGuess.toString());
+        currGuess.setText(currentGuess);
         linLayout.addView(currGuess);
-
-
-
-
-
-
     }
 
+    /**
+     * A method that returns the number of cows (the number of guesses in the wrong location,
+     * but correct value) of the last guess.
+     *
+     * @return The number of cows.
+     */
+    public int getCows() {
+        return this.gameManager.getResults()[0];
+    }
+
+    /**
+     * A method that returns the number of bulls (the number of guesses in the correct location,
+     * and correct value) of the last guess.
+     *
+     * @return The number of bulls.
+     */
+    public int getBulls() {
+        return this.gameManager.getResults()[1];
+    }
+
+    /**
+     * A method that returns all of the data / statistics collected so far in level 3.
+     *
+     * @return An array of TurnData objects which store the data for each turn.
+     */
+    public ArrayList<TurnData> getStatistics() {
+        return this.gameManager.getStatistics();
+    }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
     }
 }

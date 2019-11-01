@@ -10,6 +10,9 @@ import com.example.game.services.GameData;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
 
+/**
+ * The page displayed when the user is viewing their stats
+ */
 public class StatsActivity extends AppCompatActivity {
     private StatsManager statsManager;
     private String username;

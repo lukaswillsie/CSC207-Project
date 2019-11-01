@@ -15,6 +15,10 @@ import java.util.Scanner;
 import static com.example.game.data.GameConstants.SETTINGS_FILE_NAME;
 import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 
+/**
+ * An implementation of SettingsManager that accesses the users settings file stored on the device
+ * for querying and updating settings
+ */
 public class UserSettingsManager implements SettingsManager {
     /**
      * This class's tag for logging things

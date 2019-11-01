@@ -2,6 +2,11 @@ package com.example.game.services;
 
 import android.content.Context;
 
+/**
+ * A class whose sole responsibility is to build UserSettingsManager objects,
+ * as a way of removing hard dependencies on UserSettingsManager (a concrete implementation
+ * of the SettingsManager interface) from classes that need to interact with settings
+ */
 public class SettingsManagerBuilder {
     /**
      * Build a SettingsManager for the user with the given username, from the given Context

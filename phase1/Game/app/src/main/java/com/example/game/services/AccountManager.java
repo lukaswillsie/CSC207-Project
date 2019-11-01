@@ -1,5 +1,9 @@
 package com.example.game.services;
 
+/**
+ * Defines what a reasonable account manager should be able to do: query existing user data
+ * and create new users
+ */
 public interface AccountManager {
     /**
      * Check if the given username is already being used

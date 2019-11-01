@@ -6,6 +6,9 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * The page displayed when the app initially starts up
+ */
 public class StartActivity extends AppCompatActivity {
 
     @Override
