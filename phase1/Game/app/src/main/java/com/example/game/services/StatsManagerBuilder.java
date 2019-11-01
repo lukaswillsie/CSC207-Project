@@ -2,6 +2,10 @@ package com.example.game.services;
 
 import android.content.Context;
 
+/**
+ * Class for building UserStatsManager's and removing hard dependencies from classes that
+ * need a StatsManager
+ */
 public class StatsManagerBuilder {
 
     /**

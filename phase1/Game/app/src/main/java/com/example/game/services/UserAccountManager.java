@@ -17,16 +17,25 @@ import static com.example.game.data.GameConstants.SETTINGS_FILE_NAME;
 import static com.example.game.data.GameConstants.STATS_FILE_NAME;
 import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 
+/**
+ * An implementation of AccountManager that uses a folder structures like the following:
+ *  app_root_directory\
+ *    users\
+ *      lukas
+ *        settings
+ *        stats
+ *        password
+ *      peter
+ *        settings
+ *        stats
+ *        password
+ * to query and create users and their information
+ */
 public class UserAccountManager implements AccountManager {
     /**
      * This class's tag for logging events
      */
     private static String tag = "com.example.game.services.UserAccountManager";
-
-    /**
-     * The strings that should be written into the stats file on creation of a new user
-     */
-    private static String[] stats = {"FewestGuesses=0", "LongestStreak=0"};
 
     /**
      * File object representing the "users" directory containing all the user accounts and
