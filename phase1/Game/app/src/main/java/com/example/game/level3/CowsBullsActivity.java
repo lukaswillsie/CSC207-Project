@@ -73,13 +73,23 @@ public class CowsBullsActivity extends AppCompatActivity {
     }
 
     /**
-     * A method that returns the number of cows (the number of guesses in the wrong order, but correct
-     * value) of the last guess.
+     * A method that returns the number of cows (the number of guesses in the wrong location,
+     * but correct value) of the last guess.
      *
      * @return The number of cows.
      */
     public int getCows() {
         return this.gameManager.getResults()[0];
+    }
+
+    /**
+     * A method that returns the number of bulls (the number of guesses in the correct location,
+     * and correct value) of the last guess.
+     *
+     * @return The number of bulls.
+     */
+    public int getBulls() {
+        return this.gameManager.getResults()[1];
     }
 
     @Override
