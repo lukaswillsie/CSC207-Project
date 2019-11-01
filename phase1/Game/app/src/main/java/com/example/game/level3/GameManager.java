@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class GameManager {
     // An array of the data for each turn.
-    ArrayList<TurnData> data;
+    ArrayList<TurnData> data = new ArrayList<>();
 
     // An array of the answer that the player is trying to guess.
     String[] answerArray;
