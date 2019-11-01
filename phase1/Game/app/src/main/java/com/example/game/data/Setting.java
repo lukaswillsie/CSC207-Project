@@ -1,5 +1,8 @@
 package com.example.game.data;
 
+/**
+ * An enum defining what settings are tracked by the program and related information about each setting
+ */
 public enum Setting {
     DARK_MODE("DarkMode", 0),
     NUM_HANDS("NumHands", 5),

@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 
+/**
+ * The page that introduces the player to Blackjack
+ */
 public class BlackjackStartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

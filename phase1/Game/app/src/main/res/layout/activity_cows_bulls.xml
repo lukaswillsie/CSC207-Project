@@ -22,14 +22,12 @@
         android:layout_width="102dp"
         android:layout_height="49dp"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="374dp"
+        android:layout_marginTop="340dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="308dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
         android:maxLength="4"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,14 +37,34 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="245dp"
+        android:layout_marginTop="24dp"
         android:onClick="checkGuess"
         android:text="@string/guess_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guessNumber"
+        app:layout_constraintStart_toStartOf="@+id/guessNumber"
         app:layout_constraintTop_toBottomOf="@+id/guessNumber" />
+
+    <ScrollView
+        android:layout_width="250dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="46dp"
+        app:layout_constraintBottom_toTopOf="@+id/guessNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timer"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/linLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

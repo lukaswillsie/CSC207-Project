@@ -1,18 +1,18 @@
 package com.example.game.level3;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.game.R;
-import com.example.game.services.UserStatsManager;
-
-import java.text.NumberFormat;
 
 public class CowsBullsActivity extends AppCompatActivity {
     private TextView timer;
@@ -21,6 +21,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     private String smiley = ("☺");
     private Chronometer chronometer;
     private long elapsedTime;
+    private LinearLayout linLayout;
 
 
 
@@ -33,7 +34,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         chronometer = findViewById(R.id.timer);
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
-
+        linLayout = findViewById(R.id.linLayout);
 
     }
 
@@ -58,7 +59,18 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public void checkGuess (View view){
         currentGuess = guessInput();
+        Integer intGuess = (Integer) currentGuess;
+
         guess.setText("");
+
+        TextView currGuess = new TextView(CowsBullsActivity.this);
+        currGuess.setText(intGuess.toString());
+        linLayout.addView(currGuess);
+
+
+
+
+
 
     }
 
