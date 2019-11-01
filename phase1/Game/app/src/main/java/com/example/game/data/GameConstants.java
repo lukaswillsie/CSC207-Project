@@ -1,10 +1,14 @@
-package com.example.game;
+package com.example.game.data;
 
 public final class GameConstants {
     /**
      * The tag to be placed at the beginning of each key when putting extras in intents
      */
     public static final String TAG = "com.example.game";
+
+    public static final String LONGEST_STREAK_KEY = "longestStreak";
+
+    public static final String WIN_RATE_KEY = "winRate";
 
     /**
      * The name of the directory on the device containing the files for the app

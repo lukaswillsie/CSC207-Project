@@ -1,13 +1,10 @@
 package com.example.game.level1.game_logic;
 
-import android.view.View;
-
-import com.example.game.level1.activities.BlackjackPlayActivity;
-import com.example.game.level1.display.ButtonManager;
+import com.example.game.level1.activities.BlackjackPlayPage;
 import com.example.game.level1.domain.BlackjackPlayerManager;
 import com.example.game.level1.domain.Deck;
 
-public class BlackjackLevelManager extends LevelManager {
+public class BlackjackLevelManager {
     /**
      * Boolean representing whether it is the player's turn in the game
      */
@@ -34,6 +31,13 @@ public class BlackjackLevelManager extends LevelManager {
     private InterfaceManager interfaceManager;
 
     /**
+     * The BlackjackPlayPage that created this instance of BlackjackLevelManager
+     */
+    private BlackjackPlayPage callingActivity;
+
+    // TODO: Figure out how to shorten this constructor, maybe using setters instead of constructor
+
+    /**
      * Create a new BlackjackLevelManager
      *
      * @param user             - the user of the app
@@ -41,17 +45,17 @@ public class BlackjackLevelManager extends LevelManager {
      * @param deck             - the deck to be played with
      * @param interfaceManager - the InterfaceManager to be used by this object
      */
-    public BlackjackLevelManager(BlackjackPlayerManager user, BlackjackPlayerManager dealer, Deck deck, InterfaceManager interfaceManager) {
+    public BlackjackLevelManager(BlackjackPlayerManager user, BlackjackPlayerManager dealer, Deck deck, InterfaceManager interfaceManager, BlackjackPlayPage callingActivity) {
         this.user = user;
         this.dealer = dealer;
         this.deck = deck;
         this.interfaceManager = interfaceManager;
+        this.callingActivity = callingActivity;
     }
 
     /**
      * Setup the game that this BlackjackLevelManager is going to be managing
      */
-    @Override
     public void setup() {
         deck.shuffle();
 
@@ -62,36 +66,31 @@ public class BlackjackLevelManager extends LevelManager {
     /**
      * Tell the BlackjackLevelManager that the game is going to be played
      */
-    @Override
     public void play() {
         playerTurn = true;
         interfaceManager.update();
     }
 
     /**
-     * Handle a button click by the user
-     *
-     * @param view - the button that was clicked
+     * Tells this object that the player requested a hit
      */
-    @Override
-    public void userButtonClick(View view) {
-        if (view.getId() == BlackjackPlayActivity.HIT_BUTTON_ID) {
-            if (playerTurn) {
-                user.deal(deck.deal());
-                if (user.computeBlackJackValue() > 21) {
-                    interfaceManager.update();
-                    ButtonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
-                    ButtonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
-                    endGame();
-                    return;
-                }
+    public void playerHit() {
+        if (playerTurn) {
+            user.deal(deck.deal());
+            if (user.computeBlackJackValue() > 21) {
                 interfaceManager.update();
+                endGame();
+                return;
             }
-        } else if (view.getId() == BlackjackPlayActivity.STAND_BUTTON_ID) {
-            ButtonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
-            ButtonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
-            endGame();
+            interfaceManager.update();
         }
+    }
+
+    /**
+     * Tells this object that the player stood
+     */
+    public void playerStand() {
+        endGame();
     }
 
     /**
@@ -110,17 +109,17 @@ public class BlackjackLevelManager extends LevelManager {
         int dealerHand = dealer.computeBlackJackValue();
 
         if (userHand > 21) {
-            activity.gameOver("You busted!", false);
+            callingActivity.gameOver("You busted!", false);
         } else {
             if (dealerHand > 21) {
-                activity.gameOver("You won! The dealer busted!", true);
+                callingActivity.gameOver("You won! The dealer busted!", true);
             } else {
                 if (dealerHand == userHand) {
-                    activity.gameOver("You tied! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
+                    callingActivity.gameOver("You tied! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
                 } else if (dealerHand < userHand) {
-                    activity.gameOver("You won! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, true);
+                    callingActivity.gameOver("You won! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, true);
                 } else {
-                    activity.gameOver("You lost! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
+                    callingActivity.gameOver("You lost! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
                 }
             }
         }

@@ -1,4 +1,5 @@
 package com.example.game.level2;
+
 import java.util.ArrayList;
 
 public class User {
@@ -19,7 +20,8 @@ public class User {
 
     /**
      * Create a new instance of a user.
-     * @param username  The username of this user.
+     *
+     * @param username The username of this user.
      */
     User(String username) {
         this.username = username;

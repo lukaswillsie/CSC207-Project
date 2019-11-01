@@ -6,6 +6,11 @@ public enum Suit {
     CLUBS,
     DIAMONDS;
 
+    /**
+     * Return a String representation of this Suit, using unicode characters
+     *
+     * @return - the String representation of this Suit, using unicode
+     */
     public String toString() {
         switch (this) {
             case SPADES:

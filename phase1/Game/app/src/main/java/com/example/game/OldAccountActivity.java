@@ -1,12 +1,12 @@
 package com.example.game;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.services.GameData;
 import com.example.game.services.UserAccountManager;
@@ -24,22 +24,22 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
         presenter = new OldAccountActivityPresenter(new UserAccountManager(this), this);
     }
 
-    public void login(View view){
+    public void login(View view) {
         username = getUsername();
         presenter.loginNewUser(username, getPassword());
     }
 
-    private String getPassword(){
-        return ((TextView)findViewById(R.id.newAccountPasswordTextField)).getText().toString();
+    private String getPassword() {
+        return ((TextView) findViewById(R.id.newAccountPasswordTextField)).getText().toString();
     }
 
-    private String getUsername(){
-        return ((TextView)findViewById(R.id.oldAccountUsernameTextField)).getText().toString();
+    private String getUsername() {
+        return ((TextView) findViewById(R.id.oldAccountUsernameTextField)).getText().toString();
     }
 
     @Override
     public void login() {
-        Intent intent = new Intent(this, MainPageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         GameData.setUsername(username);
         startActivity(intent);
     }

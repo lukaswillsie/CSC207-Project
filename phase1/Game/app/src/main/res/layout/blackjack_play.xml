@@ -123,12 +123,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/playScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/blackjackNote"
+        android:layout_width="297dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="72dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/dealerHandLabel"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

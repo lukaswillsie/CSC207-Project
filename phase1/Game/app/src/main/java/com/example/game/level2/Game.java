@@ -1,7 +1,5 @@
 package com.example.game.level2;
 
-import java.lang.Math;
-
 public class Game {
     /**
      * Name of the person, playing the game.
@@ -28,34 +26,35 @@ public class Game {
      * stores the user of this game.
      */
     User user;
+
     /**
      * Create a new Game for User.
      */
-    Game(){
+    Game() {
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
-        this.number = (int)(Math.random() * 10 + 1); //!!!!! CHANGE NEEDED.
+        this.number = (int) (Math.random() * 10 + 1); //!!!!! CHANGE NEEDED.
     }
 
     /**
      * Finish the game.
      */
     public void finishTheGame(int guess) {
-            this.finished = false;
-            this.updateStats(guess);
+        this.finished = false;
+        this.updateStats(guess);
     }
 
     /**
      * Check if the guess is the exact number the the seek.
      */
-    boolean checkTheRightGuess(int guess){
+    boolean checkTheRightGuess(int guess) {
         return this.number == guess;
     }
 
     /**
-    Precondition for check the guess is the guess is not equal to the actual number.
-     Return true iff the guess if less than the number we are seeking.
+     * Precondition for check the guess is the guess is not equal to the actual number.
+     * Return true iff the guess if less than the number we are seeking.
      */
     boolean checkGuess(int guess) {
         this.updateStats(guess);
@@ -74,15 +73,17 @@ public class Game {
         return number;
     }
 
-    public int getPoints(){
+    public int getPoints() {
         return this.points;
     }
 
-    public int getNumOfGuess(){
+    public int getNumOfGuess() {
         return this.numOfGuess;
     }
 
-    public boolean isFinished() {return this.finished;}
+    public boolean isFinished() {
+        return this.finished;
+    }
 
     public void setIsFinished() {
         this.finished = true;

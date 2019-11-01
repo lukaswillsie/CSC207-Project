@@ -23,6 +23,7 @@ public enum Rank {
 
     /**
      * Create a new Rank value
+     *
      * @param value - the value of the rank in a typical card game
      */
     Rank(int value) {
@@ -31,6 +32,7 @@ public enum Rank {
 
     /**
      * Get the value of this Rank
+     *
      * @return the value of this Rank
      */
     public int getValue() {
@@ -39,6 +41,7 @@ public enum Rank {
 
     /**
      * Get a string represnetation of this Rank
+     *
      * @return a string representation of this rank
      */
     public String toString() {

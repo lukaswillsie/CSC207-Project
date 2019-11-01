@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.R;
 
 public class BlackjackStartActivity extends AppCompatActivity {
-    public static String tag = "com.example.game.level1.activities";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +18,13 @@ public class BlackjackStartActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.blackjackBlurb)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 
+    /**
+     * The method called when the "start" button is clicked; starts BlackjackPlayActivity
+     *
+     * @param view - the View that called this method
+     */
     public void startGame(View view) {
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
-        intent.putExtra(tag + ".score", 500);
         startActivity(intent);
     }
 }

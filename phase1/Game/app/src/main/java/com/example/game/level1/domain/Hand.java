@@ -29,6 +29,7 @@ public class Hand implements Iterable<Card> {
 
     /**
      * Return a card iterator for this object
+     *
      * @return a card iterator for this object
      */
     @NonNull
@@ -51,6 +52,7 @@ public class Hand implements Iterable<Card> {
 
         /**
          * Check if this iterator has another element to return
+         *
          * @return - true if there is another element and false otherwise
          */
         public boolean hasNext() {
@@ -59,6 +61,7 @@ public class Hand implements Iterable<Card> {
 
         /**
          * Get the next element from the iterator
+         *
          * @return - the next element
          */
         public Card next() {

@@ -6,15 +6,15 @@ public class NewAccountActivityPresenter {
     private AccountManager accountManager;
     private NewUserPage callingPage;
 
-    NewAccountActivityPresenter(AccountManager accountManager, NewUserPage callingPage){
+    NewAccountActivityPresenter(AccountManager accountManager, NewUserPage callingPage) {
         this.accountManager = accountManager;
         this.callingPage = callingPage;
     }
-    public void registerNewUser(String username, String password){
-        if(accountManager.usernameExists(username)){
+
+    public void registerNewUser(String username, String password) {
+        if (accountManager.usernameExists(username)) {
             callingPage.accountCreationError("That username already exists!");
-        }
-        else {
+        } else {
             accountManager.createNewUser(username, password);
             callingPage.login();
         }

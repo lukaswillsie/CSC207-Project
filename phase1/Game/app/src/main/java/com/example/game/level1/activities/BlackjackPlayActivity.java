@@ -10,12 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.level1.display.ButtonManager;
-import com.example.game.level1.game_logic.LevelManager;
-import com.example.game.level1.services.LevelManagerBuilder;
+import com.example.game.level1.game_logic.BlackjackLevelManager;
+import com.example.game.level1.services.BlackjackLevelManagerBuilder;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManagerBuilder;
 
-public class BlackjackPlayActivity extends AppCompatActivity {
+import java.text.DecimalFormat;
+
+import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
+import static com.example.game.data.GameConstants.TAG;
+import static com.example.game.data.GameConstants.WIN_RATE_KEY;
+
+public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage {
     /**
      * Constants that record the IDs of the various UI elements
      * To be used throughout this level as objects interact with UI elements
@@ -29,14 +35,24 @@ public class BlackjackPlayActivity extends AppCompatActivity {
     public static final int PLAY_AGAIN_BUTTON_ID = R.id.playAgainButton;
 
     /**
-     * The LevelManager that will play the game taking place in this activity
+     * The note to be displayed at the top of the screen
      */
-    public static LevelManager levelManager;
+    private static final String note = "Note: A \u2588 represents a card the dealer has that you can't see";
 
     /**
-     * The player's score
+     * The LevelManager that will play the game taking place in this activity
      */
-    private int score;
+    public static BlackjackLevelManager levelManager;
+
+    /**
+     * The class managing the buttons in this Activity
+     */
+    private ButtonManager buttonManager;
+
+    /**
+     * The number of wins the player has
+     */
+    private int wins = 0;
 
     /**
      * The number of hands this player chose to play in their settings
@@ -48,25 +64,32 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     private int numHandsPlayed = 0;
 
+    /**
+     * The maximum number of hands this user has won in a row this round
+     */
+    private int longestStreak = 0;
+
+    /**
+     * The current number of hands the user has won in a row
+     */
+    private int currentStreak = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
 
-        ButtonManager.setup(this);
+        buttonManager = new ButtonManager(this);
 
-        LevelManagerBuilder builder = new LevelManagerBuilder();
+        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
         levelManager = builder.build(this);
 
         levelManager.setup();
         levelManager.play();
 
-        score = getIntent().getIntExtra(BlackjackStartActivity.tag + ".score", 0);
-
-        String scoreText = "Score: " + score;
-        ((TextView) findViewById(R.id.playScore)).setText(scoreText);
-
         numHands = new SettingsManagerBuilder().build(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
+
+        ((TextView) findViewById(R.id.blackjackNote)).setText(note);
     }
 
     /**
@@ -75,7 +98,11 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param view - the button that was clicked
      */
     public void buttonClick(View view) {
-        levelManager.userButtonClick(view);
+        if (view.getId() == HIT_BUTTON_ID) {
+            levelManager.playerHit();
+        } else if (view.getId() == STAND_BUTTON_ID) {
+            levelManager.playerStand();
+        }
     }
 
     /**
@@ -85,13 +112,13 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param view - the button that was clicked
      */
     public void playAgain(View view) {
-        LevelManagerBuilder builder = new LevelManagerBuilder();
+        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
         levelManager = builder.build(this);
 
-        ButtonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
-        ButtonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
-        ButtonManager.enableButton(HIT_BUTTON_ID);
-        ButtonManager.enableButton(STAND_BUTTON_ID);
+        buttonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
+        buttonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
+        buttonManager.enableButton(HIT_BUTTON_ID);
+        buttonManager.enableButton(STAND_BUTTON_ID);
 
         findViewById(END_GAME_TEXT_ID).setVisibility(View.INVISIBLE);
 
@@ -106,6 +133,8 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      */
     public void endGame(View view) {
         Intent intent = new Intent(this, EndGameActivity.class);
+        intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * ((float) (wins) / (float) numHandsPlayed)) + "%");
+        intent.putExtra(TAG + LONGEST_STREAK_KEY, longestStreak);
         startActivity(intent);
     }
 
@@ -116,24 +145,26 @@ public class BlackjackPlayActivity extends AppCompatActivity {
      * @param endGameText - the text to display as a result of the game ending
      */
     public void gameOver(String endGameText, boolean playerWin) {
+        buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
+        buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
         numHandsPlayed++;
-        if(numHandsPlayed == numHands){
-            ButtonManager.makeVisible(END_GAME_BUTTON_ID);
-        }
-        else {
-            ButtonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
+        if (numHandsPlayed == numHands) {
+            buttonManager.makeVisible(END_GAME_BUTTON_ID);
+        } else {
+            buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
         }
         TextView endGameTextView = findViewById(END_GAME_TEXT_ID);
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
 
         if (playerWin) {
-            score += 100;
+            currentStreak += 1;
+            if (currentStreak > longestStreak) {
+                longestStreak = currentStreak;
+            }
+            wins++;
         } else {
-            score -= 50;
+            currentStreak = 0;
         }
-
-        String scoreText = "Score: " + score;
-        ((TextView) findViewById(R.id.playScore)).setText(scoreText);
     }
 }

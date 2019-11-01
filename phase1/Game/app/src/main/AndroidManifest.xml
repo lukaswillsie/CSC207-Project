@@ -11,7 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".level3.CowsBullsActivity"></activity>
         <activity android:name=".StatsActivity" />
-        <activity android:name=".MainPageActivity" />
         <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity" />
@@ -28,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".level1.activities.BlackjackBetActivity" />
         <activity android:name=".level1.activities.EndGameActivity" />
         <activity android:name=".level1.activities.BlackjackPlayActivity" />
         <activity android:name=".level1.activities.BlackjackStartActivity" />

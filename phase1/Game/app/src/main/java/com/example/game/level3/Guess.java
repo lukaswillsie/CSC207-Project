@@ -1,7 +1,7 @@
 package com.example.game.level3;
 
 import java.util.HashMap;
-import java.util.*;
+import java.util.Map;
 
 
 /**
@@ -22,7 +22,7 @@ public class Guess {
      * Create a new Guess object. A precondition is that guessArray and answerArray must
      * have the same size.
      *
-     * @param guessArray  An array of the guess made by the player.
+     * @param guessArray   An array of the guess made by the player.
      * @param answerArray¬ An array of the answer that the player is trying to guess.
      */
     public Guess(String[] guessArray, String[] answerArray) {

@@ -9,16 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ButtonManager {
-    private static List<Button> buttons;
+    /**
+     * The collection of buttons being managed at any given time
+     */
+    private List<Button> buttons;
 
     /**
      * Setup the ButtonManager for use. Must be called each time a new activity
      * wants to use ButtonManager
-     *
+     * <p>
      * Gets all the buttons from the given activity and keeps them in a List
+     *
      * @param activity - the activity that wants the ButtonManager
      */
-    public static void setup(Activity activity) {
+    public ButtonManager(Activity activity) {
         buttons = new ArrayList<>();
 
         ViewGroup viewGroup = (ViewGroup) activity.getWindow().getDecorView();
@@ -28,11 +32,11 @@ public class ButtonManager {
     /**
      * Get all the buttons from the given ViewGroup and add them to buttons
      * <p>
-     * This code setup courtesy of Gopal Gopi on StackOverflow
+     * This code from Gopal Gopi on StackOverflow
      *
      * @param viewGroup - the ViewGroup to get all the buttons from
      */
-    private static void populateButtons(ViewGroup viewGroup) {
+    private void populateButtons(ViewGroup viewGroup) {
         for (int i = 0, n = viewGroup.getChildCount(); i < n; i++) {
             View view = viewGroup.getChildAt(i);
             if (view instanceof ViewGroup) {
@@ -46,11 +50,12 @@ public class ButtonManager {
     /**
      * Disable the button with the given id - that is, make it unclickable
      * The button's visibility will remain unchanged
-     *
+     * <p>
      * Does nothing if no button has the given id
+     *
      * @param id - the id of the button to disable
      */
-    public static void disableButton(int id) {
+    public void disableButton(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setEnabled(false);
@@ -62,9 +67,10 @@ public class ButtonManager {
     /**
      * Enable the button with the given id - that is, make it clickable
      * The button's visibility will remain unchanged
+     *
      * @param id - the id of the button to enable
      */
-    public static void enableButton(int id) {
+    public void enableButton(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setEnabled(true);
@@ -78,7 +84,7 @@ public class ButtonManager {
      *
      * @param id - the id of the button to make invisible
      */
-    public static void makeButtonInvisible(int id) {
+    public void makeButtonInvisible(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setVisibility(View.INVISIBLE);
@@ -92,7 +98,7 @@ public class ButtonManager {
      *
      * @param id - the id of the button to make visible
      */
-    public static void makeVisible(int id) {
+    public void makeVisible(int id) {
         for (Button button : buttons) {
             if (button.getId() == id) {
                 button.setVisibility(View.VISIBLE);

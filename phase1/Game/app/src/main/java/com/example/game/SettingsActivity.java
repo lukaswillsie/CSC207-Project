@@ -1,14 +1,13 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.game.data.Setting;
 import com.example.game.services.GameData;
@@ -35,70 +34,72 @@ public class SettingsActivity extends AppCompatActivity {
         numHandsBar.setProgress(settingsManager.getSetting(Setting.NUM_HANDS));
 
         String progressText = "" + settingsManager.getSetting(Setting.NUM_HANDS);
-        ((TextView)findViewById(R.id.numHandsLabel)).setText(progressText);
+        ((TextView) findViewById(R.id.numHandsLabel)).setText(progressText);
 
         numRoundsBar = findViewById(R.id.numRoundsSeekBar);
         // Read user's setting for number of rounds and set it as progress on the seek bar
         numRoundsBar.setProgress(settingsManager.getSetting(Setting.NUM_ROUNDS));
 
         progressText = "" + settingsManager.getSetting(Setting.NUM_ROUNDS);
-        ((TextView)findViewById(R.id.numRoundsLabel)).setText(progressText);
+        ((TextView) findViewById(R.id.numRoundsLabel)).setText(progressText);
 
         numHandsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 String progressString = "" + progress;
-                ((TextView)findViewById(R.id.numHandsLabel)).setText(progressString);
+                ((TextView) findViewById(R.id.numHandsLabel)).setText(progressString);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         numRoundsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 String progressString = "" + progress;
-                ((TextView)findViewById(R.id.numRoundsLabel)).setText(progressString);
+                ((TextView) findViewById(R.id.numRoundsLabel)).setText(progressString);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
         darkMode = findViewById(R.id.darkModeSwitch);
-        if(settingsManager.getSetting(Setting.DARK_MODE) == 0){
+        if (settingsManager.getSetting(Setting.DARK_MODE) == 0) {
             darkMode.setChecked(false);
-        }
-        else {
+        } else {
             darkMode.setChecked(true);
         }
 
         darkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            if (b){
-                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else {
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
             }
-            else{
-                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }
-        }
         });
 
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
         settingsManager.updateSetting(Setting.NUM_HANDS, numHandsBar.getProgress());
         settingsManager.updateSetting(Setting.NUM_ROUNDS, numRoundsBar.getProgress());
-        settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1: 0);
+        settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1 : 0);
 
 
     }

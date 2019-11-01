@@ -10,6 +10,7 @@ public class BlackjackPlayerManager {
 
     /**
      * Create a new BlackjackPlayerManager for a given player
+     *
      * @param player - the player to be managed
      */
     public BlackjackPlayerManager(Player player) {
@@ -18,6 +19,7 @@ public class BlackjackPlayerManager {
 
     /**
      * Add a card to the player's hand
+     *
      * @param card - the card to add to the player's hand
      */
     public void deal(Card card) {
@@ -26,6 +28,7 @@ public class BlackjackPlayerManager {
 
     /**
      * Adds the given array of Cards to the player's hand
+     *
      * @param cards - the array of all the cards to be added to the player's hand
      */
     public void deal(Card[] cards) {
@@ -36,6 +39,7 @@ public class BlackjackPlayerManager {
 
     /**
      * Compute the value of the player's hand according to the rules of Blackjack
+     *
      * @return - the value of this player's hand, according to the rules of Blackjack
      */
     public int computeBlackJackValue() {

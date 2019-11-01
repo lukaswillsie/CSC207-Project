@@ -1,10 +1,10 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -14,17 +14,17 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
     }
 
-    public void newAccount(View view){
+    public void newAccount(View view) {
         Intent intent = new Intent(this, NewAccountActivity.class);
         startActivity(intent);
     }
 
-    public void oldAccount(View view){
+    public void oldAccount(View view) {
         Intent intent = new Intent(this, OldAccountActivity.class);
         startActivity(intent);
     }
 
-    public void Test(View view){
+    public void Test(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

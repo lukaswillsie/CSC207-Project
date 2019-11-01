@@ -1,12 +1,12 @@
 package com.example.game;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.services.GameData;
 import com.example.game.services.UserAccountManager;
@@ -23,22 +23,22 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
         presenter = new NewAccountActivityPresenter(new UserAccountManager(this), this);
     }
 
-    public void register (View view){
+    public void register(View view) {
         username = getUsername();
         presenter.registerNewUser(username, getPassword());
     }
 
-    private String getPassword(){
-        return ((TextView)findViewById(R.id.newAccountPasswordTextField)).getText().toString();
+    private String getPassword() {
+        return ((TextView) findViewById(R.id.newAccountPasswordTextField)).getText().toString();
     }
 
-    private String getUsername(){
-        return ((TextView)findViewById(R.id.newAccountUsernameTextField)).getText().toString();
+    private String getUsername() {
+        return ((TextView) findViewById(R.id.newAccountUsernameTextField)).getText().toString();
     }
 
     @Override
     public void login() {
-        Intent intent = new Intent(this, MainPageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         GameData.setUsername(username);
 
         startActivity(intent);
