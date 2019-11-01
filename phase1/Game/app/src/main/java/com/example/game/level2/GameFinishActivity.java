@@ -33,6 +33,7 @@ public class GameFinishActivity extends AppCompatActivity {
             findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
             findViewById(R.id.playAgainButton).setVisibility(View.VISIBLE);
             findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
+            gameManager.resetCurrentRounds();
         }
     }
 

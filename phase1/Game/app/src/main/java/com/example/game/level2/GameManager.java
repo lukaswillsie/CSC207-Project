@@ -55,4 +55,8 @@ public class GameManager {
     public int getRoundsToPlay() {
         return this.roundsToPlay;
     }
+
+    public void resetCurrentRounds() {
+        this.currentRound = 0;
+    }
 }
