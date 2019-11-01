@@ -10,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.MainActivity;
 import com.example.game.R;
+import com.example.game.data.Statistic;
+import com.example.game.services.GameData;
+import com.example.game.services.StatsManager;
+import com.example.game.services.StatsManagerBuilder;
 
 public class GameFinishActivity extends AppCompatActivity {
     GameManager gameManager = GameStartActivity.gameManager;
@@ -20,6 +24,7 @@ public class GameFinishActivity extends AppCompatActivity {
         setContentView(R.layout.game_finish_activity);
         Game currentGame = gameManager.getCurrentGame();
         currentGame.setIsFinished();
+        this.updateStatistics();
         ((TextView) findViewById(R.id.points16)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView) findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.getNumOfGuess()));
         ((TextView) findViewById(R.id.currentRoundText)).setText(String.valueOf(gameManager.getCurrentRound()));
@@ -60,5 +65,14 @@ public class GameFinishActivity extends AppCompatActivity {
         findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
         findViewById(R.id.playAgainButton).setVisibility(View.VISIBLE);
         findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
+    }
+    public void updateStatistics(){
+        String username = GameData.USERNAME;
+        StatsManager statsManager = new StatsManagerBuilder().build(this, username);
+        int guesses = gameManager.getCurrentGame().getNumOfGuess();
+        if (guesses < statsManager.getStat(Statistic.FEWEST_GUESSES)) {
+            statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
+        }
+
     }
 }
