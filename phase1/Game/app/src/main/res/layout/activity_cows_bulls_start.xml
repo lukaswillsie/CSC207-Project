@@ -13,7 +13,6 @@
         android:layout_marginTop="100dp"
         android:text="@string/cowsbullsblurb"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

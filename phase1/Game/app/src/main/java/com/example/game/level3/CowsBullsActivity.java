@@ -23,6 +23,10 @@ import com.example.game.services.StatsManagerBuilder;
 
 import java.util.ArrayList;
 
+
+/*
+ * Image for cows_and_bull received from http://benjdd.com/courses/cs110/fall-2018/pas/bulls_and_cows/
+ */
 /**
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
@@ -75,7 +79,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
-        if (currentGuess.length() == 5 || !currentGuess.equals("null")) {
+        if (currentGuess.length() == 5 & !currentGuess.equals("null")) {
             guess.setText("");
             String[] guessArray = currentGuess.split("");
             this.gameManager.setGuess(guessArray);
