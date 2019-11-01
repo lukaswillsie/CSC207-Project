@@ -11,6 +11,9 @@ import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameConstants;
 
+/**
+ * The activity displayed after the user finishes a round of Blackjack
+ */
 public class EndGameActivity extends AppCompatActivity {
 
     @Override

@@ -24,6 +24,9 @@ import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
 import static com.example.game.data.GameConstants.TAG;
 import static com.example.game.data.GameConstants.WIN_RATE_KEY;
 
+/**
+ * The page displayed when the user is actually playing a round of Blackjack
+ */
 public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage {
     /**
      * Constants that record the IDs of the various UI elements

@@ -1,5 +1,8 @@
 package com.example.game.level1.activities;
 
+/**
+ * An interface defining what must be true of an activity that is playing Blackjack with the player
+ */
 public interface BlackjackPlayPage {
     /**
      * Update the interface to reflect the fact that the game is over, displaying the given endGameText
