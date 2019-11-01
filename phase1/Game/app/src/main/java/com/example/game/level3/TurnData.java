@@ -5,9 +5,9 @@ package com.example.game.level3;
  */
 public class TurnData {
 
-    public String[] guessArray;
-    public int numberCows;
-    public int numberBulls;
+    private String[] guessArray;
+    private int numberCows;
+    private int numberBulls;
 
     /**
      * Create a TurnData object. A precdndition is that guessArray and answerArray must have the
@@ -16,7 +16,7 @@ public class TurnData {
      * @param guessArray  An array of the elements guessed by the player.
      * @param answerArray An array of the elements for the correct answer.
      */
-    public TurnData(String[] guessArray, String[] answerArray) {
+    TurnData(String[] guessArray, String[] answerArray) {
 
         Guess guess = new Guess(guessArray, answerArray);
         this.guessArray = guessArray;
@@ -40,7 +40,7 @@ public class TurnData {
      * @return An integer array where the first element is the number of cows and the second element
      * is the number of bulls.
      */
-    public int[] getResults() {
+    int[] getResults() {
         return new int[]{this.numberCows, this.numberBulls};
     }
 

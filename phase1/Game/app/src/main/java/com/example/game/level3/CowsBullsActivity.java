@@ -1,20 +1,14 @@
 package com.example.game.level3;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.data.Statistic;
@@ -23,8 +17,6 @@ import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
-
-import java.time.Duration;
 import java.util.ArrayList;
 
 /**
