@@ -16,7 +16,7 @@ public class Deck {
     private ArrayList<Card> deck;
 
     /**
-     * Create an unshuffled deck
+     * Create an un-shuffled deck
      */
     public Deck() {
         deck = newDeck();

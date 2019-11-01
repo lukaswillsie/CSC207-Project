@@ -17,16 +17,25 @@ import static com.example.game.data.GameConstants.SETTINGS_FILE_NAME;
 import static com.example.game.data.GameConstants.STATS_FILE_NAME;
 import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 
+/**
+ * An implementation of AccountManager that uses a folder structures like the following:
+ *  app_root_directory\
+ *    users\
+ *      lukas
+ *        settings
+ *        stats
+ *        password
+ *      peter
+ *        settings
+ *        stats
+ *        password
+ * to query and create users and their information
+ */
 public class UserAccountManager implements AccountManager {
     /**
      * This class's tag for logging events
      */
     private static String tag = "com.example.game.services.UserAccountManager";
-
-    /**
-     * The strings that should be written into the stats file on creation of a new user
-     */
-    private static String[] stats = {"FewestGuesses=0", "LongestStreak=0"};
 
     /**
      * File object representing the "users" directory containing all the user accounts and
@@ -75,7 +84,7 @@ public class UserAccountManager implements AccountManager {
      */
     public void createNewUser(String username, String password) {
         File newUserDir = new File(usersDir, username);
-        boolean mkdir = newUserDir.mkdirs();
+        newUserDir.mkdir();
 
         File settings = new File(newUserDir, SETTINGS_FILE_NAME);
         File stats = new File(newUserDir, STATS_FILE_NAME);
@@ -112,11 +121,15 @@ public class UserAccountManager implements AccountManager {
             Log.e(tag, "Failed to create default files for user");
         } finally {
             try {
-                settingStream.close();
-                statsStream.close();
-                passwordStream.close();
-            } catch (NullPointerException e) {
-                Log.e(tag, "Failed to close FileOutputStream because null");
+                if(settingStream != null){
+                    settingStream.close();
+                }
+                if(statsStream != null){
+                    statsStream.close();
+                }
+                if(passwordStream != null) {
+                    passwordStream.close();
+                }
             } catch (IOException e) {
                 Log.e(tag, "Failed to close FileOutputStream");
             }
