@@ -2,6 +2,7 @@ package com.example.game.level3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
@@ -45,7 +46,11 @@ public class CowsBullsActivity extends AppCompatActivity {
         linLayout = findViewById(R.id.linLayout);
         SettingsManager settingsManager = new SettingsManagerBuilder().build(this, username);
         this.gameManager = new GameManager(4, settingsManager.getSetting(Setting.ALPHABET));
-
+        if (settingsManager.getSetting(Setting.ALPHABET) == 1){
+            guess.setInputType(InputType.TYPE_CLASS_TEXT);
+        } else {
+            guess.setInputType(InputType.TYPE_CLASS_NUMBER);
+        }
     }
 
     /**
