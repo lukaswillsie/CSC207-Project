@@ -18,6 +18,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.game.R;
 import com.example.game.data.Statistic;
 import com.example.game.services.GameData;
+import com.example.game.services.SettingsManager;
+import com.example.game.services.SettingsManagerBuilder;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
 
@@ -36,22 +38,21 @@ public class CowsBullsActivity extends AppCompatActivity {
     private String[] alphabet;
     private StatsManager statsManager;
     long startTime;
+    String username = GameData.USERNAME;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls);
-
-
         startTime = System.currentTimeMillis();
-
         chronometer = findViewById(R.id.timer);
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
         this.alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         this.gameManager = new GameManager(4, this.alphabet);
+        SettingsManager settingsManager = new SettingsManagerBuilder().build(this, username);
 
     }
 
@@ -110,12 +111,13 @@ public class CowsBullsActivity extends AppCompatActivity {
 
     /**
      * Returns elapsedTime in seconds in and int
+     *
      * @param elapsedTime - the time elapsed in milliSeconds
      */
-    private int turnToSeconds(long elapsedTime){
-        int hours = (int) (elapsedTime/3600000);
-        int minutes = (int) (elapsedTime - hours * 3600000)/60000;
-        return (int) (elapsedTime - hours * 3600000 - minutes * 60000)/ 1000;
+    private int turnToSeconds(long elapsedTime) {
+        int hours = (int) (elapsedTime / 3600000);
+        int minutes = (int) (elapsedTime - hours * 3600000) / 60000;
+        return (int) (elapsedTime - hours * 3600000 - minutes * 60000) / 1000;
     }
 
     /**
