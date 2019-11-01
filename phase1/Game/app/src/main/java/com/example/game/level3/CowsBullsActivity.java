@@ -22,8 +22,9 @@ public class CowsBullsActivity extends AppCompatActivity {
     private Chronometer chronometer;
     private long elapsedTime;
     private LinearLayout linLayout;
-
-
+    private GameManager gameManager;
+    private int answerSize;
+    private String[] alphabet;
 
 
     @Override
@@ -39,7 +40,6 @@ public class CowsBullsActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * @return - the guess input of user as a String if guess length matches GUESS_SIZE, otherwise
      * return -1
      */
@@ -48,35 +48,32 @@ public class CowsBullsActivity extends AppCompatActivity {
             if (guess.getText().toString().length() > 0)
                 return guess.getText().toString();
             return "null";
-        } catch (Exception e){
+        } catch (Exception e) {
             return "null";
         }
     }
 
     /**
      * This method performs the tasks after user had made a guess through the interface.
+     *
      * @param view - view of the Activity
      */
-    public void checkGuess (View view){
+    public void checkGuess(View view) {
         currentGuess = guessInput();
 
         guess.setText("");
 
+        String[] guessArray = currentGuess.split("");
+
+        this.gameManager = new GameManager(this.answerSize, this.alphabet);
+
         TextView currGuess = new TextView(CowsBullsActivity.this);
         currGuess.setText(currentGuess);
         linLayout.addView(currGuess);
-
-
-
-
-
-
-
-
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
     }
 }
