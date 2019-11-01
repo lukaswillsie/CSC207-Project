@@ -14,6 +14,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.game.R;
 
+import java.util.ArrayList;
+
 public class CowsBullsActivity extends AppCompatActivity {
     private TextView timer;
     private EditText guess;
@@ -90,6 +92,15 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public int getBulls() {
         return this.gameManager.getResults()[1];
+    }
+
+    /**
+     * A method that returns all of the data / statistics collected so far in level 3.
+     *
+     * @return An array of TurnData objects which store the data for each turn.
+     */
+    public ArrayList<TurnData> getStatistics() {
+        return this.gameManager.getStatistics();
     }
 
     @Override
