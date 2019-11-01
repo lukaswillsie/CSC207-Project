@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".level3.CowsBullsActivity"></activity>
+        <activity android:name=".level3.CowsBullsFinishActivity"></activity>
+        <activity android:name=".level3.CowsBullsActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".OldAccountActivity" />

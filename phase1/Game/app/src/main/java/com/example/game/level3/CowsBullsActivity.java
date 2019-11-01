@@ -1,7 +1,9 @@
 package com.example.game.level3;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
@@ -14,7 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.game.R;
+import com.example.game.data.Statistic;
+import com.example.game.services.GameData;
+import com.example.game.services.StatsManager;
+import com.example.game.services.StatsManagerBuilder;
 
+import java.time.Duration;
 import java.util.ArrayList;
 
 public class CowsBullsActivity extends AppCompatActivity {
@@ -28,11 +35,17 @@ public class CowsBullsActivity extends AppCompatActivity {
     private GameManager gameManager;
     private int answerSize;
     private String[] alphabet;
+    private StatsManager statsManager;
+    long startTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls);
+
+
+        startTime = System.currentTimeMillis();
 
         chronometer = findViewById(R.id.timer);
         chronometer.start();
@@ -68,11 +81,33 @@ public class CowsBullsActivity extends AppCompatActivity {
         guess.setText("");
         String[] guessArray = currentGuess.split("");
         this.gameManager.setGuess(guessArray);
+
+        if (getBulls() == 4){
+            long stopTime = System.currentTimeMillis();
+            chronometer.stop();
+            statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+            elapsedTime = stopTime - startTime;
+            int hours = (int) (elapsedTime/3600000);
+            int minutes = (int) (elapsedTime - hours * 3600000)/60000;
+            int seconds = (int) (elapsedTime - hours * 3600000 - minutes * 60000)/ 1000;
+            statsManager.setStat(Statistic.TIME_TAKEN, seconds);
+            int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);
+            if(seconds < minTime || minTime == 0){
+                statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
+            }
+            statsManager.setStat(Statistic.NUMBER_OF_GUESSES, this.gameManager.getStatistics().size());
+            Intent intent = new Intent(this, CowsBullsFinishActivity.class);
+            startActivity(intent);
+
+        }
+
         TextView currGuess = new TextView(CowsBullsActivity.this);
         String textToDisplay = currentGuess + "     Bulls: " + getBulls() + " Cows: " + getCows();
         currGuess.setText(textToDisplay);
         currGuess.setGravity(Gravity.CENTER);
         linLayout.addView(currGuess);
+
+
     }
 
     /**
@@ -107,5 +142,9 @@ public class CowsBullsActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+    }
+
+    private long getTime(){
+        return SystemClock.elapsedRealtime();
     }
 }

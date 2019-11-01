@@ -7,7 +7,9 @@ package com.example.game.data;
 public enum Statistic {
     FEWEST_GUESSES("FewestGuesses", 0),
     LONGEST_STREAK("LongestStreak", 0),
-    QUICKEST_TIME("QuickestTime", 0);
+    QUICKEST_TIME("QuickestTime", 0),
+    NUMBER_OF_GUESSES("NumberOfGuesses", 0),
+    TIME_TAKEN("TimeTaken", 0);
 
     /**
      * The key that will be used to store this statistic in the stats file
