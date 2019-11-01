@@ -14,6 +14,9 @@ import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The page displayed when a user is viewing or changing their settings
  */
@@ -22,6 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
     private SeekBar numHandsBar;
     private SeekBar numRoundsBar;
     private Switch darkMode;
+    private Switch alphabetSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +97,13 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        alphabetSwitch = findViewById(R.id.alphabetSwitch);
+        if (settingsManager.getSetting(Setting.ALPHABET) == 0) {
+            alphabetSwitch.setChecked(false);
+        } else {
+            alphabetSwitch.setChecked(true);
+
+        }
     }
 
     @Override
@@ -101,5 +112,6 @@ public class SettingsActivity extends AppCompatActivity {
         settingsManager.updateSetting(Setting.NUM_HANDS, numHandsBar.getProgress());
         settingsManager.updateSetting(Setting.NUM_ROUNDS, numRoundsBar.getProgress());
         settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1 : 0);
+        settingsManager.updateSetting(Setting.ALPHABET, alphabetSwitch.isChecked() ? 1 : 0);
     }
 }

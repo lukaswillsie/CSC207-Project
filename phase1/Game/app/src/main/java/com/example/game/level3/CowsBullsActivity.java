@@ -38,12 +38,13 @@ public class CowsBullsActivity extends AppCompatActivity {
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
+        this.gameManager = new GameManager(this.answerSize, this.alphabet);
 
     }
 
     /**
      * @return - the guess input of user as a String if guess length matches GUESS_SIZE, otherwise
-     * return -1
+     * return null.
      */
     private String guessInput() {
         try {
@@ -62,13 +63,9 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public void checkGuess(View view) {
         currentGuess = guessInput();
-
         guess.setText("");
-
         String[] guessArray = currentGuess.split("");
-
-        this.gameManager = new GameManager(this.answerSize, this.alphabet);
-
+        this.gameManager.setGuess(guessArray);
         TextView currGuess = new TextView(CowsBullsActivity.this);
         currGuess.setText(currentGuess);
         linLayout.addView(currGuess);
