@@ -50,6 +50,9 @@ class GameManager {
      */
     void setGuess(String[] guessArray) {
         // Double check that aliasing is okay. Otherwise make copy.
+        for (int i = 0; i < guessArray.length; i++) {
+            guessArray[i] = guessArray[i].toLowerCase();
+        }
         this.turnData = new TurnData(guessArray, this.answerArray);
         this.data.add(this.turnData);
     }
