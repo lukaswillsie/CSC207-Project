@@ -5,6 +5,9 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Represents a Hand of playing cards
+ */
 public class Hand implements Iterable<Card> {
     /**
      * An array of cards representing this hand

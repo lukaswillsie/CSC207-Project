@@ -3,6 +3,9 @@ package com.example.game.level1.domain;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Represents a deck of playing cards
+ */
 public class Deck {
     /**
      * The array of cards that are in this deck

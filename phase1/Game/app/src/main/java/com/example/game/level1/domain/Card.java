@@ -1,5 +1,8 @@
 package com.example.game.level1.domain;
 
+/**
+ * Represents a card in a deck of cards
+ */
 public class Card {
     /**
      * The rank of this playing card

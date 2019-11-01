@@ -4,6 +4,10 @@ import com.example.game.level1.domain.Card;
 import com.example.game.level1.domain.Hand;
 import com.example.game.level1.domain.Player;
 
+/**
+ * Contains a Player object and converts the information contained in that player object to a String
+ * for displaying on the interface
+ */
 public class PlayerInterpreter {
     /**
      * The player whose hand this PlayerInterpreter is relaying to the interface
