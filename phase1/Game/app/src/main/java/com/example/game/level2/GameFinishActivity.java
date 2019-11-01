@@ -68,17 +68,29 @@ public class GameFinishActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Shows the user the buttons that she/he is allowed to click when there is at least one round
+     * left to play.
+     */
     public  void inverseVisibility(){
         findViewById(R.id.mainMenuButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.nextRoundButton).setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Shows user the buttons that he/she is allowed to click when the all the rounds are finished.
+     */
     public void reverseVisibility(){
         findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
         findViewById(R.id.playAgainButton).setVisibility(View.VISIBLE);
         findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
     }
+
+    /**
+     * Updates statistics in the game. If the user made the new record(guessed the number with fewest
+     * guess, we update their statistics.
+     */
     public void updateStatistics(){
         String username = GameData.USERNAME;
         StatsManager statsManager = new StatsManagerBuilder().build(this, username);

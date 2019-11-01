@@ -42,12 +42,9 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
 
             if (currentGame.checkTheRightGuess(guess)) {
                 currentGame.finishTheGame(guess);
-                gameManager.checkRounds();
-                Intent intent = new Intent(this, GameFinishActivity.class);
-                startActivity(intent);
+                this.finishTheRound();
             } else {
                 if (currentGame.checkGuess(guess)) {
-                    //((TextView)findViewById(R.id.textView)).setVisibility(View.INVISIBLE);
                     this.highGuess();
                 } else {
                     this.lowGuess();
@@ -83,10 +80,10 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     }
 
     /**
-     * Displays the text if the user's input is null or a number bigger than 10^9.
+     * Displays the text if the user's input is null.
      */
     public void BadNumber(){
-        ((TextView) findViewById(R.id.textView)).setText("You either did not enter the number or your number is too big, please try again");
+        ((TextView) findViewById(R.id.textView)).setText("You need to insert a number, please try again");
     }
 
     /**
@@ -98,5 +95,12 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
     }
 
-
+    /**
+     * Finish the current round, refer user to GameFinishActivity.
+     */
+    public void finishTheRound(){
+        gameManager.checkRounds();
+        Intent intent = new Intent(this, GameFinishActivity.class);
+        startActivity(intent);
+    }
 }
