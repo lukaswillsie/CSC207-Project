@@ -54,4 +54,14 @@ public class GameManager {
         return turnData.getResults();
     }
 
+    /**
+     * A method that returns all of the data / statistics collected so far in level 3.
+     *
+     * @return An array of TurnData objects which store the data for each turn.
+     */
+    public ArrayList<TurnData> getStatistics() {
+        return this.data;
+    }
+
+
 }
