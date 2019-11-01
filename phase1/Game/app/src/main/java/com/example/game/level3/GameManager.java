@@ -5,15 +5,15 @@ import java.util.ArrayList;
 /**
  * A GameManager class that handles all of the game logic.
  */
-public class GameManager {
+class GameManager {
     // An array of the data for each turn.
-    ArrayList<TurnData> data = new ArrayList<>();
+    private ArrayList<TurnData> data = new ArrayList<>();
 
     // An array of the answer that the player is trying to guess.
-    String[] answerArray;
+    private String[] answerArray;
 
     // A TurnData object to store the information for the current turn.
-    TurnData turnData;
+    private TurnData turnData;
 
     /**
      * A constructor for the GameManager class.
@@ -38,8 +38,8 @@ public class GameManager {
             int rand = (int) (Math.random() * alphabet.length);
 
             this.answerArray[i] = alphabet[rand];
-
         }
+
     }
 
     /**
@@ -47,7 +47,7 @@ public class GameManager {
      *
      * @param guessArray The new guess.
      */
-    public void setGuess(String[] guessArray) {
+    void setGuess(String[] guessArray) {
         // Double check that aliasing is okay. Otherwise make copy.
         this.turnData = new TurnData(guessArray, this.answerArray);
         this.data.add(this.turnData);
@@ -59,7 +59,7 @@ public class GameManager {
      * @return An integer array where the first element is the number of cows and the second element
      * is the number of bulls.
      */
-    public int[] getResults() {
+    int[] getResults() {
         return turnData.getResults();
     }
 
@@ -68,7 +68,7 @@ public class GameManager {
      *
      * @return An array of TurnData objects which store the data for each turn.
      */
-    public ArrayList<TurnData> getStatistics() {
+    ArrayList<TurnData> getStatistics() {
         return this.data;
     }
 
