@@ -11,15 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".level3.CowsBullsActivity"></activity>
         <activity android:name=".StatsActivity" />
-        <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".OldAccountActivity"
-            android:parentActivityName=".StartActivity" />
-        <activity
-            android:name=".NewAccountActivity"
-            android:parentActivityName=".StartActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".OldAccountActivity" />
+        <activity android:name=".NewAccountActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
