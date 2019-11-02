@@ -44,6 +44,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
 
     /**
      * Access what the user typed into the password field
+     *
      * @return what the user typed into the password field
      */
     private String getPassword() {
@@ -52,6 +53,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
 
     /**
      * Access what the user typed into the name field
+     *
      * @return what the user typed into the name field
      */
     private String getUsername() {
@@ -71,6 +73,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
 
     /**
      * To be called when there is a problem logging in the user
+     *
      * @param message - the message to display to the user
      */
     @Override

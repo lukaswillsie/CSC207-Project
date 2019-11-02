@@ -16,9 +16,6 @@ import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * The page displayed when a user is viewing or changing their settings
  */
@@ -110,6 +107,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
     }
+
     public void toMain(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

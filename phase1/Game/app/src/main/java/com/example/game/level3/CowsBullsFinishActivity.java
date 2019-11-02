@@ -1,15 +1,14 @@
 package com.example.game.level3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.StartActivity;
 import com.example.game.data.Statistic;
 import com.example.game.services.GameData;
 import com.example.game.services.StatsManager;
@@ -51,6 +50,7 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
 
     /**
      * Method to allow button to take user to the MainActivity
+     *
      * @param view
      */
     public void menu(View view) {

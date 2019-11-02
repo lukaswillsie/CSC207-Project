@@ -18,8 +18,9 @@ class NewAccountActivityPresenter {
 
     /**
      * Create a new NewAccountActivityPresenter
+     *
      * @param accountManager - the AccountManager this object will use to manage user accounts
-     * @param callingPage - the page that created this object
+     * @param callingPage    - the page that created this object
      */
     NewAccountActivityPresenter(AccountManager accountManager, NewUserPage callingPage) {
         this.accountManager = accountManager;
@@ -28,9 +29,10 @@ class NewAccountActivityPresenter {
 
     /**
      * Register a new user with the given username and password
-     *
+     * <p>
      * Calls callingPage.accountCreationError() if something is wrong with the given
      * credentials
+     *
      * @param username - the username of the new user to be created
      * @param password - the password of the new user to be created
      */

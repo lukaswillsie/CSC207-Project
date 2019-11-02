@@ -18,7 +18,8 @@ class OldAccountActivityPresenter {
 
     /**
      * Create a new OldAccountActivityPresenter
-     * @param manager - the AccountManager to be used by this object to manage user accounts
+     *
+     * @param manager     - the AccountManager to be used by this object to manage user accounts
      * @param callingPage - the OldUserPage that created this object
      */
     OldAccountActivityPresenter(AccountManager manager, OldUserPage callingPage) {
@@ -28,8 +29,9 @@ class OldAccountActivityPresenter {
 
     /**
      * Log in an existing user with the given username and password
-     *
+     * <p>
      * Calls callingPage.loginError() if the given username and password
+     *
      * @param username - the user's username
      * @param password - the user's password
      */

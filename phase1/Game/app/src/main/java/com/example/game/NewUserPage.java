@@ -11,6 +11,7 @@ public interface NewUserPage {
 
     /**
      * Tells the page that the new user creation failed and to display the given message
+     *
      * @param message - the message to display to the user
      */
     void accountCreationError(String message);

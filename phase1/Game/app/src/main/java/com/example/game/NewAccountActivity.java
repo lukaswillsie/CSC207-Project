@@ -34,6 +34,7 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
 
     /**
      * Register a new user by passing the request on to the presenter
+     *
      * @param view - the View that called this method
      */
     public void register(View view) {
@@ -43,6 +44,7 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
 
     /**
      * Access what the user typed into the password field
+     *
      * @return what the user typed into the password field
      */
     private String getPassword() {
@@ -51,6 +53,7 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
 
     /**
      * Access what the user typed into the name field
+     *
      * @return what the user typed into the name field
      */
     private String getUsername() {
@@ -73,6 +76,7 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
 
     /**
      * To be called when there is a problem creating a new account for the user
+     *
      * @param message - the message to display to the user
      */
     @Override
