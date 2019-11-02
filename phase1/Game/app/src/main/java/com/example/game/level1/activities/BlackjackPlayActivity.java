@@ -177,7 +177,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         int savedLongestStreak = statsManager.getStat(Statistic.LONGEST_STREAK);
 
-        if(longestStreak > savedLongestStreak){
+        if (longestStreak > savedLongestStreak) {
             statsManager.setStat(Statistic.LONGEST_STREAK, longestStreak);
         }
     }

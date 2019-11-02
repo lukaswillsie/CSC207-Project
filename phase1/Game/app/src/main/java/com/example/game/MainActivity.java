@@ -6,11 +6,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.game.data.Setting;
 import com.example.game.level1.activities.BlackjackStartActivity;
 import com.example.game.level2.GameStartActivity;
 import com.example.game.level3.CowsBullsStartActivity;
 import com.example.game.services.GameData;
+import com.example.game.services.SettingsManager;
+import com.example.game.services.SettingsManagerBuilder;
 
 public class MainActivity extends AppCompatActivity {
     @Override
