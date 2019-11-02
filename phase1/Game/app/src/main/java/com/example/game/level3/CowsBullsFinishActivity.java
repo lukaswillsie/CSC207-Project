@@ -20,8 +20,19 @@ import com.example.game.services.StatsManagerBuilder;
  */
 public class CowsBullsFinishActivity extends AppCompatActivity {
 
+    /**
+     * TextView display for user's time taken to guess the number
+     */
     TextView time;
+
+    /**
+     * TextView display for user's number of guesses taken to guess the number
+     */
     TextView numGuesses;
+
+    /**
+     * StatsManager object to retrieve and set stats for user
+     */
     StatsManager statsManager;
 
     @Override
@@ -38,6 +49,10 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
         numGuesses.setText(((Integer) statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString());
     }
 
+    /**
+     * Method to allow button to take user to the MainActivity
+     * @param view
+     */
     public void menu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
