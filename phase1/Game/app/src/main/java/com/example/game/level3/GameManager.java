@@ -38,7 +38,6 @@ class GameManager {
             int rand = (int) (Math.random() * alphabet.length);
 
             this.answerArray[i] = alphabet[rand];
-            System.out.println(this.answerArray[i]);
         }
 
     }

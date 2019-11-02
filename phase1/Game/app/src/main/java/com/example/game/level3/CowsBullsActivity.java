@@ -26,12 +26,26 @@ import java.util.ArrayList;
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
 public class CowsBullsActivity extends AppCompatActivity {
+
+    // The text view for user input.
     private EditText guess;
+
+    // The last guess that was made.
     static String currentGuess;
+
+    // The timer for this game.
     private Chronometer chronometer;
+
+    // The layout for the past guesses in the game.
     private LinearLayout linLayout;
+
+    // The GameManager for this game.
     private GameManager gameManager;
+
+    // The time in milliseconds when the player started the game.
     long startTime;
+
+    // The player's username.
     String username = GameData.USERNAME;
 
     @Override
