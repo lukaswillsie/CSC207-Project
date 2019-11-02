@@ -23,6 +23,8 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gtnum__play_activity);
         this.updateScore();
+        ImageView eeyore = findViewById(R.id.highlowimage);
+        eeyore.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -51,7 +53,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
                     this.lowGuess();
                 }
                 ImageView eeyore = findViewById(R.id.highlowimage);
-                eeyore.setImageResource(R.drawable.eeyore);
+                eeyore.setVisibility(View.VISIBLE);
                 this.updateScore();
             }
         } catch (Exception e) {
