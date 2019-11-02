@@ -95,7 +95,6 @@ public class CowsBullsActivity extends AppCompatActivity {
         currentGuess = guessInput();
 
         if (currentGuess.length() == 5 & !currentGuess.equals("null")) {
-            guess.setText("");
             String[] guessArray = currentGuess.split("");
             this.gameManager.setGuess(guessArray);
 
