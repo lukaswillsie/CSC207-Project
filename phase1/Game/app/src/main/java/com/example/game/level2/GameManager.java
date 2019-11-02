@@ -39,7 +39,6 @@ class GameManager {
     }
 
     /**
-     *
      * @return the current game user is playing.
      */
     Game getCurrentGame() {

@@ -26,6 +26,7 @@ public class Game {
      * range where the number we seek might be.
      */
     private int range = 5;
+
     /**
      * Create a new Game for a user.
      */

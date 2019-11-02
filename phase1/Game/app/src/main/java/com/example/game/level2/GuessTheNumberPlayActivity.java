@@ -32,7 +32,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     }
 
     /**
-     *Based on the user's guess, we display respective page/text and update some statistics.
+     * Based on the user's guess, we display respective page/text and update some statistics.
      */
     public void submitGuess(View view) {
         try {
@@ -51,9 +51,8 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
                 }
                 this.updateScore();
             }
-        }
-        catch(Exception e){
-                this.BadNumber();
+        } catch (Exception e) {
+            this.BadNumber();
         }
     }
 
@@ -68,28 +67,28 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     /**
      * Display the text if the user's guess is too high.
      */
-    private void highGuess(){
+    private void highGuess() {
         ((TextView) findViewById(R.id.textView)).setText("Your guess is too high, try again.");
     }
 
     /**
      * Display the text if the user's guess is too low.
      */
-    private void lowGuess(){
+    private void lowGuess() {
         ((TextView) findViewById(R.id.textView)).setText("Your guess is too low, try again.");
     }
 
     /**
      * Displays the text if the user's input is null.
      */
-    private void BadNumber(){
+    private void BadNumber() {
         ((TextView) findViewById(R.id.textView)).setText("You need to insert a number, please try again");
     }
 
     /**
      * Updates the display of the #points and #guesses.
      */
-    private void updateScore(){
+    private void updateScore() {
         Game currentGame = gameManager.getCurrentGame();
         ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
@@ -98,7 +97,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     /**
      * Finish the current round, refer user to GameFinishActivity.
      */
-    private void finishTheRound(){
+    private void finishTheRound() {
         gameManager.checkRounds();
         Intent intent = new Intent(this, GameFinishActivity.class);
         startActivity(intent);
