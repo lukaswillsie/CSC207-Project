@@ -79,7 +79,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     private String guessInput() {
         try {
             if (guess.getText().toString().length() > 0)
-                return guess.getText().toString();
+                return guess.getText().toString().replaceAll("\\s+","");
             return "null";
         } catch (Exception e) {
             return "null";
