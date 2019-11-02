@@ -29,7 +29,8 @@ public class GameStartActivity extends AppCompatActivity {
         setContentView(R.layout.game_start_activity);
         this.checkResume();
         this.SetNumRounds();
-        }
+    }
+
     /**
      * When a user clicks the start button, the GuessTheNumberPlayActivity activity appears and the user
      * proceeds to start a new game of GuessTheNumber
@@ -70,13 +71,12 @@ public class GameStartActivity extends AppCompatActivity {
      * which is not finished or a user has already played at least one round but hasn't finished
      * all the rounds.
      */
-    private void checkResume(){
+    private void checkResume() {
         Button btn = findViewById(R.id.resumeGame);
         Game game = gameManager.getCurrentGame();
         if ((game.isFinished() || game.getPoints() == 0) && gameManager.getCurrentRound() != 1) {
             btn.setVisibility(View.INVISIBLE);
-        }
-        else{
+        } else {
             btn.setVisibility(View.VISIBLE);
         }
     }
@@ -84,7 +84,7 @@ public class GameStartActivity extends AppCompatActivity {
     /**
      * Set the number of rounds user wants to play based on customized settings.
      */
-    private void SetNumRounds(){
+    private void SetNumRounds() {
         SettingsManager manager = new SettingsManagerBuilder().build(this, username);
         gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
     }

@@ -2,6 +2,7 @@ package com.example.game.level3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
@@ -22,6 +23,10 @@ import com.example.game.services.StatsManagerBuilder;
 
 import java.util.ArrayList;
 
+
+/*
+ * Image for cows_and_bull received from http://benjdd.com/courses/cs110/fall-2018/pas/bulls_and_cows/
+ */
 /**
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
@@ -58,8 +63,12 @@ public class CowsBullsActivity extends AppCompatActivity {
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
         SettingsManager settingsManager = new SettingsManagerBuilder().build(this, username);
-        this.gameManager = new GameManager(4, settingsManager.getSetting(Setting.ALPHABET));
-
+        this.gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+        if (settingsManager.getSetting(Setting.ALPHABET) == 1){
+            guess.setInputType(InputType.TYPE_CLASS_TEXT);
+        } else {
+            guess.setInputType(InputType.TYPE_CLASS_NUMBER);
+        }
     }
 
     /**
@@ -84,12 +93,12 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
-        if (currentGuess.length() == 4 && !currentGuess.equals("null")) {
+        if (currentGuess.length() == 5 & !currentGuess.equals("null")) {
             guess.setText("");
             String[] guessArray = currentGuess.split("");
             this.gameManager.setGuess(guessArray);
 
-            if (getBulls() == 4) {
+            if (getBulls() == 5) {
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
                 StatsManager statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);

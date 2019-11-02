@@ -145,7 +145,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     }
 
     /**
-     * Make the "play again" button and the "next" button visible, and display the given end of game
+     * Record that the round ended. Make the "play again" button and the "next" button visible, and display the given end of game
      * text
      *
      * @param endGameText - the text to display as a result of the game ending

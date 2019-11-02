@@ -69,5 +69,8 @@
     <string name="congratulations">☺ Woot Woot! You have guessed the right number!</string>
     <string name="statsbreakdown">Here is a summary of your hard work:</string>
     <string name="toMainMenu">go to main menu</string>
-
+    <string name="welcomes">Welcome to Cows and Bulls!</string>
+    <string name="cowsbullsblurb"> This game requires a combination of strategy and a bit of luck of course. You are required to pinpoint a 5 digit number or string of alphabets. We are here to help you along the way, however. After every guess we will tell you how many digits you have correct but in the wrong place, denoted as Cows, and how many digits you have correct in the correct place, denoted Bulls. Doesn\'t sound too bad hey! Best of luck fellow gamer! </string>
+    <string name="proceed">Proceed to Game</string>
+    <string name="enter">Please enter a 5 numbers or letters:</string>
 </resources>

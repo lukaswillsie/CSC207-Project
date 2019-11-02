@@ -1,62 +1,78 @@
 package com.example.game.level2;
 
-public class GameManager {
+/**
+ * This class handles all the logic of the whole GAME and all the rounds user want to play.
+ */
+class GameManager {
     /**
-     * The current game this game manager holds.
+     * The current game this game manager holds and User plays.
      */
     private Game game;
     /**
-     * Leader board keeps track of top three players.
+     * True iff there is at least one round left to play
      */
-    int[] leaderBoard = new int[3];
-
     private boolean keepPlaying;
-
+    /**
+     * #Rounds left to play for a user.
+     */
     private int roundsToPlay;
-
+    /**
+     * Index of the current game user is playing.
+     */
     private int currentRound;
 
     /**
      * Create a gameManager
      */
-    public GameManager() {
+    GameManager() {
         this.game = new Game();
         this.keepPlaying = true;
         this.roundsToPlay = 5;
         this.currentRound = 0;
     }
 
-    // call this class whenever a new GTN game is about to be played
-    public void startNewGame() {
+    /**
+     * Creates a new game user is about to play.
+     */
+    void startNewGame() {
         game = new Game();
     }
 
-    public Game getCurrentGame() {
+    /**
+     * @return the current game user is playing.
+     */
+    Game getCurrentGame() {
         return this.game;
     }
 
-    public boolean getKeepPlaying() {
+    boolean getKeepPlaying() {
         return this.keepPlaying;
     }
 
-    public void setRoundsToPlay(int rounds) {
+    void setRoundsToPlay(int rounds) {
         this.roundsToPlay = rounds;
     }
 
-    public void checkRounds() {
+    /**
+     * Updates the number of rounds are left to play.
+     */
+    void checkRounds() {
         this.currentRound++;
         this.keepPlaying = this.currentRound != this.roundsToPlay;
     }
 
-    public int getCurrentRound() {
+    int getCurrentRound() {
         return this.currentRound;
     }
 
-    public int getRoundsToPlay() {
+    int getRoundsToPlay() {
         return this.roundsToPlay;
     }
 
-    public void resetCurrentRounds() {
+    /**
+     * Reset the index of curent game.
+     */
+    void resetCurrentRounds() {
         this.currentRound = 0;
     }
 }
