@@ -3,6 +3,7 @@ package com.example.game.level2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +50,8 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
                 } else {
                     this.lowGuess();
                 }
+                ImageView eeyore = findViewById(R.id.highlowimage);
+                eeyore.setImageResource(R.drawable.eeyore);
                 this.updateScore();
             }
         } catch (Exception e) {
