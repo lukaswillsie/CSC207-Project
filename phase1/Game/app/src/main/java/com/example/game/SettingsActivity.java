@@ -93,10 +93,8 @@ public class SettingsActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean toSwitch) {
                 if (toSwitch) {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
 
             }
