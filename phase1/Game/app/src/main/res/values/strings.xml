@@ -73,4 +73,8 @@
     <string name="cowsbullsblurb"> This game requires a combination of strategy and a bit of luck of course. You are required to pinpoint a 5 digit number or string of alphabets. We are here to help you along the way, however. After every guess we will tell you how many digits you have correct but in the wrong place, denoted as Cows, and how many digits you have correct in the correct place, denoted Bulls. Doesn\'t sound too bad hey! Best of luck fellow gamer! </string>
     <string name="proceed">Proceed to Game</string>
     <string name="enter">Please enter a 5 numbers or letters:</string>
+    <string name="choose">Number of Players:</string>
+    <string name="player1">Single Player</string>
+    <string name="player2">Multiplayer</string>
+
 </resources>
