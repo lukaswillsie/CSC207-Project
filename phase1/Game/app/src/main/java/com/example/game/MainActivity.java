@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.example.game.data.Setting;
 import com.example.game.level1.activities.BlackjackStartActivity;
 import com.example.game.level2.GameStartActivity;
-import com.example.game.level3.CowsBullsActivity;
 import com.example.game.level3.CowsBullsStartActivity;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
@@ -29,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.welcomeText)).setText(welcomeText);
 
         //DarkMode Setting
-//        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
-//        int temp = manager.getSetting(Setting.DARK_MODE);
-//        if (temp == 1) {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//
-//        } else {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//        }
+        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
+        int temp = manager.getSetting(Setting.DARK_MODE);
+        if (temp == 1) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
     public void playBlackjack(View view) {

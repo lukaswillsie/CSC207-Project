@@ -27,16 +27,31 @@ import java.util.ArrayList;
 /*
  * Image for cows_and_bull received from http://benjdd.com/courses/cs110/fall-2018/pas/bulls_and_cows/
  */
+
 /**
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
 public class CowsBullsActivity extends AppCompatActivity {
+
+    // The text view for user input.
     private EditText guess;
+
+    // The last guess that was made.
     static String currentGuess;
+
+    // The timer for this game.
     private Chronometer chronometer;
+
+    // The layout for the past guesses in the game.
     private LinearLayout linLayout;
+
+    // The GameManager for this game.
     private GameManager gameManager;
+
+    // The time in milliseconds when the player started the game.
     long startTime;
+
+    // The player's username.
     String username = GameData.USERNAME;
 
     @Override
@@ -50,7 +65,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         linLayout = findViewById(R.id.linLayout);
         SettingsManager settingsManager = new SettingsManagerBuilder().build(this, username);
         this.gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
-        if (settingsManager.getSetting(Setting.ALPHABET) == 1){
+        if (settingsManager.getSetting(Setting.ALPHABET) == 1) {
             guess.setInputType(InputType.TYPE_CLASS_TEXT);
         } else {
             guess.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -64,7 +79,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     private String guessInput() {
         try {
             if (guess.getText().toString().length() > 0)
-                return guess.getText().toString();
+                return guess.getText().toString().replaceAll("\\s+","");
             return "null";
         } catch (Exception e) {
             return "null";
@@ -80,8 +95,10 @@ public class CowsBullsActivity extends AppCompatActivity {
         currentGuess = guessInput();
 
         if (currentGuess.length() == 5 & !currentGuess.equals("null")) {
-            guess.setText("");
-            String[] guessArray = currentGuess.split("");
+            String[] guessArray = new String[currentGuess.length()];
+            for (int i = 0; i < currentGuess.length(); i++){
+                guessArray[i] = String.valueOf(currentGuess.charAt(i));
+            }
             this.gameManager.setGuess(guessArray);
 
             if (getBulls() == 5) {

@@ -1,15 +1,14 @@
 package com.example.game.level3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.StartActivity;
 import com.example.game.data.Statistic;
 import com.example.game.services.GameData;
 import com.example.game.services.StatsManager;
@@ -20,8 +19,19 @@ import com.example.game.services.StatsManagerBuilder;
  */
 public class CowsBullsFinishActivity extends AppCompatActivity {
 
+    /**
+     * TextView display for user's time taken to guess the number
+     */
     TextView time;
+
+    /**
+     * TextView display for user's number of guesses taken to guess the number
+     */
     TextView numGuesses;
+
+    /**
+     * StatsManager object to retrieve and set stats for user
+     */
     StatsManager statsManager;
 
     @Override
@@ -38,6 +48,11 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
         numGuesses.setText(((Integer) statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString());
     }
 
+    /**
+     * Method to allow button to take user to the MainActivity
+     *
+     * @param view
+     */
     public void menu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

@@ -5,8 +5,13 @@ package com.example.game.level3;
  */
 public class TurnData {
 
+    // An array that store the guess for this turn.
     private String[] guessArray;
+
+    // The number of cows for this guess.
     private int numberCows;
+
+    // Thu number of bulls for this turn.
     private int numberBulls;
 
     /**
@@ -25,7 +30,7 @@ public class TurnData {
     }
 
     /**
-     * A method that returns the data for this turn.
+     * A method that returns the data for this turn. Note that this method may be needed in phase 2.
      *
      * @return This TurnData object.
      */

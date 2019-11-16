@@ -16,9 +16,6 @@ import com.example.game.services.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * The page displayed when a user is viewing or changing their settings
  */
@@ -93,10 +90,8 @@ public class SettingsActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean toSwitch) {
                 if (toSwitch) {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
 
             }
@@ -110,6 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
     }
+
     public void toMain(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

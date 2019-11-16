@@ -1,14 +1,12 @@
 package com.example.game.level3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
-import com.example.game.StartActivity;
 
 public class CowsBullsStartActivity extends AppCompatActivity {
 
@@ -22,7 +20,7 @@ public class CowsBullsStartActivity extends AppCompatActivity {
     /**
      * Method for button toGame to proceed to CowsBullsActivity
      */
-    public void toGame(View view){
+    public void toGame(View view) {
         Intent intent = new Intent(this, CowsBullsActivity.class);
         startActivity(intent);
     }

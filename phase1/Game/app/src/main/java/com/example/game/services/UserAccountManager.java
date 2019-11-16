@@ -29,7 +29,9 @@ import static com.example.game.data.GameConstants.USERS_DIR_NAME;
  *        settings
  *        stats
  *        password
- * to query and create users and their information
+ * to query and create users and their information.
+ * Please note that we know its bad to store passwords in plain text, we will work on fixing this
+ * for phase 2.
  */
 public class UserAccountManager implements AccountManager {
     /**
