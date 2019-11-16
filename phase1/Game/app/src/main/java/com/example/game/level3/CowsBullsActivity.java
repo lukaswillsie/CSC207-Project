@@ -94,14 +94,17 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
+
         if (currentGuess.length() == 5 & !currentGuess.equals("null")) {
             String[] guessArray = new String[currentGuess.length()];
             for (int i = 0; i < currentGuess.length(); i++){
                 guessArray[i] = String.valueOf(currentGuess.charAt(i));
             }
             this.gameManager.setGuess(guessArray);
+            int bulls = this.gameManager.getResults()[1];
+            int cows = this.gameManager.getResults()[0];
 
-            if (getBulls() == 5) {
+            if (bulls == 5) {
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
                 StatsManager statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
@@ -119,7 +122,7 @@ public class CowsBullsActivity extends AppCompatActivity {
 
 
             TextView currGuess = new TextView(CowsBullsActivity.this);
-            String textToDisplay = currentGuess + "     Bulls: " + getBulls() + " Cows: " + getCows();
+            String textToDisplay = currentGuess + "     Bulls: " + bulls + " Cows: " + cows;
             currGuess.setText(textToDisplay);
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
@@ -136,22 +139,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         return (int) (elapsedTime / 1000);
     }
 
-    /**
-     * A method that returns the number of cows (the number of guesses in the wrong location,
-     * but correct value) of the last guess.
-     *
-     * @return The number of cows.
-     */
-    public int getCows() {
-        return this.gameManager.getResults()[0];
-    }
 
-    /**
-     * A method that returns the number of bulls (the number of guesses in the correct location,
-     * and correct value) of the last guess.
-     *
-     * @return The number of bulls.
-     */
     public int getBulls() {
         return this.gameManager.getResults()[1];
     }
