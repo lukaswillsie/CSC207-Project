@@ -1,4 +1,4 @@
-package com.example.game.level1.game_logic;
+package com.example.game.BlackjackGame.game_logic;
 
 /**
  * An interface is essentially a singleton observer of a game of some kind. Whenever some of the game

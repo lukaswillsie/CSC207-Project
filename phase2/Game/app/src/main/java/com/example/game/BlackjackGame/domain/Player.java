@@ -1,4 +1,4 @@
-package com.example.game.level1.domain;
+package com.example.game.BlackjackGame.domain;
 
 /**
  * Represents a Player in a card game

@@ -1,6 +1,6 @@
-package com.example.game.level1.domain;
+package com.example.game.BlackjackGame.domain;
 
-import static com.example.game.level1.domain.Rank.ACE;
+import static com.example.game.BlackjackGame.domain.Rank.ACE;
 
 /**
  * Acts as a wrapper class for a Player object, allowing the player to be interacted with through

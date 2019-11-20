@@ -1,4 +1,4 @@
-package com.example.game.level1.activities;
+package com.example.game.BlackjackGame.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.data.Statistic;
-import com.example.game.level1.display.ButtonManager;
-import com.example.game.level1.game_logic.BlackjackLevelManager;
-import com.example.game.level1.services.BlackjackLevelManagerBuilder;
+import com.example.game.BlackjackGame.display.ButtonManager;
+import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
+import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
 import com.example.game.services.GameData;
 import com.example.game.services.SettingsManagerBuilder;
 import com.example.game.services.StatsManager;

@@ -1,4 +1,4 @@
-package com.example.game.level1.domain;
+package com.example.game.BlackjackGame.domain;
 
 /**
  * An enum defining all the possible Ranks that a Card can have and some satellite information

@@ -1,8 +1,8 @@
-package com.example.game.level1.game_logic;
+package com.example.game.BlackjackGame.game_logic;
 
-import com.example.game.level1.activities.BlackjackPlayPage;
-import com.example.game.level1.domain.BlackjackPlayerManager;
-import com.example.game.level1.domain.Deck;
+import com.example.game.BlackjackGame.activities.BlackjackPlayPage;
+import com.example.game.BlackjackGame.domain.BlackjackPlayerManager;
+import com.example.game.BlackjackGame.domain.Deck;
 
 /**
  * Manages a game of Blackjack with a user and a dealer

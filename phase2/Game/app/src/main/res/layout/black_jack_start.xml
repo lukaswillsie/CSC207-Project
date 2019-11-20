@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".level1.activities.BlackjackStartActivity">
+    tools:context=".BlackjackGame.activities.BlackjackStartActivity">
 
     <TextView
         android:id="@+id/blackjackBlurb"

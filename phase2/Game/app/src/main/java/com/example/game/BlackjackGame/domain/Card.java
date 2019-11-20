@@ -1,4 +1,4 @@
-package com.example.game.level1.domain;
+package com.example.game.BlackjackGame.domain;
 
 import androidx.annotation.NonNull;
 

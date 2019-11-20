@@ -1,10 +1,10 @@
-package com.example.game.level1.game_logic;
+package com.example.game.BlackjackGame.game_logic;
 
 import android.widget.TextView;
 
-import com.example.game.level1.display.PlayerHandView;
-import com.example.game.level1.display.PlayerInterpreter;
-import com.example.game.level1.domain.Player;
+import com.example.game.BlackjackGame.display.PlayerHandView;
+import com.example.game.BlackjackGame.display.PlayerInterpreter;
+import com.example.game.BlackjackGame.domain.Player;
 
 /**
  * InterfaceManager for a game of Blackjack

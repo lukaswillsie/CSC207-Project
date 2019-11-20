@@ -1,8 +1,8 @@
-package com.example.game.level1.display;
+package com.example.game.BlackjackGame.display;
 
-import com.example.game.level1.domain.Card;
-import com.example.game.level1.domain.Hand;
-import com.example.game.level1.domain.Player;
+import com.example.game.BlackjackGame.domain.Card;
+import com.example.game.BlackjackGame.domain.Hand;
+import com.example.game.BlackjackGame.domain.Player;
 
 /**
  * Contains a Player object and converts the information contained in that player object to a String

@@ -1,4 +1,4 @@
-package com.example.game.level1.activities;
+package com.example.game.BlackjackGame.activities;
 
 /**
  * An interface defining what must be true of an activity that is playing Blackjack with the player

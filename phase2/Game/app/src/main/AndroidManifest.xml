@@ -23,9 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".level1.activities.EndGameActivity" />
-        <activity android:name=".level1.activities.BlackjackPlayActivity" />
-        <activity android:name=".level1.activities.BlackjackStartActivity" />
+        <activity android:name=".BlackjackGame.activities.EndGameActivity" />
+        <activity android:name=".BlackjackGame.activities.BlackjackPlayActivity" />
+        <activity android:name=".BlackjackGame.activities.BlackjackStartActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".level2.GameStartActivity" />
         <activity android:name=".level2.GuessTheNumberPlayActivity" />
