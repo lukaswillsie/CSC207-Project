@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.data.Statistic;
-import com.example.game.BlackjackGame.display.ButtonManager;
+import com.example.game.services.ButtonManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
 import com.example.game.services.GameData;
