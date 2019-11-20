@@ -38,6 +38,16 @@ public class BlackjackLevelManager {
      */
     private BlackjackPlayPage callingActivity;
 
+    /**
+     * The maximum number of hands this BlackjackLevelManager will play
+     */
+    private int numHands = -1;
+
+    /**
+     * The number of hands played so far
+     */
+    private int numHandsPlayed;
+
     // TODO: Figure out how to shorten this constructor, maybe using setters instead of constructor
 
     /**
@@ -57,6 +67,21 @@ public class BlackjackLevelManager {
     }
 
     /**
+     * Set the number of hands to be played by this BlackjackLevelManager.
+     *
+     * Once the field has been set it cannot be changed.
+     *
+     * Precondition: numHands is a positive integer
+     * @param numHands - the number of hands of Blackjack to be played by this BlackjackLevelManager
+     */
+    public void setNumHands(int numHands) {
+        if(this.numHands == -1)
+        {
+            this.numHands = numHands;
+        }
+    }
+
+    /**
      * Setup the game that this BlackjackLevelManager is going to be managing
      */
     public void setup() {
@@ -72,6 +97,21 @@ public class BlackjackLevelManager {
     public void play() {
         playerTurn = true;
         interfaceManager.update();
+    }
+
+    /**
+     * Get this BlackjackLevelManager ready to play another hand
+     */
+    public void playAgain(){
+        deck = new Deck();
+        setup();
+    }
+
+    /**
+     * Return whether or not this BlackjackLevelManager is ready to play another round
+     */
+    public boolean anotherRound(){
+        return numHandsPlayed < numHands;
     }
 
     /**
@@ -96,11 +136,13 @@ public class BlackjackLevelManager {
         endGame();
     }
 
+    // TODO: Change "game" to "round" or "hand"  here and elsewhere to make it more clear that this is the end of a single round, not the whole game
     /**
-     * End the game. Calculate who won, update the interface, and tell this BlackjackLevelManager's
-     * activity that the game is over
+     * End the game. Calculate who won, record that another hand has been played, update the interface,
+     * and tell this BlackjackLevelManager's activity that the game is over
      */
     private void endGame() {
+        numHandsPlayed++;
         playerTurn = false;
         interfaceManager.update();
         while (dealerHit()) {
