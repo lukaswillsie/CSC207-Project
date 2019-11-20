@@ -118,6 +118,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      * @param view - the button that was clicked
      */
     public void playAgain(View view) {
+        // TODO: Instead of creating a whole new BlackjackLevelManager, give the class a playAgain method instead
         BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
         levelManager = builder.build(this);
 
@@ -153,16 +154,21 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     public void gameOver(String endGameText, boolean playerWin) {
         buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
         buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
+
+        // TODO: Give BlackjackLevelManager a boolean anotherRound() method so the Activity isn't keeping track of whether or not another round should be played
         numHandsPlayed++;
         if (numHandsPlayed == numHands) {
             buttonManager.makeVisible(END_GAME_BUTTON_ID);
         } else {
             buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
         }
+
+        // TODO: Consider creating TextViewManager class to do what ButtonManager does except for TextViews
         TextView endGameTextView = findViewById(END_GAME_TEXT_ID);
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
 
+        // TODO: Create StatRecorder class that handles the tracking and updating of stats (this should not be the Activity's job)
         if (playerWin) {
             currentStreak += 1;
             if (currentStreak > longestStreak) {
