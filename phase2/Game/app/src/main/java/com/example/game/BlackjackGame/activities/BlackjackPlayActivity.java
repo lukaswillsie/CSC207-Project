@@ -118,10 +118,6 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      * @param view - the button that was clicked
      */
     public void playAgain(View view) {
-        // TODO: Instead of creating a whole new BlackjackLevelManager, give the class a playAgain method instead
-        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
-        levelManager = builder.build(this);
-
         buttonManager.makeButtonInvisible(END_GAME_BUTTON_ID);
         buttonManager.makeButtonInvisible(PLAY_AGAIN_BUTTON_ID);
         buttonManager.enableButton(HIT_BUTTON_ID);
@@ -129,8 +125,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         findViewById(END_GAME_TEXT_ID).setVisibility(View.INVISIBLE);
 
-        levelManager.setup();
-        levelManager.play();
+        levelManager.playAgain();
     }
 
     /**
@@ -155,12 +150,10 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
         buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
 
-        // TODO: Give BlackjackLevelManager a boolean anotherRound() method so the Activity isn't keeping track of whether or not another round should be played
-        numHandsPlayed++;
-        if (numHandsPlayed == numHands) {
-            buttonManager.makeVisible(END_GAME_BUTTON_ID);
-        } else {
+        if (levelManager.anotherRound()) {
             buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
+        } else {
+            buttonManager.makeVisible(END_GAME_BUTTON_ID);
         }
 
         // TODO: Consider creating TextViewManager class to do what ButtonManager does except for TextViews

@@ -42,6 +42,13 @@ public class BlackjackPlayerManager {
     }
 
     /**
+     * Give the player an empty hand
+     */
+    public void newHand(){
+        player.setHand(new Hand());
+    }
+
+    /**
      * Compute the value of the player's hand according to the rules of Blackjack
      *
      * @return - the value of this player's hand, according to the rules of Blackjack

@@ -104,7 +104,10 @@ public class BlackjackLevelManager {
      */
     public void playAgain(){
         deck = new Deck();
+        user.newHand();
+        dealer.newHand();
         setup();
+        play();
     }
 
     /**

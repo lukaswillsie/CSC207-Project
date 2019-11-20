@@ -24,4 +24,12 @@ public class Player {
     public Player() {
         hand = new Hand();
     }
+
+    /**
+     * Give this player a new hand
+     * @param hand - the player's new hand
+     */
+    void setHand(Hand hand){
+        this.hand = hand;
+    }
 }

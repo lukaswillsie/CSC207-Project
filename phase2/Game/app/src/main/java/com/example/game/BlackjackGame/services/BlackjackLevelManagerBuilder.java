@@ -9,6 +9,11 @@ import com.example.game.BlackjackGame.domain.Player;
 import com.example.game.BlackjackGame.game_logic.BlackjackInterfaceManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.game_logic.InterfaceManager;
+import com.example.game.data.Setting;
+import com.example.game.services.GameData;
+import com.example.game.services.SettingsManagerBuilder;
+import com.example.game.services.StatsManager;
+import com.example.game.services.StatsManagerBuilder;
 
 /**
  * A class that exists solely to build complex BlackjackLevelManagers
@@ -32,7 +37,9 @@ public class BlackjackLevelManagerBuilder {
         Deck deck = new Deck();
 
         InterfaceManager interfaceManager = new BlackjackInterfaceManager(user, dealer, userHand, dealerHand);
+        BlackjackLevelManager levelManager = new BlackjackLevelManager(userManager, dealerManager, deck, interfaceManager, activity);
+        levelManager.setNumHands(new SettingsManagerBuilder().build(activity, GameData.USERNAME).getSetting(Setting.NUM_HANDS));
 
-        return new BlackjackLevelManager(userManager, dealerManager, deck, interfaceManager, activity);
+        return levelManager;
     }
 }
