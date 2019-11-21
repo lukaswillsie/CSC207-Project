@@ -76,5 +76,7 @@
     <string name="choose">Number of Players:</string>
     <string name="player1">Single Player</string>
     <string name="player2">Multiplayer</string>
+    <string name="blackjackPlayer2TurnButton">Player 2\'s Turn</string>
+    <string name="Player1StatsTitle"><u>Player 1\'s Statistics</u></string>
 
 </resources>
