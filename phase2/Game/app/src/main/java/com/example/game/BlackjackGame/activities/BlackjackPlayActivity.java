@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.services.StatsRecorder;
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.services.ButtonManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
@@ -16,6 +17,7 @@ import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
 import java.text.DecimalFormat;
 
 import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
+import static com.example.game.data.GameConstants.MULTIPLAYER_KEY;
 import static com.example.game.data.GameConstants.TAG;
 import static com.example.game.data.GameConstants.USERNAME_KEY;
 import static com.example.game.data.GameConstants.WIN_RATE_KEY;
@@ -35,6 +37,26 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     public static final int STAND_BUTTON_ID = R.id.standButton;
     public static final int END_GAME_BUTTON_ID = R.id.endGameButton;
     public static final int PLAY_AGAIN_BUTTON_ID = R.id.playAgainButton;
+
+    /**
+     * The key to be used when telling this activity whether or not the game of Blackjack it is playing
+     * is for player 1 or player 2, if the game is in multiplayer mode
+     */
+    static final String PLAYER_1_TURN_KEY = "player1Turn";
+
+    /**
+     * The key to be used when telling this activity what player 1's win rate was so that the value can be
+     * passed on to the multiplayer end game activity. This key will also be used to send the player's win rate
+     * to the multiplayer end game activity
+     */
+    static final String PLAYER_1_WIN_RATE_KEY = "player1WinRate";
+
+    /**
+     * The key to be used when telling this activity what player 1's longest winning streak was so that
+     * the value can be passed on to the multiplayer end game activity. This key will also be used to send the
+     * player's longest winning streak to the multiplayer end game activity
+     */
+    static final String PLAYER_1_LONGEST_STREAK_KEY = "player1LongestStreak";
 
     /**
      * The note to be displayed at the top of the screen
@@ -57,11 +79,26 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      */
     private StatsRecorder statsRecorder;
 
+    /**
+     * Tells this activity whether or not the game of Blackjack it is displaying is part of a round
+     * of multiplayer
+     */
+    private boolean multiplayer;
+
+    /**
+     * If multiplayer = true, tells this activity whether the game being played is the for player 1
+     * or player 2
+     */
+    private boolean player1Turn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
         String username = getIntent().getStringExtra(TAG + USERNAME_KEY);
+
+        multiplayer = getIntent().getBooleanExtra(TAG + MULTIPLAYER_KEY, false);
+        player1Turn = getIntent().getBooleanExtra(TAG + PLAYER_1_TURN_KEY, true);
 
         buttonManager = new ButtonManager(this);
 
@@ -112,7 +149,23 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      * @param view - the button that was clicked
      */
     public void endGame(View view) {
-        Intent intent = new Intent(this, EndGameActivity.class);
+        Intent intent;
+        // The intent that should be started depends on whether or not this was a multiplayer game
+        if(multiplayer){
+            if(player1Turn){
+                intent = new Intent(this, BlackjackMidMultiplayerActivity.class);
+            }
+            else {
+                // TODO: Create an endgame activity for multiplayer mode and update this call
+                intent = new Intent(this, MainActivity.class);
+                intent.putExtra(TAG+PLAYER_1_WIN_RATE_KEY, getIntent().getStringExtra(TAG+PLAYER_1_WIN_RATE_KEY));
+                intent.putExtra(TAG+PLAYER_1_LONGEST_STREAK_KEY, getIntent().getStringExtra(TAG+PLAYER_1_LONGEST_STREAK_KEY));
+            }
+        }
+        else {
+            intent = new Intent(this, EndGameActivity.class);
+        }
+        // TODO: Change win rate so that it is sent as a double and the receiving class can choose to format it however it chooses
         intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * (statsRecorder.getWinRate())) + "%");
         intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
         startActivity(intent);

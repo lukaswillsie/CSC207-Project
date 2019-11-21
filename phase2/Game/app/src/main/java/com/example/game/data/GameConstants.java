@@ -45,4 +45,10 @@ public final class GameConstants {
      * The key to use when passing a username between intents
      */
     public static final String USERNAME_KEY = "username";
+
+    /**
+     * A key to be used when passing the value of a boolean that represents whether or not the
+     * game is in multiplayer mode between activities
+     */
+    public static final String MULTIPLAYER_KEY = "multiplayer";
 }
