@@ -68,10 +68,10 @@ public class StatsRecorder {
     }
 
     /**
-     * Call this method when the game is ending, so that the player's longestStreak
-     * statistic will be updated if they have broken their record
+     * Call this method when you want to check if the player has broken their record,
+     * and if so you want the data associated with their account to be updated
      */
-    public void end(){
+    public void update(){
         if(longestStreak > allTimeLongestStreak){
             statsManager.setStat(Statistic.LONGEST_STREAK, longestStreak);
         }
@@ -83,7 +83,7 @@ public class StatsRecorder {
      */
     public double getWinRate(){
         if(roundsPlayed > 0){
-            return wins / roundsPlayed;
+            return (double)wins / roundsPlayed;
         }
 
         return -1;

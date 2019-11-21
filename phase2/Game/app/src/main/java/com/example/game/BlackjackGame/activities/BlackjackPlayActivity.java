@@ -7,16 +7,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.BlackjackGame.services.StatsRecorder;
 import com.example.game.R;
-import com.example.game.data.Setting;
-import com.example.game.data.Statistic;
 import com.example.game.services.ButtonManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
-import com.example.game.services.GameData;
-import com.example.game.services.SettingsManagerBuilder;
-import com.example.game.services.StatsManager;
-import com.example.game.services.StatsManagerBuilder;
 
 import java.text.DecimalFormat;
 
@@ -56,29 +51,10 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     private ButtonManager buttonManager;
 
     /**
-     * The number of wins the player has
+     * The StatsRecorder this activity will be using to track the player's game statistics while
+     * the game is being played
      */
-    private int wins = 0;
-
-    /**
-     * The number of hands this player chose to play in their settings
-     */
-    private int numHands;
-
-    /**
-     * The number of hands this player has played so far
-     */
-    private int numHandsPlayed = 0;
-
-    /**
-     * The maximum number of hands this user has won in a row this round
-     */
-    private int longestStreak = 0;
-
-    /**
-     * The current number of hands the user has won in a row
-     */
-    private int currentStreak = 0;
+    private StatsRecorder statsRecorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +69,9 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         levelManager.setup();
         levelManager.play();
 
-        numHands = new SettingsManagerBuilder().build(this, GameData.USERNAME).getSetting(Setting.NUM_HANDS);
-
         ((TextView) findViewById(R.id.blackjackNote)).setText(note);
+
+        statsRecorder = new StatsRecorder(this);
     }
 
     /**
@@ -135,8 +111,8 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      */
     public void endGame(View view) {
         Intent intent = new Intent(this, EndGameActivity.class);
-        intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * ((float) (wins) / (float) numHandsPlayed)) + "%");
-        intent.putExtra(TAG + LONGEST_STREAK_KEY, longestStreak);
+        intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * (statsRecorder.getWinRate())) + "%");
+        intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
         startActivity(intent);
     }
 
@@ -161,23 +137,12 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
 
-        // TODO: Create StatRecorder class that handles the tracking and updating of stats (this should not be the Activity's job)
         if (playerWin) {
-            currentStreak += 1;
-            if (currentStreak > longestStreak) {
-                longestStreak = currentStreak;
-            }
-            wins++;
+            statsRecorder.playerWin();
         } else {
-            currentStreak = 0;
+            statsRecorder.playerLose();
         }
 
-        StatsManager statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
-
-        int savedLongestStreak = statsManager.getStat(Statistic.LONGEST_STREAK);
-
-        if (longestStreak > savedLongestStreak) {
-            statsManager.setStat(Statistic.LONGEST_STREAK, longestStreak);
-        }
+        statsRecorder.update();
     }
 }
