@@ -17,6 +17,7 @@ import java.text.DecimalFormat;
 
 import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
 import static com.example.game.data.GameConstants.TAG;
+import static com.example.game.data.GameConstants.USERNAME_KEY;
 import static com.example.game.data.GameConstants.WIN_RATE_KEY;
 
 /**
@@ -60,18 +61,19 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
+        String username = getIntent().getStringExtra(TAG + USERNAME_KEY);
 
         buttonManager = new ButtonManager(this);
 
         BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
-        levelManager = builder.build(this);
+        levelManager = builder.build(this, username);
 
         levelManager.setup();
         levelManager.play();
 
         ((TextView) findViewById(R.id.blackjackNote)).setText(note);
 
-        statsRecorder = new StatsRecorder(this);
+        statsRecorder = new StatsRecorder(this, username);
     }
 
     /**

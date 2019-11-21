@@ -41,8 +41,8 @@ public class StatsRecorder {
     /**
      * Create a new StatsRecord from the specified context
      */
-    public StatsRecorder(Context context){
-        statsManager = new StatsManagerBuilder().build(context, GameData.USERNAME);
+    public StatsRecorder(Context context, String username){
+        statsManager = new StatsManagerBuilder().build(context, username);
         allTimeLongestStreak = statsManager.getStat(Statistic.LONGEST_STREAK);
     }
 

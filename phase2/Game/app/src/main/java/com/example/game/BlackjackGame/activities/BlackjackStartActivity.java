@@ -9,6 +9,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
+import com.example.game.services.GameData;
+
+import static com.example.game.data.GameConstants.USERNAME_KEY;
+import static com.example.game.data.GameConstants.TAG;
 
 /**
  * The page that introduces the player to Blackjack
@@ -28,6 +32,7 @@ public class BlackjackStartActivity extends AppCompatActivity {
      */
     public void startGame(View view) {
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
+        intent.putExtra(TAG + USERNAME_KEY, GameData.USERNAME);
         startActivity(intent);
     }
 }

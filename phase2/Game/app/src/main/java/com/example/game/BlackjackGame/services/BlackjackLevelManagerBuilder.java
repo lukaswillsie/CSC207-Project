@@ -22,10 +22,13 @@ public class BlackjackLevelManagerBuilder {
     /**
      * Build a new LevelManager for the given activity
      *
-     * @param activity -  the activity that wants the BlackjackManager
+     * @param activity - the activity that wants the BlackjackManager
+     * @param username - the username of the player whose game is going to be managed;
+     *                   used to fetch the given user's numHands setting to give to the
+     *                   BlackjackLevelManager
      * @return a BlackjackLevelManager object
      */
-    public BlackjackLevelManager build(BlackjackPlayActivity activity) {
+    public BlackjackLevelManager build(BlackjackPlayActivity activity, String username) {
         TextView userHand = activity.findViewById(BlackjackPlayActivity.PLAYER_HAND_ID);
         TextView dealerHand = activity.findViewById(BlackjackPlayActivity.DEALER_HAND_ID);
 
@@ -38,7 +41,7 @@ public class BlackjackLevelManagerBuilder {
 
         InterfaceManager interfaceManager = new BlackjackInterfaceManager(user, dealer, userHand, dealerHand);
         BlackjackLevelManager levelManager = new BlackjackLevelManager(userManager, dealerManager, deck, interfaceManager, activity);
-        levelManager.setNumHands(new SettingsManagerBuilder().build(activity, GameData.USERNAME).getSetting(Setting.NUM_HANDS));
+        levelManager.setNumHands(new SettingsManagerBuilder().build(activity, username).getSetting(Setting.NUM_HANDS));
 
         return levelManager;
     }

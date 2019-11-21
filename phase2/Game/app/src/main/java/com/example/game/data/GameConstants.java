@@ -40,4 +40,9 @@ public final class GameConstants {
      * The name of the users password file
      */
     public static final String PASSWORD_FILE_NAME = "password";
+
+    /**
+     * The key to use when passing a username between intents
+     */
+    public static final String USERNAME_KEY = "username";
 }
