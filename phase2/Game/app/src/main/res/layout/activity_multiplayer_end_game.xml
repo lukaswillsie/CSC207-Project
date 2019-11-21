@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BlackjackGame.activities.MultiplayerEndGameActivity">
+
+    <TextView
+        android:id="@+id/player1LongestStreakLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/longest_streak_label"
+        app:layout_constraintStart_toStartOf="@+id/winRateLabel"
+        tools:layout_editor_absoluteY="329dp" />
+
+    <TextView
+        android:id="@+id/blackjackMultiplayerEndTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="101dp" />
+
+    <TextView
+        android:id="@+id/player1StatsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="243dp" />
+
+    <TextView
+        android:id="@+id/player2StatsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/player1StatsLabel"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <TextView
+        android:id="@+id/winRateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/win_rate_label"
+        app:layout_constraintStart_toStartOf="@+id/player1StatsLabel"
+        tools:layout_editor_absoluteY="277dp" />
+
+    <TextView
+        android:id="@+id/player2WinRateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/win_rate_label"
+        app:layout_constraintStart_toStartOf="@+id/player1LongestStreakLabel"
+        tools:layout_editor_absoluteY="427dp" />
+
+    <TextView
+        android:id="@+id/player2LongestStreakLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/longest_streak_label"
+        app:layout_constraintStart_toStartOf="@+id/player2WinRateLabel"
+        tools:layout_editor_absoluteY="481dp" />
+
+    <TextView
+        android:id="@+id/player1WinRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/winRateLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/winRateLabel" />
+
+    <TextView
+        android:id="@+id/player1LongestStreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/player1LongestStreakLabel"
+        app:layout_constraintEnd_toEndOf="@+id/player1WinRate"
+        app:layout_constraintTop_toTopOf="@+id/player1LongestStreakLabel" />
+
+    <TextView
+        android:id="@+id/player2WinRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/player2WinRateLabel"
+        app:layout_constraintEnd_toEndOf="@+id/player1LongestStreak"
+        app:layout_constraintTop_toTopOf="@+id/player2WinRateLabel" />
+
+    <TextView
+        android:id="@+id/player2LongestStreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/player2LongestStreakLabel"
+        app:layout_constraintEnd_toEndOf="@+id/player2WinRate"
+        app:layout_constraintTop_toTopOf="@+id/player2LongestStreakLabel" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_menu"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="591dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

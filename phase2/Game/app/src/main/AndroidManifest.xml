@@ -31,6 +31,7 @@
         <activity android:name=".level2.GuessTheNumberPlayActivity" />
         <activity android:name=".level2.GameFinishActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackMidMultiplayerActivity" />
+        <activity android:name=".BlackjackGame.activities.MultiplayerEndGameActivity" />
     </application>
 
 </manifest>
