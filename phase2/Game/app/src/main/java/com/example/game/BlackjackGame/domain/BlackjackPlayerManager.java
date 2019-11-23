@@ -71,13 +71,26 @@ public class BlackjackPlayerManager {
             }
         }
 
-        for (int i = 0; i < numAces; i++) {
+        // If there is only one ace then it is either counted as an 11 or 1, whichever is best
+        if(numAces == 1){
             if (value + 11 <= 21) {
                 value += 11;
             } else {
                 value += 1;
             }
         }
+
+        // If there's more than one ace, either one of them is an 11 and the rest are 1's, if this
+        // doesn't make the player but, or they are all 1's, if the former makes the player bust
+        else if (numAces >= 2){
+            if(value + 11 + numAces - 1 <= 21){
+                value += 11 + numAces - 1;
+            }
+            else {
+                value += numAces;
+            }
+        }
+
 
         return value;
     }
