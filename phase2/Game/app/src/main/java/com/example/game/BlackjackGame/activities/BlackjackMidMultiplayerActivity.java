@@ -47,6 +47,6 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.longestStreakDisplay)).setText(player1LongestStreak);
         ((TextView)findViewById(R.id.winRateDisplay)).setText(player1WinRate);
-        ((TextView)findViewById(R.id.title)).setText(title);
+        ((TextView)findViewById(R.id.blackjackMidMultiplayerTitle)).setText(title);
     }
 }

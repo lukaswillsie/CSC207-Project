@@ -16,14 +16,15 @@
         app:layout_constraintTop_toBottomOf="@+id/winRateLabel" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/blackjackMultiplayerEndTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.110000014"
         tools:text="@string/blackjackMultiplayerEndTitle" />
 
     <TextView
@@ -109,6 +110,7 @@
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="mainMenu"
         android:text="@string/main_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

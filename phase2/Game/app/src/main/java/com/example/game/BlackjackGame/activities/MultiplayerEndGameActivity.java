@@ -40,6 +40,9 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
     public void initializeTextViews(){
         // TODO: Write an actual implementation and remove this dummy class
         MultiplayerDataManager manager = new TestMultiplayerDataManager();
+
+        ((TextView)findViewById(R.id.blackjackMultiplayerEndTitle)).setText(R.string.blackjackMultiplayerEndTitle);
+
         String player1StatsLabel = manager.getPlayer1Username();
         String player1WinRate = new DecimalFormat("##.##").format(manager.getMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE)) + "%";
         String player1LongestStreak = "" + manager.getMultiplayerData(BLACKJACK_PLAYER1_LONGEST_STREAK);
@@ -47,7 +50,6 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
         String player2StatsLabel = manager.getPlayer2Username();
         String player2WinRate = new DecimalFormat("##.##").format(manager.getMultiplayerData(BLACKJACK_PLAYER_2_WIN_RATE)) + "%";
         String player2LongestStreak = "" + manager.getMultiplayerData(BLACKJACK_PLAYER2_LONGEST_STREAK);
-
 
         ((TextView)findViewById(R.id.player1StatsLabel)).setText(player1StatsLabel);
         ((TextView)findViewById(R.id.player1WinRateDisplay)).setText(player1WinRate);
