@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.services.GameData;
+import com.example.game.data.GameData;
 import com.example.game.services.UserAccountManager;
 
 /**
@@ -68,7 +68,12 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
     @Override
     public void login() {
         Intent intent = new Intent(this, MainActivity.class);
-        GameData.setUsername(username);
+        /* If MULTIPLAYER == true, then we are logging in player 2. Hence GameData.USERNAME doesn't
+         * need to change. So we only call setUsername() if multiplayer is false.
+         */
+        if(!GameData.MULTIPLAYER){
+            GameData.setUsername(username);
+        }
 
         startActivity(intent);
     }

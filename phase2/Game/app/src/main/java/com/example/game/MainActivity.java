@@ -12,7 +12,7 @@ import com.example.game.data.Setting;
 import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
 import com.example.game.level2.GameStartActivity;
 import com.example.game.level3.CowsBullsStartActivity;
-import com.example.game.services.GameData;
+import com.example.game.data.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 

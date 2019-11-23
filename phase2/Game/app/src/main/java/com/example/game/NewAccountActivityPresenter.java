@@ -1,6 +1,8 @@
 package com.example.game;
 
+import com.example.game.data.GameData;
 import com.example.game.services.AccountManager;
+import com.example.game.services.MultiplayerDataManager;
 
 /**
  * Registers new users for a NewUserPage
@@ -10,6 +12,12 @@ class NewAccountActivityPresenter {
      * The account manager being used by this object to manage user accounts
      */
     private AccountManager accountManager;
+
+    /**
+     * The MultiplayerDataManager this object will use to access and update multiplayer data,
+     * if necessary
+     */
+    private MultiplayerDataManager multiplayerDataManager;
 
     /**
      * The NewUserPage that created this object
@@ -28,6 +36,16 @@ class NewAccountActivityPresenter {
     }
 
     /**
+     * Give this object an instance of MultiplayerDataManager to use
+     *
+     * NOTE: This method must be called if the game is in multiplayer mode
+     * @param multiplayerDataManager - the new MultiplayerDataManager for this class to use
+     */
+    public void setMultiplayerDataManager(MultiplayerDataManager multiplayerDataManager) {
+        this.multiplayerDataManager = multiplayerDataManager;
+    }
+
+    /**
      * Register a new user with the given username and password
      * <p>
      * Calls callingPage.accountCreationError() if something is wrong with the given
@@ -40,6 +58,9 @@ class NewAccountActivityPresenter {
         if (accountManager.usernameExists(username)) {
             callingPage.accountCreationError("That username already exists!");
         } else {
+            if(GameData.MULTIPLAYER){
+                multiplayerDataManager.setPlayer2Username(username);
+            }
             accountManager.createNewUser(username, password);
             callingPage.login();
         }

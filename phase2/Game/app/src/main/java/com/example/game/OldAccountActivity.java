@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.services.GameData;
+import com.example.game.data.GameData;
 import com.example.game.services.UserAccountManager;
 
 /**

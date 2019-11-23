@@ -12,7 +12,7 @@ import com.example.game.R;
 import com.example.game.services.ButtonManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
-import com.example.game.services.GameData;
+import com.example.game.data.GameData;
 import com.example.game.services.MultiplayerDataManager;
 import com.example.game.services.TestMultiplayerDataManager;
 

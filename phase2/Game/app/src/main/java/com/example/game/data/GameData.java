@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.data;
 
 /**
  * A class for storing important game data at runtime

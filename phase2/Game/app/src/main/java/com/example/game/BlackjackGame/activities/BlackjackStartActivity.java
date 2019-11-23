@@ -8,8 +8,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.BlackjackGame.domain.Suit;
 import com.example.game.R;
-import com.example.game.services.GameData;
+import com.example.game.data.GameData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.game.data.GameConstants.USERNAME_KEY;
 import static com.example.game.data.GameConstants.TAG;

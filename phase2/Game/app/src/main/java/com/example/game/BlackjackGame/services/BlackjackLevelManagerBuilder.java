@@ -10,10 +10,7 @@ import com.example.game.BlackjackGame.game_logic.BlackjackInterfaceManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.game_logic.InterfaceManager;
 import com.example.game.data.Setting;
-import com.example.game.services.GameData;
 import com.example.game.services.SettingsManagerBuilder;
-import com.example.game.services.StatsManager;
-import com.example.game.services.StatsManagerBuilder;
 
 /**
  * A class that exists solely to build complex BlackjackLevelManagers
@@ -27,7 +24,7 @@ public class BlackjackLevelManagerBuilder {
      *                   play the game. This will normally also be the username of the player
      *                   who is playing the game, but may not be (for example in the event that a
      *                   multiplayer game is being played and the game has decided to use player 1's
-     *                   numHands settings for both players).  
+     *                   numHands settings for both players).
      * @return a BlackjackLevelManager object
      */
     public BlackjackLevelManager build(BlackjackPlayActivity activity, String username) {

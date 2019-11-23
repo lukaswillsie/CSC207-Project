@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 import com.example.game.data.Setting;
-import com.example.game.services.GameData;
+import com.example.game.data.GameData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 
