@@ -22,7 +22,7 @@ public class BlackjackStartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.black_jack_start);
+        setContentView(R.layout.blackjack_start);
         TextView blackjackBlurb = findViewById(R.id.blackjackBlurb);
         if(GameData.MULTIPLAYER){
             blackjackBlurb.setText(R.string.blackjack_multiplayer_blurb);

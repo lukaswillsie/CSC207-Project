@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BlackjackGame.activities.EndGameActivity">
+    tools:context=".BlackjackGame.activities.EndGameActivity"
+    android:background="@color/blackjackBackground">
 
     <TextView
         android:id="@+id/longestStreakDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="27dp"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/winRateDisplay"
@@ -23,6 +25,7 @@
         android:layout_marginStart="53dp"
         android:layout_marginTop="226dp"
         android:text="@string/win_rate_label"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="54dp"
         android:text="@string/longest_streak_label"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/winRateLabel"
         app:layout_constraintTop_toBottomOf="@+id/winRateLabel" />
@@ -42,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="27dp"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/winRateLabel" />
@@ -58,8 +63,10 @@
             android:id="@+id/mainMenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/background_light"
             android:onClick="mainMenu"
             android:text="@string/main_menu"
+            android:textColor="@android:color/holo_red_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,8 +74,10 @@
             android:id="@+id/playAnotherRoundButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/background_light"
             android:onClick="playAnotherRound"
             android:text="@string/play_again_button"
+            android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
