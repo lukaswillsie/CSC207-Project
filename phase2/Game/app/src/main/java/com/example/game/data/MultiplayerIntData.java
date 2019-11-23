@@ -11,12 +11,12 @@ public enum MultiplayerIntData {
      * This enum will be used to store and access this value to allow player 1 and player 2 to
      * compete in a game of blackjack
      */
-    PLAYER1_LONGEST_STREAK(0, "player1LongestStreak"),
+    BLACKJACK_PLAYER1_LONGEST_STREAK(0, "player1LongestStreak"),
 
     /**
      * Represents the statistic "player 2's longest winning streak in Blackjack".
      */
-    PLAYER2_LONGEST_STREAK(0, "player2LongestStreak"),
+    BLACKJACK_PLAYER2_LONGEST_STREAK(0, "player2LongestStreak"),
 
     /**
      * Represents whose turn it is in an ongoing blackjack game. Can either be 1 if it's player 1's

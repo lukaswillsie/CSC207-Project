@@ -8,9 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.services.StatsRecorder;
-import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.services.ButtonManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
@@ -26,8 +24,8 @@ import static com.example.game.data.GameConstants.WIN_RATE_KEY;
 import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_1_WIN_RATE;
 import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_2_WIN_RATE;
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
-import static com.example.game.data.MultiplayerIntData.PLAYER1_LONGEST_STREAK;
-import static com.example.game.data.MultiplayerIntData.PLAYER2_LONGEST_STREAK;
+import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER1_LONGEST_STREAK;
+import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER2_LONGEST_STREAK;
 
 /**
  * The page displayed when the user is actually playing a round of Blackjack
@@ -160,12 +158,12 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         if(multiplayer){
             if(player1Turn){
                 intent = new Intent(this, BlackjackMidMultiplayerActivity.class);
-                multiplayerDataManager.setMultiplayerData(PLAYER1_LONGEST_STREAK, statsRecorder.getLongestStreak());
+                multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER1_LONGEST_STREAK, statsRecorder.getLongestStreak());
                 multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE, formatWinRate(statsRecorder.getWinRate()) );
             }
             else {
                 intent = new Intent(this, MultiplayerEndGameActivity.class);
-                multiplayerDataManager.setMultiplayerData(PLAYER2_LONGEST_STREAK, statsRecorder.getLongestStreak());
+                multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER2_LONGEST_STREAK, statsRecorder.getLongestStreak());
                 multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER_2_WIN_RATE, formatWinRate(statsRecorder.getWinRate()));
             }
         }
