@@ -13,6 +13,16 @@ import com.example.game.data.MultiplayerIntData;
  */
 public interface MultiplayerDataManager {
     /**
+     * Setup for multiplayer mode. This includes anything that needs to happen before this class
+     * can be used. For example, if the implementation is using a cache file to store data, this method
+     * would create the cache file and fill it with the default values of all the data that may be stored.
+     *
+     * Should only be called once, the first time an instance of this class is created. It is assumed
+     * that the first initialization will allow subsequent instances of this class to operate correctly.
+     */
+    void initialize();
+
+    /**
      * The class has to be able to, at the very least, have a way of storing
      * the username of player 1
      *

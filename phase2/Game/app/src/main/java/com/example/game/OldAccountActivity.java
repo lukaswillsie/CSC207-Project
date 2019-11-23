@@ -73,7 +73,6 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
     @Override
     public void login() {
         Intent intent = new Intent(this, MainActivity.class);
-        GameData.setUsername(username);
         startActivity(intent);
     }
 

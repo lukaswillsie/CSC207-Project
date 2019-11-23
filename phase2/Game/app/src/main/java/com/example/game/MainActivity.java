@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.game.data.Setting;
 import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
+import com.example.game.level2.Game;
 import com.example.game.level2.GameStartActivity;
 import com.example.game.level3.CowsBullsStartActivity;
 import com.example.game.data.GameData;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void hideMultiplayerButton() {
-        ((Button)findViewById(R.id.multiplayerButton)).setVisibility(View.INVISIBLE);
+        findViewById(R.id.multiplayerButton).setVisibility(View.INVISIBLE);
     }
 
     public void playBlackjack(View view) {
@@ -77,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
     public void multiplayer(View view){
         Intent intent = new Intent(this, StartActivity.class);
         GameData.setMultiplayer(true);
+
+        // Initialize the MultiplayerDataManager and record the username of player 1
+        // TODO: Write an implementation of MDM and replace this dummy implementation
+        MultiplayerDataManager multiplayerDataManager = new TestMultiplayerDataManager();
+        multiplayerDataManager.initialize();
+        multiplayerDataManager.setPlayer1Username(GameData.USERNAME);
+
         startActivity(intent);
     }
 }

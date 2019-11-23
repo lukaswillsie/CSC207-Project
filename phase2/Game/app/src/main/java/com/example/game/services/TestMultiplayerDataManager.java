@@ -5,13 +5,18 @@ import com.example.game.data.MultiplayerIntData;
 
 public class TestMultiplayerDataManager implements MultiplayerDataManager {
     private static int turn = 1;
-    private static String player1Username;
+    private static String player1Username = "";
     private static int player1LongestStreak = 0;
     private static double player1WinRate = 0.0;
 
-    private static String player2Username;
+    private static String player2Username = "";
     private static int player2LongestStreak = 0;
     private static double player2WinRate = 0.0;
+
+    @Override
+    public void initialize(){
+        // Do nothing because in this case all the fields already have default values
+    }
 
     @Override
     public void setPlayer1Username(String newPlayer1Username) {

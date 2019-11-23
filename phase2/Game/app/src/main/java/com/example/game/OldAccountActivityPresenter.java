@@ -58,6 +58,7 @@ class OldAccountActivityPresenter {
         if (accountManager.validCredentials(username, password)) {
             if(GameData.MULTIPLAYER){
                 if(!username.equals(multiplayerDataManager.getPlayer1Username())){
+                    multiplayerDataManager.setPlayer2Username(username);
                     callingPage.login();
                 }
                 else {
@@ -65,6 +66,7 @@ class OldAccountActivityPresenter {
                 }
             }
             else {
+                GameData.setUsername(username);
                 callingPage.login();
             }
 

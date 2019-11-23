@@ -73,13 +73,6 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
     @Override
     public void login() {
         Intent intent = new Intent(this, MainActivity.class);
-        /* If MULTIPLAYER == true, then we are logging in player 2. Hence GameData.USERNAME doesn't
-         * need to change. So we only call setUsername() if multiplayer is false.
-         */
-        if(!GameData.MULTIPLAYER){
-            GameData.setUsername(username);
-        }
-
         startActivity(intent);
     }
 

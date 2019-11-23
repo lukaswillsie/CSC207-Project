@@ -61,6 +61,9 @@ class NewAccountActivityPresenter {
             if(GameData.MULTIPLAYER){
                 multiplayerDataManager.setPlayer2Username(username);
             }
+            else {
+                GameData.setUsername(username);
+            }
             accountManager.createNewUser(username, password);
             callingPage.login();
         }
