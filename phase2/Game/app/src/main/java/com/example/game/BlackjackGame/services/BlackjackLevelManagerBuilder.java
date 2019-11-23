@@ -23,9 +23,11 @@ public class BlackjackLevelManagerBuilder {
      * Build a new LevelManager for the given activity
      *
      * @param activity - the activity that wants the BlackjackManager
-     * @param username - the username of the player whose game is going to be managed;
-     *                   used to fetch the given user's numHands setting to give to the
-     *                   BlackjackLevelManager
+     * @param username - the username of the player whose numHands setting should be used to
+     *                   play the game. This will normally also be the username of the player
+     *                   who is playing the game, but may not be (for example in the event that a
+     *                   multiplayer game is being played and the game has decided to use player 1's
+     *                   numHands settings for both players).  
      * @return a BlackjackLevelManager object
      */
     public BlackjackLevelManager build(BlackjackPlayActivity activity, String username) {
