@@ -15,14 +15,18 @@ public interface MultiplayerDataManager {
     /**
      * The class has to be able to, at the very least, have a way of storing
      * the username of player 1
+     *
+     * @param player1Username - player 1's username
      */
-    void setPlayer1Username();
+    void setPlayer1Username(String player1Username);
 
     /**
      * The class has to be able to, at the very least, have a way of storing
      * the username of player 2
+     *
+     * @param player2Username - player 2's username
      */
-    void setPlayer2Username();
+    void setPlayer2Username(String player2Username);
 
     /**
      * Return the username of player 1
