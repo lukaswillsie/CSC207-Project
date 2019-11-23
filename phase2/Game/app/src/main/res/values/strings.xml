@@ -80,4 +80,5 @@
     <string name="Player1StatsTitle"><u>Player 1\'s Statistics</u></string>
     <string name="blackjackMultiplayerEndTitle">Summary</string>
     <string name="multiplayerButton">Multiplayer!</string>
+    <string name="multiplayerLoginLabel">Player 2 should login here!</string>
 </resources>
