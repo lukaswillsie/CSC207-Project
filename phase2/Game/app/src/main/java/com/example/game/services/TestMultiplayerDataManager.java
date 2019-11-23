@@ -4,6 +4,7 @@ import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerIntData;
 
 public class TestMultiplayerDataManager implements MultiplayerDataManager {
+    private static int turn = 1;
     @Override
     public void setPlayer1Username(String player1Username) {
 
@@ -16,17 +17,19 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
 
     @Override
     public String getPlayer1Username() {
-        return "LUKAS";
+        return "lukas";
     }
 
     @Override
     public String getPlayer2Username() {
-        return "PETER";
+        return "peter";
     }
 
     @Override
     public void setMultiplayerData(MultiplayerIntData dataType, int newValue) {
-
+        if(dataType == MultiplayerIntData.BLACKJACK_PLAYER_TURN){
+            turn = newValue;
+        }
     }
 
     @Override
@@ -36,6 +39,9 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
 
     @Override
     public int getMultiplayerData(MultiplayerIntData dataType) {
+        if(dataType == MultiplayerIntData.BLACKJACK_PLAYER_TURN){
+            return turn;
+        }
         return 12;
     }
 
