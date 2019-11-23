@@ -13,8 +13,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.game.data.Setting;
 import com.example.game.data.GameData;
+import com.example.game.services.MultiplayerDataManager;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
+import com.example.game.services.TestMultiplayerDataManager;
 
 /**
  * The page displayed when a user is viewing or changing their settings
@@ -30,8 +32,19 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        MultiplayerDataManager multiplayerDataManager = new TestMultiplayerDataManager();
 
-        settingsManager = new SettingsManagerBuilder().build(this, GameData.USERNAME);
+        String username;
+        if(GameData.MULTIPLAYER){
+            String title = multiplayerDataManager.getPlayer1Username() + "'s Settings";
+            ((TextView)findViewById(R.id.settingsTitle)).setText(title);
+            username = multiplayerDataManager.getPlayer1Username();
+        }
+        else {
+            username = GameData.USERNAME;
+        }
+
+        settingsManager = new SettingsManagerBuilder().build(this, username);
 
         numHandsBar = findViewById(R.id.numHandsSeekBar);
         // Read user's setting for number of hands and set it as progress on the seek bar

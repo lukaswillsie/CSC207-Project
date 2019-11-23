@@ -23,9 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginTop="92dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView12"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintEnd_toEndOf="@+id/settingsTitle"
+        app:layout_constraintStart_toStartOf="@+id/settingsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
 
     <TextView
         android:id="@+id/setting1Label"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="@+id/numHandsSeekBar" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="119dp"
