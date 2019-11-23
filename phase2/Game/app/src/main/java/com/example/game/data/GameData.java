@@ -14,7 +14,7 @@ public class GameData {
     /**
      * A boolean representing whether or not the game is in multiplayer mode at any given moment
      */
-    public static boolean MULTIPLAYER;
+    public static boolean MULTIPLAYER = false;
 
     /**
      * Change what value is being stored in USERNAME; to be called when a

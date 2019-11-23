@@ -1,15 +1,23 @@
 package com.example.game;
 
+import com.example.game.data.GameData;
 import com.example.game.services.AccountManager;
+import com.example.game.services.MultiplayerDataManager;
 
 /**
  * Logs in existing users for a OldUserPage
  */
 class OldAccountActivityPresenter {
     /**
-     * The account manager being used by this object to manage user accounts
+     * The account accountManager being used by this object to manage user accounts
      */
-    private AccountManager manager;
+    private AccountManager accountManager;
+
+    /**
+     * The MultiplayerDataManager this object will use to access and update multiplayer data,
+     * if necessary
+     */
+    private MultiplayerDataManager multiplayerDataManager;
 
     /**
      * The OldUserPage that created this object
@@ -19,25 +27,47 @@ class OldAccountActivityPresenter {
     /**
      * Create a new OldAccountActivityPresenter
      *
-     * @param manager     - the AccountManager to be used by this object to manage user accounts
+     * @param accountManager     - the AccountManager to be used by this object to manage user accounts
      * @param callingPage - the OldUserPage that created this object
      */
-    OldAccountActivityPresenter(AccountManager manager, OldUserPage callingPage) {
-        this.manager = manager;
+    OldAccountActivityPresenter(AccountManager accountManager, OldUserPage callingPage) {
+        this.accountManager = accountManager;
         this.callingPage = callingPage;
+    }
+
+    /**
+     * Give this object an instance of MultiplayerDataManager to use
+     *
+     * NOTE: This method must be called if the game is in multiplayer mode
+     * @param multiplayerDataManager - the new MultiplayerDataManager for this class to use
+     */
+    void setMultiplayerDataManager(MultiplayerDataManager multiplayerDataManager) {
+        this.multiplayerDataManager = multiplayerDataManager;
     }
 
     /**
      * Log in an existing user with the given username and password
      * <p>
-     * Calls callingPage.loginError() if the given username and password
+     * Calls callingPage.loginError() if the given username and password are invalid; i.e. if the
+     * username doesn't exist or the password is wrong
      *
      * @param username - the user's username
      * @param password - the user's password
      */
     void loginOldUser(String username, String password) {
-        if (manager.validCredentials(username, password)) {
-            callingPage.login();
+        if (accountManager.validCredentials(username, password)) {
+            if(GameData.MULTIPLAYER){
+                if(!username.equals(multiplayerDataManager.getPlayer1Username())){
+                    callingPage.login();
+                }
+                else {
+                    callingPage.loginError("You can't log " + multiplayerDataManager.getPlayer1Username() + " in twice!");
+                }
+            }
+            else {
+                callingPage.login();
+            }
+
         } else {
             callingPage.loginError("Your login information is incorrect");
         }

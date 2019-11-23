@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.data.GameData;
+import com.example.game.services.TestMultiplayerDataManager;
 import com.example.game.services.UserAccountManager;
 
 /**
@@ -30,6 +31,10 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_account);
         presenter = new NewAccountActivityPresenter(new UserAccountManager(this), this);
+        if(GameData.MULTIPLAYER){
+            // TODO: Implement the MDM interface and replace this dummy object
+            presenter.setMultiplayerDataManager(new TestMultiplayerDataManager());
+        }
     }
 
     /**

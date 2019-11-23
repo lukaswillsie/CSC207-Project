@@ -41,7 +41,7 @@ class NewAccountActivityPresenter {
      * NOTE: This method must be called if the game is in multiplayer mode
      * @param multiplayerDataManager - the new MultiplayerDataManager for this class to use
      */
-    public void setMultiplayerDataManager(MultiplayerDataManager multiplayerDataManager) {
+    void setMultiplayerDataManager(MultiplayerDataManager multiplayerDataManager) {
         this.multiplayerDataManager = multiplayerDataManager;
     }
 
