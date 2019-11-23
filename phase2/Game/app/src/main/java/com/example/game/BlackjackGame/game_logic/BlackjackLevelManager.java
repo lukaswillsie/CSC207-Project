@@ -68,15 +68,15 @@ public class BlackjackLevelManager {
 
     /**
      * Set the number of hands to be played by this BlackjackLevelManager.
-     *
+     * <p>
      * Once the field has been set it cannot be changed.
-     *
+     * <p>
      * Precondition: numHands is a positive integer
+     *
      * @param numHands - the number of hands of Blackjack to be played by this BlackjackLevelManager
      */
     public void setNumHands(int numHands) {
-        if(this.numHands == -1)
-        {
+        if (this.numHands == -1) {
             this.numHands = numHands;
         }
     }
@@ -102,7 +102,7 @@ public class BlackjackLevelManager {
     /**
      * Get this BlackjackLevelManager ready to play another hand
      */
-    public void playAgain(){
+    public void playAgain() {
         deck = new Deck();
         user.newHand();
         dealer.newHand();
@@ -113,7 +113,7 @@ public class BlackjackLevelManager {
     /**
      * Return whether or not this BlackjackLevelManager is ready to play another round
      */
-    public boolean anotherRound(){
+    public boolean anotherRound() {
         return numHandsPlayed < numHands;
     }
 
@@ -140,6 +140,7 @@ public class BlackjackLevelManager {
     }
 
     // TODO: Change "game" to "round" or "hand"  here and elsewhere to make it more clear that this is the end of a single round, not the whole game
+
     /**
      * End the game. Calculate who won, record that another hand has been played, update the interface,
      * and tell this BlackjackLevelManager's activity that the game is over

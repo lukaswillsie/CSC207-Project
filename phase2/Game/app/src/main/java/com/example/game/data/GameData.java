@@ -2,7 +2,7 @@ package com.example.game.data;
 
 /**
  * A class for storing important game data at runtime
- *
+ * <p>
  * At the moment, the title of "important" is bestowed only on the player's username
  */
 public class GameData {
@@ -30,5 +30,7 @@ public class GameData {
      * Change what value is being sotred in MULTIPLAYER; to be called when a user logs in/creates a
      * new account
      */
-    public static void setMultiplayer(boolean multiplayer){MULTIPLAYER = multiplayer;}
+    public static void setMultiplayer(boolean multiplayer) {
+        MULTIPLAYER = multiplayer;
+    }
 }

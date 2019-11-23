@@ -40,7 +40,7 @@ public class StatsRecorder {
     /**
      * Create a new StatsRecord from the specified context
      */
-    public StatsRecorder(Context context, String username){
+    public StatsRecorder(Context context, String username) {
         statsManager = new StatsManagerBuilder().build(context, username);
         allTimeLongestStreak = statsManager.getStat(Statistic.LONGEST_STREAK);
     }
@@ -48,12 +48,12 @@ public class StatsRecorder {
     /**
      * Record that the player won a round
      */
-    public void playerWin(){
+    public void playerWin() {
         wins++;
         roundsPlayed++;
 
         currentStreak++;
-        if(currentStreak > longestStreak){
+        if (currentStreak > longestStreak) {
             longestStreak = currentStreak;
         }
     }
@@ -61,7 +61,7 @@ public class StatsRecorder {
     /**
      * Record that the player lost a round
      */
-    public void playerLose(){
+    public void playerLose() {
         roundsPlayed++;
         currentStreak = 0;
     }
@@ -70,19 +70,20 @@ public class StatsRecorder {
      * Call this method when you want to check if the player has broken their record,
      * and if so you want the data associated with their account to be updated
      */
-    public void update(){
-        if(longestStreak > allTimeLongestStreak){
+    public void update() {
+        if (longestStreak > allTimeLongestStreak) {
             statsManager.setStat(Statistic.LONGEST_STREAK, longestStreak);
         }
     }
 
     /**
      * Calculate the player's win rate according to this StatRecorder's data
+     *
      * @return the player's win rate if roundsPlayed > 0, -1 otherwise
      */
-    public double getWinRate(){
-        if(roundsPlayed > 0){
-            return (double)wins / roundsPlayed;
+    public double getWinRate() {
+        if (roundsPlayed > 0) {
+            return (double) wins / roundsPlayed;
         }
 
         return -1;
@@ -90,9 +91,10 @@ public class StatsRecorder {
 
     /**
      * Return the player's longest winning streak since this object was created
+     *
      * @return - the player's longest winning streak since this object was created
      */
-    public int getLongestStreak(){
+    public int getLongestStreak() {
         return longestStreak;
     }
 }

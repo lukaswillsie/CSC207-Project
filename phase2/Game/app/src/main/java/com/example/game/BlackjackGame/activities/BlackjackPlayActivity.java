@@ -7,12 +7,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.BlackjackGame.services.StatsRecorder;
-import com.example.game.R;
-import com.example.game.services.ButtonManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
+import com.example.game.BlackjackGame.services.StatsRecorder;
+import com.example.game.R;
 import com.example.game.data.GameData;
+import com.example.game.services.ButtonManager;
 import com.example.game.services.MultiplayerDataManager;
 import com.example.game.services.TestMultiplayerDataManager;
 
@@ -23,9 +23,9 @@ import static com.example.game.data.GameConstants.TAG;
 import static com.example.game.data.GameConstants.WIN_RATE_KEY;
 import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_1_WIN_RATE;
 import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_2_WIN_RATE;
-import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER1_LONGEST_STREAK;
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER2_LONGEST_STREAK;
+import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
 
 /**
  * The page displayed when the user is actually playing a round of Blackjack
@@ -94,7 +94,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         // Initialize username according to whether or not this is a multiplayer game
         BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
-        if(multiplayer){
+        if (multiplayer) {
             // When playing a multiplayer game, we use player 1's settings for both players
             // So we pass player 1's username as an argument to the builder regardless of who
             // is currently playing
@@ -104,20 +104,17 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             // statsRecorder according to who's playing. This means that if they break their longest
             // streak record, it gets updated regardless of whether they're playing singleplayer
             // or multiplayer
-            if(multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1){
+            if (multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1) {
                 statsRecorder = new StatsRecorder(this, multiplayerDataManager.getPlayer1Username());
-            }
-            else {
+            } else {
                 statsRecorder = new StatsRecorder(this, multiplayerDataManager.getPlayer2Username());
             }
-        }
-        else {
+        } else {
             levelManager = builder.build(this, GameData.USERNAME);
             statsRecorder = new StatsRecorder(this, GameData.USERNAME);
         }
 
         buttonManager = new ButtonManager(this);
-
 
 
         levelManager.setup();
@@ -166,19 +163,17 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     public void endGame(View view) {
         Intent intent;
         // The intent that should be started depends on whether or not this was a multiplayer game
-        if(multiplayer){
-            if(player1Turn){
+        if (multiplayer) {
+            if (player1Turn) {
                 intent = new Intent(this, BlackjackMidMultiplayerActivity.class);
                 multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER1_LONGEST_STREAK, statsRecorder.getLongestStreak());
-                multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE, formatWinRate(statsRecorder.getWinRate()) );
-            }
-            else {
+                multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE, formatWinRate(statsRecorder.getWinRate()));
+            } else {
                 intent = new Intent(this, MultiplayerEndGameActivity.class);
                 multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER2_LONGEST_STREAK, statsRecorder.getLongestStreak());
                 multiplayerDataManager.setMultiplayerData(BLACKJACK_PLAYER_2_WIN_RATE, formatWinRate(statsRecorder.getWinRate()));
             }
-        }
-        else {
+        } else {
             intent = new Intent(this, EndGameActivity.class);
             intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * (statsRecorder.getWinRate())) + "%");
             intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
@@ -189,11 +184,12 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     /**
      * Take in a double winRate which is less than or equal to 1 and convert it into a percentage with two
      * digits past the decimal point.
+     *
      * @param winRate - a double less than or equal to 1
      * @return - the parameter converted into a percentage with two decimal places
      */
-    private double formatWinRate(double winRate){
-        return (double)((int)(winRate * 10000) / 100);
+    private double formatWinRate(double winRate) {
+        return (double) ((int) (winRate * 10000) / 100);
     }
 
     /**

@@ -11,9 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 
-
-import static com.example.game.data.GameConstants.USERNAME_KEY;
 import static com.example.game.data.GameConstants.TAG;
+import static com.example.game.data.GameConstants.USERNAME_KEY;
 
 /**
  * The page that introduces the player to Blackjack
@@ -24,7 +23,7 @@ public class BlackjackStartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_start);
         TextView blackjackBlurb = findViewById(R.id.blackjackBlurb);
-        if(GameData.MULTIPLAYER){
+        if (GameData.MULTIPLAYER) {
             blackjackBlurb.setText(R.string.blackjack_multiplayer_blurb);
         }
 

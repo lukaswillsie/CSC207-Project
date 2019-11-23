@@ -44,7 +44,7 @@ public class BlackjackPlayerManager {
     /**
      * Give the player an empty hand
      */
-    public void newHand(){
+    public void newHand() {
         player.setHand(new Hand());
     }
 
@@ -72,7 +72,7 @@ public class BlackjackPlayerManager {
         }
 
         // If there is only one ace then it is either counted as an 11 or 1, whichever is best
-        if(numAces == 1){
+        if (numAces == 1) {
             if (value + 11 <= 21) {
                 value += 11;
             } else {
@@ -82,11 +82,10 @@ public class BlackjackPlayerManager {
 
         // If there's more than one ace, either one of them is an 11 and the rest are 1's, if this
         // doesn't make the player but, or they are all 1's, if the former makes the player bust
-        else if (numAces >= 2){
-            if(value + 11 + numAces - 1 <= 21){
+        else if (numAces >= 2) {
+            if (value + 11 + numAces - 1 <= 21) {
                 value += 11 + numAces - 1;
-            }
-            else {
+            } else {
                 value += numAces;
             }
         }

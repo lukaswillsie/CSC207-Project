@@ -27,9 +27,10 @@ public class Player {
 
     /**
      * Give this player a new hand
+     *
      * @param hand - the player's new hand
      */
-    void setHand(Hand hand){
+    void setHand(Hand hand) {
         this.hand = hand;
     }
 }
