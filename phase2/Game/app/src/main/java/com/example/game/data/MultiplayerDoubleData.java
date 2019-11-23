@@ -5,12 +5,21 @@ package com.example.game.data;
  * course of a multiplayer game
  */
 public enum MultiplayerDoubleData {
-    ;
+    /**
+     * A statistic that stores player 1's win rate in the game of Blackjack they played
+     */
+    BLACKJACK_PLAYER_1_WIN_RATE(0.0, "player1WinRate"),
+
+    /**
+     * A statistic that stores player 2's win rate in the game of Blackjack they played
+     */
+    BLACKJACK_PLAYER_2_WIN_RATE(0.0, "player2WinRate");
+
     /**
      * The initial, default value of this particular statistic. What the statistic
      * should be initialized to at runtime when a multiplayer game starts
      */
-    private int defaultValue;
+    private double defaultValue;
 
     /**
      * The key to be used when storing the value. For example. If key="key1", then if the
@@ -34,7 +43,7 @@ public enum MultiplayerDoubleData {
      * @param defaultValue - the default value of this statistic
      * @param key          - the key to be used when storing this statistic
      */
-    MultiplayerDoubleData(int defaultValue, String key) {
+    MultiplayerDoubleData(double defaultValue, String key) {
         this.defaultValue = defaultValue;
         this.key = key;
     }
@@ -44,7 +53,7 @@ public enum MultiplayerDoubleData {
      *
      * @return - the default value of this MultiplayerData object
      */
-    public int getDefaultValue() {
+    public double getDefaultValue() {
         return defaultValue;
     }
 

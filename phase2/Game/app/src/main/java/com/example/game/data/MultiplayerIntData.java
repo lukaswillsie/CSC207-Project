@@ -16,7 +16,13 @@ public enum MultiplayerIntData {
     /**
      * Represents the statistic "player 2's longest winning streak in Blackjack".
      */
-    PLAYER2_LONGEST_STREAK(0, "player2LongestStreak");
+    PLAYER2_LONGEST_STREAK(0, "player2LongestStreak"),
+
+    /**
+     * Represents whose turn it is in an ongoing blackjack game. Can either be 1 if it's player 1's
+     * turn or 2 if it's player 2's.
+     */
+    BLACKJACK_PLAYER_TURN(1, "blackjackPlayerTurn");
 
 
     /**
