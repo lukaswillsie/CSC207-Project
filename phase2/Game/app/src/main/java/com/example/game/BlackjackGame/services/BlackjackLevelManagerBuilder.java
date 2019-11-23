@@ -24,7 +24,7 @@ public class BlackjackLevelManagerBuilder {
      *                   play the game. This will normally also be the username of the player
      *                   who is playing the game, but may not be (for example in the event that a
      *                   multiplayer game is being played and the game has decided to use player 1's
-     *                   numHands settings for both players).
+     *                   numHands settings for both players to standardize).
      * @return a BlackjackLevelManager object
      */
     public BlackjackLevelManager build(BlackjackPlayActivity activity, String username) {

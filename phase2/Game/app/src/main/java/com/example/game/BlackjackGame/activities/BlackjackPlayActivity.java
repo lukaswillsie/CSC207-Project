@@ -76,7 +76,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     private boolean multiplayer;
 
     /**
-     * If multiplayer = true, tells this activity whether the game being played is the for player 1
+     * If multiplayer = true, tells this activity whether the game being played is for player 1
      * or player 2
      */
     private boolean player1Turn;
@@ -85,36 +85,47 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
+
         // TODO: Write an actual implementation of MultiplayerDataManager and use dependency injection to get it into this class
         multiplayerDataManager = new TestMultiplayerDataManager();
+
         multiplayer = GameData.MULTIPLAYER;
         player1Turn = multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1;
 
         // Initialize username according to whether or not this is a multiplayer game
-        String username;
-        if(GameData.MULTIPLAYER){
+        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
+        if(multiplayer){
+            // When playing a multiplayer game, we use player 1's settings for both players
+            // So we pass player 1's username as an argument to the builder regardless of who
+            // is currently playing
+            levelManager = builder.build(this, multiplayerDataManager.getPlayer1Username());
+
+            // However, we want to track each player's stats while they are playing, so we initialize
+            // statsRecorder according to who's playing. This means that if they break their longest
+            // streak record, it gets updated regardless of whether they're playing singleplayer
+            // or multiplayer
             if(multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1){
-                username = multiplayerDataManager.getPlayer1Username();
+                statsRecorder = new StatsRecorder(this, multiplayerDataManager.getPlayer1Username());
             }
             else {
-                username = multiplayerDataManager.getPlayer2Username();
+                statsRecorder = new StatsRecorder(this, multiplayerDataManager.getPlayer2Username());
             }
         }
         else {
-            username = GameData.USERNAME;
+            levelManager = builder.build(this, GameData.USERNAME);
+            statsRecorder = new StatsRecorder(this, GameData.USERNAME);
         }
 
         buttonManager = new ButtonManager(this);
 
-        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
-        levelManager = builder.build(this, username);
+
 
         levelManager.setup();
         levelManager.play();
 
         ((TextView) findViewById(R.id.blackjackNote)).setText(note);
 
-        statsRecorder = new StatsRecorder(this, username);
+
     }
 
     /**
