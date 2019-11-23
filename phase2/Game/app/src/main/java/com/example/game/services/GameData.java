@@ -12,6 +12,11 @@ public class GameData {
     public static String USERNAME;
 
     /**
+     * A boolean representing whether or not the game is in multiplayer mode at any given moment
+     */
+    public static boolean MULTIPLAYER;
+
+    /**
      * Change what value is being stored in USERNAME; to be called when a
      * user logs in/creates a new account
      *
@@ -20,4 +25,10 @@ public class GameData {
     public static void setUsername(String username) {
         USERNAME = username;
     }
+
+    /**
+     * Change what value is being sotred in MULTIPLAYER; to be called when a user logs in/creates a
+     * new account
+     */
+    public static void setMultiplayer(boolean multiplayer){MULTIPLAYER = multiplayer;}
 }
