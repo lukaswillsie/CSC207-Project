@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.BlackjackGame.services.MultiplayerEndGameActivityPresenter;
 import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.services.MultiplayerDataManager;
@@ -20,16 +21,21 @@ import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER1_LONGEST
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER2_LONGEST_STREAK;
 
 public class MultiplayerEndGameActivity extends AppCompatActivity {
+    private MultiplayerEndGameActivityPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer_end_game);
 
+        // TODO: Write an actual implementation of MDM and replace this dummy call
+        presenter = new MultiplayerEndGameActivityPresenter(new TestMultiplayerDataManager());
         initializeTextViews();
     }
 
     public void mainMenu(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        presenter.resetMultiplayerData();
         startActivity(intent);
     }
 

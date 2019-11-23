@@ -175,8 +175,14 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         startActivity(intent);
     }
 
+    /**
+     * Take in a double winRate which is less than or equal to 1 and convert it into a percentage with two
+     * digits past the decimal point.
+     * @param winRate - a double less than or equal to 1
+     * @return - the parameter converted into a percentage with two decimal places
+     */
     private double formatWinRate(double winRate){
-        return (double)((int)(winRate * 100) / 100);
+        return (double)((int)(winRate * 10000) / 100);
     }
 
     /**
