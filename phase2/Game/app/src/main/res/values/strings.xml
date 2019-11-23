@@ -79,4 +79,5 @@
     <string name="blackjackPlayer2TurnButton">Player 2\'s Turn</string>
     <string name="Player1StatsTitle"><u>Player 1\'s Statistics</u></string>
     <string name="blackjackMultiplayerEndTitle">Summary</string>
+    <string name="multiplayerButton">Multiplayer!</string>
 </resources>

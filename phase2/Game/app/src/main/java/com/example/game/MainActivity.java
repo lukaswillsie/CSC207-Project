@@ -3,6 +3,7 @@ package com.example.game;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +14,10 @@ import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
 import com.example.game.level2.GameStartActivity;
 import com.example.game.level3.CowsBullsStartActivity;
 import com.example.game.data.GameData;
+import com.example.game.services.MultiplayerDataManager;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
+import com.example.game.services.TestMultiplayerDataManager;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -27,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         String welcomeText = "Welcome, " + name + "!";
         ((TextView) findViewById(R.id.welcomeText)).setText(welcomeText);
 
+        if(GameData.MULTIPLAYER){
+            hideMultiplayerButton();
+        }
+
         //DarkMode Setting
         SettingsManager manager = new SettingsManagerBuilder().build(this, username);
         int temp = manager.getSetting(Setting.DARK_MODE);
@@ -36,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+    }
+
+    private void hideMultiplayerButton() {
+        ((Button)findViewById(R.id.multiplayerButton)).setVisibility(View.INVISIBLE);
     }
 
     public void playBlackjack(View view) {
@@ -60,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void stats(View view) {
         Intent intent = new Intent(this, StatsActivity.class);
+        startActivity(intent);
+    }
+
+    public void multiplayer(View view){
+        Intent intent = new Intent(this, StartActivity.class);
+        GameData.setMultiplayer(true);
         startActivity(intent);
     }
 }
