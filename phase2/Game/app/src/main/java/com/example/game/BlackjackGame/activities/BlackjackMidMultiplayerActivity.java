@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 
-import static com.example.game.data.GameConstants.TAG;
-
 public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -19,7 +17,6 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
 
     public void player2Turn(View view){
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
-        intent.putExtra(TAG+ BlackjackPlayActivity.PLAYER_1_WIN_RATE_KEY, getIntent().getStringExtra(TAG+ BlackjackPlayActivity.PLAYER_1_WIN_RATE_KEY));
-        intent.putExtra(TAG+ BlackjackPlayActivity.PLAYER_1_LONGEST_STREAK_KEY, getIntent().getStringExtra(TAG+ BlackjackPlayActivity.PLAYER_1_LONGEST_STREAK_KEY));
+        startActivity(intent);
     }
 }
