@@ -23,6 +23,11 @@ public class BlackjackStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.black_jack_start);
+        TextView blackjackBlurb = findViewById(R.id.blackjackBlurb);
+        if(GameData.MULTIPLAYER){
+            blackjackBlurb.setText(R.string.blackjack_multiplayer_blurb);
+        }
+
         ((TextView) findViewById(R.id.blackjackBlurb)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 

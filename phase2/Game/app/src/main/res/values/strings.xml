@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Game</string>
-    <string name="blackjack_blurb">In this level, you\'re going to play Blackjack! If you don\'t know how to play Blackjack, <a href="https://entertainment.howstuffworks.com/blackjack3.htm">here\'s</a> a page explaining how to play!</string>
+    <string name="blackjack_singleplayer_blurb">In this level, you\'re going to play Blackjack! If you don\'t know how to play Blackjack, <a href="https://entertainment.howstuffworks.com/blackjack3.htm">here\'s</a> a page explaining how to play!</string>
+    <string name="blackjack_multiplayer_blurb">In this level, you\'re both going to play Blackjack! If you don\'t know how to play Blackjack, <a href="https://entertainment.howstuffworks.com/blackjack3.htm">here\'s</a> a page explaining how to play! \n \n First player 1 is going to have a turn, then you\'ll see their stats, and then player 2 is going to play. \n \n Note: you\'re going to be playing with player 1\'s game settings, and if you want to change them you can go back to the main menu and click "Settings".</string>
     <string name="blackjack_start">START</string>
     <string name="dealer_hand_label">Dealer\'s Hand:</string>
     <string name="player_hand_label">Your hand:</string>
