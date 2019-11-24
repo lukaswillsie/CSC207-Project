@@ -48,6 +48,12 @@ public class CowsBullsActivity extends AppCompatActivity {
     // The GameManager for this game.
     private GameManager gameManager;
 
+    //The StatsManager for this game.
+    private StatsManager statsManager;
+
+    //The SettingsManager for this game;
+    private SettingsManager settingsManager;
+
     // The time in milliseconds when the player started the game.
     long startTime;
 
@@ -58,13 +64,16 @@ public class CowsBullsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls);
+
         startTime = System.currentTimeMillis();
         chronometer = findViewById(R.id.timer);
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
-        SettingsManager settingsManager = new SettingsManagerBuilder().build(this, username);
-        this.gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+        settingsManager = new SettingsManagerBuilder().build(this, username);
+        statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+        gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+
         if (settingsManager.getSetting(Setting.ALPHABET) == 1) {
             guess.setInputType(InputType.TYPE_CLASS_TEXT);
         } else {
@@ -95,7 +104,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         currentGuess = guessInput();
 
 
-        if (currentGuess.length() == 5 & !currentGuess.equals("null")) {
+        if (gameManager.checkGuess(currentGuess)) {
             String[] guessArray = new String[currentGuess.length()];
             for (int i = 0; i < currentGuess.length(); i++){
                 guessArray[i] = String.valueOf(currentGuess.charAt(i));
@@ -104,10 +113,9 @@ public class CowsBullsActivity extends AppCompatActivity {
             int bulls = this.gameManager.getResults()[1];
             int cows = this.gameManager.getResults()[0];
 
-            if (bulls == 5) {
+            if (gameManager.gameEnd()) {
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
-                StatsManager statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
                 long elapsedTime = stopTime - startTime;
                 int seconds = turnToSeconds(elapsedTime);
                 statsManager.setStat(Statistic.TIME_TAKEN, seconds);
@@ -139,10 +147,6 @@ public class CowsBullsActivity extends AppCompatActivity {
         return (int) (elapsedTime / 1000);
     }
 
-
-    public int getBulls() {
-        return this.gameManager.getResults()[1];
-    }
 
     /**
      * A method that returns all of the data / statistics collected so far in level 3.

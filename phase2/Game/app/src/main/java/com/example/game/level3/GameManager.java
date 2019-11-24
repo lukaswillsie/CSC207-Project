@@ -15,6 +15,9 @@ class GameManager {
     // A TurnData object to store the information for the current turn.
     private TurnData turnData;
 
+    //The size of the answerArray
+    private int answerSize;
+
     /**
      * A constructor for the GameManager class.
      *
@@ -23,6 +26,8 @@ class GameManager {
      */
     GameManager(int answerSize, int alphabetSelector) {
         String[] alphabet;
+        this.answerSize = answerSize;
+
         if (alphabetSelector == 0) {
             alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         } else {
@@ -73,6 +78,24 @@ class GameManager {
      */
     ArrayList<TurnData> getStatistics() {
         return this.data;
+    }
+
+    /**
+     * A method that returns true if the user guessed correctly, false otherwise
+     * @return Boolean indicating whether user has made the right guess
+     */
+    boolean gameEnd() {
+        return (getResults()[1] == 5);
+    }
+
+    /**
+     * A method that returns true if currentGuess is a valid guess to make
+     *
+     * @param currentGuess The currentGuess of user
+     * @return Boolean of whether the currentGuess by user is valid
+     */
+    boolean checkGuess(String currentGuess){
+        return (currentGuess.length() == answerSize & !currentGuess.equals("null"));
     }
 
 }
