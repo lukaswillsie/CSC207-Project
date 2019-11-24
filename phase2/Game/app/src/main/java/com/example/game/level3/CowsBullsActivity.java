@@ -51,8 +51,11 @@ public class CowsBullsActivity extends AppCompatActivity {
     //The StatsManager for this game.
     private StatsManager statsManager;
 
-    //The SettingsManager for this game;
+    //The SettingsManager for this game.
     private SettingsManager settingsManager;
+
+    //The CowsBullsStatsManager for this game.
+    private CowsBullsStatsManager cowsBullsStatsManager;
 
     // The time in milliseconds when the player started the game.
     long startTime;
@@ -73,6 +76,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         settingsManager = new SettingsManagerBuilder().build(this, username);
         statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
         gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+        cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
 
         if (settingsManager.getSetting(Setting.ALPHABET) == 1) {
             guess.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -118,12 +122,9 @@ public class CowsBullsActivity extends AppCompatActivity {
                 chronometer.stop();
                 long elapsedTime = stopTime - startTime;
                 int seconds = turnToSeconds(elapsedTime);
-                statsManager.setStat(Statistic.TIME_TAKEN, seconds);
-                int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);
-                if (seconds < minTime || minTime == 0) {
-                    statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
-                }
-                statsManager.setStat(Statistic.NUMBER_OF_GUESSES, getStatistics().size());
+                int numberOfGuesses = getStatistics().size();
+                cowsBullsStatsManager.update(seconds, numberOfGuesses);
+
                 Intent intent = new Intent(this, CowsBullsFinishActivity.class);
                 startActivity(intent);
             }
