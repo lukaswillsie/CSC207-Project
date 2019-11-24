@@ -58,7 +58,10 @@ public class CowsBullsActivity extends AppCompatActivity {
     private CowsBullsStatsManager cowsBullsStatsManager;
 
     // The time in milliseconds when the player started the game.
-    long startTime;
+    private long startTime;
+
+    //Indicates whether multiplayer mode is on
+    private boolean multiplayer;
 
     // The player's username.
     String username = GameData.USERNAME;
@@ -77,6 +80,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
         gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
         cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
+        multiplayer = GameData.MULTIPLAYER;
 
         if (settingsManager.getSetting(Setting.ALPHABET) == 1) {
             guess.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -113,6 +117,7 @@ public class CowsBullsActivity extends AppCompatActivity {
             for (int i = 0; i < currentGuess.length(); i++){
                 guessArray[i] = String.valueOf(currentGuess.charAt(i));
             }
+
             this.gameManager.setGuess(guessArray);
             int bulls = this.gameManager.getResults()[1];
             int cows = this.gameManager.getResults()[0];
@@ -129,12 +134,16 @@ public class CowsBullsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-
             TextView currGuess = new TextView(CowsBullsActivity.this);
             String textToDisplay = currentGuess + "     Bulls: " + bulls + " Cows: " + cows;
             currGuess.setText(textToDisplay);
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
+
+            if (multiplayer) {
+                Intent intent = new Intent(this, CowsBullsSecondPlayerActivity.class);
+                startActivity(intent);
+            }
         }
         guess.setText("");
     }
