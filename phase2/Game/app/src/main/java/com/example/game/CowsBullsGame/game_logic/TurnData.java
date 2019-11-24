@@ -1,5 +1,8 @@
 package com.example.game.CowsBullsGame.game_logic;
 
+import com.example.game.CowsBullsGame.domain.Answer;
+import com.example.game.CowsBullsGame.domain.Guess;
+
 /**
  * A class that deals with the data for one turn of the game.
  */
@@ -21,10 +24,10 @@ public class TurnData {
      * @param guessArray  An array of the elements guessed by the player.
      * @param answerArray An array of the elements for the correct answer.
      */
-    TurnData(String[] guessArray, String[] answerArray) {
+    TurnData(Guess guessArray, Answer answerArray) {
 
-        Guess guess = new Guess(guessArray, answerArray);
-        this.guessArray = guessArray;
+        GuessInterpreter guess = new GuessInterpreter(guessArray, answerArray);
+        this.guessArray = guessArray.getGuessArray();
         this.numberBulls = guess.getBulls();
         this.numberCows = guess.getCows();
     }

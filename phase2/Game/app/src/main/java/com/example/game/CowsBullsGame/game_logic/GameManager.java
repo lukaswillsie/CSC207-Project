@@ -1,5 +1,8 @@
 package com.example.game.CowsBullsGame.game_logic;
 
+import com.example.game.CowsBullsGame.domain.Answer;
+import com.example.game.CowsBullsGame.domain.Guess;
+
 import java.util.ArrayList;
 
 /**
@@ -10,7 +13,7 @@ public class GameManager {
     private ArrayList<TurnData> data = new ArrayList<>();
 
     // An array of the answer that the player is trying to guess.
-    private String[] answerArray;
+    private Answer answerArray;
 
     // A TurnData object to store the information for the current turn.
     private TurnData turnData;
@@ -25,26 +28,8 @@ public class GameManager {
      * @param alphabetSelector The possible strings that can appear in the answer / guess.
      */
     public GameManager(int answerSize, int alphabetSelector) {
-        String[] alphabet;
+        answerArray = new Answer(answerSize, alphabetSelector);
         this.answerSize = answerSize;
-
-        if (alphabetSelector == 0) {
-            alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        } else {
-            alphabet = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-                    "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-        }
-
-        this.answerArray = new String[answerSize];
-        // Generate a random string given the alphabet with size answerSize.
-        for (int i = 0; i < answerSize; i++) {
-
-            // Generate a random integer from 0 to answerSize - 1 with equal probabilities.
-            int rand = (int) (Math.random() * alphabet.length);
-
-            this.answerArray[i] = alphabet[rand];
-        }
-
     }
 
     /**
@@ -52,11 +37,7 @@ public class GameManager {
      *
      * @param guessArray The new guess.
      */
-    public void setGuess(String[] guessArray) {
-        // Double check that aliasing is okay. Otherwise make copy.
-        for (int i = 0; i < guessArray.length; i++) {
-            guessArray[i] = guessArray[i].toLowerCase();
-        }
+    public void setGuess(Guess guessArray) {
         this.turnData = new TurnData(guessArray, this.answerArray);
         this.data.add(this.turnData);
     }

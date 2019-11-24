@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.CowsBullsGame.domain.Guess;
 import com.example.game.R;
 import com.example.game.data.Setting;
 import com.example.game.data.GameData;
@@ -113,12 +114,11 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
-
+        System.out.println(gameManager.checkGuess(currentGuess) + " " +  currentGuess);
         if (gameManager.checkGuess(currentGuess)) {
-            String[] guessArray = new String[currentGuess.length()];
-            for (int i = 0; i < currentGuess.length(); i++){
-                guessArray[i] = String.valueOf(currentGuess.charAt(i));
-            }
+            Guess guessArray = new Guess(currentGuess);
+
+            System.out.println("YEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
 
             this.gameManager.setGuess(guessArray);
             int bulls = this.gameManager.getResults()[1];

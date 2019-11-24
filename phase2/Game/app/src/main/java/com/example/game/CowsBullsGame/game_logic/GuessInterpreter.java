@@ -1,5 +1,8 @@
 package com.example.game.CowsBullsGame.game_logic;
 
+import com.example.game.CowsBullsGame.domain.Answer;
+import com.example.game.CowsBullsGame.domain.Guess;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,7 +10,7 @@ import java.util.Map;
 /**
  * A class that deals with a guess that a player makes.
  */
-class Guess {
+class GuessInterpreter {
 
     // An array where each entry is the corresponding string guessed.
     private String[] guessArray;
@@ -16,15 +19,15 @@ class Guess {
     private String[] answerArray;
 
     /**
-     * Create a new Guess object. A precondition is that guessArray and answerArray must
+     * Create a new GuessInterpreter object. A precondition is that guessArray and answerArray must
      * have the same size.
      *
      * @param guessArray   An array of the guess made by the player.
      * @param answerArray¬ An array of the answer that the player is trying to guess.
      */
-    Guess(String[] guessArray, String[] answerArray) {
-        this.guessArray = guessArray;
-        this.answerArray = answerArray;
+    GuessInterpreter(Guess guessArray, Answer answerArray) {
+        this.guessArray = guessArray.getGuessArray();
+        this.answerArray = answerArray.getAnswerArray();
     }
 
     /**
