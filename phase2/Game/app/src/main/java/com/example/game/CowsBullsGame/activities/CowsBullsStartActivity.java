@@ -1,4 +1,4 @@
-package com.example.game.level3;
+package com.example.game.CowsBullsGame.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

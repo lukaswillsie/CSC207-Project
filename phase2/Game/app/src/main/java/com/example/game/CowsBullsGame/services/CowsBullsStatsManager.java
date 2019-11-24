@@ -1,8 +1,7 @@
-package com.example.game.level3;
+package com.example.game.CowsBullsGame.services;
 
 import com.example.game.data.Statistic;
 import com.example.game.services.StatsManager;
-import com.example.game.services.UserStatsManager;
 
 public class CowsBullsStatsManager {
 
@@ -26,7 +25,7 @@ public class CowsBullsStatsManager {
      * @param seconds - time take for user to guess correctly
      * @param numberOfGuesses - number of guess takes for user to guess correctly
      */
-    void update(int seconds, int numberOfGuesses){
+    public void update(int seconds, int numberOfGuesses){
 
         statsManager.setStat(Statistic.TIME_TAKEN, seconds);
         int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);

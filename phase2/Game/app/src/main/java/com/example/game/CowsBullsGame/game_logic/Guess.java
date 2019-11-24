@@ -1,4 +1,4 @@
-package com.example.game.level3;
+package com.example.game.CowsBullsGame.game_logic;
 
 import java.util.HashMap;
 import java.util.Map;

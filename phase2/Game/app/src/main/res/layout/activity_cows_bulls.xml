@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".level3.CowsBullsActivity">
+    tools:context=".CowsBullsGame.activities.CowsBullsActivity">
 
     <Chronometer
         android:id="@+id/timer"

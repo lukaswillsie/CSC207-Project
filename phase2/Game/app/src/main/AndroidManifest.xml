@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".level3.CowsBullsSecondPlayerActivity"></activity>
-        <activity android:name=".level3.CowsBullsStartActivity" />
-        <activity android:name=".level3.CowsBullsFinishActivity" />
-        <activity android:name=".level3.CowsBullsActivity" />
+        <activity android:name=".CowsBullsGame.activities.CowsBullsSecondPlayerActivity"></activity>
+        <activity android:name=".CowsBullsGame.activities.CowsBullsStartActivity" />
+        <activity android:name=".CowsBullsGame.activities.CowsBullsFinishActivity" />
+        <activity android:name=".CowsBullsGame.activities.CowsBullsActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".OldAccountActivity" />

@@ -1,4 +1,4 @@
-package com.example.game.level3;
+package com.example.game.CowsBullsGame.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 import com.example.game.data.Setting;
-import com.example.game.data.Statistic;
 import com.example.game.data.GameData;
+import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
+import com.example.game.CowsBullsGame.game_logic.GameManager;
+import com.example.game.CowsBullsGame.game_logic.TurnData;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 import com.example.game.services.StatsManager;

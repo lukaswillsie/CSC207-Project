@@ -1,6 +1,4 @@
-package com.example.game.level3;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.game.CowsBullsGame.activities;
 
 import android.os.Bundle;
 

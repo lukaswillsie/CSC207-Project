@@ -1,4 +1,4 @@
-package com.example.game.level3;
+package com.example.game.CowsBullsGame.game_logic;
 
 /**
  * A class that deals with the data for one turn of the game.

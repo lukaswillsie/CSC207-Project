@@ -1,11 +1,11 @@
-package com.example.game.level3;
+package com.example.game.CowsBullsGame.game_logic;
 
 import java.util.ArrayList;
 
 /**
  * A GameManager class that handles all of the game logic.
  */
-class GameManager {
+public class GameManager {
     // An array of the data for each turn.
     private ArrayList<TurnData> data = new ArrayList<>();
 
@@ -24,7 +24,7 @@ class GameManager {
      * @param answerSize       The size of the guess / answer.
      * @param alphabetSelector The possible strings that can appear in the answer / guess.
      */
-    GameManager(int answerSize, int alphabetSelector) {
+    public GameManager(int answerSize, int alphabetSelector) {
         String[] alphabet;
         this.answerSize = answerSize;
 
@@ -52,7 +52,7 @@ class GameManager {
      *
      * @param guessArray The new guess.
      */
-    void setGuess(String[] guessArray) {
+    public void setGuess(String[] guessArray) {
         // Double check that aliasing is okay. Otherwise make copy.
         for (int i = 0; i < guessArray.length; i++) {
             guessArray[i] = guessArray[i].toLowerCase();
@@ -67,7 +67,7 @@ class GameManager {
      * @return An integer array where the first element is the number of cows and the second element
      * is the number of bulls.
      */
-    int[] getResults() {
+    public int[] getResults() {
         return turnData.getResults();
     }
 
@@ -76,7 +76,7 @@ class GameManager {
      *
      * @return An array of TurnData objects which store the data for each turn.
      */
-    ArrayList<TurnData> getStatistics() {
+    public ArrayList<TurnData> getStatistics() {
         return this.data;
     }
 
@@ -84,7 +84,7 @@ class GameManager {
      * A method that returns true if the user guessed correctly, false otherwise
      * @return Boolean indicating whether user has made the right guess
      */
-    boolean gameEnd() {
+    public boolean gameEnd() {
         return (getResults()[1] == 5);
     }
 
@@ -94,7 +94,7 @@ class GameManager {
      * @param currentGuess The currentGuess of user
      * @return Boolean of whether the currentGuess by user is valid
      */
-    boolean checkGuess(String currentGuess){
+    public boolean checkGuess(String currentGuess){
         return (currentGuess.length() == answerSize & !currentGuess.equals("null"));
     }
 
