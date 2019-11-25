@@ -1,4 +1,4 @@
-package com.example.game.level2;
+package com.example.game.GuessTheNumber.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.MainActivity;
 import com.example.game.R;
+import com.example.game.GuessTheNumber.game_logic.GameManager;
+import com.example.game.GuessTheNumber.domain.Game;
 
 /**
  * This page displayed when user is actually playing a game.

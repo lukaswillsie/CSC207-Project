@@ -1,4 +1,4 @@
-package com.example.game.level2;
+package com.example.game.GuessTheNumber.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.Statistic;
 import com.example.game.data.GameData;
+import com.example.game.GuessTheNumber.game_logic.GameManager;
+import com.example.game.GuessTheNumber.domain.Game;
 import com.example.game.services.StatsManager;
 import com.example.game.services.StatsManagerBuilder;
 

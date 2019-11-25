@@ -1,4 +1,4 @@
-package com.example.game.level2;
+package com.example.game.GuessTheNumber.domain;
 
 /**
  * Represents one game instance, or rather, a "round" of GuessTheNumber.
@@ -30,7 +30,7 @@ public class Game {
     /**
      * Create a new Game for a user.
      */
-    Game() {
+    public Game() {
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
@@ -40,7 +40,7 @@ public class Game {
     /**
      * Finish the game.
      */
-    void finishTheGame(int guess) {
+    public void finishTheGame(int guess) {
         this.finished = true;
         this.updateStats(guess);
     }
@@ -48,7 +48,7 @@ public class Game {
     /**
      * Check if the guess is the exact number the the seek.
      */
-    boolean checkTheRightGuess(int guess) {
+    public boolean checkTheRightGuess(int guess) {
         return this.number == guess;
     }
 
@@ -56,7 +56,7 @@ public class Game {
      * Precondition for checkGuess is the guess is not equal to the actual number.
      * Return true iff the guess is less than the number we are seeking.
      */
-    boolean checkGuess(int guess) {
+    public boolean checkGuess(int guess) {
         this.updateStats(guess);
         return this.number < guess;
     }
@@ -79,28 +79,28 @@ public class Game {
     /**
      * Returns the points that this game currently has.
      */
-    int getPoints() {
+    public int getPoints() {
         return this.points;
     }
 
     /**
      * Returns the number of guesses the user has already taken so far in this game.
      */
-    int getNumOfGuess() {
+    public int getNumOfGuess() {
         return this.numOfGuess;
     }
 
     /**
      * Returns true if this game is finished and false otherwise.
      */
-    boolean isFinished() {
+    public boolean isFinished() {
         return this.finished;
     }
 
     /**
      * Call this method when the game is finished.
      */
-    void setIsFinished() {
+    public void setIsFinished() {
         this.finished = true;
     }
 }

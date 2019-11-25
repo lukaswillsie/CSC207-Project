@@ -1,4 +1,4 @@
-package com.example.game.level2;
+package com.example.game.GuessTheNumber.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
-import com.example.game.data.Setting;
 import com.example.game.data.GameData;
+import com.example.game.data.Setting;
+import com.example.game.GuessTheNumber.game_logic.GameManager;
+import com.example.game.GuessTheNumber.domain.Game;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 

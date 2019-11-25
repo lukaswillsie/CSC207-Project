@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.game.data.Setting;
 import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
-import com.example.game.level2.GameStartActivity;
+import com.example.game.GuessTheNumber.activities.GameStartActivity;
 import com.example.game.CowsBullsGame.activities.CowsBullsStartActivity;
 import com.example.game.data.GameData;
 import com.example.game.services.MultiplayerDataManager;

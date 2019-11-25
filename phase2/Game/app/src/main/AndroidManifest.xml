@@ -28,9 +28,9 @@
         <activity android:name=".BlackjackGame.activities.BlackjackPlayActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackStartActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".level2.GameStartActivity" />
-        <activity android:name=".level2.GuessTheNumberPlayActivity" />
-        <activity android:name=".level2.GameFinishActivity" />
+        <activity android:name=".GuessTheNumber.activities.GameStartActivity" />
+        <activity android:name=".GuessTheNumber.activities.GuessTheNumberPlayActivity" />
+        <activity android:name=".GuessTheNumber.activities.GameFinishActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackMidMultiplayerActivity" />
         <activity android:name=".BlackjackGame.activities.MultiplayerEndGameActivity" />
     </application>
