@@ -26,7 +26,10 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager{
      */
     private static String player2Username;
 
-    MultiplayerFileDataManager(){
+    /**
+     * To be called when the first of these objects is created and never again
+     */
+    public void initialize(){
         values = new HashMap<>();
 
         // Populate the HashMap with the default values of all the required int statistics
@@ -65,15 +68,18 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager{
     @Override
     public void setMultiplayerData(MultiplayerIntData dataType, int newValue) {
         values.replace(dataType.getKey(), newValue);
+        Log.i("HERE", dataType.getKey() + " is now " + newValue);
     }
 
     @Override
     public void setMultiplayerData(MultiplayerDoubleData dataType, double newValue) {
         values.replace(dataType.getKey(), newValue);
+        Log.i("HERE", dataType.getKey() + " is now " + values.get(dataType.getKey()));
     }
 
     @Override
     public int getMultiplayerData(MultiplayerIntData dataType) {
+        Log.i("HERE", "Returning " + values.get(dataType.getKey()) + "...");
         return (int)values.get(dataType.getKey());
     }
 

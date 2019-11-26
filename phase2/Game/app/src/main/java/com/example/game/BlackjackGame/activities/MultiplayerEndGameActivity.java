@@ -70,8 +70,8 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.player2LongestStreakDisplay)).setText(player2LongestStreakString);
 
         TextView winLabel = findViewById(R.id.winLabel);
-        String player1Win = "Player 1 Wins!";
-        String player2Win = "Player 2 Wins!";
+        String player1Win = manager.getPlayer1Username() + " Wins!";
+        String player2Win = manager.getPlayer2Username() + " Wins!";
         String tie = "It's a tie!";
         if (player1WinRate > player2WinRate) {
             winLabel.setText(player1Win);
