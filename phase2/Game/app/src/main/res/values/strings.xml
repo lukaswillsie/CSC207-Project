@@ -82,4 +82,6 @@
     <string name="blackjackMultiplayerEndTitle">Summary</string>
     <string name="multiplayerButton">Multiplayer!</string>
     <string name="multiplayerLoginLabel">Player 2 should login here!</string>
+    <string name="signOutTextSinglePlayer">Sign Out</string>
+    <string name="signOutTextMultiplayer">Exit Multiplayer</string>
 </resources>

@@ -26,13 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String username = GameData.USERNAME;
-        String name = username.substring(0, 1).toUpperCase() + username.substring(1).toLowerCase();
-        String welcomeText = "Welcome, " + name + "!";
-        ((TextView) findViewById(R.id.welcomeText)).setText(welcomeText);
 
-        if(GameData.MULTIPLAYER){
-            hideMultiplayerButton();
-        }
+        initializeWelcomeText();
+
+        initializeMultiplayerButtons();
 
         //DarkMode Setting
         SettingsManager manager = new SettingsManagerBuilder().build(this, username);
@@ -45,8 +42,75 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void hideMultiplayerButton() {
-        findViewById(R.id.multiplayerButton).setVisibility(View.INVISIBLE);
+    /**
+     * Set up the buttons on the screen whose content changes based on whether or not the game is in
+     * multiplayer mode
+     */
+    private void initializeMultiplayerButtons() {
+        if(GameData.MULTIPLAYER){
+            findViewById(R.id.multiplayerButton).setVisibility(View.INVISIBLE);
+            ((TextView)findViewById(R.id.logoutButton)).setText(R.string.signOutTextMultiplayer);
+        }
+        else {
+            findViewById(R.id.multiplayerButton).setVisibility(View.VISIBLE);
+            ((TextView)findViewById(R.id.logoutButton)).setText(R.string.signOutTextSinglePlayer);
+        }
+    }
+
+    private void initializeWelcomeText(){
+        String welcomeText;
+
+        if(GameData.MULTIPLAYER){
+            MultiplayerDataManager manager = new MultiplayerDataManagerFactory().build();
+            welcomeText = "Welcome, " + formatName(manager.getPlayer1Username()) + " and " + formatName(manager.getPlayer2Username());
+        }
+        else {
+            welcomeText = "Welcome, " + formatName(GameData.USERNAME);
+        }
+
+        ((TextView)findViewById(R.id.welcomeText)).setText(welcomeText);
+    }
+
+    /**
+     * Take in a name String and capitalize the first letter
+     *
+     * @param name - the name to format
+     * @return the input, with the first letter capitalized
+     */
+    private String formatName(String name){
+        if(Character.isAlphabetic(name.charAt(0))){
+            return name.substring(0,1).toUpperCase() + name.substring(1);
+        }
+
+        return name;
+    }
+
+    /**
+     * The method called when the "Sign Out" / "Exit Multiplayer" button is clicked
+     * @param view - the calling View
+     */
+    public void signOut(View view){
+        if(GameData.MULTIPLAYER){
+            GameData.setMultiplayer(false);
+            toSinglePlayer();
+        }
+        else {
+            GameData.setUsername("");
+            Intent intent = new Intent(this, StartActivity.class);
+
+            startActivity(intent);
+        }
+    }
+
+    /**
+     * Restore the interface to what it looks like in single player mode
+     *
+     * That is, set the logout button to say "Sign Out", make the "Multiplayer" button visible again,
+     * and change the welcome text back to "Welcome, name"
+     */
+    private void toSinglePlayer(){
+        initializeMultiplayerButtons();
+        initializeWelcomeText();
     }
 
     public void playBlackjack(View view) {
