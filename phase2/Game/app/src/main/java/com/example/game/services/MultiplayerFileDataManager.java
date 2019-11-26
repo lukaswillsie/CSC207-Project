@@ -1,6 +1,7 @@
 package com.example.game.services;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerIntData;
@@ -25,7 +26,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager{
      */
     private static String player2Username;
 
-    public MultiplayerFileDataManager(){
+    MultiplayerFileDataManager(){
         values = new HashMap<>();
 
         // Populate the HashMap with the default values of all the required int statistics
@@ -37,13 +38,11 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager{
         for(MultiplayerDoubleData doubleData : MultiplayerDoubleData.values()){
             values.put(doubleData.getKey(), doubleData.getDefaultValue());
         }
-
-        player1Username = "Player 1";
-        player2Username = "Player 2";
     }
 
     @Override
     public void setPlayer1Username(String newUsername) {
+        Log.i("HERE", "Updating username to " + newUsername);
         player1Username = newUsername;
     }
 
@@ -54,6 +53,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager{
 
     @Override
     public String getPlayer1Username() {
+        Log.i("HERE", "Returning " + player1Username + "...");
         return player1Username;
     }
 

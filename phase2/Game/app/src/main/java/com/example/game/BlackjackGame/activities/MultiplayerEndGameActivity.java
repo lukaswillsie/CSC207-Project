@@ -11,6 +11,7 @@ import com.example.game.BlackjackGame.services.MultiplayerEndGameActivityPresent
 import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.services.MultiplayerDataManager;
+import com.example.game.services.MultiplayerDataManagerFactory;
 import com.example.game.services.TestMultiplayerDataManager;
 
 import java.text.DecimalFormat;
@@ -28,8 +29,7 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer_end_game);
 
-        // TODO: Write an actual implementation of MDM and replace this dummy call
-        presenter = new MultiplayerEndGameActivityPresenter(new TestMultiplayerDataManager());
+        presenter = new MultiplayerEndGameActivityPresenter(new MultiplayerDataManagerFactory().build());
         initializeTextViews();
     }
 
@@ -45,7 +45,7 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
      */
     public void initializeTextViews() {
         // TODO: Write an actual implementation and remove this dummy class
-        MultiplayerDataManager manager = new TestMultiplayerDataManager();
+        MultiplayerDataManager manager = new MultiplayerDataManagerFactory().build();
 
         ((TextView) findViewById(R.id.blackjackMultiplayerEndTitle)).setText(R.string.blackjackMultiplayerEndTitle);
         double player1WinRate = manager.getMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE);

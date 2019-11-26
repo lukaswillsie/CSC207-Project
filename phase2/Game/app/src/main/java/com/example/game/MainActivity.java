@@ -14,6 +14,7 @@ import com.example.game.GuessTheNumber.activities.GameStartActivity;
 import com.example.game.CowsBullsGame.activities.CowsBullsStartActivity;
 import com.example.game.data.GameData;
 import com.example.game.services.MultiplayerDataManager;
+import com.example.game.services.MultiplayerDataManagerFactory;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
 import com.example.game.services.TestMultiplayerDataManager;
@@ -78,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
         GameData.setMultiplayer(true);
 
         // Initialize the MultiplayerDataManager and record the username of player 1
-        // TODO: Write an implementation of MDM and replace this dummy implementation
-        MultiplayerDataManager multiplayerDataManager = new TestMultiplayerDataManager();
-        multiplayerDataManager.initialize();
+        MultiplayerDataManager multiplayerDataManager = new MultiplayerDataManagerFactory().build();
         multiplayerDataManager.setPlayer1Username(GameData.USERNAME);
 
         startActivity(intent);

@@ -14,11 +14,6 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
     private static double player2WinRate = 0.0;
 
     @Override
-    public void initialize(){
-        // Do nothing because in this case all the fields already have default values
-    }
-
-    @Override
     public void setPlayer1Username(String newPlayer1Username) {
         player1Username = newPlayer1Username;
     }

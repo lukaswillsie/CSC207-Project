@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 import com.example.game.services.MultiplayerDataManager;
+import com.example.game.services.MultiplayerDataManagerFactory;
 import com.example.game.services.TestMultiplayerDataManager;
 
 import java.text.DecimalFormat;
@@ -30,7 +31,7 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
         Intent intent = new Intent(this, BlackjackPlayActivity.class);
 
         // Record that it is now player 2's turn
-        new TestMultiplayerDataManager().setMultiplayerData(BLACKJACK_PLAYER_TURN, 2);
+        new MultiplayerDataManagerFactory().build().setMultiplayerData(BLACKJACK_PLAYER_TURN, 2);
         startActivity(intent);
     }
 
@@ -39,8 +40,7 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
      * text views to display player 1's statistics
      */
     private void initializeTextViews() {
-        // TODO: Write an actual implementation and replace this dummy class with dependency injection
-        MultiplayerDataManager manager = new TestMultiplayerDataManager();
+        MultiplayerDataManager manager = new MultiplayerDataManagerFactory().build();
         String player1WinRate = new DecimalFormat("##.##").format(manager.getMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE)) + "%";
         String player1LongestStreak = "" + manager.getMultiplayerData(BLACKJACK_PLAYER1_LONGEST_STREAK);
         String title = manager.getPlayer1Username() + "'s Statistics";

@@ -14,6 +14,7 @@ import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.MultiplayerDataManager;
+import com.example.game.services.MultiplayerDataManagerFactory;
 import com.example.game.services.TestMultiplayerDataManager;
 
 import java.text.DecimalFormat;
@@ -87,7 +88,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         setContentView(R.layout.blackjack_play);
 
         // TODO: Write an actual implementation of MultiplayerDataManager and use dependency injection to get it into this class
-        multiplayerDataManager = new TestMultiplayerDataManager();
+        multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
         multiplayer = GameData.MULTIPLAYER;
         player1Turn = multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1;
