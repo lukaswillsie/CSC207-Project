@@ -87,7 +87,6 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
 
-        // TODO: Write an actual implementation of MultiplayerDataManager and use dependency injection to get it into this class
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
         multiplayer = GameData.MULTIPLAYER;

@@ -44,7 +44,6 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
      * and update the tags to show the players' username
      */
     public void initializeTextViews() {
-        // TODO: Write an actual implementation and remove this dummy class
         MultiplayerDataManager manager = new MultiplayerDataManagerFactory().build();
 
         ((TextView) findViewById(R.id.blackjackMultiplayerEndTitle)).setText(R.string.blackjackMultiplayerEndTitle);
