@@ -2,6 +2,8 @@ package com.example.game.services;
 
 import android.util.Pair;
 
+import java.util.List;
+
 /**
  * A ScoreboardRepository provides two simple services: it allows high scores to be recorded
  * and accessed
@@ -11,8 +13,9 @@ public interface ScoreboardRepository {
      * Record that a player with given name has achieved the given score
      * @param name - the name of the player
      * @param score - the player's score
+     * @param callingClass - the class trying to update the high score
      */
-    void addHighScore(String name, int score);
+    void addHighScore(String name, int score, ScoreboardUpdater callingClass);
 
     /**
      * Retrieves the *numberHighScores* highest scores, or all the high scores if there are fewer
@@ -24,5 +27,5 @@ public interface ScoreboardRepository {
      * @return the *numberHighScores* highest scores, or all the high scores if numberHighScores
      * exceeds the total
      */
-    Pair<String, Integer>[] getHighScores(int numberHighScores);
+    List<Pair<String, Integer>> getHighScores(int numberHighScores);
 }
