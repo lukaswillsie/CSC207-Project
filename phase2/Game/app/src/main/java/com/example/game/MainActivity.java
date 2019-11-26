@@ -17,7 +17,6 @@ import com.example.game.services.MultiplayerDataManager;
 import com.example.game.services.MultiplayerDataManagerFactory;
 import com.example.game.services.SettingsManager;
 import com.example.game.services.SettingsManagerBuilder;
-import com.example.game.services.TestMultiplayerDataManager;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -27,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         String username = GameData.USERNAME;
 
-        initializeWelcomeText();
+        updateWelcomeText();
 
-        initializeMultiplayerButtons();
+        updateMultiplayerButtons();
 
         //DarkMode Setting
         SettingsManager manager = new SettingsManagerBuilder().build(this, username);
@@ -43,10 +42,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Set up the buttons on the screen whose content changes based on whether or not the game is in
-     * multiplayer mode
+     * Update the buttons whose visibility/text depends on whether or not the game is in multiplayer
+     * mode; namely the button to go into multiplayer mode and the "Sign Out"/"Exit Multiplayer"
+     * button, whose text obviously changes with the game mode
      */
-    private void initializeMultiplayerButtons() {
+    private void updateMultiplayerButtons() {
         if(GameData.MULTIPLAYER){
             findViewById(R.id.multiplayerButton).setVisibility(View.INVISIBLE);
             ((TextView)findViewById(R.id.logoutButton)).setText(R.string.signOutTextMultiplayer);
@@ -57,7 +57,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void initializeWelcomeText(){
+    /**
+     * Update the welcome text according to whether it's single player, in which case we greet the user,
+     * or it's multiplayer, in which case we welcome both users
+     */
+    private void updateWelcomeText(){
         String welcomeText;
 
         if(GameData.MULTIPLAYER){
@@ -109,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
      * and change the welcome text back to "Welcome, name"
      */
     private void toSinglePlayer(){
-        initializeMultiplayerButtons();
-        initializeWelcomeText();
+        updateMultiplayerButtons();
+        updateWelcomeText();
     }
 
     public void playBlackjack(View view) {
