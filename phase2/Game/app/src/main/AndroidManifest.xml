@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CowsBullsGame.activities.CowsBullsSecondPlayerActivity"></activity>
+        <activity android:name=".ScoreboardTest"></activity>
+        <activity android:name=".CowsBullsGame.activities.CowsBullsSecondPlayerActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsStartActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsFinishActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsActivity" />
