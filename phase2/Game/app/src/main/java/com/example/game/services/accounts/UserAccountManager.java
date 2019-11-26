@@ -19,16 +19,16 @@ import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 
 /**
  * An implementation of AccountManager that uses a folder structures like the following:
- *  app_root_directory\
- *    users\
- *      lukas
- *        settings
- *        stats
- *        password
- *      peter
- *        settings
- *        stats
- *        password
+ * app_root_directory\
+ * users\
+ * lukas
+ * settings
+ * stats
+ * password
+ * peter
+ * settings
+ * stats
+ * password
  * to query and create users and their information.
  * Please note that we know its bad to store passwords in plain text, we will work on fixing this
  * for phase 2.
@@ -123,13 +123,13 @@ public class UserAccountManager implements AccountManager {
             Log.e(tag, "Failed to create default files for user");
         } finally {
             try {
-                if(settingStream != null){
+                if (settingStream != null) {
                     settingStream.close();
                 }
-                if(statsStream != null){
+                if (statsStream != null) {
                     statsStream.close();
                 }
-                if(passwordStream != null) {
+                if (passwordStream != null) {
                     passwordStream.close();
                 }
             } catch (IOException e) {

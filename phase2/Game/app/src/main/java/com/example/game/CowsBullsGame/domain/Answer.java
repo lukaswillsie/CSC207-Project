@@ -12,13 +12,13 @@ public class Answer {
     private int answerSize;
 
 
-
     /**
      * Constructor call for the Answer object
+     *
      * @param answerSize       The size of the answer.
      * @param alphabetSelector The possible strings that can appear in the answer.
      */
-    public Answer(int answerSize, int alphabetSelector){
+    public Answer(int answerSize, int alphabetSelector) {
         String[] alphabet;
         this.answerSize = answerSize;
         this.answerArray = new String[answerSize];

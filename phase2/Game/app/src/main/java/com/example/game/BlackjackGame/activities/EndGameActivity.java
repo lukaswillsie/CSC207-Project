@@ -51,5 +51,6 @@ public class EndGameActivity extends AppCompatActivity {
      * Prevents the user from being able to return to the game screen by pressing the back button
      */
     @Override
-    public void onBackPressed(){}
+    public void onBackPressed() {
+    }
 }

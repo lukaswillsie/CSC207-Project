@@ -10,9 +10,10 @@ public class CowsBullsStatsManager {
 
     /**
      * Thus constructor call for the CowsBullsStatManager Class
+     *
      * @param statsManager The statsManager for this game
      */
-    public CowsBullsStatsManager(StatsManager statsManager){
+    public CowsBullsStatsManager(StatsManager statsManager) {
 
         this.statsManager = statsManager;
 
@@ -22,10 +23,10 @@ public class CowsBullsStatsManager {
      * Updates the users stats given the time <seconds> and the number of guesses <numberOfGuesses>
      * the user took this round
      *
-     * @param seconds - time take for user to guess correctly
+     * @param seconds         - time take for user to guess correctly
      * @param numberOfGuesses - number of guess takes for user to guess correctly
      */
-    public void update(int seconds, int numberOfGuesses){
+    public void update(int seconds, int numberOfGuesses) {
 
         statsManager.setStat(Statistic.TIME_TAKEN, seconds);
         int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);

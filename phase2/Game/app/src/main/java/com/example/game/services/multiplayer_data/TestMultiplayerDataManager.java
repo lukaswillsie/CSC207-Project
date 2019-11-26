@@ -35,7 +35,7 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
 
     @Override
     public void setMultiplayerData(MultiplayerIntData dataType, int newValue) {
-        switch(dataType){
+        switch (dataType) {
             case BLACKJACK_PLAYER_TURN:
                 turn = newValue;
                 break;
@@ -50,7 +50,7 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
 
     @Override
     public void setMultiplayerData(MultiplayerDoubleData dataType, double newValue) {
-        switch (dataType){
+        switch (dataType) {
             case BLACKJACK_PLAYER_1_WIN_RATE:
                 player1WinRate = newValue;
                 break;
@@ -62,7 +62,7 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
 
     @Override
     public int getMultiplayerData(MultiplayerIntData dataType) {
-        switch(dataType){
+        switch (dataType) {
             case BLACKJACK_PLAYER_TURN:
                 return turn;
             case BLACKJACK_PLAYER1_LONGEST_STREAK:
@@ -76,7 +76,7 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
 
     @Override
     public double getMultiplayerData(MultiplayerDoubleData dataType) {
-        switch (dataType){
+        switch (dataType) {
             case BLACKJACK_PLAYER_1_WIN_RATE:
                 return player1WinRate;
             case BLACKJACK_PLAYER_2_WIN_RATE:

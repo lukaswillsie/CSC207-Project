@@ -3,7 +3,6 @@ package com.example.game;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +16,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        if(GameData.MULTIPLAYER){
+        if (GameData.MULTIPLAYER) {
             findViewById(R.id.multiplayerLoginTitle).setVisibility(View.VISIBLE);
         }
     }

@@ -37,8 +37,9 @@ class NewAccountActivityPresenter {
 
     /**
      * Give this object an instance of MultiplayerDataManager to use
-     *
+     * <p>
      * NOTE: This method must be called if the game is in multiplayer mode
+     *
      * @param multiplayerDataManager - the new MultiplayerDataManager for this class to use
      */
     void setMultiplayerDataManager(MultiplayerDataManager multiplayerDataManager) {
@@ -58,10 +59,9 @@ class NewAccountActivityPresenter {
         if (accountManager.usernameExists(username)) {
             callingPage.accountCreationError("That username already exists!");
         } else {
-            if(GameData.MULTIPLAYER){
+            if (GameData.MULTIPLAYER) {
                 multiplayerDataManager.setPlayer2Username(username);
-            }
-            else {
+            } else {
                 GameData.setUsername(username);
             }
             accountManager.createNewUser(username, password);

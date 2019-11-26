@@ -7,10 +7,10 @@ import com.example.game.data.MultiplayerIntData;
 
 import java.util.HashMap;
 
-class MultiplayerFileDataManager implements MultiplayerDataManager{
+class MultiplayerFileDataManager implements MultiplayerDataManager {
     /**
      * Stores all the data from the multiplayer data so that it can be accessed at runtime
-     *
+     * <p>
      * This HashMap
      */
     private static HashMap<String, Number> values;
@@ -28,16 +28,16 @@ class MultiplayerFileDataManager implements MultiplayerDataManager{
     /**
      * To be called when the first of these objects is created and never again
      */
-    public void initialize(){
+    public void initialize() {
         values = new HashMap<>();
 
         // Populate the HashMap with the default values of all the required int statistics
-        for(MultiplayerIntData intData: MultiplayerIntData.values()){
+        for (MultiplayerIntData intData : MultiplayerIntData.values()) {
             values.put(intData.getKey(), intData.getDefaultValue());
         }
 
         // Populate the HashMap with the default values of all the required int statistics
-        for(MultiplayerDoubleData doubleData : MultiplayerDoubleData.values()){
+        for (MultiplayerDoubleData doubleData : MultiplayerDoubleData.values()) {
             values.put(doubleData.getKey(), doubleData.getDefaultValue());
         }
     }
@@ -79,11 +79,11 @@ class MultiplayerFileDataManager implements MultiplayerDataManager{
     @Override
     public int getMultiplayerData(MultiplayerIntData dataType) {
         Log.i("HERE", "Returning " + values.get(dataType.getKey()) + "...");
-        return (int)values.get(dataType.getKey());
+        return (int) values.get(dataType.getKey());
     }
 
     @Override
     public double getMultiplayerData(MultiplayerDoubleData dataType) {
-        return (double)values.get(dataType.getKey());
+        return (double) values.get(dataType.getKey());
     }
 }

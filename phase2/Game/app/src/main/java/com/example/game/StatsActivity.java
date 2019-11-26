@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.data.Statistic;
 import com.example.game.data.GameData;
+import com.example.game.data.Statistic;
 import com.example.game.services.stats.StatsManager;
 import com.example.game.services.stats.StatsManagerBuilder;
 
@@ -33,7 +33,7 @@ public class StatsActivity extends AppCompatActivity {
         fewestGuesses.setText(String.valueOf(statsManager.getStat(Statistic.FEWEST_GUESSES)));
 
         quickestTime = findViewById(R.id.quickestTime);
-        String quickTime = String.valueOf(statsManager.getStat(Statistic.QUICKEST_TIME)) + "s";
+        String quickTime = statsManager.getStat(Statistic.QUICKEST_TIME) + "s";
         quickestTime.setText(quickTime);
 
         longestStreak = findViewById(R.id.longestStreak);

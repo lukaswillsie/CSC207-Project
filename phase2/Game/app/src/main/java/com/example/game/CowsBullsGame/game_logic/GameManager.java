@@ -63,6 +63,7 @@ public class GameManager {
 
     /**
      * A method that returns true if the user guessed correctly, false otherwise
+     *
      * @return Boolean indicating whether user has made the right guess
      */
     public boolean gameEnd() {
@@ -75,7 +76,7 @@ public class GameManager {
      * @param currentGuess The currentGuess of user
      * @return Boolean of whether the currentGuess by user is valid
      */
-    public boolean checkGuess(String currentGuess){
+    public boolean checkGuess(String currentGuess) {
         return (currentGuess.length() == answerSize & !currentGuess.equals("null"));
     }
 

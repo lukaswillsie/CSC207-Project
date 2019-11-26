@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.GuessTheNumber.domain.Game;
+import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.GuessTheNumber.game_logic.GameManager;
-import com.example.game.GuessTheNumber.domain.Game;
 
 /**
  * This page displayed when user is actually playing a game.

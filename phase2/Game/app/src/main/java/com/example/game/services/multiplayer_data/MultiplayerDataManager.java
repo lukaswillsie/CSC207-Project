@@ -8,7 +8,7 @@ import com.example.game.data.MultiplayerIntData;
  * should be able to do. Namely, update and return the usernames of the two players,
  * and store and access any numerical data the program deems necessary (this interface
  * supports storing and accessing double and int values).
- *
+ * <p>
  * See below for details
  */
 public interface MultiplayerDataManager {
@@ -30,12 +30,14 @@ public interface MultiplayerDataManager {
 
     /**
      * Return the username of player 1
+     *
      * @return - player 1's username
      */
     String getPlayer1Username();
 
     /**
      * Return the username of player 2
+     *
      * @return - player 2's username
      */
     String getPlayer2Username();

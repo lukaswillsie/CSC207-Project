@@ -13,12 +13,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.CowsBullsGame.domain.Guess;
-import com.example.game.R;
-import com.example.game.data.Setting;
-import com.example.game.data.GameData;
-import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
 import com.example.game.CowsBullsGame.game_logic.GameManager;
 import com.example.game.CowsBullsGame.game_logic.TurnData;
+import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
+import com.example.game.R;
+import com.example.game.data.GameData;
+import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerBuilder;
 import com.example.game.services.stats.StatsManager;
@@ -99,7 +99,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     private String guessInput() {
         try {
             if (guess.getText().toString().length() > 0)
-                return guess.getText().toString().replaceAll("\\s+","");
+                return guess.getText().toString().replaceAll("\\s+", "");
             return "null";
         } catch (Exception e) {
             return "null";
@@ -114,7 +114,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
-        System.out.println(gameManager.checkGuess(currentGuess) + " " +  currentGuess);
+        System.out.println(gameManager.checkGuess(currentGuess) + " " + currentGuess);
         if (gameManager.checkGuess(currentGuess)) {
             Guess guessArray = new Guess(currentGuess);
 

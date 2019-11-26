@@ -9,8 +9,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.data.GameData;
-import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.accounts.UserAccountManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 
 /**
  * The page displayed when a user is logging in to an existing account
@@ -33,7 +33,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
 
         presenter = new OldAccountActivityPresenter(new UserAccountManager(this), this);
 
-        if(GameData.MULTIPLAYER){
+        if (GameData.MULTIPLAYER) {
             presenter.setMultiplayerDataManager(new MultiplayerDataManagerFactory().build());
         }
     }

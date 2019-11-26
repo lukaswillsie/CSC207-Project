@@ -27,8 +27,8 @@ class OldAccountActivityPresenter {
     /**
      * Create a new OldAccountActivityPresenter
      *
-     * @param accountManager     - the AccountManager to be used by this object to manage user accounts
-     * @param callingPage - the OldUserPage that created this object
+     * @param accountManager - the AccountManager to be used by this object to manage user accounts
+     * @param callingPage    - the OldUserPage that created this object
      */
     OldAccountActivityPresenter(AccountManager accountManager, OldUserPage callingPage) {
         this.accountManager = accountManager;
@@ -37,8 +37,9 @@ class OldAccountActivityPresenter {
 
     /**
      * Give this object an instance of MultiplayerDataManager to use
-     *
+     * <p>
      * NOTE: This method must be called if the game is in multiplayer mode
+     *
      * @param multiplayerDataManager - the new MultiplayerDataManager for this class to use
      */
     void setMultiplayerDataManager(MultiplayerDataManager multiplayerDataManager) {
@@ -56,16 +57,14 @@ class OldAccountActivityPresenter {
      */
     void loginOldUser(String username, String password) {
         if (accountManager.validCredentials(username, password)) {
-            if(GameData.MULTIPLAYER){
-                if(!username.equals(multiplayerDataManager.getPlayer1Username())){
+            if (GameData.MULTIPLAYER) {
+                if (!username.equals(multiplayerDataManager.getPlayer1Username())) {
                     multiplayerDataManager.setPlayer2Username(username);
                     callingPage.login();
-                }
-                else {
+                } else {
                     callingPage.loginError("You can't log " + multiplayerDataManager.getPlayer1Username() + " in twice!");
                 }
-            }
-            else {
+            } else {
                 GameData.setUsername(username);
                 callingPage.login();
             }

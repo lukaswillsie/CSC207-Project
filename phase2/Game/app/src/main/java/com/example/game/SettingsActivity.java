@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.example.game.data.Setting;
 import com.example.game.data.GameData;
+import com.example.game.data.Setting;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.settings.SettingsManager;
@@ -35,12 +35,11 @@ public class SettingsActivity extends AppCompatActivity {
         MultiplayerDataManager multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
         String username;
-        if(GameData.MULTIPLAYER){
+        if (GameData.MULTIPLAYER) {
             String title = multiplayerDataManager.getPlayer1Username() + "'s Settings";
-            ((TextView)findViewById(R.id.settingsTitle)).setText(title);
+            ((TextView) findViewById(R.id.settingsTitle)).setText(title);
             username = multiplayerDataManager.getPlayer1Username();
-        }
-        else {
+        } else {
             username = GameData.USERNAME;
         }
 

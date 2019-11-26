@@ -27,6 +27,7 @@ public class Guess {
 
     /**
      * Getter for guessArray
+     *
      * @return - returns string object for guessArray
      */
     public String[] getGuessArray() {
