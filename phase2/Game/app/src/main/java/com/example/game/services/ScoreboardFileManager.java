@@ -11,6 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class is an implementation of ScoreboardRepository that stores highscore data in a file, with
+ * the following format:
+ * name1,score1
+ * name2,score2
+ * name3,score3
+ * .
+ * .
+ * .
+ * etc.
+ *
+ * The lines are sorted in increasing order of score, with the highest score on the first line of the
+ * file
+ *
+ * The File object this ScoreboardFileManager will be working with will be given to the object at
+ * object creation via the setFile(File file) method
+ */
 public class ScoreboardFileManager implements ScoreboardRepository {
     /**
      * The String this class will use to log things to the console
