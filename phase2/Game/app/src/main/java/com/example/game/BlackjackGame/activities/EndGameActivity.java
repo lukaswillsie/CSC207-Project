@@ -46,4 +46,10 @@ public class EndGameActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * Prevents the user from being able to return to the game screen by pressing the back button
+     */
+    @Override
+    public void onBackPressed(){}
 }

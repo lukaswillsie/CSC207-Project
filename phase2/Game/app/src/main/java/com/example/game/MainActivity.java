@@ -84,4 +84,14 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    /**
+     * Override the default onBackPressed method to do nothing
+     *
+     * This prevents undesired behaviour from occurring. For example, if the player finishes a game
+     * of blackjack and then goes to the main menu, they can press back multiple times to go back to
+     * the game screen
+     */
+    @Override
+    public void onBackPressed(){}
 }
