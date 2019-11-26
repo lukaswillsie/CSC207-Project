@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.scoreboard;
 
 import android.util.Pair;
 
@@ -24,8 +24,8 @@ public interface ScoreboardRepository {
      *
      * Precondition: numberHighScores > 0
      * @param numberHighScores - the number of highScores to fetch
-     * @return the *numberHighScores* highest scores, or all the high scores if numberHighScores
-     * exceeds the total
+     * @return the *numberHighScores* highest scores, in the form of a [name,score] tuple, or all
+     * the high scores if numberHighScores exceeds the total
      */
     List<Pair<String, Integer>> getHighScores(int numberHighScores);
 }

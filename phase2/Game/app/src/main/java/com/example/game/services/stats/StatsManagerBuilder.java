@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.stats;
 
 import android.content.Context;
 

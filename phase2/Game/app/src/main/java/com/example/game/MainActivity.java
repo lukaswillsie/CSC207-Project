@@ -13,10 +13,10 @@ import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
 import com.example.game.GuessTheNumber.activities.GameStartActivity;
 import com.example.game.CowsBullsGame.activities.CowsBullsStartActivity;
 import com.example.game.data.GameData;
-import com.example.game.services.MultiplayerDataManager;
-import com.example.game.services.MultiplayerDataManagerFactory;
-import com.example.game.services.SettingsManager;
-import com.example.game.services.SettingsManagerBuilder;
+import com.example.game.services.multiplayer_data.MultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
+import com.example.game.services.settings.SettingsManager;
+import com.example.game.services.settings.SettingsManagerBuilder;
 
 public class MainActivity extends AppCompatActivity {
     @Override

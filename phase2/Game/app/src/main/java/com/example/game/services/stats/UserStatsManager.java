@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.stats;
 
 import android.content.Context;
 import android.util.Log;
@@ -24,7 +24,7 @@ public class UserStatsManager implements StatsManager {
     /**
      * This class's tag for logging things
      */
-    private String tag = "com.example.game.services.UserStatsManager";
+    private String tag = "com.example.game.services.stats.UserStatsManager";
 
     /**
      * The file containing the user's settings

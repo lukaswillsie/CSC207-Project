@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.scoreboard;
 
 /**
  * Classes must implement this interface to use ScoreboardRepository objects to update highscores

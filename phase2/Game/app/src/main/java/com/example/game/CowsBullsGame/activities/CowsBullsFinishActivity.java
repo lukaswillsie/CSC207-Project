@@ -11,8 +11,8 @@ import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.Statistic;
 import com.example.game.data.GameData;
-import com.example.game.services.StatsManager;
-import com.example.game.services.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManager;
+import com.example.game.services.stats.StatsManagerBuilder;
 
 /**
  * This activity appears when the user successfully completes a round of Cows and Bulls.

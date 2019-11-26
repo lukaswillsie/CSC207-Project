@@ -2,7 +2,7 @@ package com.example.game.BlackjackGame.services;
 
 import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerIntData;
-import com.example.game.services.MultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 
 public class MultiplayerEndGameActivityPresenter {
     private MultiplayerDataManager multiplayerDataManager;

@@ -10,9 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.BlackjackGame.services.MultiplayerEndGameActivityPresenter;
 import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.services.MultiplayerDataManager;
-import com.example.game.services.MultiplayerDataManagerFactory;
-import com.example.game.services.TestMultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 
 import java.text.DecimalFormat;
 

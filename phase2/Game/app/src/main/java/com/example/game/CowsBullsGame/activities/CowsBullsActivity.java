@@ -19,10 +19,10 @@ import com.example.game.data.GameData;
 import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
 import com.example.game.CowsBullsGame.game_logic.GameManager;
 import com.example.game.CowsBullsGame.game_logic.TurnData;
-import com.example.game.services.SettingsManager;
-import com.example.game.services.SettingsManagerBuilder;
-import com.example.game.services.StatsManager;
-import com.example.game.services.StatsManagerBuilder;
+import com.example.game.services.settings.SettingsManager;
+import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.stats.StatsManager;
+import com.example.game.services.stats.StatsManagerBuilder;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,8 @@
 package com.example.game;
 
 import com.example.game.data.GameData;
-import com.example.game.services.AccountManager;
-import com.example.game.services.MultiplayerDataManager;
+import com.example.game.services.accounts.AccountManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 
 /**
  * Registers new users for a NewUserPage

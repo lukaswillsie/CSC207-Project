@@ -13,8 +13,8 @@ import com.example.game.data.Statistic;
 import com.example.game.data.GameData;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.GuessTheNumber.domain.Game;
-import com.example.game.services.StatsManager;
-import com.example.game.services.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManager;
+import com.example.game.services.stats.StatsManagerBuilder;
 
 /**
  * This activity appears when the user successfully finishes each round of GuessTheNumber.

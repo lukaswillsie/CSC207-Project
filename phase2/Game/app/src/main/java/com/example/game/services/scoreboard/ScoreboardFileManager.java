@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.scoreboard;
 
 import android.util.Log;
 import android.util.Pair;
@@ -28,7 +28,7 @@ import java.util.Scanner;
  * The File object this ScoreboardFileManager will be working with will be given to the object at
  * object creation via the setFile(File file) method
  */
-public class ScoreboardFileManager implements ScoreboardRepository {
+class ScoreboardFileManager implements ScoreboardRepository {
     /**
      * The String this class will use to log things to the console
      */

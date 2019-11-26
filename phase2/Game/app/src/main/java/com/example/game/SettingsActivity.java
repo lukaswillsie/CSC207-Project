@@ -13,11 +13,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.game.data.Setting;
 import com.example.game.data.GameData;
-import com.example.game.services.MultiplayerDataManager;
-import com.example.game.services.MultiplayerDataManagerFactory;
-import com.example.game.services.SettingsManager;
-import com.example.game.services.SettingsManagerBuilder;
-import com.example.game.services.TestMultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
+import com.example.game.services.settings.SettingsManager;
+import com.example.game.services.settings.SettingsManagerBuilder;
 
 /**
  * The page displayed when a user is viewing or changing their settings

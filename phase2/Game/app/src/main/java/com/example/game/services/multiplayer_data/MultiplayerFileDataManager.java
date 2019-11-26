@@ -1,6 +1,5 @@
-package com.example.game.services;
+package com.example.game.services.multiplayer_data;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.example.game.data.MultiplayerDoubleData;
@@ -8,7 +7,7 @@ import com.example.game.data.MultiplayerIntData;
 
 import java.util.HashMap;
 
-public class MultiplayerFileDataManager implements MultiplayerDataManager{
+class MultiplayerFileDataManager implements MultiplayerDataManager{
     /**
      * Stores all the data from the multiplayer data so that it can be accessed at runtime
      *

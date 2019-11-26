@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.data.Statistic;
 import com.example.game.data.GameData;
-import com.example.game.services.StatsManager;
-import com.example.game.services.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManager;
+import com.example.game.services.stats.StatsManagerBuilder;
 
 /**
  * The page displayed when the user is viewing their stats

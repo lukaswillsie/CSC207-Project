@@ -3,8 +3,8 @@ package com.example.game.BlackjackGame.services;
 import android.content.Context;
 
 import com.example.game.data.Statistic;
-import com.example.game.services.StatsManager;
-import com.example.game.services.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManager;
+import com.example.game.services.stats.StatsManagerBuilder;
 
 public class StatsRecorder {
     /**

@@ -9,9 +9,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.data.GameData;
-import com.example.game.services.MultiplayerDataManagerFactory;
-import com.example.game.services.TestMultiplayerDataManager;
-import com.example.game.services.UserAccountManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
+import com.example.game.services.accounts.UserAccountManager;
 
 /**
  * The page displayed when a user is logging in to an existing account

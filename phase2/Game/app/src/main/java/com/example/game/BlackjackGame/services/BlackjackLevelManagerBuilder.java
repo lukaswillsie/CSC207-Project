@@ -10,7 +10,7 @@ import com.example.game.BlackjackGame.game_logic.BlackjackInterfaceManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.game_logic.InterfaceManager;
 import com.example.game.data.Setting;
-import com.example.game.services.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerBuilder;
 
 /**
  * A class that exists solely to build complex BlackjackLevelManagers

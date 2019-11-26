@@ -13,8 +13,8 @@ import com.example.game.data.GameData;
 import com.example.game.data.Setting;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.GuessTheNumber.domain.Game;
-import com.example.game.services.SettingsManager;
-import com.example.game.services.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManager;
+import com.example.game.services.settings.SettingsManagerBuilder;
 
 /**
  * The activity that appears right before the user is about to start a game of GuessTheNumber. This

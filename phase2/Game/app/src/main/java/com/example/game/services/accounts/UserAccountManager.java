@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.accounts;
 
 import android.content.Context;
 import android.util.Log;
@@ -37,7 +37,7 @@ public class UserAccountManager implements AccountManager {
     /**
      * This class's tag for logging events
      */
-    private static String tag = "com.example.game.services.UserAccountManager";
+    private static String tag = "com.example.game.services.accounts.UserAccountManager";
 
     /**
      * File object representing the "users" directory containing all the user accounts and

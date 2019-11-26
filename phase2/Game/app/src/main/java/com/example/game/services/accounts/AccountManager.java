@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.accounts;
 
 /**
  * Defines what a reasonable account manager should be able to do: query existing user data

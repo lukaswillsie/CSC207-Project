@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.settings;
 
 import android.content.Context;
 import android.util.Log;
@@ -19,11 +19,11 @@ import static com.example.game.data.GameConstants.USERS_DIR_NAME;
  * An implementation of SettingsManager that accesses the users settings file stored on the device
  * for querying and updating settings
  */
-public class UserSettingsManager implements SettingsManager {
+class UserSettingsManager implements SettingsManager {
     /**
      * This class's tag for logging things
      */
-    private String tag = "com.example.game.services.UserSettingsManager";
+    private String tag = "com.example.game.services.settings.UserSettingsManager";
 
     /**
      * The file containing the user's settings

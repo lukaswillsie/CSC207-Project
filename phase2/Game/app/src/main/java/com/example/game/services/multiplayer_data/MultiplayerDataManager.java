@@ -1,4 +1,4 @@
-package com.example.game.services;
+package com.example.game.services.multiplayer_data;
 
 import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerIntData;

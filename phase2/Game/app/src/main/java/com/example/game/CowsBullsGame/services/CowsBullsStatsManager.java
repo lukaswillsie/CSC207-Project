@@ -1,7 +1,7 @@
 package com.example.game.CowsBullsGame.services;
 
 import com.example.game.data.Statistic;
-import com.example.game.services.StatsManager;
+import com.example.game.services.stats.StatsManager;
 
 public class CowsBullsStatsManager {
 
