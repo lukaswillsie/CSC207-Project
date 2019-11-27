@@ -1,8 +1,8 @@
 package com.example.game;
 
 import com.example.game.data.GameData;
+import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.accounts.AccountManager;
-import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 
 /**
  * Logs in existing users for a OldUserPage
@@ -12,12 +12,6 @@ class OldAccountActivityPresenter {
      * The account accountManager being used by this object to manage user accounts
      */
     private AccountManager accountManager;
-
-    /**
-     * The MultiplayerDataManager this object will use to access and update multiplayer data,
-     * if necessary
-     */
-    private MultiplayerDataManager multiplayerDataManager;
 
     /**
      * The OldUserPage that created this object
@@ -36,17 +30,6 @@ class OldAccountActivityPresenter {
     }
 
     /**
-     * Give this object an instance of MultiplayerDataManager to use
-     * <p>
-     * NOTE: This method must be called if the game is in multiplayer mode
-     *
-     * @param multiplayerDataManager - the new MultiplayerDataManager for this class to use
-     */
-    void setMultiplayerDataManager(MultiplayerDataManager multiplayerDataManager) {
-        this.multiplayerDataManager = multiplayerDataManager;
-    }
-
-    /**
      * Log in an existing user with the given username and password
      * <p>
      * Calls callingPage.loginError() if the given username and password are invalid; i.e. if the
@@ -58,11 +41,11 @@ class OldAccountActivityPresenter {
     void loginOldUser(String username, String password) {
         if (accountManager.validCredentials(username, password)) {
             if (GameData.MULTIPLAYER) {
-                if (!username.equals(multiplayerDataManager.getPlayer1Username())) {
-                    multiplayerDataManager.setPlayer2Username(username);
+                if (!username.equals(MultiplayerGameData.getPlayer1Username())) {
+                    MultiplayerGameData.setPlayer2Username(username);
                     callingPage.login();
                 } else {
-                    callingPage.loginError("You can't log " + multiplayerDataManager.getPlayer1Username() + " in twice!");
+                    callingPage.loginError("You can't log " + MultiplayerGameData.getPlayer1Username() + " in twice!");
                 }
             } else {
                 GameData.setUsername(username);

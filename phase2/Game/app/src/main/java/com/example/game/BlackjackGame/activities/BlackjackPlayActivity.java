@@ -12,6 +12,7 @@ import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
 import com.example.game.BlackjackGame.services.StatsRecorder;
 import com.example.game.R;
 import com.example.game.data.GameData;
+import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
@@ -97,16 +98,16 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             // When playing a multiplayer game, we use player 1's settings for both players
             // So we pass player 1's username as an argument to the builder regardless of who
             // is currently playing
-            levelManager = builder.build(this, multiplayerDataManager.getPlayer1Username());
+            levelManager = builder.build(this, MultiplayerGameData.getPlayer1Username());
 
             // However, we want to track each player's stats while they are playing, so we initialize
             // statsRecorder according to who's playing. This means that if they break their longest
             // streak record, it gets updated regardless of whether they're playing singleplayer
             // or multiplayer
             if (multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1) {
-                statsRecorder = new StatsRecorder(this, multiplayerDataManager.getPlayer1Username());
+                statsRecorder = new StatsRecorder(this, MultiplayerGameData.getPlayer1Username());
             } else {
-                statsRecorder = new StatsRecorder(this, multiplayerDataManager.getPlayer2Username());
+                statsRecorder = new StatsRecorder(this, MultiplayerGameData.getPlayer2Username());
             }
         } else {
             levelManager = builder.build(this, GameData.USERNAME);

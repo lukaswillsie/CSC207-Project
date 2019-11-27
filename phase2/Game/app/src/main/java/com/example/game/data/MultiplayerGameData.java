@@ -8,19 +8,19 @@ public class MultiplayerGameData {
     private static String player1Username = null;
     private static String player2Username = null;
 
-    public static void setPlayer1Username(String newName){
+    public static void setPlayer1Username(String newName) {
         player1Username = newName;
     }
 
-    public static void setPlayer2Username(String newName){
+    public static void setPlayer2Username(String newName) {
         player2Username = newName;
     }
 
-    public static String getPlayer1Username(){
+    public static String getPlayer1Username() {
         return player1Username;
     }
 
-    public static String getPlayer2Username(){
+    public static String getPlayer2Username() {
         return player2Username;
     }
 }

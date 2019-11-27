@@ -8,9 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.data.GameData;
 import com.example.game.services.accounts.UserAccountManager;
-import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 
 /**
  * The page displayed when a user is creating a new account
@@ -31,9 +29,6 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_account);
         presenter = new NewAccountActivityPresenter(new UserAccountManager(this), this);
-        if (GameData.MULTIPLAYER) {
-            presenter.setMultiplayerDataManager(new MultiplayerDataManagerFactory().build());
-        }
     }
 
     /**

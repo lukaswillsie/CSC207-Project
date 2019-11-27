@@ -12,9 +12,8 @@ import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
 import com.example.game.CowsBullsGame.activities.CowsBullsStartActivity;
 import com.example.game.GuessTheNumber.activities.GameStartActivity;
 import com.example.game.data.GameData;
+import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Setting;
-import com.example.game.services.multiplayer_data.MultiplayerDataManager;
-import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerBuilder;
 
@@ -64,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
         String welcomeText;
 
         if (GameData.MULTIPLAYER) {
-            MultiplayerDataManager manager = new MultiplayerDataManagerFactory().build();
-            welcomeText = "Welcome, " + formatName(manager.getPlayer1Username()) + " and " + formatName(manager.getPlayer2Username());
+            welcomeText = "Welcome, " + formatName(MultiplayerGameData.getPlayer1Username()) + " and " + formatName(MultiplayerGameData.getPlayer2Username());
         } else {
             welcomeText = "Welcome, " + formatName(GameData.USERNAME);
         }
@@ -145,8 +143,7 @@ public class MainActivity extends AppCompatActivity {
         GameData.setMultiplayer(true);
 
         // Initialize the MultiplayerDataManager and record the username of player 1
-        MultiplayerDataManager multiplayerDataManager = new MultiplayerDataManagerFactory().build();
-        multiplayerDataManager.setPlayer1Username(GameData.USERNAME);
+        MultiplayerGameData.setPlayer1Username(GameData.USERNAME);
 
         startActivity(intent);
     }
