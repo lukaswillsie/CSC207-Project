@@ -134,7 +134,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
         try {
             FileOutputStream stream = new FileOutputStream(multiplayerDataFile);
             for (String line : lines) {
-                stream.write(line.getBytes());
+                stream.write((line + "\n").getBytes());
             }
             stream.close();
         } catch (IOException e) {
