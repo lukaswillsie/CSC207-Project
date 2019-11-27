@@ -13,36 +13,6 @@ import com.example.game.data.MultiplayerIntData;
  */
 public interface MultiplayerDataManager {
     /**
-     * The class has to be able to, at the very least, have a way of storing
-     * the username of player 1
-     *
-     * @param player1Username - player 1's username
-     */
-    void setPlayer1Username(String player1Username);
-
-    /**
-     * The class has to be able to, at the very least, have a way of storing
-     * the username of player 2
-     *
-     * @param player2Username - player 2's username
-     */
-    void setPlayer2Username(String player2Username);
-
-    /**
-     * Return the username of player 1
-     *
-     * @return - player 1's username
-     */
-    String getPlayer1Username();
-
-    /**
-     * Return the username of player 2
-     *
-     * @return - player 2's username
-     */
-    String getPlayer2Username();
-
-    /**
      * Set the value of some kind of integer multiplayer data being tracked by the program.
      *
      * @param dataType - an enum value representing which statistic client code would like to update

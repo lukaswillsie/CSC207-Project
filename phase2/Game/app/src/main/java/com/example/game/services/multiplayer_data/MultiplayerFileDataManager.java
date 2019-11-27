@@ -35,26 +35,6 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
         multiplayerDataFile = file;
     }
 
-    @Override
-    public void setPlayer1Username(String player1Username) {
-
-    }
-
-    @Override
-    public void setPlayer2Username(String player2Username) {
-
-    }
-
-    @Override
-    public String getPlayer1Username() {
-        return null;
-    }
-
-    @Override
-    public String getPlayer2Username() {
-        return null;
-    }
-
     /**
      * Set the value of some kind of integer multiplayer data being tracked by the program.
      * <p>

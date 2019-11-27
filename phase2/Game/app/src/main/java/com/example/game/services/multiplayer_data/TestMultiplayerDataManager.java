@@ -14,26 +14,6 @@ public class TestMultiplayerDataManager implements MultiplayerDataManager {
     private static double player2WinRate = 0.0;
 
     @Override
-    public void setPlayer1Username(String newPlayer1Username) {
-        player1Username = newPlayer1Username;
-    }
-
-    @Override
-    public void setPlayer2Username(String newPlayer2Username) {
-        player2Username = newPlayer2Username;
-    }
-
-    @Override
-    public String getPlayer1Username() {
-        return player1Username;
-    }
-
-    @Override
-    public String getPlayer2Username() {
-        return player2Username;
-    }
-
-    @Override
     public void setMultiplayerData(MultiplayerIntData dataType, int newValue) {
         switch (dataType) {
             case BLACKJACK_PLAYER_TURN:
