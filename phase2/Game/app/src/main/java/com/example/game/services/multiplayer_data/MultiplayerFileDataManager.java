@@ -18,7 +18,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     private File multiplayerDataFile;
 
-    public void setMultiplayerDataFile(File file){
+    public void setMultiplayerDataFile(File file) {
         multiplayerDataFile = file;
     }
 
@@ -45,22 +45,23 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
     @Override
     // TODO: Consider adding parameter callingClass to notify calling classes of errors
     public void setMultiplayerData(MultiplayerIntData dataType, int newValue) {
-        editLine(dataType.getKey(), ""+newValue);
+        editLine(dataType.getKey(), "" + newValue);
     }
 
     @Override
     public void setMultiplayerData(MultiplayerDoubleData dataType, double newValue) {
-        editLine(dataType.getKey(), ""+newValue);
+        editLine(dataType.getKey(), "" + newValue);
     }
 
     /**
      * Tries to find a line in the file that starts with "key=", and replaces everything after the
      * equals sign with newValue
-     * @param key - the key to search for in the file
+     *
+     * @param key      - the key to search for in the file
      * @param newValue - the value to write to the file after "key="
      * @return A boolean representing whether or not the edit was successful
      */
-    private boolean editLine(String key, String newValue){
+    private boolean editLine(String key, String newValue) {
         try {
             List<String> lines = getLines();
 
@@ -70,18 +71,18 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
             // Find the index such that lines(i) holds the line of the file with key equal to that
             // of the given key
-            for(int i = 0; i < lines.size(); i++){
+            for (int i = 0; i < lines.size(); i++) {
                 line = lines.get(i);
                 lineKey = getKey(line);
 
-               if(lineKey.equals(key)){
-                   index = i;
+                if (lineKey.equals(key)) {
+                    index = i;
                     break;
                 }
             }
 
             // If we couldn't find a line with the given key, return false since we failed to edit the line
-            if(index == -1){
+            if (index == -1) {
                 return false;
             }
 
@@ -90,18 +91,17 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
             writeLines(lines);
 
             return true;
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             Log.e(TAG, "Couldn't open file");
             return false;
         }
     }
 
-    private List<String> getLines() throws FileNotFoundException{
+    private List<String> getLines() throws FileNotFoundException {
         Scanner scanner = new Scanner(multiplayerDataFile);
 
         List<String> lines = new ArrayList<>();
-        while (scanner.hasNext()){
+        while (scanner.hasNext()) {
             lines.add(scanner.nextLine());
         }
         scanner.close();
@@ -111,39 +111,39 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     /**
      * Writes the provided strings to the file, overwriting its existing contents
+     *
      * @param lines - the lines to write to the file
      */
-    private void writeLines(List<String> lines){
+    private void writeLines(List<String> lines) {
         try {
             FileOutputStream stream = new FileOutputStream(multiplayerDataFile);
-            for(String line : lines){
+            for (String line : lines) {
                 stream.write(line.getBytes());
             }
             stream.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             Log.e(TAG, "Failed to writeLines to file");
         }
     }
 
     /**
      * Parses the key (everything preceding the equals sign) from the given line of the file
+     *
      * @param line - the line of the file to parse
      */
-    private String getKey(String line){
+    private String getKey(String line) {
         StringBuilder builder = new StringBuilder();
-        for(int i = 0; i < line.length(); i++){
-            if (line.charAt(i) == '='){
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == '=') {
                 break;
-            }
-            else {
+            } else {
                 builder.append(line.charAt(i));
             }
         }
 
         // If the equals sign was the first character of the line, last character of the line,
         // or there wasn't one at all, the input line was invalid
-        if(builder.length() == 0 || builder.length() >= line.length()-1){
+        if (builder.length() == 0 || builder.length() >= line.length() - 1) {
             return "";
         }
 
@@ -151,38 +151,38 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     }
 
-    private Integer parseInt(String line){
+    private Integer parseInt(String line) {
         int index = -1;
 
-        for(int i = 0; i < line.length(); i++){
-            if(line.charAt(i) == '='){
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == '=') {
                 index = i;
                 break;
             }
         }
 
-        if(index == -1 || index == line.length() - 1){
+        if (index == -1 || index == line.length() - 1) {
             return null;
         }
 
-        return Integer.parseInt(line.substring(index+1));
+        return Integer.parseInt(line.substring(index + 1));
     }
 
-    private Double parseDouble(String line){
+    private Double parseDouble(String line) {
         int index = -1;
 
-        for(int i = 0; i < line.length(); i++){
-            if(line.charAt(i) == '='){
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == '=') {
                 index = i;
                 break;
             }
         }
 
-        if(index == -1 || index == line.length() - 1){
+        if (index == -1 || index == line.length() - 1) {
             return null;
         }
 
-        return Double.parseDouble(line.substring(index+1));
+        return Double.parseDouble(line.substring(index + 1));
     }
 
     @Override
@@ -193,22 +193,20 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
             List<String> lines = getLines();
 
             String line = "";
-            for(String fileLine : lines){
-                if(getKey(fileLine).equals(key)){
+            for (String fileLine : lines) {
+                if (getKey(fileLine).equals(key)) {
                     line = fileLine;
                 }
             }
 
             Integer value = parseInt(line);
 
-            if(value == null){
+            if (value == null) {
                 return -1;
-            }
-            else {
+            } else {
                 return value;
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Log.e(TAG, "Couldn't read from multiplayerDataFile");
             return -1;
         }
@@ -222,22 +220,20 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
             List<String> lines = getLines();
 
             String line = "";
-            for(String fileLine : lines){
-                if(getKey(fileLine).equals(key)){
+            for (String fileLine : lines) {
+                if (getKey(fileLine).equals(key)) {
                     line = fileLine;
                 }
             }
 
             Double value = parseDouble(line);
 
-            if(value == null){
+            if (value == null) {
                 return -1.0;
-            }
-            else {
+            } else {
                 return value;
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Log.e(TAG, "Couldn't read from multiplayerDataFile");
             return -1.0;
         }
