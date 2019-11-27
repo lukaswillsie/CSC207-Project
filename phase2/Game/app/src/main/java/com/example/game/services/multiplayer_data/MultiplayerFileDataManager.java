@@ -28,9 +28,10 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
     /**
      * Create a new MultiplayerFileDataManager, which will be using the given file to write data to
      * and read data from
+     *
      * @param file - the file this object will be assuming contains multiplayer data
      */
-    MultiplayerFileDataManager (File file){
+    MultiplayerFileDataManager(File file) {
         multiplayerDataFile = file;
     }
 
@@ -56,7 +57,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     /**
      * Set the value of some kind of integer multiplayer data being tracked by the program.
-     *
+     * <p>
      * Implements method in MultiplayerDataManager
      *
      * @param dataType - an enum value representing which statistic client code would like to update
@@ -70,7 +71,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     /**
      * Set the value of some kind of decimal multiplayer data being tracked by the program.
-     *
+     * <p>
      * Implements method in MultiplayerDataManager
      *
      * @param dataType - an enum value representing which statistic client code would like to update
@@ -127,9 +128,10 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     /**
      * Read all the lines from the multiplayerDataFile and return them as a List of Strings
+     *
      * @return - the lines of the multiplayerDataFile as a List of Strings
      * @throws FileNotFoundException - if multiplayerDataFile is not a valid file, this method will
-     * throw a FileNotFoundException
+     *                               throw a FileNotFoundException
      */
     private List<String> getLines() throws FileNotFoundException {
         Scanner scanner = new Scanner(multiplayerDataFile);
@@ -239,7 +241,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     /**
      * Access the value of some kind of integer multiplayer data being tracked by the program.
-     *
+     * <p>
      * Implements method in MultiplayerDataManager
      *
      * @param dataType - an enum value representing which statistic client code would like to access
@@ -274,7 +276,7 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     /**
      * Access the value of some kind of decimal multiplayer data being tracked by the program.
-     *
+     * <p>
      * Implements method in MultiplayerDataManager
      *
      * @param dataType - an enum value representing which statistic client code would like to access
