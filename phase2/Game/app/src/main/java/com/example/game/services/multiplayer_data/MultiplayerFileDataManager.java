@@ -14,11 +14,23 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MultiplayerFileDataManager implements MultiplayerDataManager {
+
+    /**
+     * The tag this class will use to log messages
+     */
     private static final String TAG = "com.example.game.services.multiplayer_data.MultiplayerFileDataManager";
 
+    /**
+     * The File where multiplayer data is being stored
+     */
     private File multiplayerDataFile;
 
-    public void setMultiplayerDataFile(File file) {
+    /**
+     * Create a new MultiplayerFileDataManager, which will be using the given file to write data to
+     * and read data from
+     * @param file - the file this object will be assuming contains multiplayer data
+     */
+    MultiplayerFileDataManager (File file){
         multiplayerDataFile = file;
     }
 
@@ -42,12 +54,28 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
         return null;
     }
 
+    /**
+     * Set the value of some kind of integer multiplayer data being tracked by the program.
+     *
+     * Implements method in MultiplayerDataManager
+     *
+     * @param dataType - an enum value representing which statistic client code would like to update
+     * @param newValue - the new value of the statistic
+     */
     @Override
     // TODO: Consider adding parameter callingClass to notify calling classes of errors
     public void setMultiplayerData(MultiplayerIntData dataType, int newValue) {
         editLine(dataType.getKey(), "" + newValue);
     }
 
+    /**
+     * Set the value of some kind of decimal multiplayer data being tracked by the program.
+     *
+     * Implements method in MultiplayerDataManager
+     *
+     * @param dataType - an enum value representing which statistic client code would like to update
+     * @param newValue - the new value of the statistic
+     */
     @Override
     public void setMultiplayerData(MultiplayerDoubleData dataType, double newValue) {
         editLine(dataType.getKey(), "" + newValue);
@@ -97,6 +125,12 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
         }
     }
 
+    /**
+     * Read all the lines from the multiplayerDataFile and return them as a List of Strings
+     * @return - the lines of the multiplayerDataFile as a List of Strings
+     * @throws FileNotFoundException - if multiplayerDataFile is not a valid file, this method will
+     * throw a FileNotFoundException
+     */
     private List<String> getLines() throws FileNotFoundException {
         Scanner scanner = new Scanner(multiplayerDataFile);
 
@@ -151,6 +185,15 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
 
     }
 
+    /**
+     * Takes a line of the file and parses the value of that line from it
+     * For example, parseDouble("winrate=8") -> 8
+     *
+     * @param line - the line of the file to parse
+     * @return the value contained in line, or null if the file is invalidly formatted; that is,
+     * it doesn't contain an equals sign, or contains one, but it is in the first or last index of
+     * the string
+     */
     private Integer parseInt(String line) {
         int index = -1;
 
@@ -168,6 +211,15 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
         return Integer.parseInt(line.substring(index + 1));
     }
 
+    /**
+     * Takes a line of the file and parses the value of that line from it
+     * For example, parseDouble("winrate=7.5") -> 7.5
+     *
+     * @param line - the line of the file to parse
+     * @return the value contained in line, or null if the file is invalidly formatted; that is,
+     * it doesn't contain an equals sign, or contains one, but it is in the first or last index of
+     * the string
+     */
     private Double parseDouble(String line) {
         int index = -1;
 
@@ -185,6 +237,14 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
         return Double.parseDouble(line.substring(index + 1));
     }
 
+    /**
+     * Access the value of some kind of integer multiplayer data being tracked by the program.
+     *
+     * Implements method in MultiplayerDataManager
+     *
+     * @param dataType - an enum value representing which statistic client code would like to access
+     * @return - the value of the requested statistic
+     */
     @Override
     public int getMultiplayerData(MultiplayerIntData dataType) {
         String key = dataType.getKey();
@@ -212,6 +272,14 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
         }
     }
 
+    /**
+     * Access the value of some kind of decimal multiplayer data being tracked by the program.
+     *
+     * Implements method in MultiplayerDataManager
+     *
+     * @param dataType - an enum value representing which statistic client code would like to access
+     * @return - the value of the requested statistic
+     */
     @Override
     public double getMultiplayerData(MultiplayerDoubleData dataType) {
         String key = dataType.getKey();
