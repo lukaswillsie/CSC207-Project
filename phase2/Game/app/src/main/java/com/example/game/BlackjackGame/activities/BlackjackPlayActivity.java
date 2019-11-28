@@ -1,5 +1,7 @@
 package com.example.game.BlackjackGame.activities;
 
+import java.util.Random;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,9 @@ import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
+import com.example.game.services.scoreboard.ScoreboardRepository;
+import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
+import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
 
@@ -31,7 +36,7 @@ import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
 /**
  * The page displayed when the user is actually playing a round of Blackjack
  */
-public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage {
+public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage, ScoreboardUpdater {
     /**
      * Constants that record the IDs of the various UI elements
      * To be used throughout this level as objects interact with UI elements
@@ -220,5 +225,11 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         }
 
         statsRecorder.update();
+    }
+
+    // TODO: Implement this
+    @Override
+    public void scoreboardStoreError() {
+
     }
 }
