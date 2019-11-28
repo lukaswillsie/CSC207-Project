@@ -25,10 +25,6 @@ public abstract class ScoreboardActivity extends AppCompatActivity implements Sc
     protected void initialize(ScoreboardRepository.Game game){
         ScoreboardRepository repo = new ScoreboardRepositoryFactory().build(game);
 
-        repo.addHighScore("Lukas", 500, this);
-        repo.addHighScore("Peter", 400, this);
-        repo.addHighScore("Vaskar", 600, this);
-
         TableLayout table = findViewById(R.id.highscoreTable);
 
         List<Pair<String, Integer>> highscores = repo.getHighScores(10);
