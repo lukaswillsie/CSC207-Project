@@ -34,6 +34,7 @@ public class Answer {
             // Generate a random integer from 0 to answerSize - 1 with equal probabilities.
             int rand = (int) (Math.random() * alphabet.length);
             this.answerArray[i] = alphabet[rand];
+            System.out.println(answerArray[i]);
         }
     }
 

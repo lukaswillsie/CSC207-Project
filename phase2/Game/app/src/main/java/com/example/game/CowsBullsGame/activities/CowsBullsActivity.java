@@ -1,6 +1,10 @@
 package com.example.game.CowsBullsGame.activities;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -26,6 +30,8 @@ import com.example.game.services.stats.StatsManagerBuilder;
 
 import java.util.ArrayList;
 
+import static java.security.AccessController.getContext;
+
 
 /*
  * Image for cows_and_bull received from http://benjdd.com/courses/cs110/fall-2018/pas/bulls_and_cows/
@@ -35,6 +41,8 @@ import java.util.ArrayList;
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
 public class CowsBullsActivity extends AppCompatActivity {
+
+    private Activity activity;
 
     // The text view for user input.
     private EditText guess;
@@ -69,10 +77,12 @@ public class CowsBullsActivity extends AppCompatActivity {
     // The player's username.
     String username = GameData.USERNAME;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls);
+
 
         startTime = System.currentTimeMillis();
         chronometer = findViewById(R.id.timer);
@@ -90,6 +100,11 @@ public class CowsBullsActivity extends AppCompatActivity {
         } else {
             guess.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     /**
@@ -114,16 +129,14 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
-        System.out.println(gameManager.checkGuess(currentGuess) + " " + currentGuess);
         if (gameManager.checkGuess(currentGuess)) {
             Guess guessArray = new Guess(currentGuess);
 
-            System.out.println("YEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
 
             this.gameManager.setGuess(guessArray);
             int bulls = this.gameManager.getResults()[1];
             int cows = this.gameManager.getResults()[0];
-
+            System.out.println(gameManager.gameEnd());
             if (gameManager.gameEnd()) {
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
@@ -133,6 +146,12 @@ public class CowsBullsActivity extends AppCompatActivity {
                 cowsBullsStatsManager.update(seconds, numberOfGuesses);
 
                 Intent intent = new Intent(this, CowsBullsFinishActivity.class);
+                Intent intent2 = new Intent(this, CowsBullsSecondPlayerActivity.class);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent2);
+                finish();
                 startActivity(intent);
             }
 
@@ -142,8 +161,8 @@ public class CowsBullsActivity extends AppCompatActivity {
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
 
-            if (multiplayer) {
-                Intent intent = new Intent(this, CowsBullsSecondPlayerActivity.class);
+            if (multiplayer & !gameManager.gameEnd()) {
+                Intent intent = new Intent(this, CowsBullsSecondPlayerActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }
