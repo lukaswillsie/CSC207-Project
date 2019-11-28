@@ -110,9 +110,17 @@ public class GameStartActivity extends AppCompatActivity {
     private void updateTurnText(String player) {
         String turnText;
 
-        turnText = "It is " + player + "'s turn.";
+        turnText = "It is " + formatName(player) + "'s turn.";
 
         ((TextView) findViewById(R.id.turnText)).setText(turnText);
+    }
+
+    private String formatName(String name) {
+        if (Character.isAlphabetic(name.charAt(0))) {
+            return name.substring(0, 1).toUpperCase() + name.substring(1);
+        }
+
+        return name;
     }
 
 }
