@@ -1,7 +1,10 @@
 package com.example.game.CowsBullsGame.activities;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -26,6 +29,8 @@ import com.example.game.services.stats.StatsManager;
 import com.example.game.services.stats.StatsManagerBuilder;
 
 import java.util.ArrayList;
+
+import static java.security.AccessController.getContext;
 
 
 /*
@@ -71,6 +76,7 @@ public class CowsBullsActivity extends AppCompatActivity {
 
     // The player's username.
     String username = GameData.USERNAME;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +129,6 @@ public class CowsBullsActivity extends AppCompatActivity {
     public void checkGuess(View view) {
         currentGuess = guessInput();
 
-        System.out.println(gameManager.checkGuess(currentGuess) + " " + currentGuess);
         if (gameManager.checkGuess(currentGuess)) {
             Guess guessArray = new Guess(currentGuess);
 
@@ -131,7 +136,7 @@ public class CowsBullsActivity extends AppCompatActivity {
             this.gameManager.setGuess(guessArray);
             int bulls = this.gameManager.getResults()[1];
             int cows = this.gameManager.getResults()[0];
-
+            System.out.println(gameManager.gameEnd());
             if (gameManager.gameEnd()) {
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
@@ -141,6 +146,12 @@ public class CowsBullsActivity extends AppCompatActivity {
                 cowsBullsStatsManager.update(seconds, numberOfGuesses);
 
                 Intent intent = new Intent(this, CowsBullsFinishActivity.class);
+                Intent intent2 = new Intent(this, CowsBullsSecondPlayerActivity.class);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent2);
+                finish();
                 startActivity(intent);
             }
 
@@ -150,7 +161,7 @@ public class CowsBullsActivity extends AppCompatActivity {
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
 
-            if (multiplayer) {
+            if (multiplayer & !gameManager.gameEnd()) {
                 Intent intent = new Intent(this, CowsBullsSecondPlayerActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

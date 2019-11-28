@@ -133,7 +133,14 @@ public class CowsBullsSecondPlayerActivity extends AppCompatActivity {
                 cowsBullsStatsManager.update(seconds, numberOfGuesses);
 
                 Intent intent = new Intent(this, CowsBullsFinishActivity.class);
+                Intent intent2 = new Intent(this, CowsBullsActivity.class);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent2);
+                finish();
                 startActivity(intent);
+
             }
 
             TextView currGuess = new TextView(CowsBullsSecondPlayerActivity.this);
@@ -142,13 +149,15 @@ public class CowsBullsSecondPlayerActivity extends AppCompatActivity {
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
 
-            if (multiplayer) {
-                Intent intent = new Intent(this, CowsBullsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            if (multiplayer & !gameManager.gameEnd()) {
+                Intent intent = new Intent(this, CowsBullsActivity.class);
                 startActivity(intent);
             }
         }
         guess.setText("");
     }
+
+
 
     /**
      * Returns elapsedTime in seconds in and int
