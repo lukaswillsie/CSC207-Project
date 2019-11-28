@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ScoreboardActivity"></activity>
+        <activity android:name=".BlackjackScoreboardActivity"></activity>
         <activity android:name=".ScoreboardTest" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsSecondPlayerActivity"
             android:alwaysRetainTaskState="true"

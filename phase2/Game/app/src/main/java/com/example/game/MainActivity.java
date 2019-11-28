@@ -148,6 +148,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void scoreboard(View view){
+        Intent intent = new Intent(this, BlackjackScoreboardActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Override the default onBackPressed method to do nothing
      * <p>
