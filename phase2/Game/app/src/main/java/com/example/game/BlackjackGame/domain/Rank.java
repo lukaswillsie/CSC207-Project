@@ -18,7 +18,6 @@ public enum Rank {
     QUEEN(12),
     KING(13);
 
-    // TODO: consider getting rid of this field
     /**
      * The value of this rank in a typical card game
      */
@@ -40,43 +39,5 @@ public enum Rank {
      */
     public int getValue() {
         return value;
-    }
-
-    /**
-     * Get a string representation of this Rank
-     *
-     * @return a string representation of this rank
-     */
-    public String toString() {
-        switch (this) {
-            case ACE:
-                return "A";
-            case TWO:
-                return "2";
-            case THREE:
-                return "3";
-            case FOUR:
-                return "4";
-            case FIVE:
-                return "5";
-            case SIX:
-                return "6";
-            case SEVEN:
-                return "7";
-            case EIGHT:
-                return "8";
-            case NINE:
-                return "9";
-            case TEN:
-                return "10";
-            case JACK:
-                return "J";
-            case QUEEN:
-                return "Q";
-            case KING:
-                return "K";
-            default:
-                return "";
-        }
     }
 }

@@ -95,10 +95,31 @@ public class GameFinishActivity extends AppCompatActivity {
      */
     public void updateStatistics() {
         String username = GameData.USERNAME;
+
         StatsManager statsManager = new StatsManagerBuilder().build(this, username);
         int guesses = gameManager.getCurrentGame().getNumOfGuess();
-        if (guesses < statsManager.getStat(Statistic.FEWEST_GUESSES)) {
-            statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
+
+        int firstBest = statsManager.getStat(Statistic.FEWEST_GUESSES);
+        int secondBest = statsManager.getStat(Statistic.SECOND_FEWEST_GUESSES);
+        int thirdBest = statsManager.getStat(Statistic.THIRD_FEWEST_GUESSES);
+
+        if (gameManager.getCurrentGame().getNumOfGuess() >= thirdBest) {
+            return;
+        }
+
+        else {
+            if (guesses < firstBest) {
+                statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
+                statsManager.setStat(Statistic.SECOND_FEWEST_GUESSES, firstBest);
+                statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, secondBest);
+            }
+            else if (guesses < secondBest) {
+                statsManager.setStat(Statistic.SECOND_FEWEST_GUESSES, guesses);
+                statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, secondBest);
+            }
+            else if (guesses < thirdBest) {
+                statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, guesses);
+            }
         }
 
     }

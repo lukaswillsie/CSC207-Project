@@ -14,7 +14,7 @@ public class Player {
      *
      * @return this player's hand
      */
-    public Hand getHand() {
+    Hand getHand() {
         return hand;
     }
 

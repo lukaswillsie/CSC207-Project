@@ -22,7 +22,7 @@ public class PlayerHandView {
     }
 
     /**
-     * Replace the text in this.view with newString
+     * Replace the text in this view with newString
      *
      * @param newString - String to replace the TextView's current text with
      */

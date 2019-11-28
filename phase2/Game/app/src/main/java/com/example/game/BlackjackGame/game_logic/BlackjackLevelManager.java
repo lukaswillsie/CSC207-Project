@@ -11,7 +11,7 @@ public class BlackjackLevelManager {
     /**
      * Boolean representing whether it is the player's turn in the game
      */
-    static boolean playerTurn = false;
+    public static boolean playerTurn = false;
 
     /**
      * A PlayerManager object representing the user of the app
@@ -111,9 +111,9 @@ public class BlackjackLevelManager {
     }
 
     /**
-     * Return whether or not this BlackjackLevelManager is ready to play another round
+     * Return whether or not this BlackjackLevelManager is ready to play another hand
      */
-    public boolean anotherRound() {
+    public boolean anotherHand() {
         return numHandsPlayed < numHands;
     }
 
@@ -125,7 +125,7 @@ public class BlackjackLevelManager {
             user.deal(deck.deal());
             if (user.computeBlackJackValue() > 21) {
                 interfaceManager.update();
-                endGame();
+                endHand();
                 return;
             }
             interfaceManager.update();
@@ -136,16 +136,14 @@ public class BlackjackLevelManager {
      * Tells this object that the player stood
      */
     public void playerStand() {
-        endGame();
+        endHand();
     }
 
-    // TODO: Change "game" to "round" or "hand"  here and elsewhere to make it more clear that this is the end of a single round, not the whole game
-
     /**
-     * End the game. Calculate who won, record that another hand has been played, update the interface,
-     * and tell this BlackjackLevelManager's activity that the game is over
+     * End the hand. Calculate who won, record that another hand has been played, update the interface,
+     * and tell this BlackjackLevelManager's activity that this hand is over
      */
-    private void endGame() {
+    private void endHand() {
         numHandsPlayed++;
         playerTurn = false;
         interfaceManager.update();
