@@ -3,6 +3,8 @@ package com.example.game.BlackjackGame.display;
 import com.example.game.BlackjackGame.domain.Card;
 import com.example.game.BlackjackGame.domain.Hand;
 import com.example.game.BlackjackGame.domain.Player;
+import com.example.game.BlackjackGame.domain.Rank;
+import com.example.game.BlackjackGame.domain.Suit;
 
 /**
  * Contains a Player object and converts the information contained in that player object to a String
@@ -18,7 +20,7 @@ public class PlayerInterpreter {
      * The PlayerHandView that this PlayerInterpreter is using to
      * update the interface
      */
-    protected PlayerHandView view;
+    private PlayerHandView view;
 
     /**
      * Create a new PlayerInterpreter with the given instance variables
@@ -70,7 +72,7 @@ public class PlayerInterpreter {
 
                 first = false;
             } else {
-                handString.append(card.toString());
+                handString.append(stringRep(card));
                 handString.append("  ");
             }
 
@@ -91,10 +93,62 @@ public class PlayerInterpreter {
         Hand hand = player.getHand();
         StringBuilder handString = new StringBuilder();
         for (Card card : hand) {
-            handString.append(card.toString());
+            handString.append(stringRep(card));
             handString.append("  ");
         }
 
         return handString.toString();
+    }
+
+    private String stringRep(Card card){
+        return stringRep(card.getRank()) + stringRep(card.getSuit());
+    }
+
+    private String stringRep(Suit suit){
+        switch (suit) {
+            case SPADES:
+                return "\u2660";
+            case HEARTS:
+                return "\u2665";
+            case CLUBS:
+                return "\u2663";
+            case DIAMONDS:
+                return "\u2666";
+            default:
+                return "";
+        }
+    }
+
+    private String stringRep(Rank rank){
+        switch (rank) {
+            case ACE:
+                return "A";
+            case TWO:
+                return "2";
+            case THREE:
+                return "3";
+            case FOUR:
+                return "4";
+            case FIVE:
+                return "5";
+            case SIX:
+                return "6";
+            case SEVEN:
+                return "7";
+            case EIGHT:
+                return "8";
+            case NINE:
+                return "9";
+            case TEN:
+                return "10";
+            case JACK:
+                return "J";
+            case QUEEN:
+                return "Q";
+            case KING:
+                return "K";
+            default:
+                return "";
+        }
     }
 }

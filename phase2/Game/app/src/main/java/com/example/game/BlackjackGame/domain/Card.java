@@ -1,7 +1,5 @@
 package com.example.game.BlackjackGame.domain;
 
-import androidx.annotation.NonNull;
-
 /**
  * Represents a card in a deck of cards
  */
@@ -21,9 +19,15 @@ public class Card {
      *
      * @return - the rank of this card
      */
-    Rank getRank() {
+    public Rank getRank() {
         return rank;
     }
+
+    /**
+     * Get the suit of this card
+     * @return the suit of this card
+     */
+    public Suit getSuit() { return suit; }
 
     /**
      * Create a new card with the given rank and suit
@@ -34,15 +38,5 @@ public class Card {
     Card(Rank rank, Suit suit) {
         this.suit = suit;
         this.rank = rank;
-    }
-
-    /**
-     * Get the string representation of this card
-     *
-     * @return the string representation of this card
-     */
-    @NonNull
-    public String toString() {
-        return this.rank.toString() + this.suit.toString();
     }
 }
