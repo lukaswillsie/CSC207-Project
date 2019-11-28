@@ -129,4 +129,15 @@
         app:layout_constraintStart_toEndOf="@+id/outOf"
         app:layout_constraintTop_toBottomOf="@+id/mainMenuButton" />
 
+    <Button
+        android:id="@+id/nextPlayer"
+        android:layout_width="126dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="nextPlayerClick"
+        android:text="Next player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nextRoundButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

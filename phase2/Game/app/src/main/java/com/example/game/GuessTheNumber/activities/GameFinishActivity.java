@@ -36,8 +36,30 @@ public class GameFinishActivity extends AppCompatActivity {
 
         if (gameManager.getKeepPlaying()) {
             this.inverseVisibility();
+            hideNextPlayerButton();
+
         } else {
-            this.reverseVisibility();
+            gameManager.changeMultiplayerKeepPlaying();
+
+            // there is still next player
+            if (gameManager.getMultiplayerMode() && !gameManager.getMultiplayerKeepPlaying()) {
+                showNextPlayerButton();
+                hideAllButtons();
+            }
+
+            // multiplayer game ends
+            else if (gameManager.getMultiplayerMode() && gameManager.getMultiplayerKeepPlaying()){
+                hideNextPlayerButton();
+                findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
+                findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
+                findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
+            }
+
+            // not multiplayer and game ends
+            else {
+                this.reverseVisibility();
+                hideNextPlayerButton();
+            }
             gameManager.resetCurrentRounds();
         }
     }
@@ -56,6 +78,12 @@ public class GameFinishActivity extends AppCompatActivity {
      */
     public void playAgainClick(View view) {
         Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
+        gameManager.startNewGame();
+        startActivity(intent);
+    }
+
+    public void nextPlayerClick(View view) {
+        Intent intent = new Intent(this, GameStartActivity.class);
         gameManager.startNewGame();
         startActivity(intent);
     }
@@ -86,6 +114,20 @@ public class GameFinishActivity extends AppCompatActivity {
     public void reverseVisibility() {
         findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
         findViewById(R.id.playAgainButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
+    }
+
+    public void showNextPlayerButton() {
+        findViewById(R.id.nextPlayer).setVisibility(View.VISIBLE);
+    }
+
+    public void hideNextPlayerButton() {
+        findViewById(R.id.nextPlayer).setVisibility(View.INVISIBLE);
+    }
+
+    public void hideAllButtons() {
+        findViewById(R.id.mainMenuButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
     }
 
