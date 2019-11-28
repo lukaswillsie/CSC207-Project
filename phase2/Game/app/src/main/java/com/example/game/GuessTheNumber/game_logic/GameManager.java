@@ -101,11 +101,11 @@ public class GameManager {
 
     public boolean getMultiplayerMode() { return this.multiplayerMode; }
 
-    public void changeMultiplayerMode() { this.multiplayerMode = !this.multiplayerMode;}
+    public void setMultiplayerMode(boolean b) { this.multiplayerMode = b;}
 
     public boolean getMultiplayerKeepPlaying() { return this.multiplayerKeepPlaying; }
 
-    public void changeMultiplayerKeepPlaying() {this.multiplayerKeepPlaying = !this.getMultiplayerKeepPlaying();}
+    public void changeMultiplayerKeepPlaying() {this.multiplayerKeepPlaying = !this.multiplayerKeepPlaying;}
 
 
 }

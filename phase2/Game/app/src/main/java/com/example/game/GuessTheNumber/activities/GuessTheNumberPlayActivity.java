@@ -27,6 +27,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
         this.updateScore();
         ImageView eeyore = findViewById(R.id.highlowimage);
         eeyore.setVisibility(View.INVISIBLE);
+        updateExitText();
     }
 
     /**
@@ -108,5 +109,19 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
         gameManager.checkRounds();
         Intent intent = new Intent(this, GameFinishActivity.class);
         startActivity(intent);
+    }
+
+    private void updateExitText() {
+        String exitText;
+
+        if (gameManager.getMultiplayerMode()) {
+            exitText = "Exit game";
+        }
+
+        else {
+            exitText = "Pause and exit";
+        }
+
+        ((TextView) findViewById(R.id.pauseExit)).setText(exitText);
     }
 }

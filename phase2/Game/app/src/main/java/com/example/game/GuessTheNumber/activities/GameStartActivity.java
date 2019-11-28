@@ -34,13 +34,17 @@ public class GameStartActivity extends AppCompatActivity {
         if (GameData.MULTIPLAYER && gameManager.getMultiplayerKeepPlaying()) {
             updateTurnText(MultiplayerGameData.getPlayer1Username());
             gameManager.resetGameManager();
+            gameManager.setMultiplayerMode(true);
         }
 
         else if (GameData.MULTIPLAYER && !gameManager.getMultiplayerKeepPlaying()) {
             updateTurnText(MultiplayerGameData.getPlayer2Username());
-            gameManager.resetGameManager();
+            gameManager.startNewGame();
+            gameManager.setMultiplayerMode(true);
         }
-
+        else {
+            gameManager.setMultiplayerMode(false);
+        }
         this.displayResumeButton();
         this.setNumRounds();
     }

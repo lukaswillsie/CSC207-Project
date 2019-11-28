@@ -39,20 +39,21 @@ public class GameFinishActivity extends AppCompatActivity {
             hideNextPlayerButton();
 
         } else {
-            gameManager.changeMultiplayerKeepPlaying();
 
             // there is still next player
-            if (gameManager.getMultiplayerMode() && !gameManager.getMultiplayerKeepPlaying()) {
+            if (gameManager.getMultiplayerMode() && gameManager.getMultiplayerKeepPlaying()) {
                 showNextPlayerButton();
                 hideAllButtons();
+                gameManager.changeMultiplayerKeepPlaying();
             }
 
             // multiplayer game ends
-            else if (gameManager.getMultiplayerMode() && gameManager.getMultiplayerKeepPlaying()){
+            else if (gameManager.getMultiplayerMode() && !gameManager.getMultiplayerKeepPlaying()){
                 hideNextPlayerButton();
                 findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
                 findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
                 findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
+                gameManager.resetGameManager();
             }
 
             // not multiplayer and game ends
