@@ -70,6 +70,10 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     public void pauseExit(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
+        if (gameManager.getMultiplayerMode()) {
+            gameManager.resetGameManager();
+        }
     }
 
     /**
