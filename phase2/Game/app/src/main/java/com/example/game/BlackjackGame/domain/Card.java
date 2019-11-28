@@ -25,9 +25,12 @@ public class Card {
 
     /**
      * Get the suit of this card
+     *
      * @return the suit of this card
      */
-    public Suit getSuit() { return suit; }
+    public Suit getSuit() {
+        return suit;
+    }
 
     /**
      * Create a new card with the given rank and suit

@@ -81,9 +81,6 @@ public class PlayerInterpreter {
         return handString.toString();
     }
 
-    // TODO: Consider moving the String representation of each Card out of the Card class and into this one
-    // TODO: Separation of concerns - Card shouldn't care how its information is relayed to the interface
-
     /**
      * Create and return the string representation of the player's hand
      *
@@ -100,11 +97,11 @@ public class PlayerInterpreter {
         return handString.toString();
     }
 
-    private String stringRep(Card card){
+    private String stringRep(Card card) {
         return stringRep(card.getRank()) + stringRep(card.getSuit());
     }
 
-    private String stringRep(Suit suit){
+    private String stringRep(Suit suit) {
         switch (suit) {
             case SPADES:
                 return "\u2660";
@@ -119,7 +116,7 @@ public class PlayerInterpreter {
         }
     }
 
-    private String stringRep(Rank rank){
+    private String stringRep(Rank rank) {
         switch (rank) {
             case ACE:
                 return "A";
