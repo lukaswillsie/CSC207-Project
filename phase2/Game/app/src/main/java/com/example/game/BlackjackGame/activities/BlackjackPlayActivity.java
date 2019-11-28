@@ -202,7 +202,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
         buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
 
-        if (levelManager.anotherRound()) {
+        if (levelManager.anotherHand()) {
             buttonManager.makeVisible(PLAY_AGAIN_BUTTON_ID);
         } else {
             buttonManager.makeVisible(END_GAME_BUTTON_ID);
