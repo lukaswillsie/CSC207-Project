@@ -1,10 +1,4 @@
-package com.example.game.BlackjackGame.display;
-
-import com.example.game.BlackjackGame.domain.Card;
-import com.example.game.BlackjackGame.domain.Hand;
-import com.example.game.BlackjackGame.domain.Player;
-import com.example.game.BlackjackGame.domain.Rank;
-import com.example.game.BlackjackGame.domain.Suit;
+package com.example.game.BlackjackGame.domain;
 
 /**
  * Contains a Player object and converts the information contained in that player object to a String
@@ -17,39 +11,12 @@ public class PlayerInterpreter {
     private Player player;
 
     /**
-     * The PlayerHandView that this PlayerInterpreter is using to
-     * update the interface
-     */
-    private PlayerHandView view;
-
-    /**
      * Create a new PlayerInterpreter with the given instance variables
      *
      * @param player - the player this PlayerInterpreter will be interpreting
-     * @param view   - the PlayerHandView this PlayerInterpreter will be using to
-     *               update the interface
      */
-    public PlayerInterpreter(Player player, PlayerHandView view) {
+    public PlayerInterpreter(Player player) {
         this.player = player;
-        this.view = view;
-    }
-
-    /**
-     * Gets called when the player's hand has changed and the interface needs to be updated
-     * <p>
-     * Generates the new String representing the player's hand and tells view to update
-     * the interface accordingly
-     */
-    public void updatePlayerHand() {
-        view.updateView(this.playerHandStringRep());
-    }
-
-    /**
-     * Update the interface to display the string representation of the player's hand with the first
-     * card hidden
-     */
-    public void updatePlayerHandHideFirstCard() {
-        this.view.updateView(this.playerHandHideFirstCardStringRep());
     }
 
     /**
@@ -60,7 +27,7 @@ public class PlayerInterpreter {
      *
      * @return - a string representation of the player's hand, with the first card of their hand hidden
      */
-    private String playerHandHideFirstCardStringRep() {
+    public String playerHandHideFirstCardStringRep() {
         boolean first = true;
         Hand hand = this.player.getHand();
         StringBuilder handString = new StringBuilder();
@@ -86,7 +53,7 @@ public class PlayerInterpreter {
      *
      * @return - a string representation of the player's hand
      */
-    private String playerHandStringRep() {
+    public String playerHandStringRep() {
         Hand hand = player.getHand();
         StringBuilder handString = new StringBuilder();
         for (Card card : hand) {
@@ -97,10 +64,20 @@ public class PlayerInterpreter {
         return handString.toString();
     }
 
+    /**
+     * Create a String representation of the given card
+     * @param card - the card to convert to a String
+     * @return a String representation of the given card
+     */
     private String stringRep(Card card) {
         return stringRep(card.getRank()) + stringRep(card.getSuit());
     }
 
+    /**
+     * Create a String representation of the given suit
+     * @param suit - the suit to convert to a String
+     * @return a String representation of the given suit
+     */
     private String stringRep(Suit suit) {
         switch (suit) {
             case SPADES:
@@ -116,6 +93,11 @@ public class PlayerInterpreter {
         }
     }
 
+    /**
+     * Create a String representation of the given rank
+     * @param rank - the rank to convert to a String
+     * @return a String representation of the given rank
+     */
     private String stringRep(Rank rank) {
         switch (rank) {
             case ACE:

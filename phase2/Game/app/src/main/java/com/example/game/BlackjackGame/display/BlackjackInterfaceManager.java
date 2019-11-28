@@ -1,10 +1,11 @@
-package com.example.game.BlackjackGame.game_logic;
+package com.example.game.BlackjackGame.display;
 
 import android.widget.TextView;
 
-import com.example.game.BlackjackGame.display.PlayerHandView;
-import com.example.game.BlackjackGame.display.PlayerInterpreter;
+import com.example.game.BlackjackGame.domain.PlayerInterpreter;
 import com.example.game.BlackjackGame.domain.Player;
+import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
+import com.example.game.BlackjackGame.game_logic.InterfaceManager;
 
 /**
  * InterfaceManager for a game of Blackjack
@@ -15,10 +16,14 @@ public class BlackjackInterfaceManager implements InterfaceManager {
      */
     private PlayerInterpreter userInterpreter;
 
+    private PlayerHandView userView;
+
     /**
      * The object acting as interpreter for the dealer in the game
      */
     private PlayerInterpreter dealerInterpreter;
+
+    private PlayerHandView dealerView;
 
     /**
      * Creates a new BlackjackInterfaceManager with the given information
@@ -29,20 +34,22 @@ public class BlackjackInterfaceManager implements InterfaceManager {
      * @param dealerHand - the TextView being used to display the dealer's hand on the screen
      */
     public BlackjackInterfaceManager(Player user, Player dealer, TextView userHand, TextView dealerHand) {
-        userInterpreter = new PlayerInterpreter(user, new PlayerHandView(userHand));
-        dealerInterpreter = new PlayerInterpreter(dealer, new PlayerHandView(dealerHand));
+        userInterpreter = new PlayerInterpreter(user);
+        userView = new PlayerHandView(userHand);
+        dealerInterpreter = new PlayerInterpreter(dealer);
+        dealerView = new PlayerHandView(dealerHand);
     }
 
     /**
      * Update the interface by delegating to userInterpreter and dealerInterpreter
      */
     public void update() {
-        userInterpreter.updatePlayerHand();
+        userView.updateView(userInterpreter.playerHandStringRep());
 
         if (BlackjackLevelManager.playerTurn) {
-            dealerInterpreter.updatePlayerHandHideFirstCard();
+            dealerView.updateView(dealerInterpreter.playerHandHideFirstCardStringRep());
         } else {
-            dealerInterpreter.updatePlayerHand();
+            dealerView.updateView(dealerInterpreter.playerHandStringRep());
         }
     }
 }
