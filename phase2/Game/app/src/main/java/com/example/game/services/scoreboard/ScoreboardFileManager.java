@@ -83,7 +83,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
             int i = 0;
             // Insert the new name,score pair into the list of pairs in its proper place with respect to ordering
             for (Pair<String, Integer> pair : pairs) {
-                if (score < pair.second) {
+                if (score > pair.second) {
                     pairs.add(i, new Pair<>(name, score));
                     added = true;
                     break;
@@ -99,7 +99,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
             highscoreStream = new FileOutputStream(highscoreFile);
 
             for (Pair<String, Integer> pair : pairs) {
-                highscoreStream.write((pair.first + "," + pair.second).getBytes());
+                highscoreStream.write((pair.first + "," + pair.second + "\n").getBytes());
             }
 
             highscoreStream.close();
@@ -143,6 +143,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
         List<String> lines;
         try {
             lines = readLines(numberHighScores);
+            Log.i("Scoreboard Test", lines.toString());
 
             return getPairsFromLines(lines);
         } catch (FileNotFoundException e) {
@@ -165,7 +166,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
 
         Scanner scanner = new Scanner(highscoreFile);
         int counter = 0;
-        while (scanner.hasNext() && counter <= num) {
+        while (scanner.hasNext() && counter < num) {
             lines.add(scanner.nextLine());
             counter++;
         }
