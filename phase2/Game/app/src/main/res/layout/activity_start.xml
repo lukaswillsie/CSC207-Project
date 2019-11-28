@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".StartActivity">
 
     <TextView
@@ -52,5 +53,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newUserButton" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="142dp"
+        android:layout_height="274dp"
+        android:layout_marginBottom="104dp"
+        android:rotation="-14"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/digit_4" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="276dp"
+        android:layout_height="441dp"
+        android:layout_marginTop="8dp"
+        android:rotation="20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oldUserButton"
+        app:srcCompat="@drawable/cow_1" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="251dp"
+        android:layout_height="307dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="376dp"
+        android:rotation="120"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/cards" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="226dp"
+        android:layout_height="288dp"
+        android:rotation="-25"
+        app:layout_constraintBottom_toTopOf="@+id/imageView16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bull" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
