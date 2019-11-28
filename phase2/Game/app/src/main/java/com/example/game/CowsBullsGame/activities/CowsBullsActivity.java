@@ -1,5 +1,6 @@
 package com.example.game.CowsBullsGame.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -35,6 +36,8 @@ import java.util.ArrayList;
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
 public class CowsBullsActivity extends AppCompatActivity {
+
+    private Activity activity;
 
     // The text view for user input.
     private EditText guess;
@@ -74,6 +77,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls);
 
+
         startTime = System.currentTimeMillis();
         chronometer = findViewById(R.id.timer);
         chronometer.start();
@@ -90,6 +94,11 @@ public class CowsBullsActivity extends AppCompatActivity {
         } else {
             guess.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     /**
@@ -118,7 +127,6 @@ public class CowsBullsActivity extends AppCompatActivity {
         if (gameManager.checkGuess(currentGuess)) {
             Guess guessArray = new Guess(currentGuess);
 
-            System.out.println("YEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
 
             this.gameManager.setGuess(guessArray);
             int bulls = this.gameManager.getResults()[1];
@@ -143,7 +151,7 @@ public class CowsBullsActivity extends AppCompatActivity {
             linLayout.addView(currGuess);
 
             if (multiplayer) {
-                Intent intent = new Intent(this, CowsBullsSecondPlayerActivity.class);
+                Intent intent = new Intent(this, CowsBullsSecondPlayerActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }
