@@ -84,4 +84,7 @@
     <string name="multiplayerLoginLabel">Player 2 should login here!</string>
     <string name="signOutTextSinglePlayer">Sign Out</string>
     <string name="signOutTextMultiplayer">Exit Multiplayer</string>
+    <string name="rankColumnTitle">Rank</string>
+    <string name="nameColumnTitle">Name</string>
+    <string name="scoreColumnTitle">Score</string>
 </resources>
