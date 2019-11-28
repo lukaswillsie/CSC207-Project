@@ -51,4 +51,10 @@ public final class GameConstants {
      * game is in multiplayer mode between activities
      */
     public static final String MULTIPLAYER_KEY = "multiplayer";
+
+    public static final String BLACKJACK_HIGHSCORE_FILE = "blackjack_highscores";
+
+    public static final String GUESS_THE_NUMBER_HIGHSCORE_FILE = "cows_and_bulls_highscores";
+
+    public static final String COWS_AND_BULLS_HIGHSCORE_FILE = "guess_the_number_highscores";
 }

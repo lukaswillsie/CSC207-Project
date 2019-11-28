@@ -1,5 +1,6 @@
 package com.example.game.services.scoreboard;
 
+import com.example.game.data.GameConstants;
 import com.example.game.data.GameData;
 
 import java.io.File;
@@ -18,11 +19,11 @@ public class ScoreboardRepositoryFactory {
     private String path(ScoreboardRepository.Game game){
         switch(game){
             case BLACKJACK:
-                return "blackjack_highscores";
+                return GameConstants.BLACKJACK_HIGHSCORE_FILE;
             case COWS_AND_BULLS:
-                return "cows_and_bulls_highscores";
+                return GameConstants.COWS_AND_BULLS_HIGHSCORE_FILE;
             case GUESS_THE_NUMBER:
-                return "guess_the_number_highscores";
+                return GameConstants.GUESS_THE_NUMBER_HIGHSCORE_FILE;
             default:
                 return "";
         }

@@ -7,8 +7,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.data.GameConstants;
 import com.example.game.data.GameData;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -47,6 +49,21 @@ public class StartActivity extends AppCompatActivity {
     private void initializeGame() {
         try {
             GameData.setFilesDirPath(this.getFilesDir().getCanonicalPath());
+            File blackjackHighscoreFile = new File(this.getFilesDir(), GameConstants.BLACKJACK_HIGHSCORE_FILE);
+            File cowsAndBullsHighscoreFile = new File(this.getFilesDir(), GameConstants.COWS_AND_BULLS_HIGHSCORE_FILE);
+            File guessTheNumberHighScoreFile = new File(this.getFilesDir(), GameConstants.GUESS_THE_NUMBER_HIGHSCORE_FILE);
+
+            if(!blackjackHighscoreFile.exists()){
+                blackjackHighscoreFile.createNewFile();
+            }
+
+            if(!cowsAndBullsHighscoreFile.exists()){
+                cowsAndBullsHighscoreFile.createNewFile();
+            }
+
+            if(!guessTheNumberHighScoreFile.exists()){
+                guessTheNumberHighScoreFile.createNewFile();
+            }
         } catch (IOException e) {
             Log.e("StartActivity", "Failed to set root directory path");
         }
