@@ -121,9 +121,9 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         levelManager.setup();
         levelManager.play();
 
+        String scoreText = "Score: " + statsRecorder.getScore();
         ((TextView) findViewById(R.id.blackjackNote)).setText(note);
-
-
+        ((TextView)findViewById(R.id.blackjackScore)).setText(scoreText);
     }
 
     /**
@@ -199,7 +199,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      *
      * @param endGameText - the text to display as a result of the game ending
      */
-    public void gameOver(String endGameText, boolean playerWin) {
+    public void handOver(String endGameText, boolean playerWin) {
         buttonManager.disableButton(BlackjackPlayActivity.HIT_BUTTON_ID);
         buttonManager.disableButton(BlackjackPlayActivity.STAND_BUTTON_ID);
 
@@ -221,13 +221,15 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         }
 
         statsRecorder.update();
+        String scoreText = "Score: " + statsRecorder.getScore();
+        ((TextView)findViewById(R.id.blackjackScore)).setText(scoreText);
     }
 
     // TODO: Implement this
 
     /**
      * To be called when this class attempts to update a highscore and there is an error
-     *
+     * <p>
      * Implements method in ScoreboardUpdater interface
      */
     @Override

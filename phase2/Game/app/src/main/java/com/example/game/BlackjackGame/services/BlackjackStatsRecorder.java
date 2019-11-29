@@ -8,7 +8,7 @@ import com.example.game.services.stats.StatsManagerBuilder;
 
 /**
  * A class for managing a user stats while a game is running.
- *
+ * <p>
  * Can track and return win rate and the user's longest consecutive winning streak
  */
 public class BlackjackStatsRecorder {
@@ -83,7 +83,7 @@ public class BlackjackStatsRecorder {
     /**
      * Record that a player tied a round
      */
-    public void playerTie(){
+    public void playerTie() {
         roundsPlayed++;
         currentStreak = 0;
         score += baseScore;
@@ -134,9 +134,10 @@ public class BlackjackStatsRecorder {
 
     /**
      * Return the player's current score
+     *
      * @return the player's current score
      */
-    public int getScore(){
+    public int getScore() {
         return score;
     }
 }

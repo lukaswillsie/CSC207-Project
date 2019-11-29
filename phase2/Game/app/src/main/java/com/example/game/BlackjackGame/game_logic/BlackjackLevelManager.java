@@ -156,17 +156,17 @@ public class BlackjackLevelManager {
         int dealerHand = dealer.computeBlackJackValue();
 
         if (userHand > 21) {
-            callingActivity.gameOver("You busted!", false);
+            callingActivity.handOver("You busted!", false);
         } else {
             if (dealerHand > 21) {
-                callingActivity.gameOver("You won! The dealer busted!", true);
+                callingActivity.handOver("You won! The dealer busted!", true);
             } else {
                 if (dealerHand == userHand) {
-                    callingActivity.gameOver("You tied! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
+                    callingActivity.handOver("You tied! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
                 } else if (dealerHand < userHand) {
-                    callingActivity.gameOver("You won! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, true);
+                    callingActivity.handOver("You won! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, true);
                 } else {
-                    callingActivity.gameOver("You lost! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
+                    callingActivity.handOver("You lost! Your hand was a " + userHand + " and the dealer's was a " + dealerHand, false);
                 }
             }
         }
