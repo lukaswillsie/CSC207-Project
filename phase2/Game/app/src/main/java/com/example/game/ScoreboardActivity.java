@@ -28,7 +28,11 @@ public abstract class ScoreboardActivity extends AppCompatActivity implements Sc
         TableLayout table = findViewById(R.id.highscoreTable);
 
         List<Pair<String, Integer>> highscores = repo.getHighScores(10);
-        Log.i("Scoreboard Test", highscores.toString());
+
+        if(highscores.size() == 0){
+            ((TextView)findViewById(R.id.highscoreTitle)).setText(R.string.noHighscoresMessage);
+            return;
+        }
 
         int rowIndex = 1;
         TableRow row;

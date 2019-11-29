@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void scoreboard(View view){
-        Intent intent = new Intent(this, BlackjackScoreboardActivity.class);
+        Intent intent = new Intent(this, ScoreboardSelectActivity.class);
         startActivity(intent);
     }
 

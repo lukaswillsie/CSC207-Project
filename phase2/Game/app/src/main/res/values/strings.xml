@@ -90,4 +90,8 @@
     <string name="highscoreDialogPrompt">Name</string>
     <string name="highscoreDialogYesText">YES</string>
     <string name="highscoreDialogNoText">NO</string>
+    <string name="goScoreboardButtonText">See local scoreboards</string>
+    <string name="scoreboardIntro">Which scoreboard would you like to view?</string>
+    <string name="highscoreTitle">Highscores</string>
+    <string name="noHighscoresMessage">There are no highscores to show</string>
 </resources>

@@ -113,13 +113,13 @@
         app:layout_constraintVertical_bias="0.98" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/goScoreboardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="125dp"
         android:layout_marginBottom="95dp"
         android:onClick="scoreboard"
-        android:text="Test Scoreboard"
+        android:text="@string/goScoreboardButtonText"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

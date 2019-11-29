@@ -3,6 +3,7 @@ package com.example.game.BlackjackGame.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,7 @@ import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
 import static com.example.game.data.GameConstants.TAG;
@@ -200,11 +202,50 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * (statsRecorder.getWinRate())) + "%");
             intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
         }
-        promptForHighScore(intent, statsRecorder.getScore());
+
+        if (shouldPrompt(statsRecorder.getScore())) {
+            promptForHighScore(intent, statsRecorder.getScore());
+        }
+        else {
+            startActivity(intent);
+        }
     }
 
     /**
-     * Propmpt the user to save their highscore, and start the given intent after they've made a decision
+     * Returns whether or not the user should be prompted to save the given score, i.e. if it's high
+     * enough to justify doing so
+     * @param score - the score to check
+     * @return whether or not the game should prompt the user to save the given score
+     */
+    boolean shouldPrompt(int score){
+        // If the given score would be in the top 10, return true
+        // Otherwise it won't be displayed on the scoreboard screen, so return false
+        List<Pair<String, Integer>> highestScores = highscoreManager.getHighScores(10);
+
+        if(highestScores.size() < 10){
+            return true;
+        }
+
+        int counter = 0;
+        for(Pair<String, Integer> pair : highestScores){
+            if(pair.second >= score){
+                counter++;
+            }
+            else {
+                return true;
+            }
+
+            if(counter == 10){
+                return false;
+            }
+        }
+
+        // If we've gone through all 10 highscores and they've all been >= score, return false
+        return false;
+    }
+
+    /**
+     * Prompt the user to save their highscore, and start the given intent after they've made a decision
      *
      * @param intent - the intent to start after prompting the user
      * @param score  - the score to prompt the user to save
