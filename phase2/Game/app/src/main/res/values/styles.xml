@@ -17,4 +17,17 @@
 <!--        <item name="android:textAppearance">@color/colorPrimary</item>-->
 
 <!--    </style>-->
+    <style name="ScoreboardRankNameText">
+        <item name="android:textColor">@color/highscoreText</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ScoreboardScoreText">
+        <item name="android:textColor">@color/highscoreText</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:gravity">right</item>
+    </style>
 </resources>
