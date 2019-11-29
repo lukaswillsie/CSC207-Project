@@ -1,10 +1,8 @@
 package com.example.game.BlackjackGame.activities;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +16,6 @@ import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
 import com.example.game.BlackjackGame.services.BlackjackStatsRecorder;
 import com.example.game.R;
 import com.example.game.data.GameData;
-import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
@@ -28,7 +25,6 @@ import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
-import java.util.zip.Inflater;
 
 import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
 import static com.example.game.data.GameConstants.TAG;
@@ -148,7 +144,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         String scoreText = "Score: " + statsRecorder.getScore();
         ((TextView) findViewById(R.id.blackjackNote)).setText(note);
-        ((TextView)findViewById(R.id.blackjackScore)).setText(scoreText);
+        ((TextView) findViewById(R.id.blackjackScore)).setText(scoreText);
     }
 
     /**
@@ -207,7 +203,13 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         promptForHighScore(intent, statsRecorder.getScore());
     }
 
-    private void promptForHighScore(final Intent intent, final int score){
+    /**
+     * Propmpt the user to save their highscore, and start the given intent after they've made a decision
+     *
+     * @param intent - the intent to start after prompting the user
+     * @param score  - the score to prompt the user to save
+     */
+    private void promptForHighScore(final Intent intent, final int score) {
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setView(R.layout.highscore_prompt_dialog)
                 .setPositiveButton("YES", null)
@@ -229,15 +231,14 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
                 final EditText inputBox = dialog.findViewById(R.id.highscoreName);
                 inputBox.setText(username);
 
-                yesButton.setOnClickListener(new View.OnClickListener(){
+                yesButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String name = (inputBox).getText().toString();
-                        if(highscoreManager.validName(name)){
+                        if (highscoreManager.validName(name)) {
                             recordHighScore(name, score);
                             startActivity(intent);
-                        }
-                        else {
+                        } else {
                             dialog.setMessage(warning);
                         }
                     }
@@ -255,7 +256,13 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         dialog.show();
     }
 
-    private void recordHighScore(String name, int score){
+    /**
+     * Record the given highscore under the given name
+     *
+     * @param name  - the name to record along with the score
+     * @param score - the highscore to save under the given name
+     */
+    private void recordHighScore(String name, int score) {
         highscoreManager.addHighScore(name, score, this);
     }
 
@@ -299,7 +306,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         statsRecorder.update();
         String scoreText = "Score: " + statsRecorder.getScore();
-        ((TextView)findViewById(R.id.blackjackScore)).setText(scoreText);
+        ((TextView) findViewById(R.id.blackjackScore)).setText(scoreText);
     }
 
     // TODO: Implement this

@@ -66,6 +66,7 @@ public class PlayerInterpreter {
 
     /**
      * Create a String representation of the given card
+     *
      * @param card - the card to convert to a String
      * @return a String representation of the given card
      */
@@ -75,6 +76,7 @@ public class PlayerInterpreter {
 
     /**
      * Create a String representation of the given suit
+     *
      * @param suit - the suit to convert to a String
      * @return a String representation of the given suit
      */
@@ -95,6 +97,7 @@ public class PlayerInterpreter {
 
     /**
      * Create a String representation of the given rank
+     *
      * @param rank - the rank to convert to a String
      * @return a String representation of the given rank
      */

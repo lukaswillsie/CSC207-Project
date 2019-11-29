@@ -2,8 +2,8 @@ package com.example.game.BlackjackGame.display;
 
 import android.widget.TextView;
 
-import com.example.game.BlackjackGame.domain.PlayerInterpreter;
 import com.example.game.BlackjackGame.domain.Player;
+import com.example.game.BlackjackGame.domain.PlayerInterpreter;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.game_logic.InterfaceManager;
 
