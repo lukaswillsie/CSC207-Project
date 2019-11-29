@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static com.example.game.data.GameConstants.PASSWORD_FILE_NAME;
@@ -180,5 +182,22 @@ public class UserAccountManager implements AccountManager {
         }
 
         return validPassword;
+    }
+
+    /**
+     * Get a list of all the usernames that have accounts registered under them
+     *
+     * Implements method in AccountManager
+     *
+     * @return - a list of all usernames that have accounts registered under them
+     */
+    public List<String> getUsers(){
+        List<String> users = new ArrayList<>();
+
+        for(File file : usersDir.listFiles()){
+            users.add(file.getName());
+        }
+
+        return users;
     }
 }

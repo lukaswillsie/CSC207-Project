@@ -1,5 +1,7 @@
 package com.example.game.services.accounts;
 
+import java.util.List;
+
 /**
  * Defines what a reasonable account manager should be able to do: query existing user data
  * and create new users
@@ -32,4 +34,10 @@ public interface AccountManager {
      * @param password - the password of the new user
      */
     void createNewUser(String username, String password);
+
+    /**
+     * Get a list of all the usernames that have accounts registered under them
+     * @return - a list of all usernames that have accounts registered under them
+     */
+    List<String> getUsers();
 }
