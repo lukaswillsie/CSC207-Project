@@ -18,6 +18,7 @@ import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
 import com.example.game.BlackjackGame.services.BlackjackStatsRecorder;
 import com.example.game.R;
 import com.example.game.data.GameData;
+import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
@@ -97,6 +98,11 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      */
     private ScoreboardRepository highscoreManager;
 
+    /**
+     * The username of the user currently playing Blackjack
+     */
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +115,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         multiplayer = GameData.MULTIPLAYER;
         player1Turn = multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1;
 
-        // Initialize levelManager according to whether or not this is a multiplayer game
+        // Initialize levelManager and username according to whether or not this is a multiplayer game
         BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
         if (multiplayer) {
             // When playing a multiplayer game, we use player 1's settings for both players
@@ -123,12 +129,15 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             // or multiplayer
             if (multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1) {
                 statsRecorder = new BlackjackStatsRecorder(this, MultiplayerGameData.getPlayer1Username());
+                username = MultiplayerGameData.getPlayer1Username();
             } else {
                 statsRecorder = new BlackjackStatsRecorder(this, MultiplayerGameData.getPlayer2Username());
+                username = MultiplayerGameData.getPlayer2Username();
             }
         } else {
             levelManager = builder.build(this, GameData.USERNAME);
             statsRecorder = new BlackjackStatsRecorder(this, GameData.USERNAME);
+            username = GameData.USERNAME;
         }
 
         buttonManager = new ButtonManager(this);
@@ -201,11 +210,11 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     private void promptForHighScore(final Intent intent, final int score){
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setView(R.layout.highscore_prompt_dialog)
-                .setPositiveButton("OK", null)
-                .setNegativeButton("CANCEL", null)
+                .setPositiveButton("YES", null)
+                .setNegativeButton("NO", null)
                 .create();
 
-        String message = "Would you like to save your score: " + score + "?";
+        String message = "Type your name below to save your score :  " + score;
         final String warning = "That is an invalid name! Please try again.";
 
         dialog.setMessage(message);
@@ -216,10 +225,14 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
                 final Button yesButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
                 final Button noButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
 
+                // Fill the textbox with the player's username by default
+                final EditText inputBox = dialog.findViewById(R.id.highscoreName);
+                inputBox.setText(username);
+
                 yesButton.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View view) {
-                        String name = ((EditText) dialog.findViewById(R.id.highscoreName)).getText().toString();
+                        String name = (inputBox).getText().toString();
                         if(highscoreManager.validName(name)){
                             recordHighScore(name, score);
                             startActivity(intent);
