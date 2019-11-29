@@ -1,30 +1,47 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class ScoreboardSelectActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * This Activity allows the user to view the scoreboard for any of the three games in our app
+ */
+public class ScoreboardSelectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard_select);
     }
 
-    public void cowsAndBullsScoreboard(View view){
+    /**
+     * Move to the Cows and Bulls Scoreboard page
+     *
+     * @param view - the View that called this method
+     */
+    public void cowsAndBullsScoreboard(View view) {
         Intent intent = new Intent(this, CowsBullsScoreboardActivity.class);
         startActivity(intent);
     }
 
-    public void blackjackScoreboard(View view){
+    /**
+     * Move to the Blackjack Scoreboard page
+     *
+     * @param view - the View that called this method
+     */
+    public void blackjackScoreboard(View view) {
         Intent intent = new Intent(this, BlackjackScoreboardActivity.class);
         startActivity(intent);
     }
 
-    public void guessTheNumberScoreboard(View view){
+    /**
+     * Move to the Guess the Number Scoreboard page
+     *
+     * @param view - the View that called this method
+     */
+    public void guessTheNumberScoreboard(View view) {
         Intent intent = new Intent(this, GuessTheNumberScoreBoardActivity.class);
         startActivity(intent);
     }
