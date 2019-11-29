@@ -43,14 +43,12 @@ public class GameManager {
         startNewGame();
         this.keepPlaying = true;
         this.currentRound = 0;
+        this.multiplayerKeepPlaying = true;
 
         if (GameData.MULTIPLAYER) {
             this.multiplayerMode = true;
-            this.multiplayerKeepPlaying = true;
-        }
-        else {
+        } else {
             this.multiplayerMode = false;
-            this.multiplayerKeepPlaying = false;
         }
     }
 
@@ -93,19 +91,27 @@ public class GameManager {
     }
 
     /**
-     * Reset the index of curent game.
+     * Reset the index of current game.
      */
     public void resetCurrentRounds() {
         this.currentRound = 0;
     }
 
-    public boolean getMultiplayerMode() { return this.multiplayerMode; }
+    public boolean getMultiplayerMode() {
+        return this.multiplayerMode;
+    }
 
-    public void setMultiplayerMode(boolean b) { this.multiplayerMode = b;}
+    public void setMultiplayerMode(boolean b) {
+        this.multiplayerMode = b;
+    }
 
-    public boolean getMultiplayerKeepPlaying() { return this.multiplayerKeepPlaying; }
+    public boolean getMultiplayerKeepPlaying() {
+        return this.multiplayerKeepPlaying;
+    }
 
-    public void changeMultiplayerKeepPlaying() {this.multiplayerKeepPlaying = !this.multiplayerKeepPlaying;}
+    public void changeMultiplayerKeepPlaying() {
+        this.multiplayerKeepPlaying = !this.multiplayerKeepPlaying;
+    }
 
 
 }
