@@ -228,6 +228,12 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     }
 
     // TODO: Implement this
+
+    /**
+     * To be called when this class attempts to update a highscore and there is an error
+     *
+     * Implements method in ScoreboardUpdater interface
+     */
     @Override
     public void scoreboardStoreError() {
 

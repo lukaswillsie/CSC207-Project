@@ -9,7 +9,11 @@ import java.util.List;
  * and accessed
  */
 public interface ScoreboardRepository {
+    /**
+     * An enum defining what Games ScoreboardRepository objects can manage scoreboards for
+     */
     enum Game {BLACKJACK, COWS_AND_BULLS, GUESS_THE_NUMBER}
+
     /**
      * Record that a player with given name has achieved the given score
      *
