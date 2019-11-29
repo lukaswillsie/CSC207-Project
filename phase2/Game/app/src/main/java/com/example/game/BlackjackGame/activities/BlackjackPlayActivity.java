@@ -22,6 +22,8 @@ import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
+import com.example.game.services.scoreboard.ScoreboardRepository;
+import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
@@ -90,17 +92,24 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      */
     private boolean player1Turn;
 
+    /**
+     * An object for updating and accessing highscores, when necessary
+     */
+    private ScoreboardRepository highscoreManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
+
+        highscoreManager = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.BLACKJACK);
 
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
         multiplayer = GameData.MULTIPLAYER;
         player1Turn = multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1;
 
-        // Initialize username according to whether or not this is a multiplayer game
+        // Initialize levelManager according to whether or not this is a multiplayer game
         BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
         if (multiplayer) {
             // When playing a multiplayer game, we use player 1's settings for both players
@@ -189,7 +198,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         promptForHighScore(intent, statsRecorder.getScore());
     }
 
-    private void promptForHighScore(final Intent intent, int score){
+    private void promptForHighScore(final Intent intent, final int score){
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setView(R.layout.highscore_prompt_dialog)
                 .setPositiveButton("OK", null)
@@ -210,8 +219,9 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
                 yesButton.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View view) {
-                        if(validName(((EditText) dialog.findViewById(R.id.highscoreName)).getText().toString())){
-                            recordHighScore();
+                        String name = ((EditText) dialog.findViewById(R.id.highscoreName)).getText().toString();
+                        if(highscoreManager.validName(name)){
+                            recordHighScore(name, score);
                             startActivity(intent);
                         }
                         else {
@@ -232,12 +242,8 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         dialog.show();
     }
 
-    private boolean validName(String name){
-        return false;
-    }
-
-    private void recordHighScore(){
-
+    private void recordHighScore(String name, int score){
+        highscoreManager.addHighScore(name, score, this);
     }
 
     /**

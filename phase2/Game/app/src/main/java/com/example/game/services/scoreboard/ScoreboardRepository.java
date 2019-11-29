@@ -35,4 +35,10 @@ public interface ScoreboardRepository {
      * the high scores if numberHighScores exceeds the total
      */
     List<Pair<String, Integer>> getHighScores(int numberHighScores);
+
+    /**
+     * Checks if the given name is valid and can be used to record a highscore
+     * @return - a boolean representing whether or not the given name is valid
+     */
+    boolean validName(String name);
 }

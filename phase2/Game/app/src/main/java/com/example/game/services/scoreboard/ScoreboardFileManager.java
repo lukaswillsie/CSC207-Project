@@ -70,6 +70,10 @@ class ScoreboardFileManager implements ScoreboardRepository {
      */
     @Override
     public void addHighScore(String name, int score, ScoreboardUpdater callingClass) {
+        if(!validName(name)){
+            return;
+        }
+
         FileOutputStream highscoreStream = null;
         List<Pair<String, Integer>> pairs;
         try {
@@ -150,6 +154,16 @@ class ScoreboardFileManager implements ScoreboardRepository {
             Log.e(TAG, "Couldn't open file " + highscoreFile.getName());
             return null;
         }
+    }
+
+    /**
+     * Return whether or not the given string is a valid name to use for recording highscores
+     * @param name - the name to check
+     * @return whether or not the given name can be used to record a highscore
+     */
+    @Override
+    public boolean validName(String name) {
+        return !name.contains(",");
     }
 
     /**
