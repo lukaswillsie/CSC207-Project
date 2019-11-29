@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
+import com.example.game.BlackjackGame.services.BlackjackPlayActivityPresenter;
 import com.example.game.BlackjackGame.services.BlackjackStatsRecorder;
 import com.example.game.R;
 import com.example.game.data.GameData;
@@ -26,7 +27,6 @@ import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
 import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
 import static com.example.game.data.GameConstants.TAG;
@@ -203,45 +203,14 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
         }
 
-        if (shouldPrompt(statsRecorder.getScore())) {
+        BlackjackPlayActivityPresenter presenter = new BlackjackPlayActivityPresenter();
+
+        if (presenter.shouldPrompt(statsRecorder.getScore())) {
             promptForHighScore(intent, statsRecorder.getScore());
         }
         else {
             startActivity(intent);
         }
-    }
-
-    /**
-     * Returns whether or not the user should be prompted to save the given score, i.e. if it's high
-     * enough to justify doing so
-     * @param score - the score to check
-     * @return whether or not the game should prompt the user to save the given score
-     */
-    boolean shouldPrompt(int score){
-        // If the given score would be in the top 10, return true
-        // Otherwise it won't be displayed on the scoreboard screen, so return false
-        List<Pair<String, Integer>> highestScores = highscoreManager.getHighScores(10);
-
-        if(highestScores.size() < 10){
-            return true;
-        }
-
-        int counter = 0;
-        for(Pair<String, Integer> pair : highestScores){
-            if(pair.second >= score){
-                counter++;
-            }
-            else {
-                return true;
-            }
-
-            if(counter == 10){
-                return false;
-            }
-        }
-
-        // If we've gone through all 10 highscores and they've all been >= score, return false
-        return false;
     }
 
     /**
@@ -257,7 +226,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
                 .setNegativeButton("NO", null)
                 .create();
 
-        String message = "Type your name below to save your score :  " + score;
+        String message = "You just set a highscore! Type your name below to save your score :  " + score;
         final String warning = "That is an invalid name! Please try again.";
 
         dialog.setMessage(message);
