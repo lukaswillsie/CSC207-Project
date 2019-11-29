@@ -87,4 +87,7 @@
     <string name="rankColumnTitle">Rank</string>
     <string name="nameColumnTitle">Name</string>
     <string name="scoreColumnTitle">Score</string>
+    <string name="highscoreDialogPrompt">Name</string>
+    <string name="highscoreDialogYesText">YES</string>
+    <string name="highscoreDialogNoText">NO</string>
 </resources>

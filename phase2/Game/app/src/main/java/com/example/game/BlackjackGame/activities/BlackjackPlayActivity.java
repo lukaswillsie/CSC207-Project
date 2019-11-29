@@ -1,10 +1,16 @@
 package com.example.game.BlackjackGame.activities;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
@@ -19,6 +25,7 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
+import java.util.zip.Inflater;
 
 import static com.example.game.data.GameConstants.LONGEST_STREAK_KEY;
 import static com.example.game.data.GameConstants.TAG;
@@ -179,7 +186,58 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             intent.putExtra(TAG + WIN_RATE_KEY, new DecimalFormat("##.##").format(100 * (statsRecorder.getWinRate())) + "%");
             intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
         }
-        startActivity(intent);
+        promptForHighScore(intent, statsRecorder.getScore());
+    }
+
+    private void promptForHighScore(final Intent intent, int score){
+        final AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(R.layout.highscore_prompt_dialog)
+                .setPositiveButton("OK", null)
+                .setNegativeButton("CANCEL", null)
+                .create();
+
+        String message = "Would you like to save your score: " + score + "?";
+        final String warning = "That is an invalid name! Please try again.";
+
+        dialog.setMessage(message);
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                final Button yesButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                final Button noButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+
+                yesButton.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        if(validName(((EditText) dialog.findViewById(R.id.highscoreName)).getText().toString())){
+                            recordHighScore();
+                            startActivity(intent);
+                        }
+                        else {
+                            dialog.setMessage(warning);
+                        }
+                    }
+                });
+
+                noButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+
+        dialog.show();
+    }
+
+    private boolean validName(String name){
+        return false;
+    }
+
+    private void recordHighScore(){
+
     }
 
     /**
