@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
     tools:context=".StartActivity">
 
     <TextView
@@ -78,8 +77,8 @@
         android:id="@+id/imageView17"
         android:layout_width="251dp"
         android:layout_height="307dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginBottom="376dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="436dp"
         android:rotation="120"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

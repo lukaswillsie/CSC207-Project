@@ -1,6 +1,10 @@
 package com.example.game.GuessTheNumber.game_logic;
 
 import com.example.game.GuessTheNumber.domain.Game;
+import com.example.game.data.GameData;
+import com.example.game.data.MultiplayerGameData;
+import com.example.game.data.Setting;
+import com.example.game.services.stats.StatsManager;
 
 /**
  * This class handles all the logic of the whole GAME and all the rounds user want to play.
@@ -23,14 +27,29 @@ public class GameManager {
      */
     private int currentRound;
 
+    private boolean multiplayerMode;
+
+    private boolean multiplayerKeepPlaying;
+
     /**
      * Create a gameManager
      */
     public GameManager() {
-        this.game = new Game();
-        this.keepPlaying = true;
+        resetGameManager();
         this.roundsToPlay = 5;
+    }
+
+    public void resetGameManager() {
+        startNewGame();
+        this.keepPlaying = true;
         this.currentRound = 0;
+        this.multiplayerKeepPlaying = true;
+
+        if (GameData.MULTIPLAYER) {
+            this.multiplayerMode = true;
+        } else {
+            this.multiplayerMode = false;
+        }
     }
 
     /**
@@ -72,9 +91,27 @@ public class GameManager {
     }
 
     /**
-     * Reset the index of curent game.
+     * Reset the index of current game.
      */
     public void resetCurrentRounds() {
         this.currentRound = 0;
     }
+
+    public boolean getMultiplayerMode() {
+        return this.multiplayerMode;
+    }
+
+    public void setMultiplayerMode(boolean b) {
+        this.multiplayerMode = b;
+    }
+
+    public boolean getMultiplayerKeepPlaying() {
+        return this.multiplayerKeepPlaying;
+    }
+
+    public void changeMultiplayerKeepPlaying() {
+        this.multiplayerKeepPlaying = !this.multiplayerKeepPlaying;
+    }
+
+
 }

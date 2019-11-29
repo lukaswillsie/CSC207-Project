@@ -12,6 +12,7 @@ import com.example.game.GuessTheNumber.domain.Game;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.R;
 import com.example.game.data.GameData;
+import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerBuilder;
@@ -29,8 +30,23 @@ public class GameStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity);
-        this.checkResume();
-        this.SetNumRounds();
+
+        if (GameData.MULTIPLAYER && gameManager.getMultiplayerKeepPlaying()) {
+            updateTurnText(MultiplayerGameData.getPlayer1Username());
+            gameManager.resetGameManager();
+            gameManager.setMultiplayerMode(true);
+        }
+
+        else if (GameData.MULTIPLAYER && !gameManager.getMultiplayerKeepPlaying()) {
+            updateTurnText(MultiplayerGameData.getPlayer2Username());
+            gameManager.startNewGame();
+            gameManager.setMultiplayerMode(true);
+        }
+        else {
+            gameManager.setMultiplayerMode(false);
+        }
+        this.displayResumeButton();
+        this.setNumRounds();
     }
 
     /**
@@ -73,10 +89,10 @@ public class GameStartActivity extends AppCompatActivity {
      * which is not finished or a user has already played at least one round but hasn't finished
      * all the rounds.
      */
-    private void checkResume() {
+    private void displayResumeButton() {
         Button btn = findViewById(R.id.resumeGame);
         Game game = gameManager.getCurrentGame();
-        if ((game.isFinished() || game.getPoints() == 0) && gameManager.getCurrentRound() != 1) {
+        if (game.isFinished() || (game.getPoints() == 0 && gameManager.getCurrentRound() == 0)) {
             btn.setVisibility(View.INVISIBLE);
         } else {
             btn.setVisibility(View.VISIBLE);
@@ -86,9 +102,25 @@ public class GameStartActivity extends AppCompatActivity {
     /**
      * Set the number of rounds user wants to play based on customized settings.
      */
-    private void SetNumRounds() {
+    private void setNumRounds() {
         SettingsManager manager = new SettingsManagerBuilder().build(this, username);
         gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
+    }
+
+    private void updateTurnText(String player) {
+        String turnText;
+
+        turnText = "It is " + formatName(player) + "'s turn.";
+
+        ((TextView) findViewById(R.id.turnText)).setText(turnText);
+    }
+
+    private String formatName(String name) {
+        if (Character.isAlphabetic(name.charAt(0))) {
+            return name.substring(0, 1).toUpperCase() + name.substring(1);
+        }
+
+        return name;
     }
 
 }
