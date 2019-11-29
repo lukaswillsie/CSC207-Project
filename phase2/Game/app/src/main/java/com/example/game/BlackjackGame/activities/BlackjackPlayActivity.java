@@ -1,7 +1,5 @@
 package com.example.game.BlackjackGame.activities;
 
-import java.util.Random;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,15 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
-import com.example.game.BlackjackGame.services.StatsRecorder;
+import com.example.game.BlackjackGame.services.BlackjackStatsRecorder;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
-import com.example.game.services.scoreboard.ScoreboardRepository;
-import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
@@ -70,10 +66,10 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     private MultiplayerDataManager multiplayerDataManager;
 
     /**
-     * The StatsRecorder this activity will be using to track the player's game statistics while
+     * The BlackjackStatsRecorder this activity will be using to track the player's game statistics while
      * the game is being played
      */
-    private StatsRecorder statsRecorder;
+    private BlackjackStatsRecorder statsRecorder;
 
     /**
      * Tells this activity whether or not the game of Blackjack it is displaying is part of a round
@@ -110,13 +106,13 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             // streak record, it gets updated regardless of whether they're playing singleplayer
             // or multiplayer
             if (multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1) {
-                statsRecorder = new StatsRecorder(this, MultiplayerGameData.getPlayer1Username());
+                statsRecorder = new BlackjackStatsRecorder(this, MultiplayerGameData.getPlayer1Username());
             } else {
-                statsRecorder = new StatsRecorder(this, MultiplayerGameData.getPlayer2Username());
+                statsRecorder = new BlackjackStatsRecorder(this, MultiplayerGameData.getPlayer2Username());
             }
         } else {
             levelManager = builder.build(this, GameData.USERNAME);
-            statsRecorder = new StatsRecorder(this, GameData.USERNAME);
+            statsRecorder = new BlackjackStatsRecorder(this, GameData.USERNAME);
         }
 
         buttonManager = new ButtonManager(this);
