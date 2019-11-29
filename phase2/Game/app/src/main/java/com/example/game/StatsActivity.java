@@ -14,11 +14,7 @@ import com.example.game.services.stats.StatsManagerBuilder;
  * The page displayed when the user is viewing their stats
  */
 public class StatsActivity extends AppCompatActivity {
-    private StatsManager statsManager;
-    private String username;
-    private TextView fewestGuesses;
-    private TextView quickestTime;
-    private TextView longestStreak;
+
 
 
     @Override
@@ -26,19 +22,21 @@ public class StatsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        username = GameData.USERNAME;
-        statsManager = new StatsManagerBuilder().build(this, username);
+        String username = GameData.USERNAME;
+        StatsManager statsManager = new StatsManagerBuilder().build(this, username);
 
-        fewestGuesses = findViewById(R.id.fewestGuess);
-        fewestGuesses.setText(String.valueOf(statsManager.getStat(Statistic.FEWEST_GUESSES)) + " " +
-                String.valueOf(statsManager.getStat(Statistic.SECOND_FEWEST_GUESSES)) + " " +
-                String.valueOf(statsManager.getStat(Statistic.THIRD_FEWEST_GUESSES)));
+        TextView fewestGuesses = findViewById(R.id.fewestGuess);
+        String fewestGuessesDisplay = statsManager.getStat(Statistic.FEWEST_GUESSES) + " " +
+                statsManager.getStat(Statistic.SECOND_FEWEST_GUESSES) + " " +
+                statsManager.getStat(Statistic.THIRD_FEWEST_GUESSES);
+        
+        fewestGuesses.setText(fewestGuessesDisplay);
 
-        quickestTime = findViewById(R.id.quickestTime);
+        TextView quickestTime = findViewById(R.id.quickestTime);
         String quickTime = statsManager.getStat(Statistic.QUICKEST_TIME) + "s";
         quickestTime.setText(quickTime);
 
-        longestStreak = findViewById(R.id.longestStreak);
+        TextView longestStreak = findViewById(R.id.longestStreak);
         longestStreak.setText(String.valueOf(statsManager.getStat(Statistic.LONGEST_STREAK)));
     }
 }
