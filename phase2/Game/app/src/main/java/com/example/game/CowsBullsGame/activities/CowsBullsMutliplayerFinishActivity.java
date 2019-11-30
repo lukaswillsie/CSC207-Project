@@ -56,15 +56,36 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
 
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
+        String player1Username = MultiplayerGameData.getPlayer1Username();
+        String player2Username = MultiplayerGameData.getPlayer2Username();
+
+        winMessage = findViewById(R.id.winMessage);
         player1TimeTaken = findViewById(R.id.player1TimeTaken);
         player2TimeTaken = findViewById(R.id.player2TimeTaken);
         player1TurnsTaken = findViewById(R.id.player1TurnsTaken);
         player2TurnsTaken = findViewById(R.id.player2TurnsTaken);
 
-        player1TimeTaken.setText(multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_TIME_TAKEN));
-        player2TimeTaken.setText(multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_TIME_TAKEN));
-        player1TurnsTaken.setText(multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES));
-        player2TurnsTaken.setText(multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES));
+        int player1Time = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_TIME_TAKEN);
+        int player2Time = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_TIME_TAKEN);
+        int player1Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES);
+        int player2Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES);
+
+        player1TimeTaken.setText(player1Time);
+        player2TimeTaken.setText(player2Time);
+        player1TurnsTaken.setText(player1Turns);
+        player2TurnsTaken.setText(player2Turns);
+
+        if (player1Time == player2Time & player1Turns == player2Turns){
+            winMessage.setText("");
+        }else if (player1Time >= player2Time & player1Turns >= player2Turns){
+
+        }else if (player1Time <= player2Time & player1Turns <= player2Turns){
+
+        }else if (player1Time >= player2Time & player1Turns <= player2Turns){
+
+        }else {
+
+        }
     }
 
     public void menu(View view) {
