@@ -12,6 +12,7 @@ import com.example.game.GuessTheNumber.domain.Game;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.MainActivity;
 import com.example.game.R;
+import com.example.game.data.GameData;
 
 /**
  * This page displayed when user is actually playing a game.
@@ -71,7 +72,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
-        if (gameManager.getMultiplayerMode()) {
+        if (GameData.MULTIPLAYER) {
             gameManager.resetGameManager();
         }
     }
@@ -118,7 +119,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     private void updateExitText() {
         String exitText;
 
-        if (gameManager.getMultiplayerMode()) {
+        if (GameData.MULTIPLAYER) {
             exitText = "Exit game";
         }
 
