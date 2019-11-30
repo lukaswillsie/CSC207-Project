@@ -12,7 +12,7 @@ public class GuessTheNumberScoreBoardActivity extends ScoreboardActivity {
         super.onCreate(savedInstanceState);
         ScoreboardRepository scoreboardRepository = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
 
-        initialize(scoreboardRepository.getHighScores(20), "No scores to show");
+        initialize(scoreboardRepository.getHighScores(), "No scores to show");
 
         String title = "Guess the Number Highscores";
         ((TextView) findViewById(R.id.highscoreTitle)).setText(title);

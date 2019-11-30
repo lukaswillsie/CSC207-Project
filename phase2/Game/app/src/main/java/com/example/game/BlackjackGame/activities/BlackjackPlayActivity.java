@@ -202,11 +202,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         BlackjackPlayActivityPresenter presenter = new BlackjackPlayActivityPresenter();
 
-        if (presenter.shouldPrompt(statsRecorder.getScore())) {
-            promptForHighScore(intent, statsRecorder.getScore());
-        } else {
-            startActivity(intent);
-        }
+        promptForHighScore(intent, statsRecorder.getScore());
     }
 
     /**
