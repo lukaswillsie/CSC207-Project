@@ -114,7 +114,6 @@ public class CowsBullsActivity extends AppCompatActivity {
 
 
         gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
-        cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
         multiplayer = GameData.MULTIPLAYER;
 
         if (multiplayer){
@@ -126,6 +125,8 @@ public class CowsBullsActivity extends AppCompatActivity {
         } else {
             statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
         }
+
+        cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
 
         if (settingsManager.getSetting(Setting.ALPHABET) == 1) {
             guess.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -176,6 +177,8 @@ public class CowsBullsActivity extends AppCompatActivity {
                 long elapsedTime = stopTime - startTime;
                 int seconds = turnToSeconds(elapsedTime);
                 int numberOfGuesses = getStatistics().size();
+                System.out.println(seconds);
+                System.out.println(numberOfGuesses);
                 cowsBullsStatsManager.update(seconds, numberOfGuesses);
 
                 if (multiplayer) {
