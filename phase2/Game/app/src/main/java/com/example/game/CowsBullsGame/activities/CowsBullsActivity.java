@@ -184,12 +184,12 @@ public class CowsBullsActivity extends AppCompatActivity {
                 if (multiplayer) {
                     if (player1Turn) {
                         intent = new Intent(this, CowsBullsMidMultiplayerActivity.class);
-                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES, cowsBullsStatsManager.getNumberOfGuesses());
-                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_1_TIME_TAKEN, cowsBullsStatsManager.getTimeTaken());
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES, numberOfGuesses);
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_1_TIME_TAKEN, seconds);
                     } else {
                         intent = new Intent(this, CowsBullsMutliplayerFinishActivity.class);
-                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES, cowsBullsStatsManager.getNumberOfGuesses());
-                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_2_TIME_TAKEN, cowsBullsStatsManager.getTimeTaken());
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES, numberOfGuesses);
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_2_TIME_TAKEN, seconds);
                     }
                 } else {
                     intent = new Intent(this, CowsBullsFinishActivity.class);
