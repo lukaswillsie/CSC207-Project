@@ -128,4 +128,11 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.pauseExit)).setText(exitText);
     }
+
+    /**
+     * Prevents the user from being able to return to the game screen by pressing the back button
+     */
+    @Override
+    public void onBackPressed() {
+    }
 }

@@ -174,28 +174,12 @@ public class GameFinishActivity extends AppCompatActivity {
         if (guesses < userBest){
             statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
         }
-//        int firstBest = statsManager.getStat(Statistic.FEWEST_GUESSES);
-//        int secondBest = statsManager.getStat(Statistic.SECOND_FEWEST_GUESSES);
-//        int thirdBest = statsManager.getStat(Statistic.THIRD_FEWEST_GUESSES);
-//
-//        if (gameManager.getCurrentGame().getNumOfGuess() >= thirdBest) {
-//            return;
-//        }
-//
-//        else {
-//            if (guesses < firstBest) {
-//                statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
-//                statsManager.setStat(Statistic.SECOND_FEWEST_GUESSES, firstBest);
-//                statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, secondBest);
-//            }
-//            else if (guesses < secondBest) {
-//                statsManager.setStat(Statistic.SECOND_FEWEST_GUESSES, guesses);
-//                statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, secondBest);
-//            }
-//            else if (guesses < thirdBest) {
-//                statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, guesses);
-//            }
-//        }
+    }
 
+    /**
+     * Prevents the user from being able to return to the game screen by pressing the back button
+     */
+    @Override
+    public void onBackPressed() {
     }
 }
