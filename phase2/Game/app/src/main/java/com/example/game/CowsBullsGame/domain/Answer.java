@@ -8,9 +8,6 @@ public class Answer {
     //String of the answer
     private String[] answerArray;
 
-    //The size of the answer
-    private int answerSize;
-
 
     /**
      * Constructor call for the Answer object
@@ -20,7 +17,6 @@ public class Answer {
      */
     public Answer(int answerSize, int alphabetSelector) {
         String[] alphabet;
-        this.answerSize = answerSize;
         this.answerArray = new String[answerSize];
 
         if (alphabetSelector == 0) {
