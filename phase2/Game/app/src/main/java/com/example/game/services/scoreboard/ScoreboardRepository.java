@@ -36,6 +36,12 @@ public interface ScoreboardRepository {
     List<Pair<String, Integer>> getHighScores(int numberHighScores);
 
     /**
+     * Retrieves all the highscores that this object has access to
+     * @return a list of all the high scores in the form of a [name, score] tuple
+     */
+    List<Pair<String, Integer>> getHighScores();
+
+    /**
      * Checks if the given name is valid and can be used to record a highscore
      * @return - a boolean representing whether or not the given name is valid
      */

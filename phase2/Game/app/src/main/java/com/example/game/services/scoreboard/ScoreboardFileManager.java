@@ -151,6 +151,27 @@ class ScoreboardFileManager implements ScoreboardRepository {
         }
     }
 
+
+    /**
+     * Retrieves all the highscores that this object has access to
+     *
+     * Implements method in ScoreboardRepository
+     * @return a list of all the high scores in the form of a [name, score] tuple
+     */
+    @Override
+    public List<Pair<String, Integer>> getHighScores(){
+        List<String> lines;
+        try{
+            lines = readLines();
+
+            return getPairsFromLines(lines);
+        }
+        catch (FileNotFoundException e){
+            Log.e(TAG, "Couldn't open file " + highscoreFile.getName());
+            return null;
+        }
+    }
+
     /**
      * Return whether or not the given string is a valid name to use for recording highscores
      * @param name - the name to check
