@@ -1,10 +1,6 @@
 package com.example.game.CowsBullsGame.activities;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -33,15 +29,11 @@ import com.example.game.services.stats.StatsManagerBuilder;
 
 import java.util.ArrayList;
 
-import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_1_WIN_RATE;
-import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER1_LONGEST_STREAK;
-import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES;
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_1_TIME_TAKEN;
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES;
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_2_TIME_TAKEN;
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_TURN;
-import static java.security.AccessController.getContext;
 
 
 /*
@@ -52,7 +44,6 @@ import static java.security.AccessController.getContext;
  * The activity that appears right before the user is about to start a game of Cows and Bulls.
  */
 public class CowsBullsActivity extends AppCompatActivity {
-
 
 
     //The object this class will use to manage multiplayer data if necessary
@@ -112,11 +103,10 @@ public class CowsBullsActivity extends AppCompatActivity {
         settingsManager = new SettingsManagerBuilder().build(this, username);
 
 
-
         gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
         multiplayer = GameData.MULTIPLAYER;
 
-        if (multiplayer){
+        if (multiplayer) {
             if (player1Turn) {
                 statsManager = new StatsManagerBuilder().build(this, MultiplayerGameData.getPlayer1Username());
             } else {
@@ -136,7 +126,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState){
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
     }
 

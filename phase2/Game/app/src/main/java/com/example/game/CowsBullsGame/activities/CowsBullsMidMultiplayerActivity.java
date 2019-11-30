@@ -1,26 +1,22 @@
 package com.example.game.CowsBullsGame.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.game.BlackjackGame.activities.BlackjackPlayActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.game.R;
-import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Statistic;
-import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.stats.StatsManager;
 import com.example.game.services.stats.StatsManagerBuilder;
 
 import java.text.MessageFormat;
 
-import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_TURN;
 
 public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
@@ -48,17 +44,18 @@ public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cows_bulls_mid_multiplayer);
 
         nextTurnButton = findViewById(R.id.nextTurn);
-        nextTurnButton.setText(MessageFormat.format("{0}''s Turn", MultiplayerGameData.getPlayer2Username()));
+        nextTurnButton.setText(MessageFormat.format("{0}''s Turn",
+                MultiplayerGameData.getPlayer2Username()));
 
-        statsManager = new StatsManagerBuilder().build(this, MultiplayerGameData.getPlayer1Username());
+        statsManager = new StatsManagerBuilder().build(this,
+                MultiplayerGameData.getPlayer1Username());
 
         time = findViewById(R.id.time);
-        time.setText(((Integer) statsManager.getStat(Statistic.TIME_TAKEN)).toString() + " seconds");
-
+        time.setText(String.format("%s seconds", ((Integer) statsManager.getStat(Statistic.TIME_TAKEN)).toString()));
 
 
         numGuesses = findViewById(R.id.numGuesses);
-        numGuesses.setText(((Integer) statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString());
+        numGuesses.setText(String.format("%s", ((Integer) statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString()));
     }
 
     public void nextTurn(View view) {
