@@ -263,7 +263,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      * @param score - the highscore to save under the given name
      */
     private void recordHighScore(String name, int score) {
-        highscoreManager.addHighScore(name, score);
+        highscoreManager.addScore(name, score);
     }
 
     /**
