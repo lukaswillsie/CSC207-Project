@@ -224,7 +224,7 @@ public class GameFinishActivity extends AppCompatActivity {
      *              Precondition:
      */
     private void recordHighScore(String name, int score) {
-        GuessNumHighscoreManager.addHighScore(name, score);
+        GuessNumHighscoreManager.addScore(name, score);
     }
 
     /**
