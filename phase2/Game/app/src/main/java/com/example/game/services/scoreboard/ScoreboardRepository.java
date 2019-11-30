@@ -20,7 +20,7 @@ public interface ScoreboardRepository {
      * @param name  - the name of the player
      * @param score - the player's score
      */
-    void addHighScore(String name, int score);
+    void addScore(String name, int score);
 
     /**
      * Retrieves the *numberHighScores* highest scores, or all of the high scores if there are fewer

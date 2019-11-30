@@ -64,12 +64,12 @@ class ScoreboardFileManager implements ScoreboardRepository {
      * <p>
      * Implements method in ScoreboardRepository
      *
-     * @param name         - the name of the player
-     * @param score        - the player's score
+     * @param name  - the name of the player
+     * @param score - the player's score
      */
     @Override
     public void addHighScore(String name, int score) {
-        if(!validName(name)){
+        if (!validName(name)) {
             return;
         }
 
@@ -151,29 +151,50 @@ class ScoreboardFileManager implements ScoreboardRepository {
         }
     }
 
-
     /**
-     * Retrieves all the highscores that this object has access to
+     * Retrieves all the scores that this object has access to
      *
-     * Implements method in ScoreboardRepository
-     * @return a list of all the high scores in the form of a [name, score] tuple
+     * @return a list of all the low scores in the form of a [name, score] tuple
      */
-    @Override
-    public List<Pair<String, Integer>> getHighScores(){
+    private List<Pair<String, Integer>> getAllScores() {
         List<String> lines;
-        try{
+        try {
             lines = readLines();
 
             return getPairsFromLines(lines);
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             Log.e(TAG, "Couldn't open file " + highscoreFile.getName());
             return null;
         }
     }
 
     /**
+     * Retrieves all the high scores that this object has access to
+     * <p>
+     * Implements method in ScoreboardRepository
+     *
+     * @return a list of all the high scores in the form of a [name, score] tuple
+     */
+    @Override
+    public List<Pair<String, Integer>> getHighScores() {
+        return getAllScores();
+    }
+
+    /**
+     * Retrieves all the low scores that this object has access to
+     * <p>
+     * Implements method in ScoreboardRepository
+     *
+     * @return a list of all the low scores in the form of a [name, score] tuple in increasing order
+     */
+    @Override
+    public List<Pair<String, Integer>> getLowScores() {
+        return getAllScores();
+    }
+
+    /**
      * Return whether or not the given string is a valid name to use for recording highscores
+     *
      * @param name - the name to check
      * @return whether or not the given name can be used to record a highscore
      */
