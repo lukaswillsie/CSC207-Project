@@ -41,7 +41,7 @@ public class CowsBullsStatsManager {
         return statsManager.getStat(Statistic.NUMBER_OF_GUESSES);
     }
 
-    public int getTimeTake(){
+    public int getTimeTaken(){
         return statsManager.getStat(Statistic.TIME_TAKEN);
     }
 }

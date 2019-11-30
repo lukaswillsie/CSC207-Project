@@ -33,7 +33,13 @@ import com.example.game.services.stats.StatsManagerBuilder;
 
 import java.util.ArrayList;
 
+import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_1_WIN_RATE;
+import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER1_LONGEST_STREAK;
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
+import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES;
+import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_1_TIME_TAKEN;
+import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES;
+import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_2_TIME_TAKEN;
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_TURN;
 import static java.security.AccessController.getContext;
 
@@ -51,7 +57,6 @@ public class CowsBullsActivity extends AppCompatActivity {
 
     //The object this class will use to manage multiplayer data if necessary
     private MultiplayerDataManager multiplayerDataManager;
-
 
     //If multiplayer = true, tells this activity whether the game being played is for player 1
     //or player 2
@@ -155,6 +160,7 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public void checkGuess(View view) {
         currentGuess = guessInput();
+        Intent intent;
 
         if (gameManager.checkGuess(currentGuess)) {
             Guess guessArray = new Guess(currentGuess);
@@ -173,8 +179,19 @@ public class CowsBullsActivity extends AppCompatActivity {
                 cowsBullsStatsManager.update(seconds, numberOfGuesses);
 
                 if (multiplayer) {
-                    Intent intent = new Intent(this, CowsBullsMidMultiplayerActivity.class);
+                    if (player1Turn) {
+                        intent = new Intent(this, CowsBullsMidMultiplayerActivity.class);
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES, cowsBullsStatsManager.getNumberOfGuesses());
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_1_TIME_TAKEN, cowsBullsStatsManager.getTimeTaken());
+                    } else {
+                        intent = new Intent(this, CowsBullsMutliplayerFinishActivity.class);
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES, cowsBullsStatsManager.getNumberOfGuesses());
+                        multiplayerDataManager.setMultiplayerData(COWS_BULLS_PLAYER_2_TIME_TAKEN, cowsBullsStatsManager.getTimeTaken());
+                    }
+                } else {
+                    intent = new Intent(this, CowsBullsFinishActivity.class);
                 }
+                startActivity(intent);
             }
 
             TextView currGuess = new TextView(CowsBullsActivity.this);
