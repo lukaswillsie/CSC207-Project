@@ -54,6 +54,8 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
 
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
+        multiplayerDataManager.setMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_TURN, 1);
+
         String player1Username = MultiplayerGameData.getPlayer1Username();
         String player2Username = MultiplayerGameData.getPlayer2Username();
 
