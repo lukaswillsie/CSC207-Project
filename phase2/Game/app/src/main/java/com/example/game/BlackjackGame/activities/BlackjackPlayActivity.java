@@ -22,6 +22,7 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
+import com.example.game.services.scoreboard.BestScoreSelector;
 
 import java.text.DecimalFormat;
 
@@ -122,7 +123,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             // statsRecorder according to who's playing. This means that if they break their longest
             // streak record, it gets updated regardless of whether they're playing singleplayer
             // or multiplayer
-            if (multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1) {
+            if (player1Turn) {
                 statsRecorder = new BlackjackStatsRecorder(this, MultiplayerGameData.getPlayer1Username());
                 username = MultiplayerGameData.getPlayer1Username();
             } else {
@@ -200,17 +201,21 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
         }
 
-        BlackjackPlayActivityPresenter presenter = new BlackjackPlayActivityPresenter();
+        BestScoreSelector highScoreSelector = new BestScoreSelector(ScoreboardRepository.Game.BLACKJACK);
 
-        if (presenter.shouldPrompt(statsRecorder.getScore())) {
-            promptForHighScore(intent, statsRecorder.getScore());
+        int score = statsRecorder.getScore();
+
+        if (highScoreSelector.shouldPrompt(score)) {
+            promptForHighScore(intent, score);
         } else {
-            startActivity(intent);
+            // TODO!!!
         }
+
+
     }
 
     /**
-     * Prompt the user to save their highscore, and start the given intent after they've made a decision
+     * Prompt the user to save their high score, and start the given intent after they've made a decision.
      *
      * @param intent - the intent to start after prompting the user
      * @param score  - the score to prompt the user to save
@@ -222,7 +227,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
                 .setNegativeButton("NO", null)
                 .create();
 
-        String message = "You just set a highscore! Type your name below to save your score :  " + score;
+        String message = "You just set a high score! Type your name below to save your score :  " + score;
         final String warning = "That is an invalid name! Please try again.";
 
         dialog.setMessage(message);
@@ -263,13 +268,13 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     }
 
     /**
-     * Record the given highscore under the given name
+     * Record the given high score under the given name
      *
      * @param name  - the name to record along with the score
-     * @param score - the highscore to save under the given name
+     * @param score - the high score to save under the given name
      */
     private void recordHighScore(String name, int score) {
-        highscoreManager.addHighScore(name, score);
+        highscoreManager.addScore(name, score);
     }
 
     /**

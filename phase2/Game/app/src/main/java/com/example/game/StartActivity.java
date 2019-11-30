@@ -68,4 +68,9 @@ public class StartActivity extends AppCompatActivity {
             Log.e("StartActivity", "Failed to set root directory path");
         }
     }
+
+    @Override
+    public void onBackPressed(){
+
+    }
 }

@@ -30,23 +30,16 @@ public class GameStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity);
+        boolean firstPlayersTurn = gameManager.getIsFirstPlayersTurn();
 
-        // If it is currently on MULTIPLAYER mode and it is the first player's turn.
-        if (GameData.MULTIPLAYER && gameManager.getMultiplayerKeepPlaying()) {
+        if (GameData.MULTIPLAYER && firstPlayersTurn) {
             updateTurnText(MultiplayerGameData.getPlayer1Username());
             gameManager.resetGameManager();
-            gameManager.setMultiplayerMode(true);
-        }
-        // If it is currently on MULTIPLAYER mode and it is the second player's turn.
-        else if (GameData.MULTIPLAYER && !gameManager.getMultiplayerKeepPlaying()) {
+        } else if (GameData.MULTIPLAYER && !firstPlayersTurn) {
             updateTurnText(MultiplayerGameData.getPlayer2Username());
             gameManager.startNewGame();
-            gameManager.setMultiplayerMode(true);
         }
-        // If it is currently on SINGLE player mode.
-        else {
-            gameManager.setMultiplayerMode(false);
-        }
+
         this.displayResumeButton();
         this.setNumRounds();
     }
@@ -115,9 +108,7 @@ public class GameStartActivity extends AppCompatActivity {
      */
     private void updateTurnText(String player) {
         String turnText;
-
         turnText = "It is " + formatName(player) + "'s turn.";
-
         ((TextView) findViewById(R.id.turnText)).setText(turnText);
     }
 
@@ -128,7 +119,6 @@ public class GameStartActivity extends AppCompatActivity {
         if (Character.isAlphabetic(name.charAt(0))) {
             return name.substring(0, 1).toUpperCase() + name.substring(1);
         }
-
         return name;
     }
 

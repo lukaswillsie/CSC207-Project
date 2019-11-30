@@ -67,7 +67,7 @@ public class GameManager {
      * @return Boolean indicating whether user has made the right guess
      */
     public boolean gameEnd() {
-        return (getResults()[1] == 5);
+        return (getResults()[1] == answerSize);
     }
 
     /**
@@ -80,4 +80,7 @@ public class GameManager {
         return (currentGuess.length() == answerSize & !currentGuess.equals("null"));
     }
 
+    public int getAnswerSize() {
+        return answerSize;
+    }
 }

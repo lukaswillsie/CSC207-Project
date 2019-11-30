@@ -29,12 +29,13 @@ public class CowsBullsStatsManager {
     public void update(int seconds, int numberOfGuesses) {
 
         statsManager.setStat(Statistic.TIME_TAKEN, seconds);
+        statsManager.setStat(Statistic.NUMBER_OF_GUESSES, numberOfGuesses);
+
         int minTime = statsManager.getStat(Statistic.QUICKEST_TIME);
         if (seconds < minTime || minTime == 0) {
             statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
         }
-        statsManager.setStat(Statistic.NUMBER_OF_GUESSES, numberOfGuesses);
-
     }
+
 }
 
