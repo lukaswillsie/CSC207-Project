@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,6 @@ import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.stats.StatsManager;
 import com.example.game.services.stats.StatsManagerBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,6 +46,11 @@ public class GameFinishActivity extends AppCompatActivity {
         currentGame.setIsFinished();
 
         this.updateStatistics();
+
+
+        if(this.CheckForHighScore(currentGame.getPoints())){
+            this.askForHighScore();
+        }
 
         ((TextView) findViewById(R.id.points16)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView) findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.getNumOfGuess()));
@@ -217,7 +222,15 @@ public class GameFinishActivity extends AppCompatActivity {
             return local < 10;
         }
     }
-
+    /**
+     * Ask user to type in the score to store it our repository.
+     *
+     **/
+    public void askForHighScore(){
+            findViewById(R.id.highScoreCongrats).setVisibility(View.VISIBLE);
+            findViewById(R.id.typeYourNameWindow).setVisibility(View.VISIBLE);
+            findViewById(R.id.saveScore).setVisibility(View.VISIBLE);
+    }
     //
     /**
      * Record the given highscore under the given name
@@ -229,6 +242,18 @@ public class GameFinishActivity extends AppCompatActivity {
      */
     private void recordHighScore(String name, int score) {
         GuessNumHighscoreManager.addHighScore(name, score);
+    }
+
+    /**
+     * Button to submit the name of the user if they hit a highscore.
+     */
+    //IDK how to save the score here, so as soon as we press save, the texted "Your name has been
+    //added to a scoreBoard should appear and save buttons with all the text in the bottom should disappear.
+    //something to do with submit save idk.
+    public void saveScore(View view){
+        String name = ((EditText)(findViewById(R.id.typeNamePLease))).getText().toString();
+        recordHighScore(name, gameManager.getCurrentGame().getPoints());
+
     }
 
     /**
