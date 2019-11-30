@@ -4,7 +4,6 @@ import android.widget.TextView;
 
 import com.example.game.BlackjackGame.domain.Player;
 import com.example.game.BlackjackGame.domain.PlayerInterpreter;
-import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.game_logic.InterfaceManager;
 
 /**
@@ -16,6 +15,9 @@ public class BlackjackInterfaceManager implements InterfaceManager {
      */
     private PlayerInterpreter userInterpreter;
 
+    /**
+     * The object that will be used to update the entity on the interface displaying the user's hand
+     */
     private PlayerHandView userView;
 
     /**
@@ -23,6 +25,9 @@ public class BlackjackInterfaceManager implements InterfaceManager {
      */
     private PlayerInterpreter dealerInterpreter;
 
+    /**
+     * The object that will be used to update the entity on the interface displaying the dealer's hand
+     */
     private PlayerHandView dealerView;
 
     /**
@@ -42,11 +47,14 @@ public class BlackjackInterfaceManager implements InterfaceManager {
 
     /**
      * Update the interface by delegating to userInterpreter and dealerInterpreter
+     *
+     * @param playerTurn - a boolean representing whether or not it's the player's turn (if it is,
+     *                   then the dealer's first card needs to be hidden by the rules of Blackjack)
      */
-    public void update() {
+    public void update(boolean playerTurn) {
         userView.updateView(userInterpreter.playerHandStringRep());
 
-        if (BlackjackLevelManager.playerTurn) {
+        if (playerTurn) {
             dealerView.updateView(dealerInterpreter.playerHandHideFirstCardStringRep());
         } else {
             dealerView.updateView(dealerInterpreter.playerHandStringRep());

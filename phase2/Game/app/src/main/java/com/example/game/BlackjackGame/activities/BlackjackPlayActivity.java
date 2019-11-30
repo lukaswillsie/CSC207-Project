@@ -3,7 +3,6 @@ package com.example.game.BlackjackGame.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -207,8 +206,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
 
         if (presenter.shouldPrompt(statsRecorder.getScore())) {
             promptForHighScore(intent, statsRecorder.getScore());
-        }
-        else {
+        } else {
             startActivity(intent);
         }
     }

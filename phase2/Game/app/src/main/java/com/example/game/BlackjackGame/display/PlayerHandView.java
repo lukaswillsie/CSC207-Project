@@ -3,10 +3,10 @@ package com.example.game.BlackjackGame.display;
 import android.widget.TextView;
 
 /**
- * Essentially a wrapper class for TextView that acts as a go-between for PlayerInterpreter
+ * Essentially a wrapper class for TextView that acts as a go-between for BlackjackInterfaceManager
  * and the TextViews on the interface
  */
-public class PlayerHandView {
+class PlayerHandView {
     /**
      * The TextView this object will be updating
      */
@@ -17,7 +17,7 @@ public class PlayerHandView {
      *
      * @param view - the TextView that this PlayerHandView will be updating
      */
-    public PlayerHandView(TextView view) {
+    PlayerHandView(TextView view) {
         this.view = view;
     }
 

@@ -4,9 +4,23 @@ import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerIntData;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 
+/**
+ * This class takes care of technical, use-case related tasks for MultiplayerEndGameActivity
+ * <p>
+ * Currently, this exclusively comprises resetting blackjack multiplayer data
+ */
 public class MultiplayerEndGameActivityPresenter {
+    /**
+     * The MultiplayerDataManager that this class will use to manage multiplayer data
+     */
     private MultiplayerDataManager multiplayerDataManager;
 
+    /**
+     * Create a new MultiplayerEndGameActivityPresenter
+     *
+     * @param multiplayerDataManager - the object that this class should use to edit and access
+     *                               multiplayer data
+     */
     public MultiplayerEndGameActivityPresenter(MultiplayerDataManager multiplayerDataManager) {
         this.multiplayerDataManager = multiplayerDataManager;
     }

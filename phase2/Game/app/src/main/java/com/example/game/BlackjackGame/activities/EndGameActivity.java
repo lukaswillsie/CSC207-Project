@@ -15,7 +15,6 @@ import com.example.game.data.GameConstants;
  * The activity displayed after the user finishes a round of Blackjack
  */
 public class EndGameActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

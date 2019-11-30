@@ -81,16 +81,6 @@ public class BlackjackStatsRecorder {
     }
 
     /**
-     * Record that a player tied a round
-     */
-    public void playerTie() {
-        roundsPlayed++;
-        currentStreak = 0;
-        score += baseScore;
-        multiplier = 1;
-    }
-
-    /**
      * Record that the player lost a round
      */
     public void playerLose() {

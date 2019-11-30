@@ -11,7 +11,7 @@ public class BlackjackLevelManager {
     /**
      * Boolean representing whether it is the player's turn in the game
      */
-    public static boolean playerTurn = false;
+    private boolean playerTurn = false;
 
     /**
      * A PlayerManager object representing the user of the app
@@ -96,7 +96,7 @@ public class BlackjackLevelManager {
      */
     public void play() {
         playerTurn = true;
-        interfaceManager.update();
+        interfaceManager.update(playerTurn);
     }
 
     /**
@@ -124,11 +124,11 @@ public class BlackjackLevelManager {
         if (playerTurn) {
             user.deal(deck.deal());
             if (user.computeBlackJackValue() > 21) {
-                interfaceManager.update();
+                interfaceManager.update(playerTurn);
                 endHand();
                 return;
             }
-            interfaceManager.update();
+            interfaceManager.update(playerTurn);
         }
     }
 
@@ -146,11 +146,10 @@ public class BlackjackLevelManager {
     private void endHand() {
         numHandsPlayed++;
         playerTurn = false;
-        interfaceManager.update();
         while (dealerHit()) {
             dealer.deal(deck.deal());
         }
-        interfaceManager.update();
+        interfaceManager.update(playerTurn);
 
         int userHand = user.computeBlackJackValue();
         int dealerHand = dealer.computeBlackJackValue();

@@ -21,7 +21,14 @@ import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_2_WIN
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER1_LONGEST_STREAK;
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER2_LONGEST_STREAK;
 
+/**
+ * The page shown after both players have taken their turn in a game of Blackjack multiplayer
+ */
 public class MultiplayerEndGameActivity extends AppCompatActivity {
+    /**
+     * This Activity's presenter, which handles the task of resetting this game's multiplayer data
+     * after the user clicks "Main Menu"
+     */
     private MultiplayerEndGameActivityPresenter presenter;
 
     @Override
@@ -33,6 +40,11 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
         initializeTextViews();
     }
 
+    /**
+     * Move to the main menu
+     *
+     * @param view - the View that called this object
+     */
     public void mainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         presenter.resetMultiplayerData();
