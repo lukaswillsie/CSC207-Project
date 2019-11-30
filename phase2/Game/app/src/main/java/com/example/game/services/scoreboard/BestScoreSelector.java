@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * A class that selects the helps select the best scores for a game.
  */
-class BestScoreSelector {
+public class BestScoreSelector {
 
     // The Game type for this game.
     private ScoreboardRepository.Game game;
@@ -20,7 +20,7 @@ class BestScoreSelector {
      *
      * @param game the game to select the best score from
      */
-    public BestScoreSelector(ScoreboardRepository.Game game, boolean high) {
+    public BestScoreSelector(ScoreboardRepository.Game game) {
         this.game = game;
     }
 
