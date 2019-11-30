@@ -107,13 +107,13 @@ public class CowsBullsActivity extends AppCompatActivity {
 
         if (difficulty == 0) {
             gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
-            guess.setFilters(new InputFilter[] {new InputFilter.LengthFilter(5)});
-        } else if (difficulty == 1){
+            guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(5)});
+        } else if (difficulty == 1) {
             gameManager = new GameManager(6, settingsManager.getSetting(Setting.ALPHABET));
-            guess.setFilters(new InputFilter[] {new InputFilter.LengthFilter(6)});
+            guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
         } else {
             gameManager = new GameManager(7, settingsManager.getSetting(Setting.ALPHABET));
-            guess.setFilters(new InputFilter[] {new InputFilter.LengthFilter(7)});
+            guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
         }
 
 

@@ -2,6 +2,7 @@ package com.example.game.CowsBullsGame.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 
@@ -36,6 +37,11 @@ public class CowsBullsStartActivity extends AppCompatActivity {
      */
     public void toGame(View view) {
         Intent intent = new Intent(this, CowsBullsActivity.class);
+        startActivity(intent);
+    }
+
+    public void toDifficultySetting(View view){
+        Intent intent = new Intent(this, CowsBullsSelectDifficultyActivity.class);
         startActivity(intent);
     }
 }

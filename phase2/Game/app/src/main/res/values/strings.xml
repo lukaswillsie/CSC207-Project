@@ -107,5 +107,6 @@
     <string name="insaneButton">Insane</string>
     <string name="currDiff">Current Difficulty Level:</string>
     <string name="defaultDiff">Easy</string>
+    <string name="toDifficultySetting">Settings</string>
 
 </resources>
