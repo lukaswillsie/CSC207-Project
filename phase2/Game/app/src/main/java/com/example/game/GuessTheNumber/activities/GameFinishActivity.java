@@ -14,6 +14,7 @@ import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
+import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Statistic;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
@@ -38,17 +39,12 @@ public class GameFinishActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_finish_activity);
-
         GuessNumHighscoreManager = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
-
         Game currentGame = gameManager.getCurrentGame();
-
         currentGame.setIsFinished();
-
         this.updateStatistics();
 
-
-        if(this.CheckForHighScore(currentGame.getPoints())){
+        if (this.CheckForHighScore(currentGame.getPoints())) {
             this.askForHighScore();
         }
 
@@ -57,48 +53,26 @@ public class GameFinishActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.currentRoundText)).setText(String.valueOf(gameManager.getCurrentRound()));
         ((TextView) findViewById(R.id.totalRoundsText)).setText(String.valueOf(gameManager.getRoundsToPlay()));
 
-        // The current user playing still hasn't finished their rounds of GuessTheNumber yet.
         if (gameManager.getKeepPlaying()) {
             this.inverseVisibility();
             hideNextPlayerButton();
 
-        /*
-         The current user finished their rounds of GuessTheNumber. In single player mode, the user
-         is done playing their session of GuessTheNumber and gets the option to replay or go back to
-         main menu. In multiplayer mode, if the first user is done playing their rounds, it is the
-         next player's turn. If the second user is done playing their rounds, then they have the
-         option to return to the main menu.
-         */
         } else {
+            boolean isFirstPlayersTurn = gameManager.getIsFirstPlayersTurn();
 
-            // The first player finished their rounds so it is the next player's turn to play.
-            if (gameManager.getMultiplayerMode() && gameManager.getMultiplayerKeepPlaying()) {
+            if (GameData.MULTIPLAYER && isFirstPlayersTurn) {
                 showNextPlayerButton();
                 hideAllButtons();
-                gameManager.changeMultiplayerKeepPlaying();
-            }
-
-            /*
-            The second player finished their rounds so the multiplayer game ends, and the users
-            are given the option to return to main menu.
-            */
-            else if (gameManager.getMultiplayerMode() && !gameManager.getMultiplayerKeepPlaying()) {
+                gameManager.changeIsFirstPlayersTurn();
+            } else if (GameData.MULTIPLAYER && !isFirstPlayersTurn) {
                 hideNextPlayerButton();
-                findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
-                findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
-                findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
+                endMultiplayerGame();
                 gameManager.resetGameManager();
-            }
-
-            /* It is currently not in multiplayer mode, so the user gets the option to go back to
-            main menu or to play again.
-            */
-            else {
+            } else {
                 this.reverseVisibility();
                 hideNextPlayerButton();
             }
 
-            // Reset currentRound attribute because all the rounds have been played.
             gameManager.resetCurrentRounds();
         }
     }
@@ -188,13 +162,23 @@ public class GameFinishActivity extends AppCompatActivity {
      * guess, we update their statistics.
      */
     public void updateStatistics() {
-        String username = GameData.USERNAME;
+        String username;
+        if (GameData.MULTIPLAYER) {
+            boolean isFirstPlayersTurn = gameManager.getIsFirstPlayersTurn();
+            if (isFirstPlayersTurn) {
+                username = MultiplayerGameData.getPlayer1Username();
+            } else {
+                username = MultiplayerGameData.getPlayer2Username();
+            }
+        } else {
+            username = GameData.USERNAME;
+        }
 
         StatsManager statsManager = new StatsManagerBuilder().build(this, username);
         int guesses = gameManager.getCurrentGame().getNumOfGuess();
 
         int userBest = statsManager.getStat(Statistic.FEWEST_GUESSES);
-        if (guesses < userBest){
+        if (guesses < userBest) {
             statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
         }
     }
@@ -205,16 +189,14 @@ public class GameFinishActivity extends AppCompatActivity {
      *
      * @param score - score, that user just got, after finishing the round.
      */
-    private boolean CheckForHighScore(int score){
+    private boolean CheckForHighScore(int score) {
         List<Pair<String, Integer>> allScores = GuessNumHighscoreManager.getHighScores(10);
-        if (allScores.size() <10)
-        {
+        if (allScores.size() < 10) {
             return true;
-        }
-        else{
+        } else {
             //Keep track of how many elements are greater, than our score are already in the ScoreBoard.
             int local = 0;
-            for(Pair<String, Integer> temp: allScores){
+            for (Pair<String, Integer> temp : allScores) {
                 if (temp.second >= score) {
                     local++;
                 }
@@ -222,23 +204,24 @@ public class GameFinishActivity extends AppCompatActivity {
             return local < 10;
         }
     }
+
     /**
      * Ask user to type in the score to store it our repository.
-     *
      **/
-    public void askForHighScore(){
-            findViewById(R.id.highScoreCongrats).setVisibility(View.VISIBLE);
-            findViewById(R.id.typeYourNameWindow).setVisibility(View.VISIBLE);
-            findViewById(R.id.saveScore).setVisibility(View.VISIBLE);
+    public void askForHighScore() {
+        findViewById(R.id.highScoreCongrats).setVisibility(View.VISIBLE);
+        findViewById(R.id.typeYourNameWindow).setVisibility(View.VISIBLE);
+        findViewById(R.id.saveScore).setVisibility(View.VISIBLE);
     }
     //
+
     /**
      * Record the given highscore under the given name
      *
      * @param name  - the name to record along with the score
      * @param score - the highscore to save under the given name
-     *
-     * Precondition:
+     *              <p>
+     *              Precondition:
      */
     private void recordHighScore(String name, int score) {
         GuessNumHighscoreManager.addHighScore(name, score);
@@ -250,10 +233,19 @@ public class GameFinishActivity extends AppCompatActivity {
     //IDK how to save the score here, so as soon as we press save, the texted "Your name has been
     //added to a scoreBoard should appear and save buttons with all the text in the bottom should disappear.
     //something to do with submit save idk.
-    public void saveScore(View view){
-        String name = ((EditText)(findViewById(R.id.typeNamePLease))).getText().toString();
+    public void saveScore(View view) {
+        String name = ((EditText) (findViewById(R.id.typeNamePLease))).getText().toString();
         recordHighScore(name, gameManager.getCurrentGame().getPoints());
 
+    }
+
+    /**
+     * Hide nextRoundButton, playAgainButton and show mainMenuButton when multiplayer game ends.
+     */
+    public void endMultiplayerGame() {
+        findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
     }
 
     /**

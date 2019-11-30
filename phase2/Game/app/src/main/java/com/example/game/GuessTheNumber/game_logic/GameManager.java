@@ -2,9 +2,6 @@ package com.example.game.GuessTheNumber.game_logic;
 
 import com.example.game.GuessTheNumber.domain.Game;
 import com.example.game.data.GameData;
-import com.example.game.data.MultiplayerGameData;
-import com.example.game.data.Setting;
-import com.example.game.services.stats.StatsManager;
 
 /**
  * This class handles all the logic of the whole GAME and all the rounds user want to play.
@@ -29,7 +26,7 @@ public class GameManager {
 
     private boolean multiplayerMode;
 
-    private boolean multiplayerKeepPlaying;
+    private boolean isFirstPlayersTurn;
 
     /**
      * Create a gameManager
@@ -43,13 +40,7 @@ public class GameManager {
         startNewGame();
         this.keepPlaying = true;
         this.currentRound = 0;
-        this.multiplayerKeepPlaying = true;
-
-        if (GameData.MULTIPLAYER) {
-            this.multiplayerMode = true;
-        } else {
-            this.multiplayerMode = false;
-        }
+        this.isFirstPlayersTurn = true;
     }
 
     /**
@@ -100,25 +91,17 @@ public class GameManager {
 
     /**
      * Returns true if the user is currently on multiplayer mode and false otherwise.
-     */
-    public boolean getMultiplayerMode() {
-        return this.multiplayerMode;
-    }
-
-    public void setMultiplayerMode(boolean b) {
-        this.multiplayerMode = b;
-    }
-
-    /**
+     * <p>
+     * /**
      * Return true if it is currently on multiplayer mode and it is the first user's turn, and
      * false otherwise.
      */
-    public boolean getMultiplayerKeepPlaying() {
-        return this.multiplayerKeepPlaying;
+    public boolean getIsFirstPlayersTurn() {
+        return this.isFirstPlayersTurn;
     }
 
-    public void changeMultiplayerKeepPlaying() {
-        this.multiplayerKeepPlaying = !this.multiplayerKeepPlaying;
+    public void changeIsFirstPlayersTurn() {
+        this.isFirstPlayersTurn = !this.isFirstPlayersTurn;
     }
 
 
