@@ -23,6 +23,14 @@ public interface ScoreboardRepository {
     void addHighScore(String name, int score);
 
     /**
+     * Record that a player with given name has achieved the given score
+     *
+     * @param name  - the name of the player
+     * @param score - the player's score
+     */
+    void addLowScore(String name, int score);
+
+    /**
      * Retrieves the *numberHighScores* highest scores, or all of the high scores if there are fewer
      * than *numberHighScores* in total, and returns them as an array of pairs of the form
      * [name, score], in decreasing order of score.
