@@ -41,17 +41,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/numHandsDialogue"
-        app:layout_constraintEnd_toEndOf="@+id/fewestGuess"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fewestGuess" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toEndOf="@+id/numHandsDialogue" />
 
     <TextView
         android:id="@+id/fewestGuess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/guessDialogue"
-        app:layout_constraintStart_toEndOf="@+id/guessDialogue" />
+        app:layout_constraintEnd_toEndOf="@+id/longestStreak"
+        app:layout_constraintStart_toStartOf="@+id/longestStreak" />
 
     <TextView
         android:id="@+id/quickestTime"
