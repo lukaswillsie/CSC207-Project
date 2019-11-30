@@ -73,7 +73,7 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
         player1TurnsTaken.setText(String.format("%s", player1Turns.toString()));
         player2TurnsTaken.setText(String.format("%s", player2Turns.toString()));
 
-        if (player1Time == player2Time & player1Turns == player2Turns) {
+        if (player1Time.equals(player2Time) & player1Turns.equals(player2Turns)) {
             winMessage.setText(String.format("%s is equally as smart or equally as dumb as %s!", player1Username, player2Username));
         } else if (player1Time > player2Time & player1Turns > player2Turns) {
             winMessage.setText(String.format("Congratulations %s you are by and far better than %s!", player2Username, player1Username));
@@ -83,9 +83,9 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
             winMessage.setText(String.format("%s reasoned faster, whereas %s was more efficient with his reasoning!", player2Username, player1Username));
         } else if (player1Time < player2Time & player1Turns > player2Turns) {
             winMessage.setText(String.format("%sreasoned faster, whereas %swas more efficient with his reasoning!", player1Username, player2Username));
-        } else if (player1Time == player2Time & player1Turns > player2Turns) {
+        } else if (player1Time.equals(player2Time) & player1Turns > player2Turns) {
             winMessage.setText(String.format("%s wins because of better reasoning!", player2Username));
-        } else if (player1Time == player2Time & player1Turns < player2Turns) {
+        } else if (player1Time.equals(player2Time) & player1Turns < player2Turns) {
             winMessage.setText(String.format("%s wins because of better reasoning!", player1Username));
         } else if (player1Time > player2Time) {
             winMessage.setText(String.format("%s wins because of faster reasoning!", player2Username));
