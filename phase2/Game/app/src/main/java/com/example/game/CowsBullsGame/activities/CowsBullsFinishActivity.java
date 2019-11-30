@@ -1,5 +1,6 @@
 package com.example.game.CowsBullsGame.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,18 +23,19 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
     /**
      * TextView display for user's time taken to guess the number
      */
-    TextView time;
+    private TextView time;
 
     /**
      * TextView display for user's number of guesses taken to guess the number
      */
-    TextView numGuesses;
+    private TextView numGuesses;
 
     /**
      * StatsManager object to retrieve and set stats for user
      */
-    StatsManager statsManager;
+    private StatsManager statsManager;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,7 +44,7 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cows_bulls_finish);
 
         time = findViewById(R.id.time);
-        time.setText(((Integer) statsManager.getStat(Statistic.TIME_TAKEN)).toString() + " seconds");
+        time.setText(String.format("%s seconds", ((Integer) statsManager.getStat(Statistic.TIME_TAKEN)).toString()));
 
         numGuesses = findViewById(R.id.numGuesses);
         numGuesses.setText(((Integer) statsManager.getStat(Statistic.NUMBER_OF_GUESSES)).toString());
