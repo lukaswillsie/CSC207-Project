@@ -1,4 +1,4 @@
-package com.example.game.BlackjackGame.services;
+package com.example.game.BlackjackGame.activities;
 
 import com.example.game.data.MultiplayerDoubleData;
 import com.example.game.data.MultiplayerIntData;
@@ -9,7 +9,7 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManager;
  * <p>
  * Currently, this exclusively comprises resetting blackjack multiplayer data
  */
-public class MultiplayerEndGameActivityPresenter {
+class MultiplayerEndGameActivityPresenter {
     /**
      * The MultiplayerDataManager that this class will use to manage multiplayer data
      */
@@ -21,7 +21,7 @@ public class MultiplayerEndGameActivityPresenter {
      * @param multiplayerDataManager - the object that this class should use to edit and access
      *                               multiplayer data
      */
-    public MultiplayerEndGameActivityPresenter(MultiplayerDataManager multiplayerDataManager) {
+    MultiplayerEndGameActivityPresenter(MultiplayerDataManager multiplayerDataManager) {
         this.multiplayerDataManager = multiplayerDataManager;
     }
 
@@ -29,7 +29,7 @@ public class MultiplayerEndGameActivityPresenter {
      * Reset the multiplayer data being stored so that another game of multiplayer Blackjack can be
      * played from a fresh start
      */
-    public void resetMultiplayerData() {
+    void resetMultiplayerData() {
         // Reset the player turn value to 1 so that if another game is played, we start with player 1
         // again
         multiplayerDataManager.setMultiplayerData(MultiplayerIntData.BLACKJACK_PLAYER_TURN, 1);

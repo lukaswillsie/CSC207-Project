@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
-import com.example.game.BlackjackGame.services.BlackjackPlayActivityPresenter;
 import com.example.game.BlackjackGame.services.BlackjackStatsRecorder;
 import com.example.game.R;
 import com.example.game.data.GameData;

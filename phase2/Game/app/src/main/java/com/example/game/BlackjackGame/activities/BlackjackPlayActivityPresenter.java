@@ -1,4 +1,4 @@
-package com.example.game.BlackjackGame.services;
+package com.example.game.BlackjackGame.activities;
 
 import android.util.Pair;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * A presenter class for BlackjackPlayActivity that encapsulates use cases such as whether or not
  * a user should be asked to save a certain score
  */
-public class BlackjackPlayActivityPresenter {
+class BlackjackPlayActivityPresenter {
     /**
      * Returns whether or not the user should be prompted to save the given score, i.e. if it's high
      * enough to justify doing so
@@ -19,7 +19,7 @@ public class BlackjackPlayActivityPresenter {
      * @param score - the score to check
      * @return whether or not the game should prompt the user to save the given score
      */
-    public boolean shouldPrompt(int score) {
+    boolean shouldPrompt(int score) {
         ScoreboardRepository highscoreManager = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.BLACKJACK);
 
         // If the given score would be in the top 10, return true
