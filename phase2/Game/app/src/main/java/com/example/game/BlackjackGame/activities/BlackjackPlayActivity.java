@@ -301,7 +301,6 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             buttonManager.makeVisible(END_GAME_BUTTON_ID);
         }
 
-        // TODO: Consider creating TextViewManager class to do what ButtonManager does except for TextViews
         TextView endGameTextView = findViewById(END_GAME_TEXT_ID);
         endGameTextView.setText(endGameText);
         endGameTextView.setVisibility(View.VISIBLE);
@@ -318,7 +317,6 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     }
 
     // TODO: Implement this
-
     /**
      * To be called when this class attempts to update a highscore and there is an error
      * <p>

@@ -44,7 +44,6 @@ public class MultiplayerFileDataManager implements MultiplayerDataManager {
      * @param newValue - the new value of the statistic
      */
     @Override
-    // TODO: Consider adding parameter callingClass to notify calling classes of errors
     public void setMultiplayerData(MultiplayerIntData dataType, int newValue) {
         editLine(dataType.getKey(), "" + newValue);
     }

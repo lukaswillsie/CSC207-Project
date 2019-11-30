@@ -17,7 +17,7 @@ import java.util.List;
 
 import static android.graphics.Typeface.BOLD;
 
-public abstract class ScoreboardActivity extends AppCompatActivity implements ScoreboardUpdater {
+public abstract class ScoreboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public abstract class ScoreboardActivity extends AppCompatActivity implements Sc
         TableLayout table = findViewById(R.id.highscoreTable);
 
         if (data.size() == 0) {
-            ((TextView) findViewById(R.id.noHighscoresMessage)).setText(R.string.noHighscoresMessage);
+            ((TextView) findViewById(R.id.noHighscoresMessage)).setText(noDataMessage);
             return;
         }
 
@@ -110,10 +110,5 @@ public abstract class ScoreboardActivity extends AppCompatActivity implements Sc
         score.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
         score.setTypeface(score.getTypeface(), BOLD);
         score.setGravity(Gravity.END);
-    }
-
-    @Override
-    public void scoreboardStoreError() {
-        // TODO: Implement this
     }
 }
