@@ -45,6 +45,7 @@
         <activity android:name=".GuessTheNumber.activities.GameFinishActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackMidMultiplayerActivity" />
         <activity android:name=".BlackjackGame.activities.MultiplayerEndGameActivity" />
+        <activity android:name=".StatsLocalScoreBoardActivity" />
     </application>
 
 </manifest>
