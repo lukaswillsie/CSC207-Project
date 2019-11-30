@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CowsBullsGame.activities.CowsBullsFinishActivity">
+    tools:context=".CowsBullsGame.activities.CowsBullsMidMultiplayerActivity">
 
     <TextView
         android:id="@+id/timeTaken"
@@ -70,12 +70,12 @@
         app:layout_constraintTop_toBottomOf="@+id/congrats" />
 
     <Button
-        android:id="@+id/mainMenu"
+        android:id="@+id/menu"
         android:layout_width="140dp"
         android:layout_height="52dp"
         android:layout_marginTop="184dp"
         android:layout_marginBottom="184dp"
-        android:onClick="menu"
+        android:onClick="nextTurn"
         android:text="@string/blackjackPlayer2TurnButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

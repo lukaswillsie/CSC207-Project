@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/congrats" />
 
     <Button
-        android:id="@+id/mainMenu"
+        android:id="@+id/menu"
         android:layout_width="111dp"
         android:layout_height="47dp"
         android:layout_marginTop="184dp"
