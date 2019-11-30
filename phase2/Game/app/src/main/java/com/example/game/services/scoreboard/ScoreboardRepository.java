@@ -19,9 +19,8 @@ public interface ScoreboardRepository {
      *
      * @param name         - the name of the player
      * @param score        - the player's score
-     * @param callingClass - the class trying to update the high score
      */
-    void addHighScore(String name, int score, ScoreboardUpdater callingClass);
+    void addHighScore(String name, int score);
 
     /**
      * Retrieves the *numberHighScores* highest scores, or all the high scores if there are fewer

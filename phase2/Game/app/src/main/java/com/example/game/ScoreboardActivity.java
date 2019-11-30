@@ -11,8 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.game.services.scoreboard.ScoreboardUpdater;
-
 import java.util.List;
 
 import static android.graphics.Typeface.BOLD;

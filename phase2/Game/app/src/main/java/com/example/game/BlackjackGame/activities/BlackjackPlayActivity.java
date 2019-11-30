@@ -23,7 +23,6 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
-import com.example.game.services.scoreboard.ScoreboardUpdater;
 
 import java.text.DecimalFormat;
 
@@ -39,7 +38,7 @@ import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
 /**
  * The page displayed when the user is actually playing a round of Blackjack
  */
-public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage, ScoreboardUpdater {
+public class BlackjackPlayActivity extends AppCompatActivity implements BlackjackPlayPage {
     /**
      * Constants that record the IDs of the various UI elements
      * To be used throughout this level as objects interact with UI elements
@@ -271,7 +270,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
      * @param score - the highscore to save under the given name
      */
     private void recordHighScore(String name, int score) {
-        highscoreManager.addHighScore(name, score, this);
+        highscoreManager.addHighScore(name, score);
     }
 
     /**
@@ -314,16 +313,5 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         statsRecorder.update();
         String scoreText = "Score: " + statsRecorder.getScore();
         ((TextView) findViewById(R.id.blackjackScore)).setText(scoreText);
-    }
-
-    // TODO: Implement this
-    /**
-     * To be called when this class attempts to update a highscore and there is an error
-     * <p>
-     * Implements method in ScoreboardUpdater interface
-     */
-    @Override
-    public void scoreboardStoreError() {
-
     }
 }

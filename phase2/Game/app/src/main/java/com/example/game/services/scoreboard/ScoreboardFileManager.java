@@ -66,10 +66,9 @@ class ScoreboardFileManager implements ScoreboardRepository {
      *
      * @param name         - the name of the player
      * @param score        - the player's score
-     * @param callingClass - the class trying to update the high score
      */
     @Override
-    public void addHighScore(String name, int score, ScoreboardUpdater callingClass) {
+    public void addHighScore(String name, int score) {
         if(!validName(name)){
             return;
         }
@@ -79,7 +78,6 @@ class ScoreboardFileManager implements ScoreboardRepository {
         try {
             pairs = getPairsFromLines(readLines());
             if (pairs == null) {
-                callingClass.scoreboardStoreError();
                 return;
             }
 
@@ -116,7 +114,6 @@ class ScoreboardFileManager implements ScoreboardRepository {
             } catch (IOException ex) {
                 Log.e(TAG, "Couldn't close highscoreStream");
             }
-            callingClass.scoreboardStoreError();
         } catch (IOException e) {
             Log.e(TAG, "Couldn't write to highscoreFile " + highscoreFile.getName());
             try {
@@ -124,8 +121,6 @@ class ScoreboardFileManager implements ScoreboardRepository {
             } catch (IOException ex) {
                 Log.e(TAG, "Couldn't close highscoreStream");
             }
-
-            callingClass.scoreboardStoreError();
         }
     }
 
