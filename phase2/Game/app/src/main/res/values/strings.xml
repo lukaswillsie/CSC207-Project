@@ -98,4 +98,14 @@
     <string name="player2TimeTaken">Player 2 Time Taken:</string>
     <string name="player1TurnsTaken">Player 1 Turns Taken:</string>
     <string name="player2TurnsTaken">Player 2 Turns Taken:</string>
+    <string name="diffBlurb">Please Select the Difficulty Level:</string>
+    <string name="easy">Very Solvable:</string>
+    <string name="medium">Much Harder to Solve:</string>
+    <string name="insane">Practically Impossible to Solve:</string>
+    <string name="easyButton">Easy</string>
+    <string name="mediumButton">Medium</string>
+    <string name="insaneButton">Insane</string>
+    <string name="currDiff">Current Difficulty Level:</string>
+    <string name="defaultDiff">Easy</string>
+
 </resources>
