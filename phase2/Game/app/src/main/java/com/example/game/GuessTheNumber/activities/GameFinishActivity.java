@@ -2,6 +2,7 @@ package com.example.game.GuessTheNumber.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,22 +14,39 @@ import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.Statistic;
+import com.example.game.services.scoreboard.ScoreboardRepository;
+import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.stats.StatsManager;
 import com.example.game.services.stats.StatsManagerBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This activity appears when the user successfully finishes each round of GuessTheNumber.
  */
 public class GameFinishActivity extends AppCompatActivity {
+
+    /**
+     * An object for updating and accessing highscores, when necessary
+     */
+    private ScoreboardRepository GuessNumHighscoreManager;
+
     GameManager gameManager = GameStartActivity.gameManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_finish_activity);
+
+        GuessNumHighscoreManager = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
+
         Game currentGame = gameManager.getCurrentGame();
+
         currentGame.setIsFinished();
+
         this.updateStatistics();
+
         ((TextView) findViewById(R.id.points16)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView) findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.getNumOfGuess()));
         ((TextView) findViewById(R.id.currentRoundText)).setText(String.valueOf(gameManager.getCurrentRound()));
@@ -174,6 +192,43 @@ public class GameFinishActivity extends AppCompatActivity {
         if (guesses < userBest){
             statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
         }
+    }
+
+    /**
+     * Return True iff the score can be saved in the ScoreBoardRepository.(If number of points is
+     * small enough to be in top 10.
+     *
+     * @param score - score, that user just got, after finishing the round.
+     */
+    private boolean CheckForHighScore(int score){
+        List<Pair<String, Integer>> allScores = GuessNumHighscoreManager.getHighScores(10);
+        if (allScores.size() <10)
+        {
+            return true;
+        }
+        else{
+            //Keep track of how many elements are greater, than our score are already in the ScoreBoard.
+            int local = 0;
+            for(Pair<String, Integer> temp: allScores){
+                if (temp.second >= score) {
+                    local++;
+                }
+            }
+            return local < 10;
+        }
+    }
+
+    //
+    /**
+     * Record the given highscore under the given name
+     *
+     * @param name  - the name to record along with the score
+     * @param score - the highscore to save under the given name
+     *
+     * Precondition:
+     */
+    private void recordHighScore(String name, int score) {
+        GuessNumHighscoreManager.addHighScore(name, score);
     }
 
     /**
