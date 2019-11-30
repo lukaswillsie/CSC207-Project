@@ -94,4 +94,8 @@
     <string name="scoreboardIntro">Which scoreboard would you like to view?</string>
     <string name="highscoreTitle">Highscores</string>
     <string name="noHighscoresMessage">There are no highscores to show</string>
+    <string name="player1TimeTaken">Player 1 Time Taken:</string>
+    <string name="player2TimeTaken">Player 2 Time Taken:</string>
+    <string name="player1TurnsTaken">Player 1 Turns Taken:</string>
+    <string name="player2TurnsTaken">Player 2 Turns Taken:</string>
 </resources>
