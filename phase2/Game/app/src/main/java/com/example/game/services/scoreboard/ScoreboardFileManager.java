@@ -68,7 +68,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
      * @param score - the player's score
      */
     @Override
-    public void addHighScore(String name, int score) {
+    public void addScore(String name, int score) {
         if (!validName(name)) {
             return;
         }
@@ -150,6 +150,35 @@ class ScoreboardFileManager implements ScoreboardRepository {
             return null;
         }
     }
+
+
+    /**
+     * Retrieves the *numberHighScores* highest scores, or all the high scores if there are fewer
+     * than *numberHighScores* in total, and returns them as an array of pairs of the form
+     * [name, score], in increasing order of score.
+     * <p>
+     * Implements the method in ScoreboardRepository
+     * <p>
+     * Precondition: numberHighScores > 0
+     *
+     * @param numberHighScores - the number of highScores to fetch
+     * @return the *numberHighScores* highest scores, or all the high scores if numberHighScores
+     * exceeds the total
+     */
+    @Override
+    public List<Pair<String, Integer>> getLowScores(int numberHighScores) {
+        List<String> lines;
+        try {
+            lines = readLines(numberHighScores);
+            Log.i("Scoreboard Test", lines.toString());
+
+            return getPairsFromLines(lines);
+        } catch (FileNotFoundException e) {
+            Log.e(TAG, "Couldn't open file " + highscoreFile.getName());
+            return null;
+        }
+    }
+
 
     /**
      * Retrieves all the scores that this object has access to
