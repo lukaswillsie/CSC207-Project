@@ -31,17 +31,19 @@ public class GameStartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity);
 
+        // If it is currently on MULTIPLAYER mode and it is the first player's turn.
         if (GameData.MULTIPLAYER && gameManager.getMultiplayerKeepPlaying()) {
             updateTurnText(MultiplayerGameData.getPlayer1Username());
             gameManager.resetGameManager();
             gameManager.setMultiplayerMode(true);
         }
-
+        // If it is currently on MULTIPLAYER mode and it is the second player's turn.
         else if (GameData.MULTIPLAYER && !gameManager.getMultiplayerKeepPlaying()) {
             updateTurnText(MultiplayerGameData.getPlayer2Username());
             gameManager.startNewGame();
             gameManager.setMultiplayerMode(true);
         }
+        // If it is currently on SINGLE player mode.
         else {
             gameManager.setMultiplayerMode(false);
         }
@@ -62,7 +64,8 @@ public class GameStartActivity extends AppCompatActivity {
 
     /**
      * When a user clicks on the resume button, the GameActivity1 activity appears with the stats of
-     * the game that the user has previously paused on.
+     * the game that the user has previously paused on. However, on multiplayer mode, the user does
+     * not get to resume the game if they exited their session.
      */
     public void resumeGame(View view) {
         Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
@@ -107,6 +110,9 @@ public class GameStartActivity extends AppCompatActivity {
         gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
     }
 
+    /**
+     * Update the text depending on whose turn it is. This is only applicable in multiplayer mode.
+     */
     private void updateTurnText(String player) {
         String turnText;
 
@@ -115,6 +121,9 @@ public class GameStartActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.turnText)).setText(turnText);
     }
 
+    /**
+     * Format the username so that the first character of the username is capitalized.
+     */
     private String formatName(String name) {
         if (Character.isAlphabetic(name.charAt(0))) {
             return name.substring(0, 1).toUpperCase() + name.substring(1);
