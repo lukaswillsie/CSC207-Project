@@ -200,13 +200,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             intent.putExtra(TAG + LONGEST_STREAK_KEY, statsRecorder.getLongestStreak());
         }
 
-        BlackjackPlayActivityPresenter presenter = new BlackjackPlayActivityPresenter();
-
-        if (presenter.shouldPrompt(statsRecorder.getScore())) {
-            promptForHighScore(intent, statsRecorder.getScore());
-        } else {
-            startActivity(intent);
-        }
+        promptForHighScore(intent, statsRecorder.getScore());
     }
 
     /**

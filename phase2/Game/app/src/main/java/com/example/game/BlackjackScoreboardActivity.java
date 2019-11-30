@@ -1,6 +1,7 @@
 package com.example.game;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.game.services.scoreboard.ScoreboardRepository;
@@ -12,7 +13,8 @@ public class BlackjackScoreboardActivity extends ScoreboardActivity {
         super.onCreate(savedInstanceState);
         ScoreboardRepository scoreboardRepository = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.BLACKJACK);
 
-        initialize(scoreboardRepository.getHighScores(10), "No scores to show");
+        initialize(scoreboardRepository.getHighScores(), "No scores to show");
+        Log.i("blah", scoreboardRepository.getHighScores().toString() + scoreboardRepository.getHighScores().size());
 
         String title = "Blackjack Highscores";
         ((TextView) findViewById(R.id.highscoreTitle)).setText(title);

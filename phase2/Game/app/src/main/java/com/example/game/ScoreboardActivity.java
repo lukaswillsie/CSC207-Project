@@ -86,6 +86,7 @@ public abstract class ScoreboardActivity extends AppCompatActivity {
                 row.addView(score);
 
                 table.addView(row);
+                rowIndex++;
             }
         }
     }
