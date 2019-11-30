@@ -22,7 +22,7 @@ import java.util.Scanner;
  * .
  * etc.
  * <p>
- * The lines are sorted in increasing order of score, with the highest score on the first line of the
+ * The lines are sorted in decreasing order of score, with the highest score on the first line of the
  * file
  * <p>
  * The File object this ScoreboardFileManager will be working with will be given to the object at
