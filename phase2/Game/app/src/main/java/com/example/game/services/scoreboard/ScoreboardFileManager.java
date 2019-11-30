@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * This class is an implementation of ScoreboardRepository that stores highscore data in a file, with
- * the following format:
+ * This class is an implementation of ScoreboardRepository that stores high/low score data in
+ * a file, with the following format:
  * name1,score1
  * name2,score2
  * name3,score3
@@ -22,28 +22,28 @@ import java.util.Scanner;
  * .
  * etc.
  * <p>
- * The lines are sorted in decreasing order of score, with the highest score on the first line of the
- * file
+ * The lines are sorted in decreasing order of score, with the highest score on the first line
+ * of the file.
  * <p>
  * The File object this ScoreboardFileManager will be working with will be given to the object at
- * object creation via the setFile(File file) method
+ * object creation via the setFile(File file) method.
  */
 class ScoreboardFileManager implements ScoreboardRepository {
     /**
-     * The String this class will use to log things to the console
+     * The String this class will use to log in the console.
      */
     private static final String TAG = "com.example.game.ScoreboardFileManager.java";
 
     /**
-     * The File that this object is writing high score data to and getting it from
+     * The File that this object is writing score data to and getting it from.
      */
-    private File highscoreFile;
+    private File scoreFile;
 
     /**
-     * THIS METHOD MUST BE CALLED BEFORE THE OBJECT CAN BE USED
+     * THIS METHOD MUST BE CALLED BEFORE THE OBJECT CAN BE USED.
      * <p>
-     * Tell this object what file the high scores are stored in. File must be in simple .csv format
-     * That is, high scores must be stored in the following form:
+     * Tell this object what file the scores are stored in. File must be in simple .csv format.
+     * That is, scores must be stored in the following form:
      * name1,score1
      * name2,score2
      * name3,score3
@@ -51,18 +51,18 @@ class ScoreboardFileManager implements ScoreboardRepository {
      * .
      * .
      * etc.
-     * Precondition: Entries MUST be sorted in non-decreasing order of score
+     * Precondition: Entries MUST be sorted in non-increasing order of score.
      *
      * @param file - the file where the high scores are
      */
     void setFile(File file) {
-        highscoreFile = file;
+        scoreFile = file;
     }
 
     /**
-     * Record that a player with given name has achieved the given score
-     * <p>
-     * Implements method in ScoreboardRepository
+     * Record that a player with given name has achieved the given score. Regardless of whether
+     * a game
+     *
      *
      * @param name  - the name of the player
      * @param score - the player's score
@@ -98,7 +98,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
                 pairs.add(new Pair<>(name, score));
             }
 
-            highscoreStream = new FileOutputStream(highscoreFile);
+            highscoreStream = new FileOutputStream(scoreFile);
 
             for (Pair<String, Integer> pair : pairs) {
                 highscoreStream.write((pair.first + "," + pair.second + "\n").getBytes());
@@ -106,7 +106,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
 
             highscoreStream.close();
         } catch (FileNotFoundException e) {
-            Log.e(TAG, "Couldn't open highscoreFile " + highscoreFile.getName());
+            Log.e(TAG, "Couldn't open scoreFile " + scoreFile.getName());
             try {
                 if (highscoreStream != null) {
                     highscoreStream.close();
@@ -115,7 +115,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
                 Log.e(TAG, "Couldn't close highscoreStream");
             }
         } catch (IOException e) {
-            Log.e(TAG, "Couldn't write to highscoreFile " + highscoreFile.getName());
+            Log.e(TAG, "Couldn't write to scoreFile " + scoreFile.getName());
             try {
                 highscoreStream.close();
             } catch (IOException ex) {
@@ -146,11 +146,10 @@ class ScoreboardFileManager implements ScoreboardRepository {
 
             return getPairsFromLines(lines);
         } catch (FileNotFoundException e) {
-            Log.e(TAG, "Couldn't open file " + highscoreFile.getName());
+            Log.e(TAG, "Couldn't open file " + scoreFile.getName());
             return null;
         }
     }
-
 
     /**
      * Retrieves the *numberHighScores* highest scores, or all the high scores if there are fewer
@@ -174,7 +173,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
 
             return getPairsFromLines(lines);
         } catch (FileNotFoundException e) {
-            Log.e(TAG, "Couldn't open file " + highscoreFile.getName());
+            Log.e(TAG, "Couldn't open file " + scoreFile.getName());
             return null;
         }
     }
@@ -192,7 +191,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
 
             return getPairsFromLines(lines);
         } catch (FileNotFoundException e) {
-            Log.e(TAG, "Couldn't open file " + highscoreFile.getName());
+            Log.e(TAG, "Couldn't open file " + scoreFile.getName());
             return null;
         }
     }
@@ -238,13 +237,13 @@ class ScoreboardFileManager implements ScoreboardRepository {
      *
      * @param num - the number of lines to read from the file
      * @return - a List where each entry is a line of the highscore file
-     * @throws FileNotFoundException - if the highscoreFile cannot be opened, the method will throw
+     * @throws FileNotFoundException - if the scoreFile cannot be opened, the method will throw
      *                               an exception
      */
     private List<String> readLines(int num) throws FileNotFoundException {
         List<String> lines = new ArrayList<>();
 
-        Scanner scanner = new Scanner(highscoreFile);
+        Scanner scanner = new Scanner(scoreFile);
         int counter = 0;
         while (scanner.hasNext() && counter < num) {
             lines.add(scanner.nextLine());
@@ -260,13 +259,13 @@ class ScoreboardFileManager implements ScoreboardRepository {
      * Read all the lines from the highscore file
      *
      * @return - a List where each entry is a line of the highscore file
-     * @throws FileNotFoundException - if the highscoreFile cannot be opened, the method will throw
+     * @throws FileNotFoundException - if the scoreFile cannot be opened, the method will throw
      *                               an exception
      */
     private List<String> readLines() throws FileNotFoundException {
         List<String> lines = new ArrayList<>();
 
-        Scanner scanner = new Scanner(highscoreFile);
+        Scanner scanner = new Scanner(scoreFile);
         while (scanner.hasNext()) {
             lines.add(scanner.nextLine());
         }
