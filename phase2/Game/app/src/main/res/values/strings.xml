@@ -64,7 +64,7 @@
     <string name="NextRound">Next round</string>
     <string name="Youhavefinished">You have finished round</string>
     <string name="outOf">out of</string>
-    <string name="cbsetting">Numeric/Alphabet Values for Cows and Bulls</string>
+    <string name="cbsetting">Numeric/Alphabet Values for Cows and Bulls (Applicable for Easy Difficulty)</string>
     <string name="timetaken">Time Taken:</string>
     <string name="numguesses">Turns Taken:</string>
     <string name="congratulations">☺ Woot Woot! You have guessed the right number!</string>

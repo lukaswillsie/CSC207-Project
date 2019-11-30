@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CowsBullsGame.activities.CowsBullsMutliplayerFinishActivity"></activity>
+        <activity android:name=".CowsBullsGame.activities.CowsBullsSelectDifficultyActivity"></activity>
+        <activity android:name=".CowsBullsGame.activities.CowsBullsMutliplayerFinishActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsMidMultiplayerActivity" />
         <activity android:name=".ScoreboardSelectActivity" />
         <activity android:name=".ScoreboardActivity" />
