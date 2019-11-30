@@ -43,12 +43,12 @@ public enum MultiplayerIntData {
     /**
      * Represents the statistic "player 1's quickest time to finish a round in Cows and Bulls.
      */
-    COWS_BULLS_PLAYER_1_QUICKEST_TIME(0, "player1NumberOfGuesses"),
+    COWS_BULLS_PLAYER_1_QUICKEST_TIME(0, "player1QuickestTime"),
 
     /**
      * Represents the statistic "player 2's quickest time to finish a round in Cows and Bulls.
      */
-    COWS_BULLS_PLAYER_2_QUICKEST_TIME(0, "player2NumberOfGuesses"),
+    COWS_BULLS_PLAYER_2_QUICKEST_TIME(0, "player2QuickestTime"),
 
     /**
      * Represents the statistic "player 1's time taken to finish the round in Cows and Bulls.
