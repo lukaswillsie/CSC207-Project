@@ -108,5 +108,6 @@
     <string name="currDiff">Current Difficulty Level:</string>
     <string name="defaultDiff">Easy</string>
     <string name="toDifficultySetting">Settings</string>
+    <string name="back">Back</string>
 
 </resources>

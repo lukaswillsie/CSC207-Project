@@ -1,5 +1,6 @@
 package com.example.game.CowsBullsGame.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -38,7 +39,7 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
             currDiffLevel.setText("Easy");
         } else if (difficulty == 1) {
             currDiffLevel.setText("Medium");
-        } else {
+        } else if (difficulty == 2) {
             currDiffLevel.setText("Insane");
         }
     }
@@ -70,5 +71,10 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
     public void insaneDifficulty(View view){
         settingsManager.updateSetting(Setting.COWS_BULLS_DIFFICULTY, 2);
         currDiffLevel.setText("Insane");
+    }
+
+    public void back(View view){
+        Intent intent = new Intent(this, CowsBullsStartActivity.class);
+        startActivity(intent);
     }
 }
