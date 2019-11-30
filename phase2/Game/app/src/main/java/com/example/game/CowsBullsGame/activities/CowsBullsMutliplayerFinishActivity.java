@@ -68,8 +68,8 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
         Integer player1Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES);
         Integer player2Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES);
 
-        player1TimeTaken.setText(String.format("%s", player1Time.toString()));
-        player2TimeTaken.setText(String.format("%s", player2Time.toString()));
+        player1TimeTaken.setText(String.format("%ss", player1Time.toString()));
+        player2TimeTaken.setText(String.format("%ss", player2Time.toString()));
         player1TurnsTaken.setText(String.format("%s", player1Turns.toString()));
         player2TurnsTaken.setText(String.format("%s", player2Turns.toString()));
 
