@@ -2,6 +2,7 @@ package com.example.game.CowsBullsGame.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
@@ -102,8 +103,20 @@ public class CowsBullsActivity extends AppCompatActivity {
         linLayout = findViewById(R.id.linLayout);
         settingsManager = new SettingsManagerBuilder().build(this, username);
 
+        int difficulty = settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY);
 
-        gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+        if (difficulty == 0) {
+            gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+            guess.setFilters(new InputFilter[] {new InputFilter.LengthFilter(5)});
+        } else if (difficulty == 1){
+            gameManager = new GameManager(6, settingsManager.getSetting(Setting.ALPHABET));
+            guess.setFilters(new InputFilter[] {new InputFilter.LengthFilter(6)});
+        } else {
+            gameManager = new GameManager(7, settingsManager.getSetting(Setting.ALPHABET));
+            guess.setFilters(new InputFilter[] {new InputFilter.LengthFilter(7)});
+        }
+
+
         multiplayer = GameData.MULTIPLAYER;
 
         if (multiplayer) {
