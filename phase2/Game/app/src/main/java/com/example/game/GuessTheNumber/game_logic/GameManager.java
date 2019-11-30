@@ -97,6 +97,10 @@ public class GameManager {
         this.currentRound = 0;
     }
 
+
+    /**
+     * Returns true if the user is currently on multiplayer mode and false otherwise.
+     */
     public boolean getMultiplayerMode() {
         return this.multiplayerMode;
     }
@@ -105,6 +109,10 @@ public class GameManager {
         this.multiplayerMode = b;
     }
 
+    /**
+     * Return true if it is currently on multiplayer mode and it is the first user's turn, and
+     * false otherwise.
+     */
     public boolean getMultiplayerKeepPlaying() {
         return this.multiplayerKeepPlaying;
     }

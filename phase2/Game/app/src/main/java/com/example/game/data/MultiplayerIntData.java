@@ -22,7 +22,45 @@ public enum MultiplayerIntData {
      * Represents whose turn it is in an ongoing blackjack game. Can either be 1 if it's player 1's
      * turn or 2 if it's player 2's.
      */
-    BLACKJACK_PLAYER_TURN(1, "blackjackPlayerTurn");
+    BLACKJACK_PLAYER_TURN(1, "blackjackPlayerTurn"),
+
+    /**
+     * Represents whose turn it is in an ongoing blackjack game. Can either be 1 if it's player 1's
+     * turn or 2 if it's player 2's.
+     */
+    COWS_BULLS_PLAYER_TURN(1, "cowsBullsPlayerTurn"),
+
+    /**
+     * Represents the statistic "player 1's number of guesses during their game of Cows and Bulls".
+     */
+    COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES(0, "player1NumberOfGuesses"),
+
+    /**
+     * Represents the statistic "player 2's number of guesses during their game of Cows and Bulls".
+     */
+    COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES(0, "player2NumberOfGuesses"),
+
+    /**
+     * Represents the statistic "player 1's quickest time to finish a round in Cows and Bulls.
+     */
+    COWS_BULLS_PLAYER_1_QUICKEST_TIME(0, "player1NumberOfGuesses"),
+
+    /**
+     * Represents the statistic "player 2's quickest time to finish a round in Cows and Bulls.
+     */
+    COWS_BULLS_PLAYER_2_QUICKEST_TIME(0, "player2NumberOfGuesses"),
+
+    /**
+     * Represents the statistic "player 1's time taken to finish the round in Cows and Bulls.
+     */
+    COWS_BULLS_PLAYER_1_TIME_TAKEN(0, "player1TimeTaken"),
+
+    /**
+     * Represents the statistic "player 2's time taken to finish the round in Cows and Bulls.
+     */
+    COWS_BULLS_PLAYER_2_TIME_TAKEN(0, "player2TimeTaken");
+
+
 
 
     /**

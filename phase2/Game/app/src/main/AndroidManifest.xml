@@ -9,22 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScoreboardSelectActivity"></activity>
+        <activity android:name=".CowsBullsGame.activities.CowsBullsMutliplayerFinishActivity"></activity>
+        <activity android:name=".CowsBullsGame.activities.CowsBullsMidMultiplayerActivity" />
+        <activity android:name=".ScoreboardSelectActivity" />
         <activity android:name=".ScoreboardActivity" />
         <activity android:name=".BlackjackScoreboardActivity" />
         <activity android:name=".CowsBullsScoreboardActivity" />
         <activity android:name=".GuessTheNumberScoreBoardActivity" />
         <activity android:name=".ScoreboardTest" />
-        <activity
-            android:name=".CowsBullsGame.activities.CowsBullsSecondPlayerActivity"
-            android:alwaysRetainTaskState="true"
-            android:launchMode="singleInstance" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsStartActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsFinishActivity" />
-        <activity
-            android:name=".CowsBullsGame.activities.CowsBullsActivity"
-            android:alwaysRetainTaskState="true"
-            android:launchMode="singleInstance" />
+        <activity android:name=".CowsBullsGame.activities.CowsBullsActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".OldAccountActivity" />
