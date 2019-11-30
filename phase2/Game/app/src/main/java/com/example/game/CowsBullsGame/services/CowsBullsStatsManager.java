@@ -36,5 +36,13 @@ public class CowsBullsStatsManager {
         statsManager.setStat(Statistic.NUMBER_OF_GUESSES, numberOfGuesses);
 
     }
+
+    public int getNumberOfGuesses(){
+        return statsManager.getStat(Statistic.NUMBER_OF_GUESSES);
+    }
+
+    public int getTimeTake(){
+        return statsManager.getStat(Statistic.TIME_TAKEN);
+    }
 }
 
