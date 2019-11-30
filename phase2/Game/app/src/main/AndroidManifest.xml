@@ -19,10 +19,7 @@
         <activity android:name=".ScoreboardTest" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsStartActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsFinishActivity" />
-        <activity
-            android:name=".CowsBullsGame.activities.CowsBullsActivity"
-            android:alwaysRetainTaskState="true"
-            android:launchMode="singleInstance" />
+        <activity android:name=".CowsBullsGame.activities.CowsBullsActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".OldAccountActivity" />
