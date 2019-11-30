@@ -130,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mainMenuButton" />
 
     <Button
-        android:id="@+id/nextPlayer"
+        android:id="@+id/nextPlayerButton"
         android:layout_width="126dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"

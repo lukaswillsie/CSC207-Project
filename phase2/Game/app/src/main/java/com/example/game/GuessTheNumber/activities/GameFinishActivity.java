@@ -34,21 +34,32 @@ public class GameFinishActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.currentRoundText)).setText(String.valueOf(gameManager.getCurrentRound()));
         ((TextView) findViewById(R.id.totalRoundsText)).setText(String.valueOf(gameManager.getRoundsToPlay()));
 
+        // The current user playing still hasn't finished their rounds of GuessTheNumber yet.
         if (gameManager.getKeepPlaying()) {
             this.inverseVisibility();
             hideNextPlayerButton();
 
+        /*
+         The current user finished their rounds of GuessTheNumber. In single player mode, the user
+         is done playing their session of GuessTheNumber and gets the option to replay or go back to
+         main menu. In multiplayer mode, if the first user is done playing their rounds, it is the
+         next player's turn. If the second user is done playing their rounds, then they have the
+         option to return to the main menu.
+         */
         } else {
 
-            // there is still next player
+            // The first player finished their rounds so it is the next player's turn to play.
             if (gameManager.getMultiplayerMode() && gameManager.getMultiplayerKeepPlaying()) {
                 showNextPlayerButton();
                 hideAllButtons();
                 gameManager.changeMultiplayerKeepPlaying();
             }
 
-            // multiplayer game ends
-            else if (gameManager.getMultiplayerMode() && !gameManager.getMultiplayerKeepPlaying()){
+            /*
+            The second player finished their rounds so the multiplayer game ends, and the users
+            are given the option to return to main menu.
+            */
+            else if (gameManager.getMultiplayerMode() && !gameManager.getMultiplayerKeepPlaying()) {
                 hideNextPlayerButton();
                 findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
                 findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
@@ -56,11 +67,15 @@ public class GameFinishActivity extends AppCompatActivity {
                 gameManager.resetGameManager();
             }
 
-            // not multiplayer and game ends
+            /* It is currently not in multiplayer mode, so the user gets the option to go back to
+            main menu or to play again.
+            */
             else {
                 this.reverseVisibility();
                 hideNextPlayerButton();
             }
+
+            // Reset currentRound attribute because all the rounds have been played.
             gameManager.resetCurrentRounds();
         }
     }
@@ -83,6 +98,9 @@ public class GameFinishActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * This button should only be visible in Multiplayer mode.
+     */
     public void nextPlayerClick(View view) {
         Intent intent = new Intent(this, GameStartActivity.class);
         gameManager.startNewGame();
@@ -118,14 +136,24 @@ public class GameFinishActivity extends AppCompatActivity {
         findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * Shows the nextPlayer button when the first player has finished their rounds of GuessTheNumber.
+     * This button should only be visible in Multiplayer mode.
+     */
     public void showNextPlayerButton() {
-        findViewById(R.id.nextPlayer).setVisibility(View.VISIBLE);
+        findViewById(R.id.nextPlayerButton).setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Hides the nextPlayerButton button.
+     */
     public void hideNextPlayerButton() {
-        findViewById(R.id.nextPlayer).setVisibility(View.INVISIBLE);
+        findViewById(R.id.nextPlayerButton).setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * Hides buttons mainMenuButton, playAgainButton, nextRoundButton
+     */
     public void hideAllButtons() {
         findViewById(R.id.mainMenuButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
@@ -148,19 +176,15 @@ public class GameFinishActivity extends AppCompatActivity {
 
         if (gameManager.getCurrentGame().getNumOfGuess() >= thirdBest) {
             return;
-        }
-
-        else {
+        } else {
             if (guesses < firstBest) {
                 statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
                 statsManager.setStat(Statistic.SECOND_FEWEST_GUESSES, firstBest);
                 statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, secondBest);
-            }
-            else if (guesses < secondBest) {
+            } else if (guesses < secondBest) {
                 statsManager.setStat(Statistic.SECOND_FEWEST_GUESSES, guesses);
                 statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, secondBest);
-            }
-            else if (guesses < thirdBest) {
+            } else if (guesses < thirdBest) {
                 statsManager.setStat(Statistic.THIRD_FEWEST_GUESSES, guesses);
             }
         }
