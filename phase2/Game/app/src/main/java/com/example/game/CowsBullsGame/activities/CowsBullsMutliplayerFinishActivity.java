@@ -65,26 +65,34 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
         player1TurnsTaken = findViewById(R.id.player1TurnsTaken);
         player2TurnsTaken = findViewById(R.id.player2TurnsTaken);
 
-        int player1Time = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_TIME_TAKEN);
-        int player2Time = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_TIME_TAKEN);
-        int player1Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES);
-        int player2Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES);
+        Integer player1Time = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_TIME_TAKEN);
+        Integer player2Time = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_TIME_TAKEN);
+        Integer player1Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_1_NUMBER_OF_GUESSES);
+        Integer player2Turns = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_2_NUMBER_OF_GUESSES);
 
-        player1TimeTaken.setText(player1Time);
-        player2TimeTaken.setText(player2Time);
-        player1TurnsTaken.setText(player1Turns);
-        player2TurnsTaken.setText(player2Turns);
+        player1TimeTaken.setText(String.format("%s", player1Time.toString()));
+        player2TimeTaken.setText(String.format("%s", player2Time.toString()));
+        player1TurnsTaken.setText(String.format("%s", player1Turns.toString()));
+        player2TurnsTaken.setText(String.format("%s", player2Turns.toString()));
 
         if (player1Time == player2Time & player1Turns == player2Turns){
-            winMessage.setText("");
-        }else if (player1Time >= player2Time & player1Turns >= player2Turns){
-
-        }else if (player1Time <= player2Time & player1Turns <= player2Turns){
-
-        }else if (player1Time >= player2Time & player1Turns <= player2Turns){
-
-        }else {
-
+            winMessage.setText(String.format("%s is equally as smart or equally as dumb as %s!", player1Username, player2Username));
+        }else if (player1Time > player2Time & player1Turns > player2Turns){
+            winMessage.setText(String.format("Congratulations %s you are by and far better than %s!", player2Username, player1Username));
+        }else if (player1Time < player2Time & player1Turns < player2Turns){
+            winMessage.setText(String.format("Congratulations %s you are by and far better than %s!", player1Username, player2Username));
+        }else if (player1Time > player2Time & player1Turns < player2Turns){
+            winMessage.setText(String.format("%s reasoned faster, whereas %s was more efficient with his reasoning!", player2Username, player1Username));
+        }else if (player1Time < player2Time & player1Turns > player2Turns){
+            winMessage.setText(String.format("%sreasoned faster, whereas %swas more efficient with his reasoning!", player1Username, player2Username));
+        }else if (player1Time == player2Time & player1Turns > player2Turns){
+            winMessage.setText(String.format("%s wins because of better reasoning!", player2Username));
+        }else if (player1Time == player2Time & player1Turns < player2Turns){
+            winMessage.setText(String.format("%s wins because of better reasoning!", player1Username));
+        }else if (player1Time > player2Time){
+            winMessage.setText(String.format("%s wins because of faster reasoning!", player2Username));
+        }else{
+            winMessage.setText(String.format("%s wins because of faster reasoning!", player1Username));
         }
     }
 
