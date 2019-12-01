@@ -3,11 +3,13 @@ package com.example.game.BlackjackGame.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
+import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
@@ -24,7 +26,7 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mid_multiplayer);
 
-        initializeTextViews();
+        initializeText();
     }
 
     public void player2Turn(View view) {
@@ -36,17 +38,19 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
     }
 
     /**
-     * Initialize the title text view to say "*Player 1 name*'s statistics", and the stats display
-     * text views to display player 1's statistics
+     * Initialize the title text view to say "*Player 1 name*'s statistics", the stats display
+     * text views to display player 1's statistics, and the button to say "*Player 2 name*'s turn"
      */
-    private void initializeTextViews() {
+    private void initializeText() {
         MultiplayerDataManager manager = new MultiplayerDataManagerFactory().build();
         String player1WinRate = new DecimalFormat("##.##").format(manager.getMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE)) + "%";
         String player1LongestStreak = "" + manager.getMultiplayerData(BLACKJACK_PLAYER1_LONGEST_STREAK);
         String title = MultiplayerGameData.getPlayer1Username() + "'s Statistics";
+        String player2Button = MultiplayerGameData.getPlayer2Username() + "'s turn!";
 
         ((TextView) findViewById(R.id.longestStreakDisplay)).setText(player1LongestStreak);
         ((TextView) findViewById(R.id.winRateDisplay)).setText(player1WinRate);
         ((TextView) findViewById(R.id.blackjackMidMultiplayerTitle)).setText(title);
+        ((Button)findViewById(R.id.player2PlayButton)).setText(player2Button);
     }
 }
