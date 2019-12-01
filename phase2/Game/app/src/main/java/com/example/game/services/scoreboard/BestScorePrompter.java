@@ -82,12 +82,19 @@ public class BestScorePrompter {
 
                 // Fill the text box with the player's username by default
                 final EditText inputBox = dialog.findViewById(R.id.highscoreName);
-                inputBox.setText(username);
+                if (inputBox != null) {
+                    inputBox.setText(username);
+                }
 
                 yesButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String name = (inputBox).getText().toString();
+                        String name;
+                        if (inputBox != null) {
+                            name = (inputBox).getText().toString();
+                        } else {
+                            name = username; // TODO Double Check
+                        }
                         if (scoreManager.validName(name)) {
                             scoreManager.addScore(name, score);
                             context.startActivity(intent);
