@@ -13,7 +13,10 @@ import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
+import com.example.game.data.MultiplayerIntData;
 import com.example.game.data.Setting;
+import com.example.game.services.multiplayer_data.MultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerFactory;
 
@@ -23,6 +26,7 @@ import com.example.game.services.settings.SettingsManagerFactory;
  */
 public class GameStartActivity extends AppCompatActivity {
     public static GameManager gameManager = new GameManager();
+    private MultiplayerDataManager multiplayerDataManager;
     String username = GameData.USERNAME;
     boolean rulesAppear = false;
 
@@ -30,9 +34,11 @@ public class GameStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity);
+        multiplayerDataManager = new MultiplayerDataManagerFactory().build();
         boolean firstPlayersTurn = gameManager.getIsFirstPlayersTurn();
 
         if (GameData.MULTIPLAYER && firstPlayersTurn) {
+            resetFewestGuesses();
             updateTurnText(MultiplayerGameData.getPlayer1Username());
             gameManager.resetGameManager();
         } else if (GameData.MULTIPLAYER && !firstPlayersTurn) {
@@ -120,6 +126,14 @@ public class GameStartActivity extends AppCompatActivity {
             return name.substring(0, 1).toUpperCase() + name.substring(1);
         }
         return name;
+    }
+
+    /**
+     * Reset the player1's and player2's fewest guesses.
+     */
+    private void resetFewestGuesses() {
+        multiplayerDataManager.setMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES, 9999);
+        multiplayerDataManager.setMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES, 9999);
     }
 
 }
