@@ -37,6 +37,10 @@ public class StatsActivity extends AppCompatActivity {
 
         TextView longestStreak = findViewById(R.id.longestStreak);
         longestStreak.setText(String.valueOf(statsManager.getStat(Statistic.LONGEST_STREAK)));
+
+        TextView whoseStats = findViewById(R.id.whoseStats);
+        String whoseStatsText = "Displaying " + username + "'s statistics.";
+        whoseStats.setText(whoseStatsText);
     }
 
     public void GuessNumStats(View view) {
