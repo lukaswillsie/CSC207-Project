@@ -1,5 +1,8 @@
 package com.example.game.CowsBullsGame.domain;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Class for the answer to the game
  */
@@ -13,6 +16,8 @@ public class Answer {
      */
     enum Game {LETTERS, DIGITS, DIGITS_LETTERS, DIGITS_LETTERS_SYMBOLS}
 
+    // The valid alphabet for this game.
+    private List<String> alphabetList;
 
     /**
      * Constructor call for the Answer object
@@ -51,6 +56,7 @@ public class Answer {
             System.out.println(answerArray[i]);
         }
 
+        alphabetList = Arrays.asList(alphabet);
     }
 
     public String[] getAnswerArray() {
@@ -65,5 +71,7 @@ public class Answer {
         return concat;
     }
 
-
+    public boolean checkInAlphabet(String string) {
+        return alphabetList.contains(string);
+    }
 }
