@@ -18,7 +18,6 @@ import com.example.game.services.stats.StatsManagerBuilder;
 public class StatsActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +27,8 @@ public class StatsActivity extends AppCompatActivity {
         StatsManager statsManager = new StatsManagerBuilder().build(this, username);
 
         TextView fewestGuesses = findViewById(R.id.fewestGuess);
-        String fewestGuessesDisplay = statsManager.getStat(Statistic.FEWEST_GUESSES) + " " +
-                statsManager.getStat(Statistic.SECOND_FEWEST_GUESSES) + " " +
-                statsManager.getStat(Statistic.THIRD_FEWEST_GUESSES);
-        
+        String fewestGuessesDisplay = String.valueOf(statsManager.getStat(Statistic.FEWEST_GUESSES));
+
         fewestGuesses.setText(fewestGuessesDisplay);
 
         TextView quickestTime = findViewById(R.id.quickestTime);
@@ -42,7 +39,7 @@ public class StatsActivity extends AppCompatActivity {
         longestStreak.setText(String.valueOf(statsManager.getStat(Statistic.LONGEST_STREAK)));
     }
 
-    public void GuessNumStats(View view){
+    public void GuessNumStats(View view) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("key", Statistic.FEWEST_GUESSES);
 
@@ -51,7 +48,7 @@ public class StatsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void CowsAndBullsStats(View view){
+    public void CowsAndBullsStats(View view) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("key", Statistic.QUICKEST_TIME);
         Intent intent = new Intent(this, StatsLocalScoreBoardActivity.class);
@@ -59,7 +56,7 @@ public class StatsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void BlackJackStats(View view){
+    public void BlackJackStats(View view) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("key", Statistic.LONGEST_STREAK);
         Intent intent = new Intent(this, StatsLocalScoreBoardActivity.class);
