@@ -14,6 +14,9 @@ import com.example.game.data.MultiplayerIntData;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 
+/**
+ * Activity for the end of game display for multiplayer version of Cows and Bulls
+ */
 public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
 
     /**
@@ -40,7 +43,6 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
      * TextView display for player 2's number of guesses taken to guess the number
      */
     private TextView winMessage;
-
 
     /**
      * MultiplayerDataManager object to retrieve and set stats for user
@@ -96,11 +98,17 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method for the back to menu button
+     */
     public void menu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Method for the play Cows and Bulls again button
+     */
     public void playAgain(View view) {
         Intent intent = new Intent(this, CowsBullsStartActivity.class);
         startActivity(intent);
