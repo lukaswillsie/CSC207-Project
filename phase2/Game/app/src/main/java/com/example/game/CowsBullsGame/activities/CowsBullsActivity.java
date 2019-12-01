@@ -23,6 +23,9 @@ import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Setting;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
+import com.example.game.services.scoreboard.BestScorePrompter;
+import com.example.game.services.scoreboard.BestScoreSelector;
+import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerBuilder;
 import com.example.game.services.stats.StatsManager;
@@ -69,12 +72,6 @@ public class CowsBullsActivity extends AppCompatActivity {
     // The GameManager for this game.
     private GameManager gameManager;
 
-    //The StatsManager for this game.
-    private StatsManager statsManager;
-
-    //The SettingsManager for this game.
-    private SettingsManager settingsManager;
-
     //The CowsBullsStatsManager for this game.
     private CowsBullsStatsManager cowsBullsStatsManager;
 
@@ -101,7 +98,12 @@ public class CowsBullsActivity extends AppCompatActivity {
         chronometer.start();
         guess = findViewById(R.id.guessNumber);
         linLayout = findViewById(R.id.linLayout);
+
+        SettingsManager settingsManager;
+        StatsManager statsManager;
+
         settingsManager = new SettingsManagerBuilder().build(this, username);
+
 
         int difficulty = settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY);
 
@@ -197,7 +199,17 @@ public class CowsBullsActivity extends AppCompatActivity {
                 } else {
                     intent = new Intent(this, CowsBullsFinishActivity.class);
                 }
-                startActivity(intent);
+
+                BestScoreSelector lowScoreSelector = new BestScoreSelector(ScoreboardRepository.Game.COWS_AND_BULLS);
+
+                int score = cowsBullsStatsManager.getScore();
+
+                if (lowScoreSelector.shouldPrompt(score)) {
+                    BestScorePrompter lowScorePrompter = new BestScorePrompter(score, username, intent, this, ScoreboardRepository.Game.COWS_AND_BULLS);
+                    lowScorePrompter.promptForScore();
+                } else {
+                    startActivity(intent);
+                }
             }
 
             TextView currGuess = new TextView(CowsBullsActivity.this);
