@@ -39,7 +39,8 @@ public class GameFinishActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_finish_activity);
-        GuessNumHighscoreManager = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
+        GuessNumHighscoreManager =
+                new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
         Game currentGame = gameManager.getCurrentGame();
         currentGame.setIsFinished();
         this.updateStatistics();
@@ -197,7 +198,7 @@ public class GameFinishActivity extends AppCompatActivity {
             //Keep track of how many elements are greater, than our score are already in the ScoreBoard.
             int local = 0;
             for (Pair<String, Integer> temp : allScores) {
-                if (temp.second >= score) {
+                if (temp.second <= score) {
                     local++;
                 }
             }
@@ -212,6 +213,7 @@ public class GameFinishActivity extends AppCompatActivity {
         findViewById(R.id.highScoreCongrats).setVisibility(View.VISIBLE);
         findViewById(R.id.typeYourNameWindow).setVisibility(View.VISIBLE);
         findViewById(R.id.saveScore).setVisibility(View.VISIBLE);
+        findViewById(R.id.typeNamePLease).setVisibility(View.VISIBLE);
     }
     //
 
@@ -230,12 +232,13 @@ public class GameFinishActivity extends AppCompatActivity {
     /**
      * Button to submit the name of the user if they hit a highscore.
      */
-    //IDK how to save the score here, so as soon as we press save, the texted "Your name has been
-    //added to a scoreBoard should appear and save buttons with all the text in the bottom should disappear.
-    //something to do with submit save idk.
     public void saveScore(View view) {
         String name = ((EditText) (findViewById(R.id.typeNamePLease))).getText().toString();
         recordHighScore(name, gameManager.getCurrentGame().getPoints());
+        ((TextView)findViewById(R.id.highScoreCongrats)).setText("You can see your name on the ScoreBoard!");
+        findViewById(R.id.typeNamePLease).setVisibility(View.INVISIBLE);
+        findViewById(R.id.saveScore).setVisibility(View.INVISIBLE);
+        findViewById(R.id.typeYourNameHere).setVisibility(View.INVISIBLE);
 
     }
 
