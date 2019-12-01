@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.Setting;
@@ -75,6 +76,15 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
 
     public void back(View view){
         Intent intent = new Intent(this, CowsBullsStartActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Method to specify what to do when android back button is pressed
+     */
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

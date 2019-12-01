@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Statistic;
@@ -63,6 +64,15 @@ public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
 
         // Record that it is now player 2's turn
         new MultiplayerDataManagerFactory().build().setMultiplayerData(COWS_BULLS_PLAYER_TURN, 2);
+        startActivity(intent);
+    }
+
+    /**
+     * Method to specify what to do when android back button is pressed
+     */
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

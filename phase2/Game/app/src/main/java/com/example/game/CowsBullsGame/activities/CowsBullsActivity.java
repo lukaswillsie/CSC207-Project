@@ -18,6 +18,7 @@ import com.example.game.CowsBullsGame.domain.Guess;
 import com.example.game.CowsBullsGame.game_logic.GameManager;
 import com.example.game.CowsBullsGame.game_logic.TurnData;
 import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
@@ -251,5 +252,14 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public ArrayList<TurnData> getStatistics() {
         return this.gameManager.getStatistics();
+    }
+
+    /**
+     * Method to specify what to do when android back button is pressed
+     */
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
