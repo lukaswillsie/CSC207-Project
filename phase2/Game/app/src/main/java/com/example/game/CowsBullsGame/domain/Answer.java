@@ -8,6 +8,11 @@ public class Answer {
     //String of the answer
     private String[] answerArray;
 
+    /**
+     * An enum defining what Alphabets the answer objects can take on.
+     */
+    enum Game {LETTERS, DIGITS, DIGITS_LETTERS, DIGITS_LETTERS_SYMBOLS}
+
 
     /**
      * Constructor call for the Answer object
@@ -15,15 +20,28 @@ public class Answer {
      * @param answerSize       The size of the answer.
      * @param alphabetSelector The possible strings that can appear in the answer.
      */
-    public Answer(int answerSize, int alphabetSelector) {
+    public Answer(int answerSize, Game alphabetSelector) {
         String[] alphabet;
         this.answerArray = new String[answerSize];
 
-        if (alphabetSelector == 0) {
-            alphabet = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        } else {
-            alphabet = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-                    "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        String[] digits = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] letters = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        String[] symbols = new String[]{"!", "@", "#", "_", "-", "+", "=", "(", ")", "*", "&", "%"};
+
+        switch (alphabetSelector) {
+            case DIGITS:
+                alphabet = digits;
+                break;
+            case DIGITS_LETTERS:
+                alphabet = concatenateArrays(digits, letters);
+                break;
+            case DIGITS_LETTERS_SYMBOLS:
+                alphabet = concatenateArrays(digits, concatenateArrays(letters, symbols));
+                break;
+            case LETTERS:
+            default:
+                alphabet = letters;
         }
 
         for (int i = 0; i < answerSize; i++) {
@@ -32,10 +50,19 @@ public class Answer {
             this.answerArray[i] = alphabet[rand];
             System.out.println(answerArray[i]);
         }
+
     }
 
     public String[] getAnswerArray() {
         return answerArray;
+    }
+
+    private String[] concatenateArrays(String[] array1, String[] array2) {
+        String[] concat = new String[array1.length + array2.length];
+        System.arraycopy(array1, 0, concat, 0, array1.length);
+        System.arraycopy(array2, 0, concat, array1.length, array2.length);
+
+        return concat;
     }
 
 
