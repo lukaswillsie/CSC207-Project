@@ -235,7 +235,7 @@ public class GameFinishActivity extends AppCompatActivity {
     public void saveScore(View view) {
         String name = ((EditText) (findViewById(R.id.typeNamePLease))).getText().toString();
         recordHighScore(name, gameManager.getCurrentGame().getPoints());
-        ((TextView)findViewById(R.id.highScoreCongrats)).setText("You can see your name on the ScoreBoard!");
+        ((TextView) findViewById(R.id.highScoreCongrats)).setText("You can see your name on the ScoreBoard!");
         findViewById(R.id.typeNamePLease).setVisibility(View.INVISIBLE);
         findViewById(R.id.saveScore).setVisibility(View.INVISIBLE);
         findViewById(R.id.typeYourNameHere).setVisibility(View.INVISIBLE);
