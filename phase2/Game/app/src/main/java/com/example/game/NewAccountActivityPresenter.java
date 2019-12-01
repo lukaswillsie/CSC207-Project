@@ -42,7 +42,11 @@ class NewAccountActivityPresenter {
     void registerNewUser(String username, String password) {
         if (accountManager.usernameExists(username)) {
             callingPage.accountCreationError("That username already exists!");
-        } else {
+        }
+        else if (!accountManager.validNewCredentials(username, password)){
+            callingPage.accountCreationError("Your information is incorrect! Passwords must be non-empty, and usernames must not contain \"=\" or \",\"");
+        }
+        else {
             if (GameData.MULTIPLAYER) {
                 MultiplayerGameData.setPlayer2Username(username);
             } else {

@@ -25,6 +25,14 @@ public interface AccountManager {
     boolean validCredentials(String username, String password);
 
     /**
+     * Check if the given username and password are valid credentials for a new user, and return
+     * a boolean representing whether or not a new account should be created
+     *
+     * @return - whether or not the given credentials are valid a new account can be created
+     */
+    boolean validNewCredentials(String username, String password);
+
+    /**
      * Add a new user with the given username and password
      * <p>
      * Precondition: the given username is not already being used;
