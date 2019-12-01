@@ -213,8 +213,9 @@ public class CowsBullsActivity extends AppCompatActivity {
             }
 
             TextView currGuess = new TextView(CowsBullsActivity.this);
-            String textToDisplay = currentGuess + "     Bulls: " + bulls + " Cows: " + cows;
+            String textToDisplay = currentGuess + "     \uD83D\uDC02: " + bulls + " \uD83D\uDC04: " + cows;
             currGuess.setText(textToDisplay);
+            currGuess.setTextSize(18);
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
 
