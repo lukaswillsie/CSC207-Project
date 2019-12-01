@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,9 @@ public class CowsBullsActivity extends AppCompatActivity {
     // The text view for user input.
     private EditText guess;
 
+    // The scroll view to display results.
+    private ScrollView scrollView;
+
     // The last guess that was made.
     static String currentGuess;
 
@@ -93,6 +97,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
         player1Turn = multiplayerDataManager.getMultiplayerData(COWS_BULLS_PLAYER_TURN) == 1;
 
+        scrollView = findViewById(R.id.scrollView);
         startTime = System.currentTimeMillis();
         chronometer = findViewById(R.id.timer);
         chronometer.start();
@@ -218,6 +223,13 @@ public class CowsBullsActivity extends AppCompatActivity {
             currGuess.setTextSize(18);
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
+
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                }
+            });
 
         }
         guess.setText("");
