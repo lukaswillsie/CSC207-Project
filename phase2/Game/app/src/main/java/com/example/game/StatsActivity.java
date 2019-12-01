@@ -28,12 +28,21 @@ public class StatsActivity extends AppCompatActivity {
 
         TextView fewestGuesses = findViewById(R.id.fewestGuess);
         String fewestGuessesDisplay = String.valueOf(statsManager.getStat(Statistic.FEWEST_GUESSES));
-
-        fewestGuesses.setText(fewestGuessesDisplay);
+        if (fewestGuessesDisplay.equals("9999")){
+            fewestGuesses.setText("\u221e");
+        }
+        else{
+            fewestGuesses.setText(fewestGuessesDisplay);
+        }
 
         TextView quickestTime = findViewById(R.id.quickestTime);
         String quickTime = statsManager.getStat(Statistic.QUICKEST_TIME) + "s";
-        quickestTime.setText(quickTime);
+        if (quickTime.equals("0s")){
+            quickestTime.setText("\u221e");
+        }
+        else{
+            quickestTime.setText(quickTime);
+        }
 
         TextView longestStreak = findViewById(R.id.longestStreak);
         longestStreak.setText(String.valueOf(statsManager.getStat(Statistic.LONGEST_STREAK)));
