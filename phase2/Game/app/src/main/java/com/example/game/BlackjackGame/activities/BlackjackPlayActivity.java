@@ -122,7 +122,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
             // statsRecorder according to who's playing. This means that if they break their longest
             // streak record, it gets updated regardless of whether they're playing singleplayer
             // or multiplayer
-            if (multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1) {
+            if (player1Turn) {
                 statsRecorder = new BlackjackStatsRecorder(this, MultiplayerGameData.getPlayer1Username());
                 username = MultiplayerGameData.getPlayer1Username();
             } else {
