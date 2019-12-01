@@ -49,7 +49,7 @@ public class BestScorePrompter {
      */
     public void promptForScore() {
 
-        final ScoreboardRepository scoreManager = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.BLACKJACK);
+        final ScoreboardRepository scoreManager = new ScoreboardRepositoryFactory().build(game);
 
         final AlertDialog dialog = new AlertDialog.Builder(context)
                 .setView(R.layout.highscore_prompt_dialog)
