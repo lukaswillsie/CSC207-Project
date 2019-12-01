@@ -16,19 +16,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Activity that represent users' scores for different games in the top Rating order. It get's a
+ * key of statistics that must be represented.
+ */
 public class StatsLocalScoreBoardActivity extends ScoreboardActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         List<Pair<String, Integer>> topRating = new ArrayList<>();
         AccountManager GameAccountManager = new AccountManagerFactory().build(this);
         List<String> usernames = GameAccountManager.getUsers();
-
+        //In a bundle we are saving the statistics that has been passed from StatsActivity.
         Bundle bundle = getIntent().getExtras();
 
         Statistic ourStats = (Statistic) bundle.getSerializable("key");
-
         for(String username: usernames){
             StatsManager usersStat = new StatsManagerFactory().build(this, username);
             int userGuesses = usersStat.getStat(ourStats);
