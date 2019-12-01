@@ -3,29 +3,27 @@ package com.example.game.CowsBullsGame.domain;
 import java.util.Arrays;
 import java.util.List;
 
+// An enum defining what alphabet the answer object can take on.
+enum Alphabet {LETTERS, DIGITS, DIGITS_LETTERS, DIGITS_LETTERS_SYMBOLS};
+
 /**
- * Class for the answer to the game
+ * Class for the answer to the cows and bulls game.
  */
 public class Answer {
 
-    //String of the answer
+    // The array storing the answer string.
     private String[] answerArray;
-
-    /**
-     * An enum defining what Alphabets the answer objects can take on.
-     */
-    enum Game {LETTERS, DIGITS, DIGITS_LETTERS, DIGITS_LETTERS_SYMBOLS}
 
     // The valid alphabet for this game.
     private List<String> alphabetList;
 
     /**
-     * Constructor call for the Answer object
+     * Constructor call for the Answer object.
      *
      * @param answerSize       The size of the answer.
-     * @param alphabetSelector The possible strings that can appear in the answer.
+     * @param alphabetSelector An enum to define the possible strings that can appear in the answer.
      */
-    public Answer(int answerSize, Game alphabetSelector) {
+    public Answer(int answerSize, Alphabet alphabetSelector) {
         String[] alphabet;
         this.answerArray = new String[answerSize];
 
@@ -50,7 +48,7 @@ public class Answer {
         }
 
         for (int i = 0; i < answerSize; i++) {
-            // Generate a random integer from 0 to answerSize - 1 with equal probabilities.
+            // Generate a random integer from 0 to alphabet.length - 1 with equal probabilities.
             int rand = (int) (Math.random() * alphabet.length);
             this.answerArray[i] = alphabet[rand];
             System.out.println(answerArray[i]);
@@ -59,10 +57,22 @@ public class Answer {
         alphabetList = Arrays.asList(alphabet);
     }
 
+    /**
+     * A method that returns the answer array for this answer object.
+     *
+     * @return The answer array for tis answer object.
+     */
     public String[] getAnswerArray() {
         return answerArray;
     }
 
+    /**
+     * A helper method to concatenate two arrays.
+     *
+     * @param array1 The first array to concatenate.
+     * @param array2 The second array to concatenate.
+     * @return The concatenation of array1 and array2.
+     */
     private String[] concatenateArrays(String[] array1, String[] array2) {
         String[] concat = new String[array1.length + array2.length];
         System.arraycopy(array1, 0, concat, 0, array1.length);
@@ -71,7 +81,29 @@ public class Answer {
         return concat;
     }
 
-    public boolean checkInAlphabet(String string) {
+
+    /**
+     * A method that returns whether the guess only contains strings from the alphabet.
+     *
+     * @param guess The string to check.
+     * @return True iff all strings in guess are in the alphabet for this answer.
+     */
+    public boolean checkValidGuess(String guess) {
+        for (int i = 0; i < guess.length(); i++) {
+            if (!checkInAlphabet(String.valueOf(guess.charAt(i)).toLowerCase())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * A helper method that determines if a string is in the alphabet for this answer.
+     *
+     * @param string The string to check for in the alphabet.
+     * @return True iff string is in the alphabet for this answer object.
+     */
+    private boolean checkInAlphabet(String string) {
         return alphabetList.contains(string);
     }
 }
