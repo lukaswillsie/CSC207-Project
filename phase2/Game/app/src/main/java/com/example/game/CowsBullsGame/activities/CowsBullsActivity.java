@@ -3,7 +3,6 @@ package com.example.game.CowsBullsGame.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
-import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.view.Gravity;
 import android.view.View;
@@ -48,7 +47,7 @@ import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_TURN;
  */
 
 /**
- * The activity that appears right before the user is about to start a game of Cows and Bulls.
+ * The activity where the user is playing the Cows and Bulls game
  */
 public class CowsBullsActivity extends AppCompatActivity {
 
@@ -90,7 +89,9 @@ public class CowsBullsActivity extends AppCompatActivity {
     // The player's username.
     String username = GameData.USERNAME;
 
-
+    /**
+     * Method to initialize the layout and variables when entering the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,17 +141,13 @@ public class CowsBullsActivity extends AppCompatActivity {
 
         cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
 
-        if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 0){
+        if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 0) {
             guess.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
-        } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 1){
+        } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 1) {
             guess.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-    }
 
     /**
      * @return - the guess input of user as a String if guess length matches GUESS_SIZE, otherwise
@@ -259,7 +256,7 @@ public class CowsBullsActivity extends AppCompatActivity {
      * Method to specify what to do when android back button is pressed
      */
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -50,6 +50,9 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
      */
     private MultiplayerDataManager multiplayerDataManager;
 
+    /**
+     * Method to initialize the layout when entering the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,9 +81,11 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
         player1TurnsTaken.setText(String.format("%s", player1Turns.toString()));
         player2TurnsTaken.setText(String.format("%s", player2Turns.toString()));
 
+        //Formatting the username for better display
         player1Username = formatName(MultiplayerGameData.getPlayer1Username());
         player2Username = formatName(MultiplayerGameData.getPlayer2Username());
 
+        //Displaying a custom win message based on all the outcomes that are possible
         if (player1Time.equals(player2Time) & player1Turns.equals(player2Turns)) {
             winMessage.setText(String.format("%s is equally as smart or equally as dumb as %s!", player1Username, player2Username));
         } else if (player1Time > player2Time & player1Turns > player2Turns) {

@@ -57,7 +57,7 @@ public class Answer {
     /**
      * A method that returns the answer array for this answer object.
      *
-     * @return The answer array for tis answer object.
+     * @return The answer array for this answer object.
      */
     public String[] getAnswerArray() {
         return answerArray;

@@ -20,6 +20,10 @@ import java.text.MessageFormat;
 
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_TURN;
 
+/**
+ * The activity in the mid screen between Player1's turn and Player2's turn displaying the stats
+ * of Player1's round
+ */
 public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
 
     /**
@@ -37,8 +41,14 @@ public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
      */
     StatsManager statsManager;
 
+    /**
+     * The button to commence player2's turn
+     */
     Button nextTurnButton;
 
+    /**
+     * Method to initialize the layout when entering the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

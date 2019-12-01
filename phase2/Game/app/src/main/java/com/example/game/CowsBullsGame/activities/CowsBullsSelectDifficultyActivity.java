@@ -14,6 +14,9 @@ import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerBuilder;
 
+/**
+ * Activity where user can select the difficulty of the Cows and Bulls game
+ */
 public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
 
     /**
@@ -26,6 +29,9 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
      */
     private TextView currDiffLevel;
 
+    /**
+     * Method to initialize the layout when entering the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +80,9 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
         currDiffLevel.setText("Insane");
     }
 
+    /**
+     * Method to go back to CowsBullsStartActivity when back is pressed
+     */
     public void back(View view){
         Intent intent = new Intent(this, CowsBullsStartActivity.class);
         startActivity(intent);

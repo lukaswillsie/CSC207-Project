@@ -35,6 +35,9 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
      */
     private StatsManager statsManager;
 
+    /**
+     * Method to initialize the layout when entering the activity
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
