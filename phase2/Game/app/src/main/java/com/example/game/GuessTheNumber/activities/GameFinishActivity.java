@@ -228,8 +228,6 @@ public class GameFinishActivity extends AppCompatActivity {
      *
      * @param name  - the name to record along with the score
      * @param score - the highscore to save under the given name
-     *              <p>
-     *              Precondition:
      */
     private void recordHighScore(String name, int score) {
         GuessNumHighscoreManager.addScore(name, score);
@@ -252,7 +250,7 @@ public class GameFinishActivity extends AppCompatActivity {
      * Update the fewest guesses for the two players.
      */
     public void updateFewestGuess() {
-        if (GameData.MULTIPLAYER){
+        if (GameData.MULTIPLAYER) {
             boolean isFirstPlayersTurn = gameManager.getIsFirstPlayersTurn();
             int numGuesses = gameManager.getCurrentGame().getNumOfGuess();
 
@@ -260,9 +258,7 @@ public class GameFinishActivity extends AppCompatActivity {
                 if (numGuesses < multiplayerDataManager.getMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES)) {
                     multiplayerDataManager.setMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES, numGuesses);
                 }
-            }
-
-            else {
+            } else {
                 if (numGuesses < multiplayerDataManager.getMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES)) {
                     multiplayerDataManager.setMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES, numGuesses);
                 }
@@ -280,6 +276,10 @@ public class GameFinishActivity extends AppCompatActivity {
         findViewById(R.id.seeWinner).setVisibility(View.VISIBLE);
     }
 
+    /**
+     * This button redirects the user to the GameMultiplayerFinishActivity where they can view
+     * player1's and player2's fewest guesses and who is the winner between the two.
+     */
     public void seeWinnerClick(View view) {
         Intent intent = new Intent(this, GameMultiplayerFinishActivity.class);
         startActivity(intent);
