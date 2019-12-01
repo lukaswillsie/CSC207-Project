@@ -244,7 +244,6 @@ public class CowsBullsActivity extends AppCompatActivity {
         return (int) (elapsedTime / 1000);
     }
 
-
     /**
      * A method that returns all of the data / statistics collected so far in level 3.
      *
