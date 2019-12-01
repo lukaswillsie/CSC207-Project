@@ -16,7 +16,7 @@ public class GameManager {
      */
     private boolean keepPlaying;
     /**
-     * #Rounds left to play for a user.
+     * Rounds left to play for a user.
      */
     private int roundsToPlay;
     /**
@@ -24,8 +24,9 @@ public class GameManager {
      */
     private int currentRound;
 
-    private boolean multiplayerMode;
-
+    /**
+     * True iff on single mode or if it is the first player's turn on multiplayer mode.
+     */
     private boolean isFirstPlayersTurn;
 
     /**
@@ -36,6 +37,9 @@ public class GameManager {
         this.roundsToPlay = 5;
     }
 
+    /**
+     * Reset the GameManager values.
+     */
     public void resetGameManager() {
         startNewGame();
         this.keepPlaying = true;
