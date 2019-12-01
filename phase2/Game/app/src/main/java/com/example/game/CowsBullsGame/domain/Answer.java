@@ -8,9 +8,6 @@ import java.util.List;
  */
 public class Answer {
 
-    // An enum defining what alphabet the answer object can take on.
-    public enum Alphabet {LETTERS, DIGITS, DIGITS_LETTERS, DIGITS_LETTERS_SYMBOLS}
-
     // The array storing the answer string.
     private String[] answerArray;
 
@@ -21,9 +18,9 @@ public class Answer {
      * Constructor call for the Answer object.
      *
      * @param answerSize       The size of the answer.
-     * @param alphabetSelector An enum to define the possible strings that can appear in the answer.
+     * @param alphabetSelector An int to define the possible strings that can appear in the answer.
      */
-    public Answer(int answerSize, Alphabet alphabetSelector) {
+    public Answer(int answerSize, int alphabetSelector) {
         String[] alphabet;
         this.answerArray = new String[answerSize];
 
@@ -33,16 +30,16 @@ public class Answer {
         String[] symbols = new String[]{"!", "@", "#", "_", "-", "+", "=", "(", ")", "*", "&", "%"};
 
         switch (alphabetSelector) {
-            case DIGITS:
+            case 0:
                 alphabet = digits;
                 break;
-            case DIGITS_LETTERS:
+            case 1:
                 alphabet = concatenateArrays(digits, letters);
                 break;
-            case DIGITS_LETTERS_SYMBOLS:
+            case 2:
                 alphabet = concatenateArrays(digits, concatenateArrays(letters, symbols));
                 break;
-            case LETTERS:
+            case 3:
             default:
                 alphabet = letters;
         }
