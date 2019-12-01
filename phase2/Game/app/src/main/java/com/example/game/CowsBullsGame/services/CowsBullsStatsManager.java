@@ -3,8 +3,9 @@ package com.example.game.CowsBullsGame.services;
 import com.example.game.data.Statistic;
 import com.example.game.services.stats.StatsManager;
 
-import java.lang.Math;
-
+/**
+ * This class handles the updating of stats for every round and highscores for Cows and Bulls
+ */
 public class CowsBullsStatsManager {
 
     //UserStatsManager for this game

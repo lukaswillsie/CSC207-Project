@@ -142,7 +142,7 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
      * Method to specify what to do when android back button is pressed
      */
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -50,12 +50,13 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
             currDiffLevel.setText("Insane");
         }
     }
+
     /**
      * Method to allow Easy button to set difficulty to easy
      *
      * @param view
      */
-    public void easyDifficulty(View view){
+    public void easyDifficulty(View view) {
         settingsManager.updateSetting(Setting.COWS_BULLS_DIFFICULTY, 0);
         currDiffLevel.setText("Easy");
     }
@@ -65,7 +66,7 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
      *
      * @param view
      */
-    public void mediumDifficulty(View view){
+    public void mediumDifficulty(View view) {
         settingsManager.updateSetting(Setting.COWS_BULLS_DIFFICULTY, 1);
         currDiffLevel.setText("Medium");
     }
@@ -75,7 +76,7 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
      *
      * @param view
      */
-    public void insaneDifficulty(View view){
+    public void insaneDifficulty(View view) {
         settingsManager.updateSetting(Setting.COWS_BULLS_DIFFICULTY, 2);
         currDiffLevel.setText("Insane");
     }
@@ -83,7 +84,7 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
     /**
      * Method to go back to CowsBullsStartActivity when back is pressed
      */
-    public void back(View view){
+    public void back(View view) {
         Intent intent = new Intent(this, CowsBullsStartActivity.class);
         startActivity(intent);
     }
@@ -92,7 +93,7 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
      * Method to specify what to do when android back button is pressed
      */
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
