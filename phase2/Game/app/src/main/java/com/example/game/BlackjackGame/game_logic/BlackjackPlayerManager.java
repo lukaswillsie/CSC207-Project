@@ -31,7 +31,7 @@ public class BlackjackPlayerManager {
      *
      * @param card - the card to add to the player's hand
      */
-    public void deal(Card card) {
+    void deal(Card card) {
         player.getHand().addCard(card);
     }
 
@@ -40,7 +40,7 @@ public class BlackjackPlayerManager {
      *
      * @param cards - the array of all the cards to be added to the player's hand
      */
-    public void deal(Card[] cards) {
+    void deal(Card[] cards) {
         for (Card card : cards) {
             deal(card);
         }
@@ -49,7 +49,7 @@ public class BlackjackPlayerManager {
     /**
      * Give the player an empty hand
      */
-    public void newHand() {
+    void newHand() {
         player.setHand(new Hand());
     }
 
@@ -58,7 +58,7 @@ public class BlackjackPlayerManager {
      *
      * @return - the value of this player's hand, according to the rules of Blackjack
      */
-    public int computeBlackJackValue() {
+    int computeBlackJackValue() {
         Hand hand = player.getHand();
         int numAces = 0;
         int value = 0;
@@ -86,7 +86,7 @@ public class BlackjackPlayerManager {
         }
 
         // If there's more than one ace, either one of them is an 11 and the rest are 1's, if this
-        // doesn't make the player but, or they are all 1's, if the former makes the player bust
+        // doesn't make the player bust, or they are all 1's, if the former makes the player bust
         else if (numAces >= 2) {
             if (value + 11 + numAces - 1 <= 21) {
                 value += 11 + numAces - 1;

@@ -17,8 +17,8 @@ import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.scoreboard.BestScorePrompter;
-import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.scoreboard.BestScoreSelector;
+import com.example.game.services.scoreboard.ScoreboardRepository;
 
 import java.text.DecimalFormat;
 
