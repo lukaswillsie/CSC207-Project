@@ -3,13 +3,13 @@ package com.example.game.CowsBullsGame.domain;
 import java.util.Arrays;
 import java.util.List;
 
-// An enum defining what alphabet the answer object can take on.
-enum Alphabet {LETTERS, DIGITS, DIGITS_LETTERS, DIGITS_LETTERS_SYMBOLS};
-
 /**
  * Class for the answer to the cows and bulls game.
  */
 public class Answer {
+
+    // An enum defining what alphabet the answer object can take on.
+    public enum Alphabet {LETTERS, DIGITS, DIGITS_LETTERS, DIGITS_LETTERS_SYMBOLS}
 
     // The array storing the answer string.
     private String[] answerArray;
