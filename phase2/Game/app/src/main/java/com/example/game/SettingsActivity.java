@@ -107,13 +107,6 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        alphabetSwitch = findViewById(R.id.alphabetSwitch);
-        if (settingsManager.getSetting(Setting.COWS_BULLS_INPUT_TYPE) == 0) {
-            alphabetSwitch.setChecked(false);
-        } else if (settingsManager.getSetting(Setting.COWS_BULLS_INPUT_TYPE) == 3){
-            alphabetSwitch.setChecked(true);
-
-        }
     }
 
     public void toMain(View view) {
@@ -127,6 +120,5 @@ public class SettingsActivity extends AppCompatActivity {
         settingsManager.updateSetting(Setting.NUM_HANDS, numHandsBar.getProgress());
         settingsManager.updateSetting(Setting.NUM_ROUNDS, numRoundsBar.getProgress());
         settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1 : 0);
-        settingsManager.updateSetting(Setting.COWS_BULLS_INPUT_TYPE, alphabetSwitch.isChecked() ? 3 : 0);
     }
 }
