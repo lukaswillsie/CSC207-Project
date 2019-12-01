@@ -16,7 +16,7 @@ public class BlackjackScoreboardActivity extends ScoreboardActivity {
         initialize(scoreboardRepository.getHighScores(), "No scores to show");
         Log.i("blah", scoreboardRepository.getHighScores().toString() + scoreboardRepository.getHighScores().size());
 
-        String title = "Blackjack Highscores";
+        String title = "Blackjack High Scores";
         ((TextView) findViewById(R.id.highscoreTitle)).setText(title);
     }
 }
