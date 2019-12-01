@@ -99,9 +99,9 @@
     <string name="player1TurnsTaken">Player 1 Turns Taken:</string>
     <string name="player2TurnsTaken">Player 2 Turns Taken:</string>
     <string name="diffBlurb">Please Select the Difficulty Level:</string>
-    <string name="easy">Guess 5 Numbers or Alphabets:</string>
-    <string name="medium">Guess 6 Numbers and Alphabets:</string>
-    <string name="insane">Guess 7 Numbers, Alphabets, and Symbols:</string>
+    <string name="easy">Guess 5 Digits:</string>
+    <string name="medium">Guess 6 Digits and Letters:</string>
+    <string name="insane">Guess 7 Digits, Letters, and Symbols:</string>
     <string name="easyButton">Easy</string>
     <string name="mediumButton">Medium</string>
     <string name="insaneButton">Insane</string>
