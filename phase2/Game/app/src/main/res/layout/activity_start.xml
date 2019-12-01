@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".StartActivity">
 
-    <TextView
-        android:id="@+id/multiplayerLoginTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/multiplayerLoginLabel"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
-
     <Button
         android:id="@+id/oldUserButton"
         style="@style/Widget.AppCompat.Button"
@@ -54,16 +41,6 @@
         app:layout_constraintTop_toBottomOf="@+id/newUserButton" />
 
     <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="142dp"
-        android:layout_height="274dp"
-        android:layout_marginBottom="104dp"
-        android:rotation="-14"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/digit_4" />
-
-    <ImageView
         android:id="@+id/imageView15"
         android:layout_width="276dp"
         android:layout_height="441dp"
@@ -72,6 +49,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/oldUserButton"
         app:srcCompat="@drawable/cow_1" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="142dp"
+        android:layout_height="274dp"
+        android:layout_marginBottom="104dp"
+        android:rotation="-14"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/digit_4" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -92,5 +79,21 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/bull" />
+
+    <TextView
+        android:id="@+id/multiplayerLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_background"
+        android:text="@string/multiplayerLoginLabel"
+        android:textAlignment="center"
+        android:textColor="#020202"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
