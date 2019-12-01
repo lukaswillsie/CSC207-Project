@@ -153,6 +153,13 @@ public class UserAccountManager implements AccountManager {
         return usernameExists(username) && passwordIsValid(username, password);
     }
 
+    @Override
+    public boolean validNewCredentials(String username, String password) {
+        // Return true only if the password is non-empty and the username does not contain "="
+        // or "," as this has the potential to mess up the various file systems in the game
+        return password.length() > 0 && !username.contains("=") && !username.contains(",");
+    }
+
     /**
      * Check if the account associated with the given username has password as given by the other
      * parameter
