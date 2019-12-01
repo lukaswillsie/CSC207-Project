@@ -1,14 +1,10 @@
 package com.example.game.BlackjackGame.activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
@@ -20,8 +16,8 @@ import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.ButtonManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
+import com.example.game.services.scoreboard.BestScorePrompter;
 import com.example.game.services.scoreboard.ScoreboardRepository;
-import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.scoreboard.BestScoreSelector;
 
 import java.text.DecimalFormat;
@@ -90,11 +86,6 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     private boolean player1Turn;
 
     /**
-     * An object for updating and accessing highscores, when necessary
-     */
-    private ScoreboardRepository highscoreManager;
-
-    /**
      * The username of the user currently playing Blackjack
      */
     private String username;
@@ -104,7 +95,6 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blackjack_play);
 
-        highscoreManager = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.BLACKJACK);
 
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
@@ -206,76 +196,13 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         int score = statsRecorder.getScore();
 
         if (highScoreSelector.shouldPrompt(score)) {
-            promptForHighScore(intent, score);
+            BestScorePrompter highScorePrompter = new BestScorePrompter(score, username, intent, this, ScoreboardRepository.Game.BLACKJACK);
+            highScorePrompter.promptForScore();
         } else {
-            // TODO!!!
+            startActivity(intent);
         }
-
-
     }
 
-    /**
-     * Prompt the user to save their high score, and start the given intent after they've made a decision.
-     *
-     * @param intent - the intent to start after prompting the user
-     * @param score  - the score to prompt the user to save
-     */
-    private void promptForHighScore(final Intent intent, final int score) {
-        final AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(R.layout.highscore_prompt_dialog)
-                .setPositiveButton("YES", null)
-                .setNegativeButton("NO", null)
-                .create();
-
-        String message = "You just set a high score! Type your name below to save your score :  " + score;
-        final String warning = "That is an invalid name! Please try again.";
-
-        dialog.setMessage(message);
-
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                final Button yesButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                final Button noButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-
-                // Fill the textbox with the player's username by default
-                final EditText inputBox = dialog.findViewById(R.id.highscoreName);
-                inputBox.setText(username);
-
-                yesButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String name = (inputBox).getText().toString();
-                        if (highscoreManager.validName(name)) {
-                            recordHighScore(name, score);
-                            startActivity(intent);
-                        } else {
-                            dialog.setMessage(warning);
-                        }
-                    }
-                });
-
-                noButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
-
-        dialog.show();
-    }
-
-    /**
-     * Record the given high score under the given name
-     *
-     * @param name  - the name to record along with the score
-     * @param score - the high score to save under the given name
-     */
-    private void recordHighScore(String name, int score) {
-        highscoreManager.addScore(name, score);
-    }
 
     /**
      * Take in a double winRate which is less than or equal to 1 and convert it into a percentage with two
