@@ -72,12 +72,13 @@ public class GameManager {
     }
 
     /**
-     * A method that returns true if currentGuess is a valid guess to make
+     * A method that returns true if currentGuess is a valid guess to make.
      *
      * @param currentGuess The currentGuess of user
      * @return Boolean of whether the currentGuess by user is valid
      */
     public boolean checkGuess(String currentGuess) {
-        return (currentGuess.length() == answerSize & !currentGuess.equals("null"));
+        return (currentGuess.length() == answerSize & !currentGuess.equals("null") &
+                answer.checkValidGuess(currentGuess));
     }
 }
