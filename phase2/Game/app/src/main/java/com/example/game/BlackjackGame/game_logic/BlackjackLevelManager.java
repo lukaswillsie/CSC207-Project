@@ -1,7 +1,6 @@
 package com.example.game.BlackjackGame.game_logic;
 
 import com.example.game.BlackjackGame.activities.BlackjackPlayPage;
-import com.example.game.BlackjackGame.domain.BlackjackPlayerManager;
 import com.example.game.BlackjackGame.domain.Deck;
 
 /**

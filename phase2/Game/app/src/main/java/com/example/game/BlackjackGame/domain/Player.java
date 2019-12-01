@@ -14,7 +14,7 @@ public class Player {
      *
      * @return this player's hand
      */
-    Hand getHand() {
+    public Hand getHand() {
         return hand;
     }
 
@@ -30,7 +30,7 @@ public class Player {
      *
      * @param hand - the player's new hand
      */
-    void setHand(Hand hand) {
+    public void setHand(Hand hand) {
         this.hand = hand;
     }
 }

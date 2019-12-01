@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 import com.example.game.BlackjackGame.activities.BlackjackPlayActivity;
 import com.example.game.BlackjackGame.display.BlackjackInterfaceManager;
-import com.example.game.BlackjackGame.domain.BlackjackPlayerManager;
+import com.example.game.BlackjackGame.game_logic.BlackjackPlayerManager;
 import com.example.game.BlackjackGame.domain.Deck;
 import com.example.game.BlackjackGame.domain.Player;
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;

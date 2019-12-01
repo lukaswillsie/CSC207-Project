@@ -3,7 +3,7 @@ package com.example.game.BlackjackGame.domain;
 /**
  * Represents a card in a deck of cards
  */
-class Card {
+public class Card {
     /**
      * The rank of this playing card
      */
@@ -19,7 +19,7 @@ class Card {
      *
      * @return - the rank of this card
      */
-    Rank getRank() {
+    public Rank getRank() {
         return rank;
     }
 
@@ -28,7 +28,7 @@ class Card {
      *
      * @return the suit of this card
      */
-    Suit getSuit() {
+    public Suit getSuit() {
         return suit;
     }
 

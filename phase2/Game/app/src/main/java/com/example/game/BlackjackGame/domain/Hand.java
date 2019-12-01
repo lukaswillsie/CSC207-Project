@@ -17,7 +17,7 @@ public class Hand implements Iterable<Card> {
     /**
      * Create an empty hand
      */
-    Hand() {
+    public Hand() {
         hand = new ArrayList<>();
     }
 
@@ -26,7 +26,7 @@ public class Hand implements Iterable<Card> {
      *
      * @param card - the card to be added to this hand
      */
-    void addCard(Card card) {
+    public void addCard(Card card) {
         this.hand.add(card);
     }
 

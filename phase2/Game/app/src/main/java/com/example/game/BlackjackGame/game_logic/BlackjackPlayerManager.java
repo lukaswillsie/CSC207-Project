@@ -1,4 +1,9 @@
-package com.example.game.BlackjackGame.domain;
+package com.example.game.BlackjackGame.game_logic;
+
+import com.example.game.BlackjackGame.domain.Card;
+import com.example.game.BlackjackGame.domain.Hand;
+import com.example.game.BlackjackGame.domain.Player;
+import com.example.game.BlackjackGame.domain.Rank;
 
 import static com.example.game.BlackjackGame.domain.Rank.ACE;
 
