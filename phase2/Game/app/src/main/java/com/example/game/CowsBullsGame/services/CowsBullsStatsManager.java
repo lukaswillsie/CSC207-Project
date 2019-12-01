@@ -3,6 +3,8 @@ package com.example.game.CowsBullsGame.services;
 import com.example.game.data.Statistic;
 import com.example.game.services.stats.StatsManager;
 
+import java.lang.Math;
+
 public class CowsBullsStatsManager {
 
     //UserStatsManager for this game
@@ -35,6 +37,18 @@ public class CowsBullsStatsManager {
         if (seconds < minTime || minTime == 0) {
             statsManager.setStat(Statistic.QUICKEST_TIME, seconds);
         }
+    }
+
+    /**
+     * Return the player's score. It will be calculated as the number of guesses the player makes
+     * plus the number of minutes (rounded up) that the player took.
+     *
+     * @return the player's score
+     */
+    public int getScore() {
+        int numGuesses = statsManager.getStat(Statistic.NUMBER_OF_GUESSES);
+        int time = statsManager.getStat(Statistic.TIME_TAKEN);
+        return numGuesses + (int) Math.ceil(time / 60.0);
     }
 
 }
