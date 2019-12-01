@@ -58,10 +58,19 @@ public enum MultiplayerIntData {
     /**
      * Represents the statistic "player 2's time taken to finish the round in Cows and Bulls.
      */
-    COWS_BULLS_PLAYER_2_TIME_TAKEN(0, "player2TimeTaken");
+    COWS_BULLS_PLAYER_2_TIME_TAKEN(0, "player2TimeTaken"),
 
+    /**
+     * Represents the statistic "player 1's fewest number of guesses" in a GuessTheNumber
+     * multiplayer game.
+     */
+    GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES(9999, "player1GuessTheNumGuesses"),
 
-
+    /**
+     * Represents the statistic "player 2's fewest number of guesses" in a GuessTheNumber
+     * multiplayer game.
+     */
+    GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES(9999, "player2GuessTheNumGuesses");
 
     /**
      * The initial, default value of this particular statistic. What the statistic
