@@ -114,13 +114,13 @@ public class CowsBullsActivity extends AppCompatActivity {
         int difficulty = settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY);
 
         if (difficulty == 0) {
-            gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+            gameManager = new GameManager(5, settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY));
             guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(5)});
         } else if (difficulty == 1) {
-            gameManager = new GameManager(6, settingsManager.getSetting(Setting.ALPHABET));
+            gameManager = new GameManager(6, settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY));
             guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
         } else {
-            gameManager = new GameManager(7, settingsManager.getSetting(Setting.ALPHABET));
+            gameManager = new GameManager(7, settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY));
             guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
         }
 
@@ -139,10 +139,12 @@ public class CowsBullsActivity extends AppCompatActivity {
 
         cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
 
-        if (settingsManager.getSetting(Setting.ALPHABET) == 1) {
+        if (settingsManager.getSetting(Setting.COWS_BULLS_INPUT_TYPE) == 3) {
             guess.setInputType(InputType.TYPE_CLASS_TEXT);
-        } else {
+        } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 0){
             guess.setInputType(InputType.TYPE_CLASS_NUMBER);
+        } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 1){
+            guess.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_CLASS_TEXT);
         }
     }
 

@@ -7,7 +7,7 @@ public enum Setting {
     DARK_MODE("DarkMode", 0),
     NUM_HANDS("NumHands", 5),
     NUM_ROUNDS("NumRounds", 5),
-    ALPHABET("Alphabet", 0),
+    COWS_BULLS_INPUT_TYPE("Alphabet", 0),
     COWS_BULLS_DIFFICULTY("CowsBullsDifficulty", 0);
 
     /**
