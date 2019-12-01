@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
     android:layout_height="match_parent"
     tools:context=".StartActivity">
 
@@ -44,7 +45,7 @@
         android:id="@+id/imageView15"
         android:layout_width="276dp"
         android:layout_height="441dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:rotation="20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/oldUserButton"
@@ -52,9 +53,10 @@
 
     <ImageView
         android:id="@+id/imageView16"
-        android:layout_width="142dp"
-        android:layout_height="274dp"
-        android:layout_marginBottom="104dp"
+        android:layout_width="116dp"
+        android:layout_height="241dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="64dp"
         android:rotation="-14"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,8 +66,8 @@
         android:id="@+id/imageView17"
         android:layout_width="251dp"
         android:layout_height="307dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginBottom="436dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="456dp"
         android:rotation="120"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,8 +75,10 @@
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="226dp"
-        android:layout_height="288dp"
+        android:layout_width="202dp"
+        android:layout_height="240dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
         android:rotation="-25"
         app:layout_constraintBottom_toTopOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="parent"

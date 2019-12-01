@@ -6,9 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name ="android:windowBackground">@drawable/gradient_background
+        <item name ="android:background">@drawable/gradient_background
         </item>
-        <item name="colorButtonNormal">#a8c0ff</item>
+        <item name="colorButtonNormal">#3c4f65</item>
         <item name="android:buttonCornerRadius">10dp</item>
     </style>
 <!--    <style name="ButtonsLight" parent="">-->
