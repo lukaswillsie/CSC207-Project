@@ -26,9 +26,9 @@ public class GameManager {
      * A constructor for the GameManager class.
      *
      * @param answerSize       The size of the guess / answer.
-     * @param alphabetSelector An enum for the possible alphabets.
+     * @param alphabetSelector An int that defines the possible alphabets.
      */
-    public GameManager(int answerSize, Answer.Alphabet alphabetSelector) {
+    public GameManager(int answerSize, int alphabetSelector) {
         answer = new Answer(answerSize, alphabetSelector);
         this.answerSize = answerSize;
     }
