@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.game.data.Statistic;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 /**
  * A class for managing a user stats while a game is running.
@@ -61,7 +61,7 @@ public class BlackjackStatsRecorder {
      * Create a new StatsRecord from the specified context
      */
     public BlackjackStatsRecorder(Context context, String username) {
-        statsManager = new StatsManagerBuilder().build(context, username);
+        statsManager = new StatsManagerFactory().build(context, username);
         allTimeLongestStreak = statsManager.getStat(Statistic.LONGEST_STREAK);
     }
 

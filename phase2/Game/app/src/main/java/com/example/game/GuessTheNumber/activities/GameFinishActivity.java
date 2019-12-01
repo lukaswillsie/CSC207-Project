@@ -15,11 +15,14 @@ import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
+import com.example.game.data.MultiplayerIntData;
 import com.example.game.data.Statistic;
+import com.example.game.services.multiplayer_data.MultiplayerDataManager;
+import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 import java.util.List;
 
@@ -34,6 +37,7 @@ public class GameFinishActivity extends AppCompatActivity {
     private ScoreboardRepository GuessNumHighscoreManager;
 
     GameManager gameManager = GameStartActivity.gameManager;
+    private MultiplayerDataManager multiplayerDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class GameFinishActivity extends AppCompatActivity {
         setContentView(R.layout.game_finish_activity);
         GuessNumHighscoreManager =
                 new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
+        multiplayerDataManager = new MultiplayerDataManagerFactory().build();
         Game currentGame = gameManager.getCurrentGame();
         currentGame.setIsFinished();
         this.updateStatistics();
@@ -166,6 +171,7 @@ public class GameFinishActivity extends AppCompatActivity {
         String username;
         if (GameData.MULTIPLAYER) {
             boolean isFirstPlayersTurn = gameManager.getIsFirstPlayersTurn();
+            updateFewestGuess();
             if (isFirstPlayersTurn) {
                 username = MultiplayerGameData.getPlayer1Username();
             } else {
@@ -175,7 +181,7 @@ public class GameFinishActivity extends AppCompatActivity {
             username = GameData.USERNAME;
         }
 
-        StatsManager statsManager = new StatsManagerBuilder().build(this, username);
+        StatsManager statsManager = new StatsManagerFactory().build(this, username);
         int guesses = gameManager.getCurrentGame().getNumOfGuess();
 
         int userBest = statsManager.getStat(Statistic.FEWEST_GUESSES);
@@ -243,12 +249,40 @@ public class GameFinishActivity extends AppCompatActivity {
     }
 
     /**
+     * Update the fewest guesses for the two players.
+     */
+    public void updateFewestGuess() {
+        if (GameData.MULTIPLAYER){
+            boolean isFirstPlayersTurn = gameManager.getIsFirstPlayersTurn();
+            int numGuesses = gameManager.getCurrentGame().getNumOfGuess();
+
+            if (isFirstPlayersTurn) {
+                if (numGuesses < multiplayerDataManager.getMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES)) {
+                    multiplayerDataManager.setMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES, numGuesses);
+                }
+            }
+
+            else {
+                if (numGuesses < multiplayerDataManager.getMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES)) {
+                    multiplayerDataManager.setMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES, numGuesses);
+                }
+            }
+        }
+    }
+
+    /**
      * Hide nextRoundButton, playAgainButton and show mainMenuButton when multiplayer game ends.
      */
     public void endMultiplayerGame() {
         findViewById(R.id.nextRoundButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.playAgainButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.mainMenuButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.seeWinner).setVisibility(View.VISIBLE);
+    }
+
+    public void seeWinnerClick(View view) {
+        Intent intent = new Intent(this, GameMultiplayerFinishActivity.class);
+        startActivity(intent);
     }
 
     /**

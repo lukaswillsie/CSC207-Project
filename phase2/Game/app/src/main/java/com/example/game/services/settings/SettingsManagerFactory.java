@@ -7,7 +7,7 @@ import android.content.Context;
  * as a way of removing hard dependencies on UserSettingsManager (a concrete implementation
  * of the SettingsManager interface) from classes that need to interact with settings
  */
-public class SettingsManagerBuilder {
+public class SettingsManagerFactory {
     /**
      * Build a SettingsManager for the user with the given username, from the given Context
      *

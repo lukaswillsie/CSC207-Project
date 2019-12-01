@@ -6,7 +6,7 @@ import android.content.Context;
  * Class for building UserStatsManager's and removing hard dependencies from classes that
  * need a StatsManager
  */
-public class StatsManagerBuilder {
+public class StatsManagerFactory {
 
     /**
      * Build a SettingsManager for the user with the given username, from the given Context

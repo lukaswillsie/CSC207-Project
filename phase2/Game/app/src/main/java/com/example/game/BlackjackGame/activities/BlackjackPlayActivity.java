@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
-import com.example.game.BlackjackGame.services.BlackjackLevelManagerBuilder;
+import com.example.game.BlackjackGame.services.BlackjackLevelManagerFactory;
 import com.example.game.BlackjackGame.services.BlackjackStatsRecorder;
 import com.example.game.R;
 import com.example.game.data.GameData;
@@ -102,7 +102,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
         player1Turn = multiplayerDataManager.getMultiplayerData(BLACKJACK_PLAYER_TURN) == 1;
 
         // Initialize levelManager and username according to whether or not this is a multiplayer game
-        BlackjackLevelManagerBuilder builder = new BlackjackLevelManagerBuilder();
+        BlackjackLevelManagerFactory builder = new BlackjackLevelManagerFactory();
         if (multiplayer) {
             // When playing a multiplayer game, we use player 1's settings for both players
             // So we pass player 1's username as an argument to the builder regardless of who

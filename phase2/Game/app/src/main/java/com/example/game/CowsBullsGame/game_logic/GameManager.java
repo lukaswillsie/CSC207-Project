@@ -9,26 +9,27 @@ import java.util.ArrayList;
  * A GameManager class that handles all of the game logic.
  */
 public class GameManager {
+
     // An array of the data for each turn.
     private ArrayList<TurnData> data = new ArrayList<>();
-
-    // An array of the answer that the player is trying to guess.
-    private Answer answerArray;
 
     // A TurnData object to store the information for the current turn.
     private TurnData turnData;
 
-    //The size of the answerArray
+    // The size of the answerArray
     private int answerSize;
+
+    // The Answer object for this game.
+    private Answer answer;
 
     /**
      * A constructor for the GameManager class.
      *
      * @param answerSize       The size of the guess / answer.
-     * @param alphabetSelector The possible strings that can appear in the answer / guess.
+     * @param alphabetSelector An int that defines the possible alphabets.
      */
     public GameManager(int answerSize, int alphabetSelector) {
-        answerArray = new Answer(answerSize, alphabetSelector);
+        answer = new Answer(answerSize, alphabetSelector);
         this.answerSize = answerSize;
     }
 
@@ -38,8 +39,8 @@ public class GameManager {
      * @param guessArray The new guess.
      */
     public void setGuess(Guess guessArray) {
-        this.turnData = new TurnData(guessArray, this.answerArray);
-        this.data.add(this.turnData);
+        turnData = new TurnData(guessArray, answer);
+        data.add(this.turnData);
     }
 
     /**
@@ -71,16 +72,13 @@ public class GameManager {
     }
 
     /**
-     * A method that returns true if currentGuess is a valid guess to make
+     * A method that returns true if currentGuess is a valid guess to make.
      *
      * @param currentGuess The currentGuess of user
      * @return Boolean of whether the currentGuess by user is valid
      */
     public boolean checkGuess(String currentGuess) {
-        return (currentGuess.length() == answerSize & !currentGuess.equals("null"));
-    }
-
-    public int getAnswerSize() {
-        return answerSize;
+        return (currentGuess.length() == answerSize & !currentGuess.equals("null") &
+                answer.checkValidGuess(currentGuess));
     }
 }

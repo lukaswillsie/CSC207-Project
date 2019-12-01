@@ -2,33 +2,29 @@ package com.example.game.CowsBullsGame.domain;
 
 
 /**
- * A guessArray object that stores the user's guessArray
+ * An object that stores the user's guessArray.
  */
 public class Guess {
 
-    //String array for the guessArray
+    // String array for the guess.
     private String[] guessArray;
 
     /**
-     * Constructor call of the Guess object
+     * Constructor method for the Guess class.
      *
-     * @param guess
+     * @param guess The guess string.
      */
     public Guess(String guess) {
-
-        String[] guessArrayTemp = new String[guess.length()];
+        guessArray = new String[guess.length()];
         for (int i = 0; i < guess.length(); i++) {
-            guessArrayTemp[i] = String.valueOf(guess.charAt(i)).toLowerCase();
-
-            this.guessArray = guessArrayTemp;
+            guessArray[i] = String.valueOf(guess.charAt(i)).toLowerCase();
         }
     }
 
-
     /**
-     * Getter for guessArray
+     * Getter for the guessArray.
      *
-     * @return - returns string object for guessArray
+     * @return Returns guessArray.
      */
     public String[] getGuessArray() {
         return guessArray;

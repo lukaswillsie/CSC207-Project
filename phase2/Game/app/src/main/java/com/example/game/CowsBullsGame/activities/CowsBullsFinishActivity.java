@@ -13,7 +13,7 @@ import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.Statistic;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 /**
  * This activity appears when the user successfully completes a round of Cows and Bulls.
@@ -35,11 +35,14 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
      */
     private StatsManager statsManager;
 
+    /**
+     * Method to initialize the layout when entering the activity
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+        statsManager = new StatsManagerFactory().build(this, GameData.USERNAME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls_finish);
 
@@ -60,5 +63,13 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method to specify what to do when android back button is pressed
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
 }

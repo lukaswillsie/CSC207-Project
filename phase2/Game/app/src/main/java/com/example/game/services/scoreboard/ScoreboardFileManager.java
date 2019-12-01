@@ -219,7 +219,7 @@ class ScoreboardFileManager implements ScoreboardRepository {
         if (scoreList.size() < numberLowScores) {
             return scoreList;
         } else {
-            return scoreList.subList(0, numberLowScores + 1);
+            return scoreList.subList(0, numberLowScores);
         }
     }
 

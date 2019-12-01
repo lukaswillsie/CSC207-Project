@@ -22,15 +22,15 @@ import static com.example.game.data.GameConstants.USERS_DIR_NAME;
 /**
  * An implementation of AccountManager that uses a folder structures like the following:
  * app_root_directory\
- * users\
- * lukas
- * settings
- * stats
- * password
- * peter
- * settings
- * stats
- * password
+ *  users\
+ *      lukas
+ *          settings
+ *          stats
+ *          password
+ *      peter
+ *          settings
+ *          stats
+ *          password
  * to query and create users and their information.
  * Please note that we know its bad to store passwords in plain text, we will work on fixing this
  * for phase 2.
@@ -151,6 +151,13 @@ public class UserAccountManager implements AccountManager {
      */
     public boolean validCredentials(String username, String password) {
         return usernameExists(username) && passwordIsValid(username, password);
+    }
+
+    @Override
+    public boolean validNewCredentials(String username, String password) {
+        // Return true only if the password is non-empty and the username does not contain "="
+        // or "," as this has the potential to mess up the various file systems in the game
+        return password.length() > 0 && !username.contains("=") && !username.contains(",");
     }
 
     /**

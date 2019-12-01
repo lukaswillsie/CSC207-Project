@@ -8,17 +8,22 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Statistic;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 import java.text.MessageFormat;
 
 import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_TURN;
 
+/**
+ * The activity in the mid screen between Player1's turn and Player2's turn displaying the stats
+ * of Player1's round
+ */
 public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
 
     /**
@@ -36,8 +41,14 @@ public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
      */
     StatsManager statsManager;
 
+    /**
+     * The button to commence player2's turn
+     */
     Button nextTurnButton;
 
+    /**
+     * Method to initialize the layout when entering the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +58,7 @@ public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
         nextTurnButton.setText(MessageFormat.format("{0}''s Turn",
                 MultiplayerGameData.getPlayer2Username()));
 
-        statsManager = new StatsManagerBuilder().build(this,
+        statsManager = new StatsManagerFactory().build(this,
                 MultiplayerGameData.getPlayer1Username());
 
         time = findViewById(R.id.time);
@@ -63,6 +74,15 @@ public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
 
         // Record that it is now player 2's turn
         new MultiplayerDataManagerFactory().build().setMultiplayerData(COWS_BULLS_PLAYER_TURN, 2);
+        startActivity(intent);
+    }
+
+    /**
+     * Method to specify what to do when android back button is pressed
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

@@ -28,18 +28,22 @@ public class StartActivity extends AppCompatActivity {
         initializeGame();
     }
 
+    /**
+     * Launch the page to create a new account for the user
+     * @param view - the View that called this method
+     */
     public void newAccount(View view) {
         Intent intent = new Intent(this, NewAccountActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Launch the page to log in an existing account
+     *
+     * @param view - the View that called this method
+     */
     public void oldAccount(View view) {
         Intent intent = new Intent(this, OldAccountActivity.class);
-        startActivity(intent);
-    }
-
-    public void Test(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -69,8 +73,19 @@ public class StartActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Override back button behaviour in this activity to prevent unwanted things from happening
+     */
     @Override
     public void onBackPressed(){
-
+        // If the user presses back on this activity when GameData.MULTIPLAYER is true, we will allow
+        // them to undo multiplayer mode and return to the MainActivity. Otherwise, pressing the
+        // back button does nothing because this would allow behaviour such as signing out, pressing
+        // the back button, and returning to the MainActivity without logging in
+        if(GameData.MULTIPLAYER){
+            Intent intent = new Intent(this, MainActivity.class);
+            GameData.setMultiplayer(false);
+            startActivity(intent);
+        }
     }
 }

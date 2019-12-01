@@ -2,22 +2,31 @@ package com.example.game.CowsBullsGame.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 
 import java.text.MessageFormat;
 
+/**
+ * The activity before the game of Cows and Bulls commences
+ */
 public class CowsBullsStartActivity extends AppCompatActivity {
 
+    /**
+     * The start button in this activity
+     */
     Button startButton;
 
+    /**
+     * True if the current game mode is in multiplayer mode
+     */
     boolean multiplayer;
 
     @Override
@@ -40,8 +49,20 @@ public class CowsBullsStartActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toDifficultySetting(View view){
+    /**
+     * Method for button toDiff to proceed to CowsBullsSelectDifficultyActivity
+     */
+    public void toDifficultySetting(View view) {
         Intent intent = new Intent(this, CowsBullsSelectDifficultyActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Method to specify what to do when android back button is pressed
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

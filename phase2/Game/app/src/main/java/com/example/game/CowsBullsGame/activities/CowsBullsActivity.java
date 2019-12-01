@@ -3,7 +3,7 @@ package com.example.game.CowsBullsGame.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
-import android.text.InputType;
+import android.text.method.DigitsKeyListener;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
@@ -18,6 +18,7 @@ import com.example.game.CowsBullsGame.domain.Guess;
 import com.example.game.CowsBullsGame.game_logic.GameManager;
 import com.example.game.CowsBullsGame.game_logic.TurnData;
 import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
@@ -28,9 +29,9 @@ import com.example.game.services.scoreboard.BestScorePrompter;
 import com.example.game.services.scoreboard.BestScoreSelector;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.settings.SettingsManager;
-import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerFactory;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ import static com.example.game.data.MultiplayerIntData.COWS_BULLS_PLAYER_TURN;
  */
 
 /**
- * The activity that appears right before the user is about to start a game of Cows and Bulls.
+ * The activity where the user is playing the Cows and Bulls game
  */
 public class CowsBullsActivity extends AppCompatActivity {
 
@@ -88,7 +89,9 @@ public class CowsBullsActivity extends AppCompatActivity {
     // The player's username.
     String username = GameData.USERNAME;
 
-
+    /**
+     * Method to initialize the layout and variables when entering the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,19 +110,19 @@ public class CowsBullsActivity extends AppCompatActivity {
         SettingsManager settingsManager;
         StatsManager statsManager;
 
-        settingsManager = new SettingsManagerBuilder().build(this, username);
+        settingsManager = new SettingsManagerFactory().build(this, username);
 
 
         int difficulty = settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY);
 
         if (difficulty == 0) {
-            gameManager = new GameManager(5, settingsManager.getSetting(Setting.ALPHABET));
+            gameManager = new GameManager(5, settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY));
             guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(5)});
         } else if (difficulty == 1) {
-            gameManager = new GameManager(6, settingsManager.getSetting(Setting.ALPHABET));
+            gameManager = new GameManager(6, settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY));
             guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
         } else {
-            gameManager = new GameManager(7, settingsManager.getSetting(Setting.ALPHABET));
+            gameManager = new GameManager(7, settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY));
             guess.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
         }
 
@@ -128,27 +131,23 @@ public class CowsBullsActivity extends AppCompatActivity {
 
         if (multiplayer) {
             if (player1Turn) {
-                statsManager = new StatsManagerBuilder().build(this, MultiplayerGameData.getPlayer1Username());
+                statsManager = new StatsManagerFactory().build(this, MultiplayerGameData.getPlayer1Username());
             } else {
-                statsManager = new StatsManagerBuilder().build(this, MultiplayerGameData.getPlayer2Username());
+                statsManager = new StatsManagerFactory().build(this, MultiplayerGameData.getPlayer2Username());
             }
         } else {
-            statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+            statsManager = new StatsManagerFactory().build(this, GameData.USERNAME);
         }
 
         cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
 
-        if (settingsManager.getSetting(Setting.ALPHABET) == 1) {
-            guess.setInputType(InputType.TYPE_CLASS_TEXT);
-        } else {
-            guess.setInputType(InputType.TYPE_CLASS_NUMBER);
+        if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 0) {
+            guess.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+        } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 1) {
+            guess.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-    }
 
     /**
      * @return - the guess input of user as a String if guess length matches GUESS_SIZE, otherwise
@@ -244,7 +243,6 @@ public class CowsBullsActivity extends AppCompatActivity {
         return (int) (elapsedTime / 1000);
     }
 
-
     /**
      * A method that returns all of the data / statistics collected so far in level 3.
      *
@@ -252,5 +250,14 @@ public class CowsBullsActivity extends AppCompatActivity {
      */
     public ArrayList<TurnData> getStatistics() {
         return this.gameManager.getStatistics();
+    }
+
+    /**
+     * Method to specify what to do when android back button is pressed
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
