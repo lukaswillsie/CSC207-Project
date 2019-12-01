@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.method.DigitsKeyListener;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
@@ -139,12 +140,10 @@ public class CowsBullsActivity extends AppCompatActivity {
 
         cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
 
-        if (settingsManager.getSetting(Setting.COWS_BULLS_INPUT_TYPE) == 3) {
-            guess.setInputType(InputType.TYPE_CLASS_TEXT);
-        } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 0){
-            guess.setInputType(InputType.TYPE_CLASS_NUMBER);
+        if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 0){
+            guess.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
         } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 1){
-            guess.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_CLASS_TEXT);
+            guess.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
         }
     }
 
