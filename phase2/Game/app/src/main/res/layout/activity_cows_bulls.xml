@@ -44,13 +44,14 @@
         app:layout_constraintTop_toBottomOf="@+id/guessNumber" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView"
         android:layout_width="256dp"
         android:layout_height="172dp"
         android:layout_marginStart="99dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="99dp"
         android:layout_marginBottom="46dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/guessNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
