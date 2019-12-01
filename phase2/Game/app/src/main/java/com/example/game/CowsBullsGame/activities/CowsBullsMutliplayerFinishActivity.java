@@ -78,6 +78,9 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
         player1TurnsTaken.setText(String.format("%s", player1Turns.toString()));
         player2TurnsTaken.setText(String.format("%s", player2Turns.toString()));
 
+        player1Username = formatName(MultiplayerGameData.getPlayer1Username());
+        player2Username = formatName(MultiplayerGameData.getPlayer2Username());
+
         if (player1Time.equals(player2Time) & player1Turns.equals(player2Turns)) {
             winMessage.setText(String.format("%s is equally as smart or equally as dumb as %s!", player1Username, player2Username));
         } else if (player1Time > player2Time & player1Turns > player2Turns) {
@@ -114,5 +117,19 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
     public void playAgain(View view) {
         Intent intent = new Intent(this, CowsBullsStartActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * Take in a name String and capitalize the first letter
+     *
+     * @param name - the name to format
+     * @return the input, with the first letter capitalized
+     */
+    private String formatName(String name) {
+        if (Character.isAlphabetic(name.charAt(0))) {
+            return name.substring(0, 1).toUpperCase() + name.substring(1);
+        }
+
+        return name;
     }
 }
