@@ -50,7 +50,7 @@ public class GameFinishActivity extends AppCompatActivity {
         currentGame.setIsFinished();
         this.updateStatistics();
 
-        if (this.CheckForHighScore(currentGame.getPoints())) {
+        if (this.checkForHighScore(currentGame.getPoints())) {
             this.askForHighScore();
         }
 
@@ -201,7 +201,7 @@ public class GameFinishActivity extends AppCompatActivity {
      *
      * @param score - score, that user just got, after finishing the round.
      */
-    private boolean CheckForHighScore(int score) {
+    private boolean checkForHighScore(int score) {
         List<Pair<String, Integer>> allScores = GuessNumHighscoreManager.getHighScores(10);
         if (allScores.size() < 10) {
             return true;
