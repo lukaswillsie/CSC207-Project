@@ -25,7 +25,7 @@ import com.example.game.services.settings.SettingsManagerFactory;
  * activity is needed to resume the old game/read the rules/start a new game.
  */
 public class GameStartActivity extends AppCompatActivity {
-    public static GameManager gameManager = new GameManager();
+    static GameManager gameManager = new GameManager();
     private MultiplayerDataManager multiplayerDataManager;
     String username = GameData.USERNAME;
     boolean rulesAppear = false;
