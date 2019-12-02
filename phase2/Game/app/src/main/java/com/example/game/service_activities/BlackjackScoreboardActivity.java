@@ -14,7 +14,7 @@ public class BlackjackScoreboardActivity extends ScoreboardActivity {
         super.onCreate(savedInstanceState);
         ScoreboardRepository scoreboardRepository = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.BLACKJACK);
 
-        initialize(scoreboardRepository.getHighScores(), "No scores to show");
+        initialize(scoreboardRepository.getHighScores(15), "No scores to show");
         Log.i("blah", scoreboardRepository.getHighScores().toString() + scoreboardRepository.getHighScores().size());
 
         String title = "Blackjack High Scores";

@@ -74,6 +74,7 @@ public class BestScorePrompter {
         final String warning = "That is an invalid name! Please do not include a comma in your name.";
 
         dialog.setMessage(message);
+        dialog.setCancelable(false);
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {

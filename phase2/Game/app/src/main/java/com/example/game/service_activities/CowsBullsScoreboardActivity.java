@@ -13,7 +13,7 @@ public class CowsBullsScoreboardActivity extends ScoreboardActivity {
         super.onCreate(savedInstanceState);
         ScoreboardRepository scoreboardRepository = new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.COWS_AND_BULLS);
 
-        initialize(scoreboardRepository.getLowScores(), "No scores to show");
+        initialize(scoreboardRepository.getLowScores(15), "No scores to show");
 
         String title = "Cows and Bulls High Scores";
         ((TextView) findViewById(R.id.highscoreTitle)).setText(title);
