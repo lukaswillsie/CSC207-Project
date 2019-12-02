@@ -45,7 +45,7 @@ public abstract class ScoreboardActivity extends AppCompatActivity {
             return;
         }
 
-        int rowIndex = 1;
+        int rowIndex = 0;
         TableRow row;
         TextView rank, name, score;
         for (Pair<String, Integer> pair : data) {
@@ -58,7 +58,7 @@ public abstract class ScoreboardActivity extends AppCompatActivity {
                 name = (TextView) row.getChildAt(1);
                 score = (TextView) row.getChildAt(2);
 
-                String rankString = rowIndex + ".";
+                String rankString = rowIndex + 1 + ".";
                 String scoreString = pair.second.toString();
 
                 rank.setText(rankString);
@@ -77,7 +77,7 @@ public abstract class ScoreboardActivity extends AppCompatActivity {
 
                 initializeTextViews(rank, name, score);
 
-                String rankString = rowIndex + ".";
+                String rankString = rowIndex + 1+ ".";
                 String scoreString = pair.second.toString();
                 rank.setText(rankString);
                 name.setText(pair.first);
