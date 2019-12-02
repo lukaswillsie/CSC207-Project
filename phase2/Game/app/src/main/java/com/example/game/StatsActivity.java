@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.data.GameData;
 import com.example.game.data.Statistic;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 /**
  * The page displayed when the user is viewing their stats
@@ -24,7 +24,7 @@ public class StatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stats);
 
         String username = GameData.USERNAME;
-        StatsManager statsManager = new StatsManagerBuilder().build(this, username);
+        StatsManager statsManager = new StatsManagerFactory().build(this, username);
 
         TextView fewestGuesses = findViewById(R.id.fewestGuess);
         String fewestGuessesDisplay = String.valueOf(statsManager.getStat(Statistic.FEWEST_GUESSES));

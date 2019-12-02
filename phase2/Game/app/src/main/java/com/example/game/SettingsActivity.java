@@ -15,7 +15,7 @@ import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
-import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerFactory;
 
 /**
  * The page displayed when a user is viewing or changing their settings
@@ -41,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
             username = GameData.USERNAME;
         }
 
-        settingsManager = new SettingsManagerBuilder().build(this, username);
+        settingsManager = new SettingsManagerFactory().build(this, username);
 
         numHandsBar = findViewById(R.id.numHandsSeekBar);
         // Read user's setting for number of hands and set it as progress on the seek bar

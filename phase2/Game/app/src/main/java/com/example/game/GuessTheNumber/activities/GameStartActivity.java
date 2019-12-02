@@ -15,7 +15,7 @@ import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
-import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerFactory;
 
 /**
  * The activity that appears right before the user is about to start a game of GuessTheNumber. This
@@ -99,7 +99,7 @@ public class GameStartActivity extends AppCompatActivity {
      * Set the number of rounds user wants to play based on customized settings.
      */
     private void setNumRounds() {
-        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
+        SettingsManager manager = new SettingsManagerFactory().build(this, username);
         gameManager.setRoundsToPlay(manager.getSetting(Setting.NUM_ROUNDS));
     }
 

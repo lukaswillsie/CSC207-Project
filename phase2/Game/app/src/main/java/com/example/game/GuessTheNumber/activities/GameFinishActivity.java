@@ -22,7 +22,7 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 import java.util.List;
 
@@ -181,7 +181,7 @@ public class GameFinishActivity extends AppCompatActivity {
             username = GameData.USERNAME;
         }
 
-        StatsManager statsManager = new StatsManagerBuilder().build(this, username);
+        StatsManager statsManager = new StatsManagerFactory().build(this, username);
         int guesses = gameManager.getCurrentGame().getNumOfGuess();
 
         int userBest = statsManager.getStat(Statistic.FEWEST_GUESSES);

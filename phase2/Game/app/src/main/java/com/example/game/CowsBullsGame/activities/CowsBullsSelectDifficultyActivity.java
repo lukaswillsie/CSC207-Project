@@ -12,7 +12,7 @@ import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
-import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerFactory;
 
 /**
  * Activity where user can select the difficulty of the Cows and Bulls game
@@ -38,7 +38,7 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cows_bulls_select_difficulty);
 
         String username = GameData.USERNAME;
-        settingsManager = new SettingsManagerBuilder().build(this, username);
+        settingsManager = new SettingsManagerFactory().build(this, username);
         currDiffLevel = findViewById(R.id.currDiffLevel);
 
         int difficulty = settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY);

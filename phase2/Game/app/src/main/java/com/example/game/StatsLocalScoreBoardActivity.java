@@ -2,14 +2,13 @@ package com.example.game;
 
 import android.os.Bundle;
 import android.util.Pair;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.game.data.Statistic;
 import com.example.game.services.accounts.AccountManager;
 import com.example.game.services.accounts.UserAccountManager;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +29,7 @@ public class StatsLocalScoreBoardActivity extends ScoreboardActivity {
         Statistic ourStats = (Statistic) bundle.getSerializable("key");
 
         for(String username: usernames){
-            StatsManager usersStat = new StatsManagerBuilder().build(this, username);
+            StatsManager usersStat = new StatsManagerFactory().build(this, username);
             int userGuesses = usersStat.getStat(ourStats);
             Pair<String, Integer> userTuple= new Pair<>(username, userGuesses);
             topRating.add(userTuple);

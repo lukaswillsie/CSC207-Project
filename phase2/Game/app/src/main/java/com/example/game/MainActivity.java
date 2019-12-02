@@ -15,7 +15,7 @@ import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
-import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerFactory;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         updateMultiplayerButtons();
 
         //DarkMode Setting
-        SettingsManager manager = new SettingsManagerBuilder().build(this, username);
+        SettingsManager manager = new SettingsManagerFactory().build(this, username);
         int temp = manager.getSetting(Setting.DARK_MODE);
         if (temp == 1) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);

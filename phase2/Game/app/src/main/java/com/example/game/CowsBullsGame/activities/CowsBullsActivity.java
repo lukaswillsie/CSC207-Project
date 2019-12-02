@@ -29,9 +29,9 @@ import com.example.game.services.scoreboard.BestScorePrompter;
 import com.example.game.services.scoreboard.BestScoreSelector;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.settings.SettingsManager;
-import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerFactory;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 import java.util.ArrayList;
 
@@ -110,7 +110,7 @@ public class CowsBullsActivity extends AppCompatActivity {
         SettingsManager settingsManager;
         StatsManager statsManager;
 
-        settingsManager = new SettingsManagerBuilder().build(this, username);
+        settingsManager = new SettingsManagerFactory().build(this, username);
 
 
         int difficulty = settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY);
@@ -131,12 +131,12 @@ public class CowsBullsActivity extends AppCompatActivity {
 
         if (multiplayer) {
             if (player1Turn) {
-                statsManager = new StatsManagerBuilder().build(this, MultiplayerGameData.getPlayer1Username());
+                statsManager = new StatsManagerFactory().build(this, MultiplayerGameData.getPlayer1Username());
             } else {
-                statsManager = new StatsManagerBuilder().build(this, MultiplayerGameData.getPlayer2Username());
+                statsManager = new StatsManagerFactory().build(this, MultiplayerGameData.getPlayer2Username());
             }
         } else {
-            statsManager = new StatsManagerBuilder().build(this, GameData.USERNAME);
+            statsManager = new StatsManagerFactory().build(this, GameData.USERNAME);
         }
 
         cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);

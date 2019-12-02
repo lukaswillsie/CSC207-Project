@@ -14,7 +14,7 @@ import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Statistic;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerBuilder;
+import com.example.game.services.stats.StatsManagerFactory;
 
 import java.text.MessageFormat;
 
@@ -58,7 +58,7 @@ public class CowsBullsMidMultiplayerActivity extends AppCompatActivity {
         nextTurnButton.setText(MessageFormat.format("{0}''s Turn",
                 MultiplayerGameData.getPlayer2Username()));
 
-        statsManager = new StatsManagerBuilder().build(this,
+        statsManager = new StatsManagerFactory().build(this,
                 MultiplayerGameData.getPlayer1Username());
 
         time = findViewById(R.id.time);

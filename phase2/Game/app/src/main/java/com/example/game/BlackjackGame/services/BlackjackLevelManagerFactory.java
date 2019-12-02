@@ -10,12 +10,12 @@ import com.example.game.BlackjackGame.game_logic.BlackjackLevelManager;
 import com.example.game.BlackjackGame.game_logic.BlackjackPlayerManager;
 import com.example.game.BlackjackGame.game_logic.InterfaceManager;
 import com.example.game.data.Setting;
-import com.example.game.services.settings.SettingsManagerBuilder;
+import com.example.game.services.settings.SettingsManagerFactory;
 
 /**
  * A class that exists solely to build complex BlackjackLevelManagers
  */
-public class BlackjackLevelManagerBuilder {
+public class BlackjackLevelManagerFactory {
     /**
      * Build a new LevelManager for the given activity
      *
@@ -40,7 +40,7 @@ public class BlackjackLevelManagerBuilder {
 
         InterfaceManager interfaceManager = new BlackjackInterfaceManager(user, dealer, userHand, dealerHand);
         BlackjackLevelManager levelManager = new BlackjackLevelManager(userManager, dealerManager, deck, interfaceManager, activity);
-        levelManager.setNumHands(new SettingsManagerBuilder().build(activity, username).getSetting(Setting.NUM_HANDS));
+        levelManager.setNumHands(new SettingsManagerFactory().build(activity, username).getSetting(Setting.NUM_HANDS));
 
         return levelManager;
     }
