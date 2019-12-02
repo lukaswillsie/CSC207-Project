@@ -3,7 +3,7 @@ package com.example.game.GuessTheNumber.domain;
 /**
  * Represents one game instance, or rather, a "round" of GuessTheNumber.
  */
-public class Game {
+public class GuessTheNumberRound {
     /**
      * Number of guesses, that this user has used.
      */
@@ -23,14 +23,14 @@ public class Game {
     private int number;
 
     /**
-     * range where the number we seek might be.
+     * Range where the number we seek might be.
      */
     private int range = 50;
 
     /**
-     * Create a new Game for a user.
+     * Create a new GuessTheNumberRound for a user.
      */
-    public Game() {
+    public GuessTheNumberRound() {
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;

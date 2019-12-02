@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.GuessTheNumber.domain.Game;
+import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.MainActivity;
 import com.example.game.R;
@@ -46,7 +46,7 @@ public class GameFinishActivity extends AppCompatActivity {
         GuessNumHighscoreManager =
                 new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
-        Game currentGame = gameManager.getCurrentGame();
+        GuessTheNumberRound currentGame = gameManager.getCurrentGame();
         currentGame.setIsFinished();
         this.updateStatistics();
 

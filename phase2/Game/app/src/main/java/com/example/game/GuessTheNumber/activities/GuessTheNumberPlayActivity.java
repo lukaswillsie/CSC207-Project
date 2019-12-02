@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.GuessTheNumber.domain.Game;
+import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.MainActivity;
 import com.example.game.R;
@@ -44,7 +44,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     public void submitGuess(View view) {
         try {
             guess = getGuess();
-            Game currentGame = gameManager.getCurrentGame();
+            GuessTheNumberRound currentGame = gameManager.getCurrentGame();
             ((TextView) findViewById(R.id.guessInput)).setText("");
 
             if (currentGame.checkTheRightGuess(guess)) {
@@ -102,7 +102,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
      * Updates the display of the #points and #guesses.
      */
     private void updateScore() {
-        Game currentGame = gameManager.getCurrentGame();
+        GuessTheNumberRound currentGame = gameManager.getCurrentGame();
         ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
     }

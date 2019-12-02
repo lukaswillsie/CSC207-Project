@@ -1,7 +1,6 @@
 package com.example.game.GuessTheNumber.game_logic;
 
-import com.example.game.GuessTheNumber.domain.Game;
-import com.example.game.data.GameData;
+import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
 
 /**
  * This class handles all the logic of the whole GAME and all the rounds user want to play.
@@ -10,7 +9,7 @@ public class GameManager {
     /**
      * The current game this game manager holds and User plays.
      */
-    private Game game;
+    private GuessTheNumberRound game;
     /**
      * True iff there is at least one round left to play
      */
@@ -51,13 +50,13 @@ public class GameManager {
      * Creates a new game user is about to play.
      */
     public void startNewGame() {
-        game = new Game();
+        game = new GuessTheNumberRound();
     }
 
     /**
      * @return the current game user is playing.
      */
-    public Game getCurrentGame() {
+    public GuessTheNumberRound getCurrentGame() {
         return this.game;
     }
 

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.GuessTheNumber.domain.Game;
+import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
 import com.example.game.R;
 import com.example.game.data.GameData;
@@ -93,7 +93,7 @@ public class GameStartActivity extends AppCompatActivity {
      */
     private void displayResumeButton() {
         Button btn = findViewById(R.id.resumeGame);
-        Game game = gameManager.getCurrentGame();
+        GuessTheNumberRound game = gameManager.getCurrentGame();
         if (game.isFinished() || (game.getPoints() == 0 && gameManager.getCurrentRound() == 0)) {
             btn.setVisibility(View.INVISIBLE);
         } else {
