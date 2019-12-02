@@ -55,7 +55,7 @@ public class BlackjackPlayActivity extends AppCompatActivity implements Blackjac
     /**
      * The LevelManager that will play the game taking place in this activity
      */
-    public static BlackjackLevelManager levelManager;
+    private BlackjackLevelManager levelManager;
 
     /**
      * The class managing the buttons in this Activity
