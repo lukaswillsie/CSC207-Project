@@ -7,9 +7,9 @@ import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
  */
 public class GuessTheNumberGameManager {
     /**
-     * The current game this game manager holds and User plays.
+     * The current round this round manager holds and User plays.
      */
-    private GuessTheNumberRound game;
+    private GuessTheNumberRound round;
     /**
      * True iff there is at least one round left to play
      */
@@ -19,23 +19,26 @@ public class GuessTheNumberGameManager {
      */
     private int roundsToPlay;
     /**
-     * Index of the current game user is playing.
+     * Index of the current round user is playing.
      */
-    private int currentRound;
+    private int currentRoundIndex;
 
     /**
      * True iff on single mode or if it is the first player's turn on multiplayer mode.
      */
     private boolean isFirstPlayersTurn;
 
+    /**
+     * The range of the number to be guessed.
+     */
     private int range;
 
     /**
      * Create a gameManager
      */
     public GuessTheNumberGameManager(int range) {
-       this.range = range;
-       resetGameManager();
+        this.range = range;
+        resetGameManager();
 
         this.roundsToPlay = 5;
     }
@@ -44,24 +47,24 @@ public class GuessTheNumberGameManager {
      * Reset the GuessTheNumberGameManager values.
      */
     public void resetGameManager() {
-        startNewGame();
+        startNewRound();
         this.keepPlaying = true;
-        this.currentRound = 0;
+        this.currentRoundIndex = 0;
         this.isFirstPlayersTurn = true;
     }
 
     /**
-     * Creates a new game user is about to play.
+     * Creates a new round user is about to play.
      */
-    public void startNewGame() {
-        game = new GuessTheNumberRound(this.range);
+    public void startNewRound() {
+        round = new GuessTheNumberRound(this.range);
     }
 
     /**
-     * @return the current game user is playing.
+     * @return the current round user is playing.
      */
-    public GuessTheNumberRound getCurrentGame() {
-        return this.game;
+    public GuessTheNumberRound getCurrentRound() {
+        return this.round;
     }
 
     /**
@@ -82,15 +85,15 @@ public class GuessTheNumberGameManager {
      * Updates the number of rounds are left to play.
      */
     public void checkRounds() {
-        this.currentRound++;
-        this.keepPlaying = this.currentRound != this.roundsToPlay;
+        this.currentRoundIndex++;
+        this.keepPlaying = this.currentRoundIndex != this.roundsToPlay;
     }
 
     /**
      * Return the index of GuessTheNumberRound the user is currently on.
      */
-    public int getCurrentRound() {
-        return this.currentRound;
+    public int getCurrentRoundIndex() {
+        return this.currentRoundIndex;
     }
 
     /**
@@ -104,7 +107,7 @@ public class GuessTheNumberGameManager {
      * Reset the index of GuessTheNumberRound the user is currently on.
      */
     public void resetCurrentRounds() {
-        this.currentRound = 0;
+        this.currentRoundIndex = 0;
     }
 
 
@@ -119,6 +122,9 @@ public class GuessTheNumberGameManager {
         return this.isFirstPlayersTurn;
     }
 
+    /**
+     * Changes the boolean isFirstPlayersTurn.
+     */
     public void changeIsFirstPlayersTurn() {
         this.isFirstPlayersTurn = !this.isFirstPlayersTurn;
     }

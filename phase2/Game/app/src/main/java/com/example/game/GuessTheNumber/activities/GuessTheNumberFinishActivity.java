@@ -46,7 +46,7 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
         GuessNumHighscoreManager =
                 new ScoreboardRepositoryFactory().build(ScoreboardRepository.Game.GUESS_THE_NUMBER);
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
-        GuessTheNumberRound currentGame = gameManager.getCurrentGame();
+        GuessTheNumberRound currentGame = gameManager.getCurrentRound();
         currentGame.setIsFinished();
         this.updateStatistics();
 
@@ -56,7 +56,7 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.points16)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView) findViewById(R.id.finalGuesses)).setText(String.valueOf(currentGame.getNumOfGuess()));
-        ((TextView) findViewById(R.id.currentRoundText)).setText(String.valueOf(gameManager.getCurrentRound()));
+        ((TextView) findViewById(R.id.currentRoundText)).setText(String.valueOf(gameManager.getCurrentRoundIndex()));
         ((TextView) findViewById(R.id.totalRoundsText)).setText(String.valueOf(gameManager.getRoundsToPlay()));
 
         if (gameManager.getKeepPlaying()) {
@@ -97,7 +97,7 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
      */
     public void playAgainClick(View view) {
         Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
-        gameManager.startNewGame();
+        gameManager.startNewRound();
         startActivity(intent);
     }
 
@@ -106,7 +106,7 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
      */
     public void nextPlayerClick(View view) {
         Intent intent = new Intent(this, GuessTheNumberStartActivity.class);
-        gameManager.startNewGame();
+        gameManager.startNewRound();
         startActivity(intent);
     }
 
@@ -116,7 +116,7 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
      */
     public void nextRound(View view) {
         Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
-        gameManager.startNewGame();
+        gameManager.startNewRound();
         startActivity(intent);
     }
 
@@ -182,8 +182,8 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
         }
 
         StatsManager statsManager = new StatsManagerFactory().build(this, username);
-        int guesses = gameManager.getCurrentGame().getNumOfGuess();
-        int points = gameManager.getCurrentGame().getPoints();
+        int guesses = gameManager.getCurrentRound().getNumOfGuess();
+        int points = gameManager.getCurrentRound().getPoints();
         int userBestGuesses = statsManager.getStat(Statistic.FEWEST_GUESSES);
         int userBestPoints = statsManager.getStat(Statistic.GUESS_POINT);
         if (guesses < userBestGuesses) {
@@ -243,7 +243,7 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
      */
     public void saveScore(View view) {
         String name = ((EditText) (findViewById(R.id.typeNamePLease))).getText().toString();
-        recordHighScore(name, gameManager.getCurrentGame().getPoints());
+        recordHighScore(name, gameManager.getCurrentRound().getPoints());
         ((TextView) findViewById(R.id.highScoreCongrats)).setText("You can see your name on the ScoreBoard!");
         findViewById(R.id.typeNamePLease).setVisibility(View.INVISIBLE);
         findViewById(R.id.saveScore).setVisibility(View.INVISIBLE);
@@ -257,7 +257,7 @@ public class GuessTheNumberFinishActivity extends AppCompatActivity {
     public void updateFewestGuess() {
         if (GameData.MULTIPLAYER) {
             boolean isFirstPlayersTurn = gameManager.getIsFirstPlayersTurn();
-            int numGuesses = gameManager.getCurrentGame().getNumOfGuess();
+            int numGuesses = gameManager.getCurrentRound().getNumOfGuess();
 
             if (isFirstPlayersTurn) {
                 if (numGuesses < multiplayerDataManager.getMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES)) {

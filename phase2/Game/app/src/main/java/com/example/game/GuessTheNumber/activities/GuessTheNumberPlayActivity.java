@@ -63,11 +63,11 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     public void submitGuess(View view) {
         try {
             guess = getGuess();
-            GuessTheNumberRound currentGame = gameManager.getCurrentGame();
+            GuessTheNumberRound currentGame = gameManager.getCurrentRound();
             ((TextView) findViewById(R.id.guessInput)).setText("");
 
             if (currentGame.checkTheRightGuess(guess)) {
-                currentGame.FinishGuessTheNumberRound(guess);
+                currentGame.finishGuessTheNumberRound(guess);
                 this.finishTheRound();
             } else {
                 if (currentGame.checkGuess(guess)) {
@@ -121,7 +121,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
      * Updates the display of the #points and #guesses.
      */
     private void updateScore() {
-        GuessTheNumberRound currentGame = gameManager.getCurrentGame();
+        GuessTheNumberRound currentGame = gameManager.getCurrentRound();
         ((TextView) findViewById(R.id.pointsFinishId)).setText(String.valueOf(currentGame.getPoints()));
         ((TextView) findViewById(R.id.guessesId)).setText(String.valueOf(currentGame.getNumOfGuess()));
     }

@@ -23,25 +23,19 @@ public class GuessTheNumberRound {
     private int number;
 
     /**
-     * Range where the number we seek might be.
-     */
-    private int range;
-
-    /**
      * Create a new GuessTheNumberRound for a user.
      */
     public GuessTheNumberRound(int range) {
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
-        this.range = range;
         this.number = (int) (Math.random() * range + 1);
     }
 
     /**
      * Finish the round.
      */
-    public void FinishGuessTheNumberRound(int guess) {
+    public void finishGuessTheNumberRound(int guess) {
         this.finished = true;
         this.updateStats(guess);
     }

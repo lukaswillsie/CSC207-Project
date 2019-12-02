@@ -27,11 +27,11 @@ import com.example.game.services.settings.SettingsManagerFactory;
 public class GuessTheNumberStartActivity extends AppCompatActivity {
     /**
      * gameManger is responsible for the whole logic of the game, passes values to GuessTheNumberPlayActivity
-     * and GuessTheNumberFinishActivity
+     * and GuessTheNumberFinishActivity.
      */
     static GuessTheNumberGameManager gameManager;
     /**
-     * multiplayerDataManager for this game
+     * multiplayerDataManager for this game.
      */
     private MultiplayerDataManager multiplayerDataManager;
     /**
@@ -64,7 +64,7 @@ public class GuessTheNumberStartActivity extends AppCompatActivity {
             gameManager.resetGameManager();
         } else if (GameData.MULTIPLAYER && !firstPlayersTurn) {
             updateTurnText(MultiplayerGameData.getPlayer2Username());
-            gameManager.startNewGame();
+            gameManager.startNewRound();
         }
 
         this.displayResumeButton();
@@ -77,7 +77,7 @@ public class GuessTheNumberStartActivity extends AppCompatActivity {
      */
     public void startTheGame(View view) {
         gameManager.resetCurrentRounds();
-        gameManager.startNewGame();
+        gameManager.startNewRound();
         Intent intent = new Intent(this, GuessTheNumberPlayActivity.class);
         startActivity(intent);
     }
@@ -118,8 +118,8 @@ public class GuessTheNumberStartActivity extends AppCompatActivity {
      */
     private void displayResumeButton() {
         Button btn = findViewById(R.id.resumeGame);
-        GuessTheNumberRound game = gameManager.getCurrentGame();
-        if (game.isFinished() || (game.getPoints() == 0 && gameManager.getCurrentRound() == 0)) {
+        GuessTheNumberRound game = gameManager.getCurrentRound();
+        if (game.isFinished() || (game.getPoints() == 0 && gameManager.getCurrentRoundIndex() == 0)) {
             btn.setVisibility(View.INVISIBLE);
         } else {
             btn.setVisibility(View.VISIBLE);
