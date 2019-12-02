@@ -24,6 +24,19 @@ public class GuessTheNumberSelectDifficultyActivity extends AppCompatActivity {
         String username = GameData.USERNAME;
         settingsManager = new SettingsManagerFactory().build(this, username);
         currDiff = findViewById(R.id.currDiffLevel);
+
+        int range = settingsManager.getSetting(Setting.GUESS_THE_NUMBER_RANGE);
+        if (range == 50) {
+            currDiff.setText("Easy");
+        }
+
+        else if (range == 100) {
+            currDiff.setText("Medium");
+        }
+
+        else {
+            currDiff.setText("Insane");
+        }
     }
 
     public void easyDifficultyClick(View view) {
