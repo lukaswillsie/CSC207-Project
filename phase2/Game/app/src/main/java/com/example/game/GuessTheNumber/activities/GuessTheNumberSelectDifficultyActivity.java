@@ -13,8 +13,19 @@ import com.example.game.data.Setting;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerFactory;
 
+/**
+ * This activity allows the user to set their difficulty (ie. their range of numbers to guess)
+ * for GuessTheNumber.
+ */
 public class GuessTheNumberSelectDifficultyActivity extends AppCompatActivity {
+    /**
+     * The settingsManager for this activity used to update the range setting.
+     */
     SettingsManager settingsManager;
+
+    /**
+     * The text view used to display what difficulty the user is currently on.
+     */
     TextView currDiff;
 
     @Override
