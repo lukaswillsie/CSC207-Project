@@ -116,5 +116,7 @@
     <string name="mediumGTN" />
     <string name="GTNmedium">Range of 1 to 100</string>
     <string name="insaneGTN">Range of 1 to 1000</string>
+    <string name="setDifficulty" />
+    <string name="setDifficulty1">Set Difficulty</string>
 
 </resources>

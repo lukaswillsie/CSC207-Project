@@ -136,4 +136,12 @@ public class GameStartActivity extends AppCompatActivity {
         multiplayerDataManager.setMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES, 9999);
     }
 
+    /**
+     * Redirects the user to the GuessTheNumerSelectDifficultyActivity.
+     */
+    public void setDifficultyClick(View view) {
+        Intent intent = new Intent(this, GuessTheNumberSelectDifficultyActivity.class);
+        startActivity(intent);
+    }
+
 }
