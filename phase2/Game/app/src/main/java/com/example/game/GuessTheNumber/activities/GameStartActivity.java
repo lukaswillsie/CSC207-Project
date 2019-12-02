@@ -15,25 +15,49 @@ import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.MultiplayerIntData;
 import com.example.game.data.Setting;
+import com.example.game.data.Statistic;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerFactory;
+import com.example.game.services.stats.StatsManager;
+import com.example.game.services.stats.StatsManagerFactory;
 
 /**
  * The activity that appears right before the user is about to start a game of GuessTheNumber. This
  * activity is needed to resume the old game/read the rules/start a new game.
  */
 public class GameStartActivity extends AppCompatActivity {
-    static GameManager gameManager = new GameManager();
+    /**
+     * gameManger is responsible for the whole logic of the game, passes values to GuessTheNumberPlayActivity
+     * and GuessTheNumberFinishActivity
+     */
+    static GameManager gameManager;
+    /**
+     * multiplayerDataManager for this game
+     */
     private MultiplayerDataManager multiplayerDataManager;
+    /**
+     * keeping username of the user playing this game.
+     */
     String username = GameData.USERNAME;
+    /**
+     * Rules appear if user wants to see that.
+     */
     boolean rulesAppear = false;
+    /**
+     * SettingManager for the user.
+     */
+    SettingsManager settingsManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_start_activity);
+        settingsManager = new SettingsManagerFactory().build(this, username);
+        int range = settingsManager.getSetting(Setting.GUESS_THE_NUMBER_RANGE);
+        gameManager = new GameManager(range);
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
         boolean firstPlayersTurn = gameManager.getIsFirstPlayersTurn();
 
@@ -61,6 +85,10 @@ public class GameStartActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void selectDifficultyClick(View view){
+        Intent intent = new Intent(this, GuessTheNumberSelectDifficultyActivity.class);
+        startActivity(intent);
+    }
     /**
      * When a user clicks on the resume button, the GameActivity1 activity appears with the stats of
      * the game that the user has previously paused on. However, on multiplayer mode, the user does

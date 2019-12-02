@@ -7,7 +7,8 @@ public enum Setting {
     DARK_MODE("DarkMode", 0),
     NUM_HANDS("NumHands", 5),
     NUM_ROUNDS("NumRounds", 5),
-    COWS_BULLS_DIFFICULTY("CowsBullsDifficulty", 0);
+    COWS_BULLS_DIFFICULTY("CowsBullsDifficulty", 0),
+    GUESS_THE_NUMBER_RANGE("GuessTheNumberRange", 50);
 
     /**
      * The key that will be used to store this setting in the settings file

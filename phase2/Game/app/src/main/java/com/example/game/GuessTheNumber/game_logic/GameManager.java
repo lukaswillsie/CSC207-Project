@@ -28,11 +28,15 @@ public class GameManager {
      */
     private boolean isFirstPlayersTurn;
 
+    private int range;
+
     /**
      * Create a gameManager
      */
-    public GameManager() {
-        resetGameManager();
+    public GameManager(int range) {
+       this.range = range;
+       resetGameManager();
+
         this.roundsToPlay = 5;
     }
 
@@ -50,7 +54,7 @@ public class GameManager {
      * Creates a new game user is about to play.
      */
     public void startNewGame() {
-        game = new GuessTheNumberRound();
+        game = new GuessTheNumberRound(this.range);
     }
 
     /**

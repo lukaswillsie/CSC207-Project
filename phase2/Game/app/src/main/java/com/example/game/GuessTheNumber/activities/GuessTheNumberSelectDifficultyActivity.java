@@ -38,7 +38,7 @@ public class GuessTheNumberSelectDifficultyActivity extends AppCompatActivity {
 
     public void insaneDifficultyClick(View view) {
         settingsManager.updateSetting(Setting.GUESS_THE_NUMBER_RANGE, 1000);
-        currDiff.setText("Medium");
+        currDiff.setText("Insane");
     }
 
     public void backClick(View view) {

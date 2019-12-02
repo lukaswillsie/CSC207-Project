@@ -25,15 +25,16 @@ public class GuessTheNumberRound {
     /**
      * Range where the number we seek might be.
      */
-    private int range = 50;
+    private int range;
 
     /**
      * Create a new GuessTheNumberRound for a user.
      */
-    public GuessTheNumberRound() {
+    public GuessTheNumberRound(int range) {
         this.numOfGuess = 0;
         this.finished = false;
         this.points = 0;
+        this.range = range;
         this.number = (int) (Math.random() * range + 1);
     }
 
