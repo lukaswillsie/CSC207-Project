@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.Activities.MainActivity;
+import com.example.game.service_activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.Statistic;
@@ -21,26 +21,20 @@ import com.example.game.services.stats.StatsManagerFactory;
 public class CowsBullsFinishActivity extends AppCompatActivity {
 
     /**
-     * TextView display for user's time taken to guess the number
-     */
-    private TextView time;
-
-    /**
-     * TextView display for user's number of guesses taken to guess the number
-     */
-    private TextView numGuesses;
-
-    /**
-     * StatsManager object to retrieve and set stats for user
-     */
-    private StatsManager statsManager;
-
-    /**
      * Method to initialize the layout when entering the activity
      */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // TextView display for user's time taken to guess the number.
+        TextView time;
+
+        // TextView display for user's number of guesses taken to guess the number.
+        TextView numGuesses;
+
+        // StatsManager object to retrieve and set stats for user.
+        StatsManager statsManager;
 
         statsManager = new StatsManagerFactory().build(this, GameData.USERNAME);
         super.onCreate(savedInstanceState);
@@ -54,9 +48,7 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to allow button to take user to the MainActivity
-     *
-     * @param view
+     * Method to allow button to take user to the MainActivity.
      */
     public void menu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -64,7 +56,7 @@ public class CowsBullsFinishActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to specify what to do when android back button is pressed
+     * Method to specify what to do when android back button is pressed.
      */
     @Override
     public void onBackPressed() {

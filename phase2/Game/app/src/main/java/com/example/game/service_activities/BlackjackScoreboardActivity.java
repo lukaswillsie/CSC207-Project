@@ -1,4 +1,4 @@
-package com.example.game.Activities;
+package com.example.game.service_activities;
 
 import android.os.Bundle;
 import android.util.Log;

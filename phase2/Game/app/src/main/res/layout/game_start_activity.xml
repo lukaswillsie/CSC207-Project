@@ -47,9 +47,10 @@
     <TextView
         android:id="@+id/rulesText"
         android:layout_width="322dp"
-        android:layout_height="115dp"
+        android:layout_height="156dp"
         android:layout_marginTop="16dp"
         android:text="@string/rulesTextNew"
+        android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

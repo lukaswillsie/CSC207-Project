@@ -18,7 +18,7 @@ import com.example.game.CowsBullsGame.domain.Guess;
 import com.example.game.CowsBullsGame.game_logic.GameManager;
 import com.example.game.CowsBullsGame.game_logic.TurnData;
 import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
-import com.example.game.Activities.MainActivity;
+import com.example.game.service_activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
@@ -171,7 +171,7 @@ public class CowsBullsActivity extends AppCompatActivity {
      *
      * @param view - view of the Activity
      */
-    public void checkGuess(View view) {
+    public void checkUserGuess(View view) {
         currentGuess = guessInput();
         Intent intent;
 
@@ -184,13 +184,12 @@ public class CowsBullsActivity extends AppCompatActivity {
             int cows = this.gameManager.getResults()[0];
             System.out.println(gameManager.gameEnd());
             if (gameManager.gameEnd()) {
+
                 long stopTime = System.currentTimeMillis();
                 chronometer.stop();
                 long elapsedTime = stopTime - startTime;
                 int seconds = turnToSeconds(elapsedTime);
                 int numberOfGuesses = getStatistics().size();
-                System.out.println(seconds);
-                System.out.println(numberOfGuesses);
                 cowsBullsStatsManager.update(seconds, numberOfGuesses);
 
                 if (multiplayer) {
@@ -226,6 +225,7 @@ public class CowsBullsActivity extends AppCompatActivity {
             currGuess.setGravity(Gravity.CENTER);
             linLayout.addView(currGuess);
 
+            //Code taken from stack exchange
             scrollView.post(new Runnable() {
                 @Override
                 public void run() {

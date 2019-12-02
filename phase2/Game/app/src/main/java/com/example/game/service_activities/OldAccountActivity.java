@@ -1,4 +1,4 @@
-package com.example.game.Activities;
+package com.example.game.service_activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,34 +12,34 @@ import com.example.game.R;
 import com.example.game.services.accounts.AccountManagerFactory;
 
 /**
- * The page displayed when a user is creating a new account
+ * The page displayed when a user is logging in to an existing account
  */
-public class NewAccountActivity extends AppCompatActivity implements NewUserPage {
+public class OldAccountActivity extends AppCompatActivity implements OldUserPage {
+    /**
+     * The NewAccountActivityPresenter associated with this activity
+     */
+    private OldAccountActivityPresenter presenter;
+
     /**
      * The username of the user logging in
      */
     private String username;
 
-    /**
-     * The NewAccountActivityPresenter associated with this activity
-     */
-    private NewAccountActivityPresenter presenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_account);
-        presenter = new NewAccountActivityPresenter(new AccountManagerFactory().build(this), this);
+        setContentView(R.layout.activity_old_account);
+
+        presenter = new OldAccountActivityPresenter(new AccountManagerFactory().build(this), this);
     }
 
     /**
-     * Register a new user by passing the request on to the presenter
-     *
-     * @param view - the View that called this method
+     * Login the user; proceed to the main page of the app and set the USERNAME field in GameData
+     * to the user's username so that other classes can access it
      */
-    public void register(View view) {
+    public void login(View view) {
         username = getUsername();
-        presenter.registerNewUser(username, getPassword());
+        presenter.loginOldUser(username, getPassword());
     }
 
     /**
@@ -57,9 +57,8 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
      * @return what the user typed into the name field
      */
     private String getUsername() {
-        return ((TextView) findViewById(R.id.newAccountUsernameTextField)).getText().toString();
+        return ((TextView) findViewById(R.id.oldAccountUsernameTextField)).getText().toString();
     }
-
 
     /**
      * Login the user; proceed to the main page of the app and set the USERNAME field in GameData
@@ -71,14 +70,13 @@ public class NewAccountActivity extends AppCompatActivity implements NewUserPage
         startActivity(intent);
     }
 
-
     /**
-     * To be called when there is a problem creating a new account for the user
+     * To be called when there is a problem logging in the user
      *
      * @param message - the message to display to the user
      */
     @Override
-    public void accountCreationError(String message) {
+    public void loginError(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message).setPositiveButton("Ok", null).create().show();
     }

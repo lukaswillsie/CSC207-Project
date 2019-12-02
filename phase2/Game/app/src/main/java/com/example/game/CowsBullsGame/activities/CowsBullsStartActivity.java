@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.Activities.MainActivity;
+import com.example.game.service_activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;

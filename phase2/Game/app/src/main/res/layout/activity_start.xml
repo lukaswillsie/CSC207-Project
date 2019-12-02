@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/gradient_background"
     android:layout_height="match_parent"
-    tools:context=".Activities.StartActivity">
+    tools:context=".service_activities.StartActivity">
 
     <Button
         android:id="@+id/oldUserButton"

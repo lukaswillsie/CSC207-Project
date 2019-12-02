@@ -1,4 +1,4 @@
-package com.example.game.Activities;
+package com.example.game.service_activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +38,7 @@ public class StatsActivity extends AppCompatActivity {
 
         TextView quickestTime = findViewById(R.id.quickestTime);
         String quickTime = statsManager.getStat(Statistic.QUICKEST_TIME) + "s";
-        if (quickTime.equals("0s")){
+        if (quickTime.equals("9999s")){
             quickestTime.setText("\u221e");
         }
         else{
