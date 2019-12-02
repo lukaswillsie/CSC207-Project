@@ -183,10 +183,15 @@ public class GameFinishActivity extends AppCompatActivity {
 
         StatsManager statsManager = new StatsManagerFactory().build(this, username);
         int guesses = gameManager.getCurrentGame().getNumOfGuess();
-
-        int userBest = statsManager.getStat(Statistic.FEWEST_GUESSES);
-        if (guesses < userBest) {
+        int points = gameManager.getCurrentGame().getPoints();
+        int userBestGuesses = statsManager.getStat(Statistic.FEWEST_GUESSES);
+        int userBestPoints = statsManager.getStat(Statistic.GUESS_POINT);
+        if (guesses < userBestGuesses) {
             statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
+        }
+
+        if(points > userBestPoints){
+            statsManager.setStat(Statistic.GUESS_POINT, points);
         }
     }
 
