@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:onClick="checkGuess"
+        android:onClick="checkUserGuess"
         android:text="@string/guess_button"
         app:layout_constraintEnd_toEndOf="@+id/guessNumber"
         app:layout_constraintStart_toStartOf="@+id/guessNumber"
