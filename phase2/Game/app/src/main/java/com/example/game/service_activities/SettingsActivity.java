@@ -26,7 +26,6 @@ public class SettingsActivity extends AppCompatActivity {
     private SeekBar numHandsBar;
     private SeekBar numRoundsBar;
     private Switch darkMode;
-    private Switch alphabetSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,4 +121,12 @@ public class SettingsActivity extends AppCompatActivity {
         settingsManager.updateSetting(Setting.NUM_ROUNDS, numRoundsBar.getProgress());
         settingsManager.updateSetting(Setting.DARK_MODE, darkMode.isChecked() ? 1 : 0);
     }
+
+    /**
+     * Do nothing when the back button is pressed, because otherwise the DarkMode setting does
+     * not get properly applied. The user can exit the activity via the "Main Menu" button at the
+     * top of the screen
+     */
+    @Override
+    public void onBackPressed(){}
 }
