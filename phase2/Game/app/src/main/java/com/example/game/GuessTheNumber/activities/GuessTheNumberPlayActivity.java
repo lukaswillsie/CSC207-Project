@@ -48,7 +48,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.guessInput)).setText("");
 
             if (currentGame.checkTheRightGuess(guess)) {
-                currentGame.finishTheGame(guess);
+                currentGame.FinishGuessTheNumberRound(guess);
                 this.finishTheRound();
             } else {
                 if (currentGame.checkGuess(guess)) {

@@ -1,7 +1,7 @@
 package com.example.game.GuessTheNumber.domain;
 
 /**
- * Represents one game instance, or rather, a "round" of GuessTheNumber.
+ * Represents one round that users play in  GuessTheNumber game.
  */
 public class GuessTheNumberRound {
     /**
@@ -9,11 +9,11 @@ public class GuessTheNumberRound {
      */
     private int numOfGuess;
     /**
-     * Specify if game is finished.
+     * Specify if round is finished.
      */
     private boolean finished;
     /**
-     * Total number of point that user receives for the game.
+     * Total number of point that user receives for the round.
      */
     private int points;
 
@@ -38,9 +38,9 @@ public class GuessTheNumberRound {
     }
 
     /**
-     * Finish the game.
+     * Finish the round.
      */
-    public void finishTheGame(int guess) {
+    public void FinishGuessTheNumberRound(int guess) {
         this.finished = true;
         this.updateStats(guess);
     }
@@ -62,7 +62,7 @@ public class GuessTheNumberRound {
     }
 
     /**
-     * Update statistics for the game: points and number of guesses.
+     * Update statistics for the round: points and number of guesses.
      */
     private void updateStats(int guess) {
         this.numOfGuess++;
@@ -77,28 +77,28 @@ public class GuessTheNumberRound {
     }
 
     /**
-     * Returns the points that this game currently has.
+     * Returns the points that this round currently has.
      */
     public int getPoints() {
         return this.points;
     }
 
     /**
-     * Returns the number of guesses the user has already taken so far in this game.
+     * Returns the number of guesses the user has already taken so far in this round.
      */
     public int getNumOfGuess() {
         return this.numOfGuess;
     }
 
     /**
-     * Returns true if this game is finished and false otherwise.
+     * Returns true if this round is finished and false otherwise.
      */
     public boolean isFinished() {
         return this.finished;
     }
 
     /**
-     * Call this method when the game is finished.
+     * Call this method when the round is finished.
      */
     public void setIsFinished() {
         this.finished = true;
