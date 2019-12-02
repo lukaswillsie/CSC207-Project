@@ -14,6 +14,16 @@ public class Answer {
     // The valid alphabet for this game.
     private List<String> alphabetList;
 
+    // Constant array of digits that is used to create the alphabet.
+    private static final String[] DIGITS = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
+    // Constant array of letters that is used to create the alphabet.
+    private static final String[] LETTERS = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+            "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+
+    // Constant array of symbols that is used to create the alphabet.
+    private static final String[] SYMBOLS = new String[]{"!", "@", "#", "_", "-", "+", "=", "(", ")", "*", "&", "%"};
+
     /**
      * Constructor call for the Answer object.
      *
@@ -24,24 +34,19 @@ public class Answer {
         String[] alphabet;
         this.answerArray = new String[answerSize];
 
-        String[] digits = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        String[] letters = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-        String[] symbols = new String[]{"!", "@", "#", "_", "-", "+", "=", "(", ")", "*", "&", "%"};
-
         switch (alphabetSelector) {
             case 0:
-                alphabet = digits;
+                alphabet = DIGITS;
                 break;
             case 1:
-                alphabet = concatenateArrays(digits, letters);
+                alphabet = concatenateArrays(DIGITS, LETTERS);
                 break;
             case 2:
-                alphabet = concatenateArrays(digits, concatenateArrays(letters, symbols));
+                alphabet = concatenateArrays(DIGITS, concatenateArrays(LETTERS, SYMBOLS));
                 break;
             case 3:
             default:
-                alphabet = letters;
+                alphabet = LETTERS;
         }
 
         for (int i = 0; i < answerSize; i++) {
@@ -77,7 +82,6 @@ public class Answer {
 
         return concat;
     }
-
 
     /**
      * A method that returns whether the guess only contains strings from the alphabet.

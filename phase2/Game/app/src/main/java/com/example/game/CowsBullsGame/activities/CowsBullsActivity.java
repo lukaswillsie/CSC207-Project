@@ -141,10 +141,13 @@ public class CowsBullsActivity extends AppCompatActivity {
 
         cowsBullsStatsManager = new CowsBullsStatsManager(statsManager);
 
+        // This is one area where we would like to improve the code if we had more time.
         if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 0) {
             guess.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
         } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 1) {
             guess.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+        } else if (settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY) == 2) {
+            guess.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#_-+=()*&%"));
         }
     }
 
