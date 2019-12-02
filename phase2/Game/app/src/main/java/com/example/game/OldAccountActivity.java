@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.services.accounts.AccountManagerFactory;
 import com.example.game.services.accounts.UserAccountManager;
 
 /**
@@ -29,7 +30,7 @@ public class OldAccountActivity extends AppCompatActivity implements OldUserPage
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_old_account);
 
-        presenter = new OldAccountActivityPresenter(new UserAccountManager(this), this);
+        presenter = new OldAccountActivityPresenter(new AccountManagerFactory().build(this), this);
     }
 
     /**

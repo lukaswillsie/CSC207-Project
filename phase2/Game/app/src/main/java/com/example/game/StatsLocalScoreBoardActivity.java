@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.example.game.data.Statistic;
 import com.example.game.services.accounts.AccountManager;
+import com.example.game.services.accounts.AccountManagerFactory;
 import com.example.game.services.accounts.UserAccountManager;
 import com.example.game.services.stats.StatsManager;
 import com.example.game.services.stats.StatsManagerFactory;
@@ -21,7 +22,7 @@ public class StatsLocalScoreBoardActivity extends ScoreboardActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         List<Pair<String, Integer>> topRating = new ArrayList<>();
-        AccountManager GameAccountManager = new UserAccountManager(this);
+        AccountManager GameAccountManager = new AccountManagerFactory().build(this);
         List<String> usernames = GameAccountManager.getUsers();
 
         Bundle bundle = getIntent().getExtras();
