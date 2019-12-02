@@ -38,6 +38,7 @@ public class StatsLocalScoreBoardActivity extends ScoreboardActivity {
             topRating.add(userTuple);
         }
         switch(ourStats){
+            case QUICKEST_TIME:
             case FEWEST_GUESSES:
                 Collections.sort(topRating, new Comparator<Pair<String, Integer>>() {
                 @Override
@@ -52,7 +53,6 @@ public class StatsLocalScoreBoardActivity extends ScoreboardActivity {
                 }
                 });
                 break;
-            case QUICKEST_TIME:
             case LONGEST_STREAK:
                 Collections.sort(topRating, new Comparator<Pair<String, Integer>>() {
                     @Override
