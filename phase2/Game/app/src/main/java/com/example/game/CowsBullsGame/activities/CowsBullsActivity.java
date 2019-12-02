@@ -18,7 +18,7 @@ import com.example.game.CowsBullsGame.domain.Guess;
 import com.example.game.CowsBullsGame.game_logic.GameManager;
 import com.example.game.CowsBullsGame.game_logic.TurnData;
 import com.example.game.CowsBullsGame.services.CowsBullsStatsManager;
-import com.example.game.Activities.MainActivity;
+import com.example.game.service_activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;

@@ -1,4 +1,4 @@
-package com.example.game.Activities;
+package com.example.game.service_activities;
 
 import android.content.Intent;
 import android.os.Bundle;
