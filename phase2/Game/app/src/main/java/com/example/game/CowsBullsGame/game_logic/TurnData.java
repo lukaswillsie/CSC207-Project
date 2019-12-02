@@ -8,9 +8,6 @@ import com.example.game.CowsBullsGame.domain.Guess;
  */
 public class TurnData {
 
-    // An array that store the guess for this turn.
-    private String[] guessArray;
-
     // The number of cows for this guess.
     private int numberCows;
 
@@ -18,7 +15,7 @@ public class TurnData {
     private int numberBulls;
 
     /**
-     * Create a TurnData object. A precdndition is that guessArray and answerArray must have the
+     * Create a TurnData object. A precondition is that guessArray and answerArray must have the
      * same sizes.
      *
      * @param guessArray  An array of the elements guessed by the player.
@@ -27,7 +24,6 @@ public class TurnData {
     TurnData(Guess guessArray, Answer answerArray) {
 
         GuessInterpreter guess = new GuessInterpreter(guessArray, answerArray);
-        this.guessArray = guessArray.getGuessArray();
         this.numberBulls = guess.getBulls();
         this.numberCows = guess.getCows();
     }
