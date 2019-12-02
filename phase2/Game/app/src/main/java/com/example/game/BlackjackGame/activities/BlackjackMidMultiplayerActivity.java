@@ -61,5 +61,6 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
      * game and returning to the screen where player 1 was playing, which would be weird
      */
     @Override
-    public void onBackPressed(){}
+    public void onBackPressed() {
+    }
 }

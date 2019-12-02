@@ -103,5 +103,6 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
      * to prevent weird interactions
      */
     @Override
-    public void onBackPressed(){}
+    public void onBackPressed() {
+    }
 }

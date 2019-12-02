@@ -7,7 +7,7 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 /**
  * This class takes care of technical, use-case related tasks for activities involved in playing
  * multiplayer Blackjack.
- *
+ * <p>
  * At the moment this includes BlackjackPlayActivity and MultiplayerEndGameActivity
  * <p>
  * Currently, this class's responsibilities exclusively comprise resetting blackjack multiplayer data
