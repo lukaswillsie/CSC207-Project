@@ -1,13 +1,13 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import android.os.Bundle;
 import android.util.Pair;
 import android.widget.TextView;
 
+import com.example.game.R;
 import com.example.game.data.Statistic;
 import com.example.game.services.accounts.AccountManager;
 import com.example.game.services.accounts.AccountManagerFactory;
-import com.example.game.services.accounts.UserAccountManager;
 import com.example.game.services.stats.StatsManager;
 import com.example.game.services.stats.StatsManagerFactory;
 

@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import android.os.Bundle;
 import android.util.Pair;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import com.example.game.R;
 
 import java.util.List;
 

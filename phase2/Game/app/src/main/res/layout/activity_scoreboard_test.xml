@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cell_background"
-    tools:context=".ScoreboardTest">
+    tools:context=".Activities.ScoreboardTest">
 
     <TableLayout
         android:layout_width="310dp"

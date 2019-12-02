@@ -1,10 +1,12 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.game.R;
 
 /**
  * This Activity allows the user to view the scoreboard for any of the three games in our app

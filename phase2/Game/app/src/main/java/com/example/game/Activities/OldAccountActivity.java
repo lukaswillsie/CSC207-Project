@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.R;
 import com.example.game.services.accounts.AccountManagerFactory;
-import com.example.game.services.accounts.UserAccountManager;
 
 /**
  * The page displayed when a user is logging in to an existing account

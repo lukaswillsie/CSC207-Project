@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
-import com.example.game.MainActivity;
+import com.example.game.Activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
@@ -183,10 +183,15 @@ public class GameFinishActivity extends AppCompatActivity {
 
         StatsManager statsManager = new StatsManagerFactory().build(this, username);
         int guesses = gameManager.getCurrentGame().getNumOfGuess();
-
-        int userBest = statsManager.getStat(Statistic.FEWEST_GUESSES);
-        if (guesses < userBest) {
+        int points = gameManager.getCurrentGame().getPoints();
+        int userBestGuesses = statsManager.getStat(Statistic.FEWEST_GUESSES);
+        int userBestPoints = statsManager.getStat(Statistic.GUESS_POINT);
+        if (guesses < userBestGuesses) {
             statsManager.setStat(Statistic.FEWEST_GUESSES, guesses);
+        }
+
+        if(points > userBestPoints){
+            statsManager.setStat(Statistic.GUESS_POINT, points);
         }
     }
 

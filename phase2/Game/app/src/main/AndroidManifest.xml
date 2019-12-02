@@ -12,20 +12,20 @@
         <activity android:name=".CowsBullsGame.activities.CowsBullsSelectDifficultyActivity"></activity>
         <activity android:name=".CowsBullsGame.activities.CowsBullsMutliplayerFinishActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsMidMultiplayerActivity" />
-        <activity android:name=".ScoreboardSelectActivity" />
-        <activity android:name=".ScoreboardActivity" />
-        <activity android:name=".BlackjackScoreboardActivity" />
-        <activity android:name=".CowsBullsScoreboardActivity" />
-        <activity android:name=".GuessTheNumberScoreBoardActivity" />
-        <activity android:name=".ScoreboardTest" />
+        <activity android:name=".Activities.ScoreboardSelectActivity" />
+        <activity android:name=".Activities.ScoreboardActivity" />
+        <activity android:name=".Activities.BlackjackScoreboardActivity" />
+        <activity android:name=".Activities.CowsBullsScoreboardActivity" />
+        <activity android:name=".Activities.GuessTheNumberScoreBoardActivity" />
+        <activity android:name=".Activities.ScoreboardTest" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsStartActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsFinishActivity" />
         <activity android:name=".CowsBullsGame.activities.CowsBullsActivity" />
-        <activity android:name=".StatsActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".OldAccountActivity" />
-        <activity android:name=".NewAccountActivity" />
-        <activity android:name=".StartActivity">
+        <activity android:name=".Activities.StatsActivity" />
+        <activity android:name=".Activities.SettingsActivity" />
+        <activity android:name=".Activities.OldAccountActivity" />
+        <activity android:name=".Activities.NewAccountActivity" />
+        <activity android:name=".Activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,13 +35,13 @@
         <activity android:name=".BlackjackGame.activities.EndGameActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackPlayActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackStartActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.MainActivity" />
         <activity android:name=".GuessTheNumber.activities.GameStartActivity" />
         <activity android:name=".GuessTheNumber.activities.GuessTheNumberPlayActivity" />
         <activity android:name=".GuessTheNumber.activities.GameFinishActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackMidMultiplayerActivity" />
         <activity android:name=".BlackjackGame.activities.MultiplayerEndGameActivity" />
-        <activity android:name=".StatsLocalScoreBoardActivity" />
+        <activity android:name=".Activities.StatsLocalScoreBoardActivity" />
         <activity android:name=".GuessTheNumber.activities.GameMultiplayerFinishActivity" />
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities;
 
 /**
  * Defines what a login page for an existing user should do

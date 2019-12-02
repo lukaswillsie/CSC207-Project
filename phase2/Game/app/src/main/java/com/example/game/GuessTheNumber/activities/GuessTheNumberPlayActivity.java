@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
 import com.example.game.GuessTheNumber.game_logic.GameManager;
-import com.example.game.MainActivity;
+import com.example.game.Activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 
@@ -48,7 +48,7 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.guessInput)).setText("");
 
             if (currentGame.checkTheRightGuess(guess)) {
-                currentGame.finishTheGame(guess);
+                currentGame.FinishGuessTheNumberRound(guess);
                 this.finishTheRound();
             } else {
                 if (currentGame.checkGuess(guess)) {
