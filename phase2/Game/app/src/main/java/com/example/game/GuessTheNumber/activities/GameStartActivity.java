@@ -9,19 +9,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
-import com.example.game.GuessTheNumber.game_logic.GameManager;
+import com.example.game.GuessTheNumber.game_logic.GuessTheNumberGameManager;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.MultiplayerIntData;
 import com.example.game.data.Setting;
-import com.example.game.data.Statistic;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 import com.example.game.services.settings.SettingsManager;
 import com.example.game.services.settings.SettingsManagerFactory;
-import com.example.game.services.stats.StatsManager;
-import com.example.game.services.stats.StatsManagerFactory;
 
 /**
  * The activity that appears right before the user is about to start a game of GuessTheNumber. This
@@ -32,7 +29,7 @@ public class GameStartActivity extends AppCompatActivity {
      * gameManger is responsible for the whole logic of the game, passes values to GuessTheNumberPlayActivity
      * and GuessTheNumberFinishActivity
      */
-    static GameManager gameManager;
+    static GuessTheNumberGameManager gameManager;
     /**
      * multiplayerDataManager for this game
      */
@@ -57,7 +54,7 @@ public class GameStartActivity extends AppCompatActivity {
         setContentView(R.layout.game_start_activity);
         settingsManager = new SettingsManagerFactory().build(this, username);
         int range = settingsManager.getSetting(Setting.GUESS_THE_NUMBER_RANGE);
-        gameManager = new GameManager(range);
+        gameManager = new GuessTheNumberGameManager(range);
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
         boolean firstPlayersTurn = gameManager.getIsFirstPlayersTurn();
 

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
-import com.example.game.GuessTheNumber.game_logic.GameManager;
+import com.example.game.GuessTheNumber.game_logic.GuessTheNumberGameManager;
 import com.example.game.service_activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
@@ -36,7 +36,7 @@ public class GameFinishActivity extends AppCompatActivity {
      */
     private ScoreboardRepository GuessNumHighscoreManager;
 
-    GameManager gameManager = GameStartActivity.gameManager;
+    GuessTheNumberGameManager gameManager = GameStartActivity.gameManager;
     private MultiplayerDataManager multiplayerDataManager;
 
     @Override

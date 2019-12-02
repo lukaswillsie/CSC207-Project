@@ -6,7 +6,7 @@ import com.example.game.CowsBullsGame.domain.Guess;
 import java.util.ArrayList;
 
 /**
- * A GameManager class that handles all of the game logic.
+ * A GuessTheNumberGameManager class that handles all of the game logic.
  */
 public class GameManager {
 
@@ -23,7 +23,7 @@ public class GameManager {
     private Answer answer;
 
     /**
-     * A constructor for the GameManager class.
+     * A constructor for the GuessTheNumberGameManager class.
      *
      * @param answerSize       The size of the guess / answer.
      * @param alphabetSelector An int that defines the possible alphabets.

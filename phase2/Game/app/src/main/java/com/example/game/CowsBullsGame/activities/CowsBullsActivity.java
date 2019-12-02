@@ -74,7 +74,7 @@ public class CowsBullsActivity extends AppCompatActivity {
     // The layout for the past guesses in the game.
     private LinearLayout linLayout;
 
-    // The GameManager for this game.
+    // The GuessTheNumberGameManager for this game.
     private GameManager gameManager;
 
     //The CowsBullsStatsManager for this game.
