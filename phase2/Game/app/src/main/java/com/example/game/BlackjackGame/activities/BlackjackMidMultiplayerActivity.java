@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
-import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
@@ -51,6 +50,6 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.longestStreakDisplay)).setText(player1LongestStreak);
         ((TextView) findViewById(R.id.winRateDisplay)).setText(player1WinRate);
         ((TextView) findViewById(R.id.blackjackMidMultiplayerTitle)).setText(title);
-        ((Button)findViewById(R.id.player2PlayButton)).setText(player2Button);
+        ((Button) findViewById(R.id.player2PlayButton)).setText(player2Button);
     }
 }
