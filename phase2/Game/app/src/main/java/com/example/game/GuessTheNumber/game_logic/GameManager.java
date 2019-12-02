@@ -60,10 +60,16 @@ public class GameManager {
         return this.game;
     }
 
+    /**
+     * @return the boolean that indicates whether there is still GuessTheNumber rounds to play.
+     */
     public boolean getKeepPlaying() {
         return this.keepPlaying;
     }
 
+    /**
+     * Set the number of GuessTheNumberRound to play.
+     */
     public void setRoundsToPlay(int rounds) {
         this.roundsToPlay = rounds;
     }
@@ -76,16 +82,22 @@ public class GameManager {
         this.keepPlaying = this.currentRound != this.roundsToPlay;
     }
 
+    /**
+     * Return the index of GuessTheNumberRound the user is currently on.
+     */
     public int getCurrentRound() {
         return this.currentRound;
     }
 
+    /**
+     * Return the number of GuessTheNumberRound there is to play.
+     */
     public int getRoundsToPlay() {
         return this.roundsToPlay;
     }
 
     /**
-     * Reset the index of current game.
+     * Reset the index of GuessTheNumberRound the user is currently on.
      */
     public void resetCurrentRounds() {
         this.currentRound = 0;
@@ -106,6 +118,5 @@ public class GameManager {
     public void changeIsFirstPlayersTurn() {
         this.isFirstPlayersTurn = !this.isFirstPlayersTurn;
     }
-
 
 }
