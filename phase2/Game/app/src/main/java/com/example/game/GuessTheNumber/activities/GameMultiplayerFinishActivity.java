@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.Activities.MainActivity;
+import com.example.game.service_activities.MainActivity;
 import com.example.game.R;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.MultiplayerIntData;
