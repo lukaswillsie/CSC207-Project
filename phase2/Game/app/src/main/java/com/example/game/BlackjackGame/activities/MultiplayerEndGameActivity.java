@@ -28,14 +28,14 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
      * This Activity's presenter, which handles the task of resetting this game's multiplayer data
      * after the user clicks "Main Menu"
      */
-    private MultiplayerEndGameActivityPresenter presenter;
+    private BlackjackMultiplayerActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer_end_game);
 
-        presenter = new MultiplayerEndGameActivityPresenter(new MultiplayerDataManagerFactory().build());
+        presenter = new BlackjackMultiplayerActivityPresenter(new MultiplayerDataManagerFactory().build());
         initializeTextViews();
     }
 
