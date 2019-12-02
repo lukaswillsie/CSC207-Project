@@ -37,9 +37,9 @@
         <activity android:name=".BlackjackGame.activities.BlackjackPlayActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackStartActivity" />
         <activity android:name=".service_activities.MainActivity" />
-        <activity android:name=".GuessTheNumber.activities.GameStartActivity" />
+        <activity android:name=".GuessTheNumber.activities.GuessTheNumberStartActivity" />
         <activity android:name=".GuessTheNumber.activities.GuessTheNumberPlayActivity" />
-        <activity android:name=".GuessTheNumber.activities.GameFinishActivity" />
+        <activity android:name=".GuessTheNumber.activities.GuessTheNumberFinishActivity" />
         <activity android:name=".BlackjackGame.activities.BlackjackMidMultiplayerActivity" />
         <activity android:name=".BlackjackGame.activities.MultiplayerEndGameActivity" />
         <activity android:name=".service_activities.StatsLocalScoreBoardActivity" />

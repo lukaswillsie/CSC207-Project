@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
 import com.example.game.CowsBullsGame.activities.CowsBullsStartActivity;
-import com.example.game.GuessTheNumber.activities.GameStartActivity;
+import com.example.game.GuessTheNumber.activities.GuessTheNumberStartActivity;
 import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void chooseTheNum(View view) {
-        Intent intent = new Intent(this, GameStartActivity.class);
+        Intent intent = new Intent(this, GuessTheNumberStartActivity.class);
         startActivity(intent);
     }
 

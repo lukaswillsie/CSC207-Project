@@ -15,7 +15,7 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManager;
 import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 
 /**
- * The activity that appears if the user clicks on the button "See winner" in GameFinishActivity.
+ * The activity that appears if the user clicks on the button "See winner" in GuessTheNumberFinishActivity.
  * This activity shows player1's and player2's fewest guesses and displays who is the winner between
  * the two, or displays if there is a tie.
  */

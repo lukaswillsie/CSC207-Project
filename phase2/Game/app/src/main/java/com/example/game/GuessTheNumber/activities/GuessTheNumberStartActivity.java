@@ -24,7 +24,7 @@ import com.example.game.services.settings.SettingsManagerFactory;
  * The activity that appears right before the user is about to start a game of GuessTheNumber. This
  * activity is needed to resume the old game/read the rules/start a new game.
  */
-public class GameStartActivity extends AppCompatActivity {
+public class GuessTheNumberStartActivity extends AppCompatActivity {
     /**
      * gameManger is responsible for the whole logic of the game, passes values to GuessTheNumberPlayActivity
      * and GuessTheNumberFinishActivity

@@ -29,14 +29,14 @@ import java.util.List;
 /**
  * This activity appears when the user successfully finishes each round of GuessTheNumber.
  */
-public class GameFinishActivity extends AppCompatActivity {
+public class GuessTheNumberFinishActivity extends AppCompatActivity {
 
     /**
      * An object for updating and accessing highscores, when necessary
      */
     private ScoreboardRepository GuessNumHighscoreManager;
 
-    GuessTheNumberGameManager gameManager = GameStartActivity.gameManager;
+    GuessTheNumberGameManager gameManager = GuessTheNumberStartActivity.gameManager;
     private MultiplayerDataManager multiplayerDataManager;
 
     @Override
@@ -105,7 +105,7 @@ public class GameFinishActivity extends AppCompatActivity {
      * This button should only be visible in Multiplayer mode.
      */
     public void nextPlayerClick(View view) {
-        Intent intent = new Intent(this, GameStartActivity.class);
+        Intent intent = new Intent(this, GuessTheNumberStartActivity.class);
         gameManager.startNewGame();
         startActivity(intent);
     }

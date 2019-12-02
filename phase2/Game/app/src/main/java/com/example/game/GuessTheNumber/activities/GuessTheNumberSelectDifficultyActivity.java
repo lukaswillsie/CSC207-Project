@@ -65,7 +65,7 @@ public class GuessTheNumberSelectDifficultyActivity extends AppCompatActivity {
     }
 
     public void backClick(View view) {
-        Intent intent = new Intent(this, GameStartActivity.class);
+        Intent intent = new Intent(this, GuessTheNumberStartActivity.class);
         startActivity(intent);
     }
 }

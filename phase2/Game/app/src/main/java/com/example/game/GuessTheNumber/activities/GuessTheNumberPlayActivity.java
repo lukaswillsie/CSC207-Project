@@ -21,7 +21,7 @@ import com.example.game.services.settings.SettingsManagerFactory;
  * This page displayed when user is actually playing a game.
  */
 public class GuessTheNumberPlayActivity extends AppCompatActivity {
-    GuessTheNumberGameManager gameManager = GameStartActivity.gameManager;
+    GuessTheNumberGameManager gameManager = GuessTheNumberStartActivity.gameManager;
     static int guess;
     TextView rangeBlurb;
 
@@ -127,11 +127,11 @@ public class GuessTheNumberPlayActivity extends AppCompatActivity {
     }
 
     /**
-     * Finish the current round, refer user to GameFinishActivity.
+     * Finish the current round, refer user to GuessTheNumberFinishActivity.
      */
     private void finishTheRound() {
         gameManager.checkRounds();
-        Intent intent = new Intent(this, GameFinishActivity.class);
+        Intent intent = new Intent(this, GuessTheNumberFinishActivity.class);
         startActivity(intent);
     }
 
