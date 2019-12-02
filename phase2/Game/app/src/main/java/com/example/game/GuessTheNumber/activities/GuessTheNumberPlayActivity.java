@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
-import com.example.game.GuessTheNumber.game_logic.GameManager;
+import com.example.game.GuessTheNumber.game_logic.GuessTheNumberGameManager;
 import com.example.game.data.Setting;
 import com.example.game.service_activities.MainActivity;
 import com.example.game.R;
@@ -21,7 +21,7 @@ import com.example.game.services.settings.SettingsManagerFactory;
  * This page displayed when user is actually playing a game.
  */
 public class GuessTheNumberPlayActivity extends AppCompatActivity {
-    GameManager gameManager = GameStartActivity.gameManager;
+    GuessTheNumberGameManager gameManager = GameStartActivity.gameManager;
     static int guess;
     TextView rangeBlurb;
 

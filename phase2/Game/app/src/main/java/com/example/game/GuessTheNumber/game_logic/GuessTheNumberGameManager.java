@@ -5,7 +5,7 @@ import com.example.game.GuessTheNumber.domain.GuessTheNumberRound;
 /**
  * This class handles all the logic of the whole GAME and all the rounds user want to play.
  */
-public class GameManager {
+public class GuessTheNumberGameManager {
     /**
      * The current game this game manager holds and User plays.
      */
@@ -33,7 +33,7 @@ public class GameManager {
     /**
      * Create a gameManager
      */
-    public GameManager(int range) {
+    public GuessTheNumberGameManager(int range) {
        this.range = range;
        resetGameManager();
 
@@ -41,7 +41,7 @@ public class GameManager {
     }
 
     /**
-     * Reset the GameManager values.
+     * Reset the GuessTheNumberGameManager values.
      */
     public void resetGameManager() {
         startNewGame();
