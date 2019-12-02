@@ -43,42 +43,36 @@ public class CowsBullsSelectDifficultyActivity extends AppCompatActivity {
 
         int difficulty = settingsManager.getSetting(Setting.COWS_BULLS_DIFFICULTY);
         if (difficulty == 0) {
-            currDiffLevel.setText("Easy");
+            currDiffLevel.setText(getResources().getString(R.string.easyString));
         } else if (difficulty == 1) {
-            currDiffLevel.setText("Medium");
+            currDiffLevel.setText(getResources().getString(R.string.mediumString));
         } else if (difficulty == 2) {
-            currDiffLevel.setText("Insane");
+            currDiffLevel.setText(getResources().getString(R.string.insaneString));
         }
     }
 
     /**
      * Method to allow Easy button to set difficulty to easy
-     *
-     * @param view
      */
     public void easyDifficulty(View view) {
         settingsManager.updateSetting(Setting.COWS_BULLS_DIFFICULTY, 0);
-        currDiffLevel.setText("Easy");
+        currDiffLevel.setText(getResources().getString(R.string.easyString));
     }
 
     /**
      * Method to allow Easy button to set difficulty to medium
-     *
-     * @param view
      */
     public void mediumDifficulty(View view) {
         settingsManager.updateSetting(Setting.COWS_BULLS_DIFFICULTY, 1);
-        currDiffLevel.setText("Medium");
+        currDiffLevel.setText(getResources().getString(R.string.mediumString));
     }
 
     /**
      * Method to allow Easy button to set difficulty to insane
-     *
-     * @param view
      */
     public void insaneDifficulty(View view) {
         settingsManager.updateSetting(Setting.COWS_BULLS_DIFFICULTY, 2);
-        currDiffLevel.setText("Insane");
+        currDiffLevel.setText(getResources().getString(R.string.insaneString));
     }
 
     /**
