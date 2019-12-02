@@ -102,6 +102,9 @@
     <string name="easy">Guess 5 Digits:</string>
     <string name="medium">Guess 6 Digits and Letters:</string>
     <string name="insane">Guess 7 Digits, Letters, and Symbols:</string>
+    <string name="easyString">Easy</string>
+    <string name="mediumString">Medium</string>
+    <string name="insaneString">Insane</string>
     <string name="easyButton">Easy</string>
     <string name="mediumButton">Medium</string>
     <string name="insaneButton">Insane</string>

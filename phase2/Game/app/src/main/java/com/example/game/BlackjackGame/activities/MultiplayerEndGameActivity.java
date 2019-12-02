@@ -63,11 +63,11 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
         int player1LongestStreak = manager.getMultiplayerData(BLACKJACK_PLAYER1_LONGEST_STREAK);
         int player2LongestStreak = manager.getMultiplayerData(BLACKJACK_PLAYER2_LONGEST_STREAK);
 
-        String player1StatsLabel = MultiplayerGameData.getPlayer1Username();
+        String player1StatsLabel = MultiplayerGameData.getPlayer1Username() + ":";
         String player1WinRateString = new DecimalFormat("##.##").format(manager.getMultiplayerData(BLACKJACK_PLAYER_1_WIN_RATE)) + "%";
         String player1LongestStreakString = "" + manager.getMultiplayerData(BLACKJACK_PLAYER1_LONGEST_STREAK);
 
-        String player2StatsLabel = MultiplayerGameData.getPlayer2Username();
+        String player2StatsLabel = MultiplayerGameData.getPlayer2Username() + ":";
         String player2WinRateString = new DecimalFormat("##.##").format(manager.getMultiplayerData(BLACKJACK_PLAYER_2_WIN_RATE)) + "%";
         String player2LongestStreakString = "" + manager.getMultiplayerData(BLACKJACK_PLAYER2_LONGEST_STREAK);
 
@@ -80,8 +80,8 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.player2LongestStreakDisplay)).setText(player2LongestStreakString);
 
         TextView winLabel = findViewById(R.id.winLabel);
-        String player1Win = MultiplayerGameData.getPlayer1Username() + " Wins!";
-        String player2Win = MultiplayerGameData.getPlayer2Username() + " Wins!";
+        String player1Win = MultiplayerGameData.getPlayer1Username() + " wins!";
+        String player2Win = MultiplayerGameData.getPlayer2Username() + " wins!";
         String tie = "It's a tie!";
         if (player1WinRate > player2WinRate) {
             winLabel.setText(player1Win);
@@ -96,5 +96,13 @@ public class MultiplayerEndGameActivity extends AppCompatActivity {
                 winLabel.setText(tie);
             }
         }
+    }
+
+    /**
+     * Prevent the user from going back from this screen, forcing them to use the "Main Menu" button,
+     * to prevent weird interactions
+     */
+    @Override
+    public void onBackPressed() {
     }
 }
