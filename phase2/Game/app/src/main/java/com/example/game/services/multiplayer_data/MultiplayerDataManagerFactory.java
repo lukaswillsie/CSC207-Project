@@ -40,7 +40,6 @@ public class MultiplayerDataManagerFactory {
 
         File dataFile = new File(filesDir, "multiplayer_data");
 
-        // TODO: Make this process a little more robust; if one of the attempts to initialize the data file fails, try again, until it works
         // If the data file exists, we need too check if this is the first time this class has been
         // asked to make a MultiplayerDataManager; if so, dataFile represents the multiplayer data file
         // from a previous run of the game, and we need to overwrite it to get it ready for this game

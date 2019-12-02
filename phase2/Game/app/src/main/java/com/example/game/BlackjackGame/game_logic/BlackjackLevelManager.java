@@ -47,8 +47,6 @@ public class BlackjackLevelManager {
      */
     private int numHandsPlayed;
 
-    // TODO: Figure out how to shorten this constructor, maybe using setters instead of constructor
-
     /**
      * Create a new BlackjackLevelManager
      *

@@ -94,7 +94,7 @@ public class BestScorePrompter {
                         if (inputBox != null) {
                             name = (inputBox).getText().toString();
                         } else {
-                            name = username; // TODO Double Check
+                            name = username;
                         }
                         if (scoreManager.validName(name)) {
                             scoreManager.addScore(name, score);
