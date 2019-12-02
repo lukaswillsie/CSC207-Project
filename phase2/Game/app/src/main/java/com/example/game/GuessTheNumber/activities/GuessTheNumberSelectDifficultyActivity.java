@@ -28,17 +28,16 @@ public class GuessTheNumberSelectDifficultyActivity extends AppCompatActivity {
         int range = settingsManager.getSetting(Setting.GUESS_THE_NUMBER_RANGE);
         if (range == 50) {
             currDiff.setText("Easy");
-        }
-
-        else if (range == 100) {
+        } else if (range == 100) {
             currDiff.setText("Medium");
-        }
-
-        else {
+        } else {
             currDiff.setText("Insane");
         }
     }
 
+    /**
+     * Update the range setting for GuessTheNumber.
+     */
     public void easyDifficultyClick(View view) {
         settingsManager.updateSetting(Setting.GUESS_THE_NUMBER_RANGE, 50);
         currDiff.setText("Easy");
