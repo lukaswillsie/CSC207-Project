@@ -13,7 +13,7 @@ public class BestScoreSelector {
     private ScoreboardRepository.Game game;
 
     // The number of top scores to select.
-    private int numScores = 10;
+    private final int numScores = 15;
 
     /**
      * A constructor for the BestScoreSelector class.
@@ -61,13 +61,13 @@ public class BestScoreSelector {
             return true;
         }
 
-        // If score is greater than any of the previous 10 highest scores, it should be a new best score.
+        // If score is greater than any of the previous 15 highest scores, it should be a new best score.
         for (Pair<String, Integer> pair : highestScores) {
             if (pair.second < score) {
                 return true;
             }
         }
-        // If the top 10 scores are all >= score, then return false.
+        // If the top 15 scores are all >= score, then return false.
         return false;
     }
 
@@ -88,14 +88,13 @@ public class BestScoreSelector {
             return true;
         }
 
-        // If score is less than any of the previous 10 lowest scores, it should be a new best score.
+        // If score is less than any of the previous 15 lowest scores, it should be a new best score.
         for (Pair<String, Integer> pair : lowestScores) {
             if (pair.second > score) {
                 return true;
             }
         }
-        // If the top 10 scores are all <= score, then return false.
+        // If the top 15 scores are all <= score, then return false.
         return false;
     }
 }
-

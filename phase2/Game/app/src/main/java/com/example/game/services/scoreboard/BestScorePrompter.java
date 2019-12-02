@@ -74,6 +74,7 @@ public class BestScorePrompter {
         final String warning = "That is an invalid name! Please do not include a comma in your name.";
 
         dialog.setMessage(message);
+        dialog.setCancelable(false);
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -93,7 +94,7 @@ public class BestScorePrompter {
                         if (inputBox != null) {
                             name = (inputBox).getText().toString();
                         } else {
-                            name = username; // TODO Double Check
+                            name = username;
                         }
                         if (scoreManager.validName(name)) {
                             scoreManager.addScore(name, score);
