@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;

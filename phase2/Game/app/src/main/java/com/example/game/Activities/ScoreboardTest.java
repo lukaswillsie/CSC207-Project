@@ -1,8 +1,10 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.game.R;
 
 public class ScoreboardTest extends AppCompatActivity {
 

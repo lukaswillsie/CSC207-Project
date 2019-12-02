@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities;
 
 /**
  * Defines what a new user creation page should be able to do

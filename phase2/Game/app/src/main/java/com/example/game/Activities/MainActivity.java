@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.example.game.BlackjackGame.activities.BlackjackStartActivity;
 import com.example.game.CowsBullsGame.activities.CowsBullsStartActivity;
 import com.example.game.GuessTheNumber.activities.GameStartActivity;
+import com.example.game.R;
 import com.example.game.data.GameData;
 import com.example.game.data.MultiplayerGameData;
 import com.example.game.data.Setting;

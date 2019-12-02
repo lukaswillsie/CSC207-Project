@@ -1,9 +1,10 @@
-package com.example.game;
+package com.example.game.Activities;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.game.R;
 import com.example.game.services.scoreboard.ScoreboardRepository;
 import com.example.game.services.scoreboard.ScoreboardRepositoryFactory;
 
