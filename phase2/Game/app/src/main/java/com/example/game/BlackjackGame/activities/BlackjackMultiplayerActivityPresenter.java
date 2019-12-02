@@ -10,7 +10,7 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManager;
  *
  * At the moment this includes BlackjackPlayActivity and MultiplayerEndGameActivity
  * <p>
- * Currently, this classes responsibilities exclusively comprise resetting blackjack multiplayer data
+ * Currently, this class's responsibilities exclusively comprise resetting blackjack multiplayer data
  */
 class BlackjackMultiplayerActivityPresenter {
     /**

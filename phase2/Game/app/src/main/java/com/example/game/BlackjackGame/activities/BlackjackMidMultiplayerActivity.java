@@ -19,6 +19,9 @@ import static com.example.game.data.MultiplayerDoubleData.BLACKJACK_PLAYER_1_WIN
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER1_LONGEST_STREAK;
 import static com.example.game.data.MultiplayerIntData.BLACKJACK_PLAYER_TURN;
 
+/**
+ * The page displayed in between player 1's and player 2's turns in Blackjack multiplayer rounds
+ */
 public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,4 +55,11 @@ public class BlackjackMidMultiplayerActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.blackjackMidMultiplayerTitle)).setText(title);
         ((Button) findViewById(R.id.player2PlayButton)).setText(player2Button);
     }
+
+    /**
+     * Override the back button functionality, preventing the user from pressing back in a multiplayer
+     * game and returning to the screen where player 1 was playing, which would be weird
+     */
+    @Override
+    public void onBackPressed(){}
 }
