@@ -22,8 +22,8 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 public class GameMultiplayerFinishActivity extends AppCompatActivity {
     private MultiplayerDataManager multiplayerDataManager;
 
-    String player1Username = MultiplayerGameData.getPlayer1Username();
-    String player2Username = MultiplayerGameData.getPlayer2Username();
+    private String player1Username = MultiplayerGameData.getPlayer1Username();
+    private String player2Username = MultiplayerGameData.getPlayer2Username();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class GameMultiplayerFinishActivity extends AppCompatActivity {
      * Return the string message of who is the winner in multiplayer mode, or "Tie!" if there is a
      * tie between the two players.
      */
-    public String getWinner() {
+    private String getWinner() {
         int player1Guesses = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_1_FEWEST_GUESSES);
         int player2Guesses = multiplayerDataManager.getMultiplayerData(MultiplayerIntData.GUESS_THE_NUM_PLAYER_2_FEWEST_GUESSES);
         if (player1Guesses > player2Guesses) {
