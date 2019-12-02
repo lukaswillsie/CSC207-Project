@@ -21,49 +21,35 @@ import com.example.game.services.multiplayer_data.MultiplayerDataManagerFactory;
 public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
 
     /**
-     * TextView display for player 1's time taken to guess the number
-     */
-    private TextView player1TimeTaken;
-
-    /**
-     * TextView display for player 1's number of guesses taken to guess the number
-     */
-    private TextView player1TurnsTaken;
-
-    /**
-     * TextView display for player 2's time taken to guess the number
-     */
-    private TextView player2TimeTaken;
-
-    /**
-     * TextView display for player 2's number of guesses taken to guess the number
-     */
-    private TextView player2TurnsTaken;
-
-    /**
-     * TextView display for player 2's number of guesses taken to guess the number
-     */
-    private TextView winMessage;
-
-    /**
-     * MultiplayerDataManager object to retrieve and set stats for user
-     */
-    private MultiplayerDataManager multiplayerDataManager;
-
-    /**
      * Method to initialize the layout when entering the activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // TextView display for player 1's time taken to guess the number
+        TextView player1TimeTaken;
+
+        // TextView display for player 1's number of guesses taken to guess the number
+        TextView player1TurnsTaken;
+
+        // TextView display for player 2's time taken to guess the number
+        TextView player2TimeTaken;
+
+        // TextView display for player 2's number of guesses taken to guess the number
+        TextView player2TurnsTaken;
+
+        // TextView display for player 2's number of guesses taken to guess the number
+        TextView winMessage;
+
+        // MultiplayerDataManager object to retrieve and set stats for user
+        MultiplayerDataManager multiplayerDataManager;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cows_bulls_mutliplayer_finish);
 
         multiplayerDataManager = new MultiplayerDataManagerFactory().build();
 
         multiplayerDataManager.setMultiplayerData(MultiplayerIntData.COWS_BULLS_PLAYER_TURN, 1);
-
-        String player1Username = MultiplayerGameData.getPlayer1Username();
-        String player2Username = MultiplayerGameData.getPlayer2Username();
 
         winMessage = findViewById(R.id.winMessage);
         player1TimeTaken = findViewById(R.id.player1TimeTaken);
@@ -82,8 +68,8 @@ public class CowsBullsMutliplayerFinishActivity extends AppCompatActivity {
         player2TurnsTaken.setText(String.format("%s", player2Turns.toString()));
 
         //Formatting the username for better display
-        player1Username = formatName(MultiplayerGameData.getPlayer1Username());
-        player2Username = formatName(MultiplayerGameData.getPlayer2Username());
+        String player1Username = formatName(MultiplayerGameData.getPlayer1Username());
+        String player2Username = formatName(MultiplayerGameData.getPlayer2Username());
 
         //Displaying a custom win message based on all the outcomes that are possible
         if (player1Time.equals(player2Time) & player1Turns.equals(player2Turns)) {
